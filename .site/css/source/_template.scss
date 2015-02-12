@@ -1,0 +1,75 @@
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	min-width: 400px;
+	min-height: 800px;
+	height: 100%;
+}
+
+$collapse-height: 2px;
+$collapse-sidebar: 1000px;
+$collapse-content: 1300px;
+
+/********** Menu collapsed / Content collapse**********/
+$nav-menu-collapsed-height: 8%;
+$nav-menu-collapsed-maxwidth: 650px;
+#nav-menu {
+	height: $nav-menu-collapsed-height;
+	width: 100%;
+	max-width: $nav-menu-collapsed-maxwidth;
+	margin: 0px auto;
+}
+#content {
+	height: 100% - $nav-menu-collapsed-height;
+	> div {
+		height: 50%;
+		border: 1px solid #000;
+		max-width: $nav-menu-collapsed-maxwidth;
+		margin: 0px auto;
+	}
+}
+
+$nav-menu-expanded-width: 400px;
+/********* Menu Expanded / Content collapse *************/
+@media (min-width: $collapse-sidebar) {
+	#nav-menu {
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		max-width: none;
+		margin: 0;
+		width: $nav-menu-expanded-width;
+	}
+	#content {
+		position: fixed;
+		top: 0;
+		bottom: 9;
+		left: $nav-menu-expanded-width;
+		right: 0;
+		height: 100%;
+		font-size: 0;
+		> div {
+			width: 100%;
+			font-size: 16px;
+		}
+	}
+}
+
+/********* Menu Expanded / Content expanded *************/
+@media (min-width: $collapse-content) {
+	#content {
+		> div {
+			display: inline-block;
+			width: 50%;
+			max-width: none;
+			height: 100%;
+			margin: 0;
+		}
+	}
+}

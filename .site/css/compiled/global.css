@@ -1,4 +1,57 @@
-test {
-  font-size: 4px; }
+* {
+  box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-width: 400px;
+  min-height: 800px;
+  height: 100%; }
+
+/********** Menu collapsed / Content collapse**********/
+#nav-menu {
+  height: 8%;
+  width: 100%;
+  max-width: 650px;
+  margin: 0px auto; }
+
+#content {
+  height: 92%; }
+  #content > div {
+    height: 50%;
+    border: 1px solid #000;
+    max-width: 650px;
+    margin: 0px auto; }
+
+/********* Menu Expanded / Content collapse *************/
+@media (min-width: 1000px) {
+  #nav-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    max-width: none;
+    margin: 0;
+    width: 400px; }
+
+  #content {
+    position: fixed;
+    top: 0;
+    bottom: 9;
+    left: 400px;
+    right: 0;
+    height: 100%;
+    font-size: 0; }
+    #content > div {
+      width: 100%;
+      font-size: 16px; } }
+/********* Menu Expanded / Content expanded *************/
+@media (min-width: 1300px) {
+  #content > div {
+    display: inline-block;
+    width: 50%;
+    max-width: none;
+    height: 100%;
+    margin: 0; } }
 
 /*# sourceMappingURL=global.css.map */
