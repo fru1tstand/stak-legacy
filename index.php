@@ -14,8 +14,17 @@
 		</div>
 		
 		<div id="content">
+			<div class="hidden">
+				Settings pane
+			</div>
 			<div>
-				this is tasklist
+				<div class="task-entry">
+				</div>
+				<div class="task-entry">
+				</div>
+				<div class="task-entry">
+				</div>
+				
 			</div>
 			<div>
 				this is more

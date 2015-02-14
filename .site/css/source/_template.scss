@@ -13,7 +13,7 @@ html, body {
 
 $collapse-height: 2px;
 $collapse-sidebar: 1000px;
-$collapse-content: 1300px;
+$collapse-content: 1600px;
 
 /********** Menu collapsed / Content collapse**********/
 $nav-menu-collapsed-height: 8%;
@@ -23,19 +23,32 @@ $nav-menu-collapsed-maxwidth: 650px;
 	width: 100%;
 	max-width: $nav-menu-collapsed-maxwidth;
 	margin: 0px auto;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	border-color: #000;
 }
 #content {
 	height: 100% - $nav-menu-collapsed-height;
 	> div {
 		height: 50%;
-		border: 1px solid #000;
+		border: 1px solid;
+		border-top: none;
 		max-width: $nav-menu-collapsed-maxwidth;
 		margin: 0px auto;
+		vertical-align: top;
 	}
 }
+.task-entry:nth-child(1) {
+	border-top: 1px solid;
+}
+.task-entry {
+	border-bottom: 1px solid;
+	height: 50px;
+}
 
-$nav-menu-expanded-width: 400px;
 /********* Menu Expanded / Content collapse *************/
+$nav-menu-expanded-width: 400px;
+$nav-menu-expanded-maxwidth: 800px;
 @media (min-width: $collapse-sidebar) {
 	#nav-menu {
 		position: fixed;
@@ -45,6 +58,7 @@ $nav-menu-expanded-width: 400px;
 		max-width: none;
 		margin: 0;
 		width: $nav-menu-expanded-width;
+		height: 100vh;
 	}
 	#content {
 		position: fixed;
@@ -56,7 +70,9 @@ $nav-menu-expanded-width: 400px;
 		font-size: 0;
 		> div {
 			width: 100%;
+			max-width: $nav-menu-expanded-maxwidth;
 			font-size: 16px;
+			border-right: 1px solid #000;
 		}
 	}
 }
@@ -73,3 +89,9 @@ $nav-menu-expanded-width: 400px;
 		}
 	}
 }
+
+
+.hidden {
+	display: none !important;
+}
+
