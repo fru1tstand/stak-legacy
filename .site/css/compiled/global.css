@@ -1,74 +1,51 @@
-* {
-  box-sizing: border-box; }
+/*
+Error: File to import not found or unreadable: template.
+       Load paths:
+         /home/kodlee/workspaces/kodleeshare/fru1tme-homework/sass
+         /var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets
+         Compass::SpriteImporter
+        on line 2 of /home/kodlee/workspaces/kodleeshare/fru1tme-homework/.site/css/source/global.scss
 
-html, body {
-  margin: 0;
-  padding: 0;
-  min-width: 400px;
-  min-height: 800px;
-  height: 100%; }
+1: 
+2: @import 'template';
 
-/********** Menu collapsed / Content collapse**********/
-#nav-menu {
-  height: 8%;
-  width: 100%;
-  max-width: 650px;
-  margin: 0px auto;
-  border-right: 1px solid;
-  border-left: 1px solid;
-  border-color: #000; }
-
-#content {
-  height: 92%; }
-  #content > div {
-    height: 50%;
-    border: 1px solid;
-    border-top: none;
-    max-width: 650px;
-    margin: 0px auto;
-    vertical-align: top; }
-
-.task-entry:nth-child(1) {
-  border-top: 1px solid; }
-
-.task-entry {
-  border-bottom: 1px solid;
-  height: 50px; }
-
-/********* Menu Expanded / Content collapse *************/
-@media (min-width: 1000px) {
-  #nav-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    max-width: none;
-    margin: 0;
-    width: 400px;
-    height: 100vh; }
-
-  #content {
-    position: fixed;
-    top: 0;
-    bottom: 9;
-    left: 400px;
-    right: 0;
-    height: 100%;
-    font-size: 0; }
-    #content > div {
-      width: 100%;
-      max-width: 800px;
-      font-size: 16px;
-      border-right: 1px solid #000; } }
-/********* Menu Expanded / Content expanded *************/
-@media (min-width: 1600px) {
-  #content > div {
-    display: inline-block;
-    width: 50%;
-    max-width: none;
-    height: 100%;
-    margin: 0; } }
-.hidden {
-  display: none !important; }
-
-/*# sourceMappingURL=global.css.map */
+Backtrace:
+/home/kodlee/workspaces/kodleeshare/fru1tme-homework/.site/css/source/global.scss:2
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:45:in `import'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:28:in `imported_file'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:37:in `css_import?'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/sass_scss.rb:396:in `run'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/base.rb:52:in `parse'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/base.rb:19:in `parse!'
+/var/lib/gems/1.9.1/gems/sass-3.4.7/bin/sass:13:in `<top (required)>'
+/usr/local/bin/sass:23:in `load'
+/usr/local/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: template.\A        Load paths:\A          /home/kodlee/workspaces/kodleeshare/fru1tme-homework/sass\A          /var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets\A          Compass::SpriteImporter\A         on line 2 of /home/kodlee/workspaces/kodleeshare/fru1tme-homework/.site/css/source/global.scss\A \A 1: \A 2: @import 'template';"; }
