@@ -1,0 +1,35 @@
+#global-menu {
+	border-bottom: 1px solid #999;
+	ul {
+		padding-top: $global-menu-top-padding - 1;
+		text-align: right;
+		border-right: 1px solid #000;
+	}
+	li {
+		height: $global-menu-tab-height;
+		line-height: $global-menu-tab-height;
+		padding: 0 20px;
+		border-left: 1px solid #000;
+	}
+}
+
+.menu {
+	ul {
+		list-style: none;
+		cursor: pointer;
+	}
+	li {
+		display: inline-block;
+		@include transition(box-shadow 0.1s ease-in-out);
+		
+		&:hover {
+			box-shadow: 4px -4px 15px -15px #00F inset,
+					-4px -4px 15px -15px #00F inset;
+		}
+	}
+	
+	.active {
+		box-shadow: 4px -4px 15px -15px #0F0 inset,
+					-4px -4px 15px -15px #0F0 inset;
+	}
+}

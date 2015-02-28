@@ -9,27 +9,31 @@
 	</head>
 	
 	<body>
-		<div id="nav-menu">
-			This is some text
+		<div class="window" id="window-theone">
+			<div class="window-close">Click to close</div>
+		</div>
+		<div class="window" id="window-thetwo">
+			<div class="window-close">CLOSE MEEEE</div>
 		</div>
 		
-		<div id="content">
-			<div class="hidden">
-				Settings pane
-			</div>
-			<div>
-				<div class="task-entry">
-				</div>
-				<div class="task-entry">
-				</div>
-				<div class="task-entry">
-				</div>
-				
-			</div>
-			<div>
-				this is more
-			</div>
+		<div class="menu" id="global-menu">
+			<!-- No, that's not a programming error. It's an HTML fix for
+					whitespace poo in between display: inline-block; elements.
+					-->
+			<ul class="collapse-hidden"
+				><li class="window-open" data-window="theone">The One</li
+				><li class="window-open" data-window="thetwo">The Two</li>
+			</ul>
 		</div>
 		
+		<div class="sidebar" id="global-sidebar">
+			<ul class="expand-hidden"
+				><li class="window-open" data-window="theone">The One</li
+				><li class="window-open" data-window="thetwo">The Two</li>
+			</ul>
+		</div>
+		
+		
+		<script src="/.site/js/global.js"></script>
 	</body>
 </html>

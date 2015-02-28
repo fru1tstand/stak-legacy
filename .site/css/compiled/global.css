@@ -1,51 +1,59 @@
-/*
-Error: File to import not found or unreadable: template.
-       Load paths:
-         /home/kodlee/workspaces/kodleeshare/fru1tme-homework/sass
-         /var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets
-         Compass::SpriteImporter
-        on line 2 of /home/kodlee/workspaces/kodleeshare/fru1tme-homework/.site/css/source/global.scss
+ul, ol, h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0; }
 
-1: 
-2: @import 'template';
+/*************************************** Template.scss */
+* {
+  box-sizing: border-box;
+  font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; }
 
-Backtrace:
-/home/kodlee/workspaces/kodleeshare/fru1tme-homework/.site/css/source/global.scss:2
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:66:in `rescue in import'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:45:in `import'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:28:in `imported_file'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/import_node.rb:37:in `css_import?'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `block in with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:115:in `with_frame'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/stack.rb:79:in `with_base'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `map'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/base.rb:36:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/root_node.rb:36:in `css_tree'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/engine.rb:368:in `_render_with_sourcemap'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/engine.rb:285:in `render_with_sourcemap'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/sass_scss.rb:396:in `run'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/sass_scss.rb:62:in `process_result'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/base.rb:52:in `parse'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/lib/sass/exec/base.rb:19:in `parse!'
-/var/lib/gems/1.9.1/gems/sass-3.4.7/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: template.\A        Load paths:\A          /home/kodlee/workspaces/kodleeshare/fru1tme-homework/sass\A          /var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets\A          Compass::SpriteImporter\A         on line 2 of /home/kodlee/workspaces/kodleeshare/fru1tme-homework/.site/css/source/global.scss\A \A 1: \A 2: @import 'template';"; }
+html, body {
+  padding: 0;
+  margin: 0; }
+
+.window {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #EEE;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out;
+  -moz-transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out;
+  transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out; }
+  .window.open {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: visibility 0s linear, opacity 0.2s ease-in-out;
+    -moz-transition: visibility 0s linear, opacity 0.2s ease-in-out;
+    transition: visibility 0s linear, opacity 0.2s ease-in-out; }
+
+#global-menu {
+  border-bottom: 1px solid #999; }
+  #global-menu ul {
+    padding-top: 14px;
+    text-align: right;
+    border-right: 1px solid #000; }
+  #global-menu li {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    border-left: 1px solid #000; }
+
+.menu ul {
+  list-style: none;
+  cursor: pointer; }
+.menu li {
+  display: inline-block;
+  -webkit-transition: box-shadow 0.1s ease-in-out;
+  -moz-transition: box-shadow 0.1s ease-in-out;
+  transition: box-shadow 0.1s ease-in-out; }
+  .menu li:hover {
+    box-shadow: 4px -4px 15px -15px #00F inset, -4px -4px 15px -15px #00F inset; }
+.menu .active {
+  box-shadow: 4px -4px 15px -15px #0F0 inset, -4px -4px 15px -15px #0F0 inset; }
+
+/*# sourceMappingURL=global.css.map */
