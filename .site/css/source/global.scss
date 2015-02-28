@@ -9,10 +9,13 @@
 $global-menu-top-padding: 15px;
 $global-menu-tab-height: 40px;
 
+$width-small: 360px;
+$width-medium: 768px;
+$width-large: 1440px;
+
 ul, ol, h1, h2, h3, h4, h5, h6 {
 	padding: 0;
 	margin: 0;
 }
 
 @import 'template';
-@import 'menu';
