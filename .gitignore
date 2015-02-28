@@ -3,4 +3,5 @@ error.log
 .settings/
 .sass-cache/
 .externalToolBuilders/
+.gitignore
 build.xml
