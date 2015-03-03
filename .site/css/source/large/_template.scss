@@ -23,8 +23,18 @@
 	}
 	
 	/***************************** Menus ***/
-	#global-menu {
+	#global-menu-bar {
 		border-bottom: 1px solid #999;
+		
+		div {
+			vertical-align: top;
+		}
+	}
+	#global-logo {
+		float: left;
+	}
+	#global-menu {
+		float: right;
 		ul {
 			padding-top: $global-menu-top-padding - 1;
 			text-align: right;
@@ -42,6 +52,7 @@
 		ul {
 			list-style: none;
 			cursor: pointer;
+			
 		}
 		li {
 			display: inline-block;
@@ -56,6 +67,24 @@
 		.active {
 			box-shadow: 4px -4px 15px -15px #0F0 inset,
 						-4px -4px 15px -15px #0F0 inset;
+		}
+	}
+	
+	/********************************* Sidebars ***/
+	#global-sidebar {
+	}
+	
+	.sidebar {
+		position: fixed;
+		top: 0;
+		height: 100vh;
+		left: -$width-small;
+		width: $width-small;
+		max-width: $width-small;
+		@include transition(left 0.2s ease-in-out);
+		
+		&.open {
+			left: 0;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-//hover-window transitions
+//Window
 (function (window, document, undefined) {
 	var isWindowOpen = false;
 	var windowAnimationTime = 200; //ms
@@ -74,6 +74,48 @@
 		}
 		
 		windowClose(node.parentNode);
+	}
+	
+} (this, document));
+
+//sidebars
+(function (window, document, undefined) {
+	
+	_construct();
+	
+	function _construct() {
+		//Bind toggles
+		var sidebarOpenNodes = document.getElementsByClassName("menu-open");
+		for (var i = 0; i < sidebarOpenNodes.length; i++) 
+			sidebarOpenNodes[i].onclick = sidebarOpenClick;
+		
+		var sidebarCloseNodes = document.getElementsByClassName("menu-close");
+		for (var i = 0; i < sidebarCloseNodes.length; i++)
+			sidebarCloseNodes[i].onclick = function() { sidebarClose(this); }
+	}
+	
+	function sidebarOpenClick() {
+		if (!this.attributes["data-menu"])
+			return;
+		
+		var menu = document.getElementById("menu-" 
+				+ this.attributes["data-menu"].value);
+		if (!menu)
+			return;
+		
+		menu.classList.add("open");
+	}
+	
+	function sidebarClose(node) {
+		if (node == null || node == document || node == document.body)
+			return;
+		
+		if (node.classList.contains("sidebar")) {
+			node.classList.remove("open");
+			return;
+		}
+		
+		sidebarClose(node.parentNode);
 	}
 	
 } (this, document));
