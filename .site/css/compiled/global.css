@@ -11,6 +11,9 @@ html, body {
   padding: 0;
   margin: 0; }
 
+.clearfix {
+  clear: both; }
+
 /*************************************** small/template */
 /*************************************** large/template */
 @media (min-width: 1440px) {
@@ -39,10 +42,20 @@ html, body {
   #global-menu-bar {
     border-bottom: 1px solid #999; }
     #global-menu-bar div {
-      vertical-align: top; }
+      vertical-align: bottom; }
 
   #global-logo {
     float: left; }
+    #global-logo a {
+      line-height: 54px;
+      height: 54px;
+      text-decoration: none;
+      display: inline-block;
+      padding: 0 15px;
+      font-size: 26px;
+      color: #000; }
+      #global-logo a:hover {
+        color: #999; }
 
   #global-menu {
     float: right; }

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<?php include(".site/php/ascii-art.php"); ?>
+
 <html lang="en">
 	<head>
 		<title>Fru1tMe - Homework Thing</title>
 		<meta charset="UTF-8" />
-		
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
 		
+<?php include(".site/php/ascii-art.php"); ?>
+
 	</head>
 	
 	<body>
@@ -19,7 +20,7 @@
 		
 		<div id="global-menu-bar">
 			<div id="global-logo">
-				Lions and dragons
+				<a href="/">Lions and dragons</a>
 			</div>
 			<div class="menu" id="global-menu">
 				<!-- No, that's not a programming error. It's an HTML fix for
@@ -30,6 +31,7 @@
 					><li class="window-open" data-window="thetwo">The Two</li>
 				</ul>
 			</div>
+			<div class="clearfix"></div>
 		</div>
 		
 		

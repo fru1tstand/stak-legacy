@@ -11,6 +11,10 @@ html, body {
 	margin: 0;
 }
 
+.clearfix {
+	clear: both;
+}
+
 @import 'small/template';
 @import 'medium/template';
 @import 'large/template';

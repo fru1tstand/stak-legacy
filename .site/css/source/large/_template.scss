@@ -27,11 +27,25 @@
 		border-bottom: 1px solid #999;
 		
 		div {
-			vertical-align: top;
+			vertical-align: bottom;
 		}
 	}
 	#global-logo {
 		float: left;
+		
+		a {
+			line-height: $global-menu-tab-height + $global-menu-top-padding - 1;
+			height: $global-menu-tab-height + $global-menu-top-padding - 1;
+			text-decoration: none;
+			display: inline-block;
+			padding: 0 15px;
+			font-size: 26px;
+			color: #000;
+			
+			&:hover {
+				color: #999;
+			}
+		}
 	}
 	#global-menu {
 		float: right;
