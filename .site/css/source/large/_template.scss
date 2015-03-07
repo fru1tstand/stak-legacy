@@ -7,7 +7,6 @@
 		left: 0;
 		width: 100%;
 		height: 100vh;
-		background-color: #EEE;
 		overflow: auto;
 		opacity: 0;
 		visibility: hidden;
@@ -24,7 +23,7 @@
 	
 	/***************************** Menus ***/
 	#global-menu-bar {
-		border-bottom: 1px solid #999;
+		border-bottom: 1px solid;
 		
 		div {
 			vertical-align: bottom;
@@ -38,27 +37,24 @@
 			height: $global-menu-tab-height + $global-menu-top-padding - 1;
 			text-decoration: none;
 			display: inline-block;
-			padding: 0 15px;
+			padding-left: 15px;
 			font-size: 26px;
-			color: #000;
-			
-			&:hover {
-				color: #999;
-			}
 		}
 	}
 	#global-menu {
 		float: right;
+		
 		ul {
 			padding-top: $global-menu-top-padding - 1;
 			text-align: right;
-			border-right: 1px solid #000;
+			border-right: 1px solid;
 		}
+		
 		li {
 			height: $global-menu-tab-height;
 			line-height: $global-menu-tab-height;
 			padding: 0 20px;
-			border-left: 1px solid #000;
+			border-left: 1px solid;
 		}
 	}
 
@@ -66,21 +62,14 @@
 		ul {
 			list-style: none;
 			cursor: pointer;
-			
 		}
+		
 		li {
 			display: inline-block;
 			@include transition(box-shadow 0.1s ease-in-out);
-			
-			&:hover {
-				box-shadow: 4px -4px 15px -15px #00F inset,
-						-4px -4px 15px -15px #00F inset;
-			}
 		}
 		
 		.active {
-			box-shadow: 4px -4px 15px -15px #0F0 inset,
-						-4px -4px 15px -15px #0F0 inset;
 		}
 	}
 	
@@ -95,6 +84,7 @@
 		left: -$width-small;
 		width: $width-small;
 		max-width: $width-small;
+		
 		@include transition(left 0.2s ease-in-out);
 		
 		&.open {

@@ -24,7 +24,6 @@ html, body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #EEE;
     overflow: auto;
     opacity: 0;
     visibility: hidden;
@@ -40,7 +39,7 @@ html, body {
 
   /***************************** Menus ***/
   #global-menu-bar {
-    border-bottom: 1px solid #999; }
+    border-bottom: 1px solid; }
     #global-menu-bar div {
       vertical-align: bottom; }
 
@@ -51,23 +50,20 @@ html, body {
       height: 54px;
       text-decoration: none;
       display: inline-block;
-      padding: 0 15px;
-      font-size: 26px;
-      color: #000; }
-      #global-logo a:hover {
-        color: #999; }
+      padding-left: 15px;
+      font-size: 26px; }
 
   #global-menu {
     float: right; }
     #global-menu ul {
       padding-top: 14px;
       text-align: right;
-      border-right: 1px solid #000; }
+      border-right: 1px solid; }
     #global-menu li {
       height: 40px;
       line-height: 40px;
       padding: 0 20px;
-      border-left: 1px solid #000; }
+      border-left: 1px solid; }
 
   .menu ul {
     list-style: none;
@@ -77,10 +73,6 @@ html, body {
     -webkit-transition: box-shadow 0.1s ease-in-out;
     -moz-transition: box-shadow 0.1s ease-in-out;
     transition: box-shadow 0.1s ease-in-out; }
-    .menu li:hover {
-      box-shadow: 4px -4px 15px -15px #00F inset, -4px -4px 15px -15px #00F inset; }
-  .menu .active {
-    box-shadow: 4px -4px 15px -15px #0F0 inset, -4px -4px 15px -15px #0F0 inset; }
 
   /********************************* Sidebars ***/
   .sidebar {
