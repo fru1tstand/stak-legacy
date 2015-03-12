@@ -80,7 +80,8 @@
 
 //sidebars
 (function (window, document, undefined) {
-	var isSidebarOpen = false;
+	var openSidebars = [];
+	var sidebarAnimationTime = 500; //ms
 	
 	_construct();
 	
@@ -93,42 +94,55 @@
 		var sidebarCloseNodes = document.getElementsByClassName("sidebar-close");
 		for (var i = 0; i < sidebarCloseNodes.length; i++)
 			sidebarCloseNodes[i].onclick = function() { sidebarClose(this); }
+		
+		var sidebarContainers = document.getElementsByClassName("sidebar-container");
+		for (var i = 0; i < sidebarContainers.length; i++)
+			sidebarContainers[i].onclick = closeAllSidebars;
 	}
 	
-	function sidebarOpenClick(e) {
-		e.stopPropagation();
-		
+	function sidebarOpenClick() {
 		if (!this.attributes["data-sidebar"])
 			return;
 		
-		var menu = document.getElementById("sidebar-" 
+		var sidebar = document.getElementById("sidebar-" 
 				+ this.attributes["data-sidebar"].value);
-		if (!menu)
+		if (!sidebar)
 			return;
 		
-		isSidebarOpen = true;
-		menu.classList.add("open");
+		//TODO: Why tf doesn't the sidebar animate in???
+		openSidebars.push(sidebar);
+		sidebar.parentNode.classList.add("open");
+		sidebar.classList.add("open");
 	}
 	
 	function closeAllSidebars() {
-		if (!isSidebarOpen)
+		if (openSidebars.length < 1)
 			return;
 		
 		//Select all open sidebars and remove open class
-		var openSidebars = document.querySelectorAll(".sidebar.open");
 		for (var i = 0; i < openSidebars.length; i++)
 			openSidebars[i].classList.remove("open");
 		
-		isSidebarOpen = false;
+		openSidebars = [];
+		
+		window.setTimeout(function() {
+					var openSidebarContainers = document.getElementsByClassName("sidebar-container");
+					for (var i = 0; i < openSidebarContainers.length; i++)
+						openSidebarContainers[i].classList.remove("open");
+				},
+				sidebarAnimationTime);
 	}
 	
-	function sidebarClose(node) {
-		if (node == null || node == document || node == document.body)
+	function sidebarClose(sidebar) {
+		if (sidebar == null || sidebar == document || sidebar == document.body)
 			return;
 		
-		if (node.classList.contains("sidebar")) {
-			node.classList.remove("open");
-			return;
+		for (var i = 0; i < openSidebars.length; i++) {
+			if (sidebar == openSidebars[i]) {
+				sidebar.classList.remove("open");
+				openSidebars.splice(i, 1);
+				return;
+			}
 		}
 		
 		sidebarClose(node.parentNode);

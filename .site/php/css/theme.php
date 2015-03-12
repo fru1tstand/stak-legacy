@@ -35,7 +35,7 @@ echo <<<template
 	box-shadow: 4px -4px 15px -15px $menuTabActive inset,
 			-4px -4px 15px -15px $menuTabActive inset;
 }
-.sidebar {
+.sidebar-container > div {
 	background-color: $sidebarBackground;
 }
 

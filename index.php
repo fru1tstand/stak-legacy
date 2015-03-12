@@ -39,13 +39,16 @@
 			<div class="clearfix"></div>
 		</div>
 		
-		
-		<div class="sidebar" id="sidebar-global">
-			<ul class="expand-hidden"
-				><li class="window-open" data-window="theone">The One m</li
-				><li class="window-open" data-window="thetwo">The Two m</li>
-			</ul>
+		<div class="sidebar-container">
+			<div id="sidebar-global">
+				<ul class="expand-hidden"
+					><li class="window-open" data-window="theone">The One m</li
+					><li class="window-open" data-window="thetwo">The Two m</li>
+				</ul>
+			</div>
 		</div>
+		
+
 		
 		<script src="/.site/js/global.js"></script>
 	</body>
