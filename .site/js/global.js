@@ -1,52 +1,3 @@
-//Globals
-(function (window, document, undefined) {
-	
-	_construct();
-	
-	function _construct() {
-		window.body.onclick = bodyOnclick;
-	}
-	
-	
-	var events = [];
-	/**
-	 * Allows binding of multiple functons to a single event handler
-	 * for a single node.
-	 */
-	function on(node, event, fn) {
-		//Check the node if it has any event handler for the current
-		//event
-		if (!node[event]) {
-			//It doesn't. check our events array for this node and
-			//create one if it doesn't
-			if (!events[node])
-				events[node] = [];
-			
-			//Because the node is new, erase any previously existing events
-			events[node][event] = [];
-			
-			//Set the node to execute all events and pass the node
-			//that is attached as we lose "this".
-			node[event] = function() {
-				for (var i = 0; i < events[node][event].length; i++)
-					events[node][event][i](node);
-			}
-		}
-		
-		events[node][event].push(fn);
-	}
-	function off(node, event, fn) {
-		//If our node has no events, or events doesn't have the node
-		//or events doesn't have events for the node, we're done.
-		if (!node[event] || !events[node] || !events[node][event])
-			return;
-		
-		for (var i = 0; i < event[node][event].length; i++) {
-			//TODO FINISH
-		}
-	}
-} (this, document));
-
 //Window
 (function (window, document, undefined) {
 	var isWindowOpen = false;
@@ -83,7 +34,7 @@
 			return;
 		
 		//Close opened windows
-		var openWindows = document.querySelectorAll(".window.open");
+		var openWindows = document.querySelectorAll(".window-container>div.open");
 		for (var i = 0; i < openWindows.length; i++)
 			windowClose(openWindows[i]);
 		
@@ -114,7 +65,7 @@
 		if (node == null || node == document || node == document.body)
 			return;
 		
-		if (node.classList.contains("window")) {
+		if (node.classList.contains("open")) {
 			node.classList.remove("open");
 			//Delay the close flag because fuck javascript.
 			setTimeout(function() { isWindowOpen = false; },
@@ -144,7 +95,9 @@
 			sidebarCloseNodes[i].onclick = function() { sidebarClose(this); }
 	}
 	
-	function sidebarOpenClick() {
+	function sidebarOpenClick(e) {
+		e.stopPropagation();
+		
 		if (!this.attributes["data-sidebar"])
 			return;
 		

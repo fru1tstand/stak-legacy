@@ -23,7 +23,7 @@ CSS;
 
 echo <<<template
 
-.window {
+.window-container > div {
 	background-color: $windowBackground;
 	color: $windowText;
 }

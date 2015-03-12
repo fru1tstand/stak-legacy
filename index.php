@@ -12,12 +12,15 @@
 	</head>
 	
 	<body>
-		<div class="window" id="window-theone">
-			<div class="window-close">Click to close</div>
+		<div class="window-container">
+			<div id="window-theone">
+				<div class="window-close">Click to close</div>
+			</div>
+			<div id="window-thetwo">
+				<div class="window-close">CLOSE MEEEE</div>
+			</div>
 		</div>
-		<div class="window" id="window-thetwo">
-			<div class="window-close">CLOSE MEEEE</div>
-		</div>
+
 		
 		<div id="global-menu-bar">
 			<div id="global-logo">

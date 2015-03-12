@@ -18,7 +18,7 @@ html, body {
 /*************************************** large/template */
 @media (min-width: 1440px) {
   /***************************** Windows ***/
-  .window {
+  .window-container > div {
     position: fixed;
     top: 55px;
     left: 0;
@@ -30,7 +30,7 @@ html, body {
     -webkit-transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out;
     -moz-transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out;
     transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out; }
-    .window.open {
+    .window-container > div.open {
       opacity: 1;
       visibility: visible;
       -webkit-transition: visibility 0s linear, opacity 0.2s ease-in-out;
@@ -50,7 +50,7 @@ html, body {
       height: 54px;
       text-decoration: none;
       display: inline-block;
-      padding-left: 15px;
+      margin-left: 15px;
       font-size: 26px; }
 
   #global-menu {
@@ -82,9 +82,9 @@ html, body {
     left: -360px;
     width: 360px;
     max-width: 360px;
-    -webkit-transition: left 0.2s ease-in-out;
-    -moz-transition: left 0.2s ease-in-out;
-    transition: left 0.2s ease-in-out; }
+    -webkit-transition: left 0.2s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: left 0.2s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: left 0.2s cubic-bezier(0.3, 0.3, 0.02, 1); }
     .sidebar.open {
       left: 0; } }
 
