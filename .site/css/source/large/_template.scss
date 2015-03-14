@@ -80,11 +80,10 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		z-index: $sidebar-z-index;
-		display: none;
+		z-index: -1;
 		
 		&.open {
-			display: block;
+			z-index: $sidebar-z-index;
 		}
 		
 		> div {

@@ -81,10 +81,9 @@ html, body {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1000;
-    display: none; }
+    z-index: -1; }
     .sidebar-container.open {
-      display: block; }
+      z-index: 1000; }
     .sidebar-container > div {
       position: fixed;
       top: 0;
