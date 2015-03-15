@@ -113,7 +113,6 @@
 		openSidebars.push(sidebar);
 		sidebar.parentNode.classList.add("open");
 		sidebar.classList.add("open");
-		
 	}
 	
 	function closeAllSidebars() {

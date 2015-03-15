@@ -1,15 +1,11 @@
 /*************************************** large/template */
-@media (min-width: $width-large) {
+@media (min-width: $width-large - $width-clearance) {
 	/***************************** Windows ***/
 	.window-container > div {
-		position: fixed;
-		top: $global-menu-tab-height + $global-menu-top-padding;
-		left: 0;
 		width: 100%;
-		height: 100vh;
-		overflow: auto;
 		opacity: 0;
 		visibility: hidden;
+		
 		@include transition(visibility 0s linear $hover-window-transition-time,
 				opacity $hover-window-transition-time ease-in-out);
 		
@@ -94,11 +90,32 @@
 			width: $width-small;
 			max-width: $width-small;
 			z-index: $sidebar-z-index + 1;
+			
 			@include transition(left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 			
 			&.open {
 				left: 0;
 			}
+		}
+		
+		.titles {
+			padding: 30px 0 40px 0;
+			text-align: center;
+		}
+		
+		ul, li, a {
+			width: 100%;
+		}
+		ul {
+			list-style: none;
+		}
+		a {
+			width: 100%;
+			text-align: right;
+			font-size: 18px;
+			text-decoration: none;
+			padding: 10px 20px;
+			display: block;
 		}
 	}
 	

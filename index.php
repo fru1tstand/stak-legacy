@@ -12,16 +12,6 @@
 	</head>
 	
 	<body>
-		<div class="window-container">
-			<div id="window-theone">
-				<div class="window-close">Click to close</div>
-			</div>
-			<div id="window-thetwo">
-				<div class="window-close">CLOSE MEEEE</div>
-			</div>
-		</div>
-
-		
 		<div id="global-menu-bar">
 			<div id="global-logo">
 				<a href="#" class="sidebar-open" data-sidebar="global">Open</a>
@@ -39,11 +29,25 @@
 			<div class="clearfix"></div>
 		</div>
 		
+		<div class="window-container">
+			<div id="window-theone">
+				<div class="window-close">Click to close</div>
+			</div>
+			<div id="window-thetwo">
+				<div class="window-close">CLOSE MEEEE</div>
+			</div>
+		</div>
+		
 		<div class="sidebar-container">
 			<div id="sidebar-global">
+				<div class="titles">
+					<h2>Homework Thing</h2>
+					<h6>By Fru1tStudio</h6>
+				</div>
+				
 				<ul class="expand-hidden"
-					><li class="window-open" data-window="theone">The One m</li
-					><li class="window-open" data-window="thetwo">The Two m</li>
+					><li><a href="#" class="window-open" data-window="theone">The One</a></li
+					><li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
 				</ul>
 			</div>
 		</div>
