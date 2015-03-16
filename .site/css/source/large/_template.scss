@@ -4,16 +4,12 @@
 	.window-container > div {
 		width: 100%;
 		opacity: 0;
-		visibility: hidden;
+		display: none;
 		
-		@include transition(visibility 0s linear $hover-window-transition-time,
-				opacity $hover-window-transition-time ease-in-out);
+		@include transition(opacity $hover-window-transition-time ease-in-out);
 		
 		&.open {
 			opacity: 1;
-			visibility: visible;
-			@include transition(visibility 0s linear,
-				opacity $hover-window-transition-time ease-in-out);
 		}
 	}
 	

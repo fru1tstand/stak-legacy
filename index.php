@@ -22,7 +22,7 @@
 						whitespace poo in between display: inline-block; elements.
 						-->
 				<ul class="collapse-hidden"
-					><li class="window-open" data-window="theone">The One</li
+					><li class="window-open" data-window="list">ToDo</li
 					><li class="window-open" data-window="thetwo">The Two</li>
 				</ul>
 			</div>
@@ -30,9 +30,13 @@
 		</div>
 		
 		<div class="window-container">
-			<div id="window-theone">
-				<div class="window-close">Click to close</div>
+		
+			<div id="window-list">
+				<ul class="list-fullscreen">
+				
+				</ul>
 			</div>
+			
 			<div id="window-thetwo">
 				<div class="window-close">CLOSE MEEEE</div>
 			</div>
@@ -46,13 +50,11 @@
 				</div>
 				
 				<ul class="expand-hidden">
-					<li><a href="#" class="window-open" data-window="theone">The One</a></li>
+					<li><a href="#" class="window-open" data-window="list">ToDo</a></li>
 					<li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
 				</ul>
 			</div>
 		</div>
-		
-
 		
 		<script src="/.site/js/global.js"></script>
 	</body>

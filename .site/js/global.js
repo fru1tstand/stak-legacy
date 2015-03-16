@@ -1,6 +1,6 @@
 //Window
 (function (window, document, undefined) {
-	var isWindowOpen = false;
+	var currentWindow = null;
 	var windowAnimationTime = 200; //ms
 	
 	_construct();
@@ -14,66 +14,64 @@
 		
 		var windowCloseNodes = document.getElementsByClassName("window-close");
 		for (var i = 0; i < windowCloseNodes.length; i++) {
-			windowCloseNodes[i].onclick = function() {
-				windowClose(this);
-			}
+			windowCloseNodes[i].onclick = closeWindow;
 		}
+	}
+	
+	/**
+	 * Closes the currently opened window if there is one
+	 */
+	function closeWindow(callback) {
+		if (currentWindow == null) {
+			if (typeof callback == "function")
+				callback();
+			return;
+		}
+		
+		currentWindow.classList.remove("open");
+		var activeTabs = document.querySelectorAll(".window-open.active");
+		for (var i = 0; i < activeTabs.length; i++)
+			activeTabs[i].classList.remove("active");
+		
+		setTimeout(function() {
+			currentWindow.style.display = "none";
+			currentWindow = null;
+			if (typeof callback == "function")
+				callback();
+		}, windowAnimationTime);
 	}
 	
 	/**
 	 * Simply opens the one that it says it opens.
 	 */
 	function windowOpenOnClick() {
+		//Is there a window to open?
 		if (!this.attributes["data-window"])
 			return;
-		
-		//Check for pointer to window
-		var hoverWindow = document.getElementById("window-" 
+		var hWindow = document.getElementById("window-" 
 				+ this.attributes["data-window"].value);
-		if (!hoverWindow)
+		if (!hWindow)
 			return;
 		
-		//Close opened windows
-		var openWindows = document.querySelectorAll(".window-container>div.open");
-		for (var i = 0; i < openWindows.length; i++)
-			windowClose(openWindows[i]);
-		
-		//un-activate other tabs
-		var openTabs = document.querySelectorAll(".window-open.active");
-		for (var i = 0; i < openTabs.length; i++)
-			openTabs[i].classList.remove("active");
-		
-		//Animate in window, delay if one is open
-		if (isWindowOpen)
-			setTimeout(function() { openWindow(hoverWindow); }, windowAnimationTime);
-		else
-			openWindow(hoverWindow);
+		openWindow(hWindow);
 		
 		//Actiate tab
 		this.classList.add("active");
 	}
 	
-	function openWindow(window) {
-		window.classList.add("open");
-		isWindowOpen = true;
+	/**
+	 * Closes all windows and opens the specified one.
+	 */
+	function openWindow(hWindow) {
+		closeWindow(function() {
+			hWindow.style.display = "block";
+			currentWindow = hWindow;
+			setTimeout(openWindowAddClass, 20);
+		});
 	}
 	
-	/**
-	 * Recursively checks parent if its a hover-window and if so, closes it.
-	 */
-	function windowClose(node) {
-		if (node == null || node == document || node == document.body)
-			return;
-		
-		if (node.classList.contains("open")) {
-			node.classList.remove("open");
-			//Delay the close flag because javascript.
-			setTimeout(function() { isWindowOpen = false; },
-					windowAnimationTime / 2);
-			return;
-		}
-		
-		windowClose(node.parentNode);
+	function openWindowAddClass() {
+		currentWindow.classList.add("open");
 	}
 	
 } (this, document));
