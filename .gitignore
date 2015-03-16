@@ -1,5 +1,8 @@
 access.log
 error.log
+apache_custom.log
+apache_error.log
+.site/css/compiled/*
 .settings/
 .sass-cache/
 .externalToolBuilders/
