@@ -112,6 +112,13 @@ html, body {
       font-size: 18px;
       text-decoration: none;
       padding: 10px 20px;
-      display: block; } }
+      display: block; }
+
+  .list-fullscreen {
+    height: 100%;
+    border-right: 1px solid;
+    width: 400px; }
+    .list-fullscreen li {
+      padding: 10px; } }
 
 /*# sourceMappingURL=global.css.map */

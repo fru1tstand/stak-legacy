@@ -70,8 +70,14 @@ echo <<<template
 	color: $sidebarLinkHover;
 }
 
-
-
 template;
+
+echo <<<pagetodo
+
+.list-fullscreen {
+	border-color: #FFF;
+}
+
+pagetodo;
 ?>
 

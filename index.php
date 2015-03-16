@@ -31,9 +31,15 @@
 		
 		<div class="window-container">
 		
-			<div id="window-list">
+			<div id="window-list" class="open" style="display: block;">
 				<ul class="list-fullscreen">
-				
+					<li>
+						<div>asdf</div>
+					</li>
+					<li>Something</li>
+					<li>Something</li>
+					<li>Something</li>
+					
 				</ul>
 			</div>
 			
