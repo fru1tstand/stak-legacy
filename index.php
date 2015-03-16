@@ -14,10 +14,10 @@
 	<body>
 		<div id="global-menu-bar">
 			<div id="global-logo">
-				<a href="#" class="sidebar-open" data-sidebar="global">Open</a>
-				<a href="/">Lions and dragons</a>
+				<h2><a href="#" class="sidebar-open" data-sidebar="global">&gt;</a></h2>
+				<h2><a href="/">Lions and dragons</a></h2>
 			</div>
-			<div class="menu" id="global-menu">
+			<div class="tabs" id="global-tabs">
 				<!-- No, that's not a programming error. It's an HTML fix for
 						whitespace poo in between display: inline-block; elements.
 						-->
@@ -45,9 +45,9 @@
 					<h6>By Fru1tStudio</h6>
 				</div>
 				
-				<ul class="expand-hidden"
-					><li><a href="#" class="window-open" data-window="theone">The One</a></li
-					><li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
+				<ul class="expand-hidden">
+					<li><a href="#" class="window-open" data-window="theone">The One</a></li>
+					<li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
 				</ul>
 			</div>
 		</div>

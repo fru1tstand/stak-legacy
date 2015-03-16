@@ -67,7 +67,7 @@
 		
 		if (node.classList.contains("open")) {
 			node.classList.remove("open");
-			//Delay the close flag because fuck javascript.
+			//Delay the close flag because javascript.
 			setTimeout(function() { isWindowOpen = false; },
 					windowAnimationTime / 2);
 			return;

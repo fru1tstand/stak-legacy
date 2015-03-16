@@ -33,7 +33,7 @@ html, body {
       -moz-transition: visibility 0s linear, opacity 0.2s ease-in-out;
       transition: visibility 0s linear, opacity 0.2s ease-in-out; }
 
-  /***************************** Menus ***/
+  /***************************** tabs ***/
   #global-menu-bar {
     border-bottom: 1px solid; }
     #global-menu-bar div {
@@ -41,30 +41,31 @@ html, body {
 
   #global-logo {
     float: left; }
+    #global-logo h2, #global-logo a {
+      display: inline-block;
+      vertical-align: bottom; }
     #global-logo a {
       line-height: 54px;
       height: 54px;
       text-decoration: none;
-      display: inline-block;
-      margin-left: 15px;
-      font-size: 26px; }
+      margin-left: 15px; }
 
-  #global-menu {
+  #global-tabs {
     float: right; }
-    #global-menu ul {
+    #global-tabs ul {
       padding-top: 14px;
       text-align: right;
       border-right: 1px solid; }
-    #global-menu li {
+    #global-tabs li {
       height: 40px;
       line-height: 40px;
       padding: 0 20px;
       border-left: 1px solid; }
 
-  .menu ul {
+  .tabs ul {
     list-style: none;
     cursor: pointer; }
-  .menu li {
+  .tabs li {
     display: inline-block;
     -webkit-transition: box-shadow 0.1s ease-in-out;
     -moz-transition: box-shadow 0.1s ease-in-out;

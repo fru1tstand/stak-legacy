@@ -5,7 +5,7 @@ namespace homework_fru1tme_theme;
 header("content-type: text/css");
 
 //Set default colors
-$globalLogoDefault = "#000";
+$globalLogoDefault = "#99F";
 $globalLogoHover = "#999";
 $globalMenuBarBorder = "#AAA";
 $globalMenuTabBorder = "#AAA";
@@ -48,11 +48,11 @@ echo <<<template
 	color: $windowText;
 }
 
-.menu li:hover {
+.tabs li:hover {
 	box-shadow: 4px -4px 15px -15px $menuTabHover inset,
 			-4px -4px 15px -15px $menuTabHover inset;
 }
-.menu.active {
+.tabs li.active {
 	box-shadow: 4px -4px 15px -15px $menuTabActive inset,
 			-4px -4px 15px -15px $menuTabActive inset;
 }
