@@ -10,12 +10,17 @@ html, body {
 	padding: 0;
 	margin: 0;
 	font-size: 16px;
+	height: 100vh;
+	max-height: 100vh;
+	min-height: 100vh;
 }
 
 .clearfix {
 	clear: both;
 }
 
-@import 'small/template';
-@import 'medium/template';
-@import 'large/template';
+.window-container {
+	margin-top: -$global-menu-tab-height - $global-menu-top-padding;
+	padding-top: $global-menu-tab-height + $global-menu-top-padding;
+	height: 100%;
+}

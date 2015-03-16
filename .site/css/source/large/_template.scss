@@ -1,120 +1,115 @@
 /*************************************** large/template */
-@media (min-width: $width-large - $width-clearance) {
-	/***************************** Windows ***/
-	.window-container > div {
-		width: 100%;
-		opacity: 0;
-		display: none;
-		
-		@include transition(opacity $hover-window-transition-time ease-in-out);
-		
-		&.open {
-			opacity: 1;
-		}
-	}
+/***************************** Windows ***/
+.window-container > div {
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	display: none;
 	
-	/***************************** tabs ***/
-	#global-menu-bar {
-		border-bottom: 1px solid;
-		
-		div {
-			vertical-align: bottom;
-		}
+	@include transition(opacity $hover-window-transition-time ease-in-out);
+	
+	&.open {
+		opacity: 1;
 	}
-	#global-logo {
-		float: left;
-		
-		h2, a {
-			display: inline-block;
-			vertical-align: bottom;
-		}
-		a {
-			line-height: $global-menu-tab-height + $global-menu-top-padding - 1;
-			height: $global-menu-tab-height + $global-menu-top-padding - 1;
-			text-decoration: none;
-			margin-left: 15px;
-		}
-	}
-	#global-tabs {
-		float: right;
-		
-		ul {
-			padding-top: $global-menu-top-padding - 1;
-			text-align: right;
-			border-right: 1px solid;
-		}
-		
-		li {
-			height: $global-menu-tab-height;
-			line-height: $global-menu-tab-height;
-			padding: 0 20px;
-			border-left: 1px solid;
-		}
-	}
+}
 
-	.tabs {
-		ul {
-			list-style: none;
-			cursor: pointer;
-		}
-		
-		li {
-			display: inline-block;
-			@include transition(box-shadow 0.1s ease-in-out);
-		}
+/***************************** tabs ***/
+#global-menu-bar {
+	border-bottom: 1px solid;
+	
+	div {
+		vertical-align: bottom;
+	}
+}
+#global-logo {
+	float: left;
+	
+	h2, a {
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	a {
+		line-height: $global-menu-tab-height + $global-menu-top-padding - 1;
+		height: $global-menu-tab-height + $global-menu-top-padding - 1;
+		text-decoration: none;
+		margin-left: 15px;
+	}
+}
+#global-tabs {
+	float: right;
+	
+	ul {
+		padding-top: $global-menu-top-padding - 1;
+		text-align: right;
+		border-right: 1px solid;
 	}
 	
-	/********************************* Sidebars ***/
-	.sidebar-container {
+	li {
+		height: $global-menu-tab-height;
+		line-height: $global-menu-tab-height;
+		padding: 0 20px;
+		border-left: 1px solid;
+	}
+}
+
+.tabs {
+	ul {
+		list-style: none;
+		cursor: pointer;
+	}
+	
+	li {
+		display: inline-block;
+		@include transition(box-shadow 0.1s ease-in-out);
+	}
+}
+
+/********************************* Sidebars ***/
+.sidebar-container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	
+	&.open {
+		z-index: $sidebar-z-index;
+	}
+	
+	> div {
 		position: fixed;
 		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		z-index: -1;
+		height: 100vh;
+		left: -$width-small;
+		width: $width-small;
+		max-width: $width-small;
+		z-index: $sidebar-z-index + 1;
+		
+		@include transition(left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		&.open {
-			z-index: $sidebar-z-index;
-		}
-		
-		> div {
-			position: fixed;
-			top: 0;
-			height: 100vh;
-			left: -$width-small;
-			width: $width-small;
-			max-width: $width-small;
-			z-index: $sidebar-z-index + 1;
-			
-			@include transition(left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
-			
-			&.open {
-				left: 0;
-			}
-		}
-		
-		.titles {
-			padding: 30px 0 40px 0;
-			text-align: center;
-		}
-		
-		ul, li, a {
-			width: 100%;
-		}
-		ul {
-			list-style: none;
-		}
-		a {
-			width: 100%;
-			text-align: right;
-			font-size: 18px;
-			text-decoration: none;
-			padding: 10px 20px;
-			display: block;
+			left: 0;
 		}
 	}
 	
-	#global-sidebar {
+	.titles {
+		padding: 30px 0 40px 0;
+		text-align: center;
 	}
-
+	
+	ul, li, a {
+		width: 100%;
+	}
+	ul {
+		list-style: none;
+	}
+	a {
+		width: 100%;
+		text-align: right;
+		font-size: 18px;
+		text-decoration: none;
+		padding: 10px 20px;
+		display: block;
+	}
 }

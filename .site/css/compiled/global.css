@@ -10,16 +10,25 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 html, body {
   padding: 0;
   margin: 0;
-  font-size: 16px; }
+  font-size: 16px;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh; }
 
 .clearfix {
   clear: both; }
 
-/*************************************** small/template */
-/*************************************** large/template */
+.window-container {
+  margin-top: -55px;
+  padding-top: 55px;
+  height: 100%; }
+
+/****** Livin' Large */
 @media (min-width: 1422px) {
+  /*************************************** large/template */
   /***************************** Windows ***/
   .window-container > div {
+    height: 100%;
     width: 100%;
     opacity: 0;
     display: none;

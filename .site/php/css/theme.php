@@ -10,7 +10,7 @@ $globalLogoHover = "#999";
 $globalMenuBarBorder = "#AAA";
 $globalMenuTabBorder = "#AAA";
 
-$windowBackground = "#EEE";
+$windowBackground = "#F9F9F9";
 $windowText = "inherit";
 
 $menuTabHover = "#00F";
