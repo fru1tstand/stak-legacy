@@ -46,10 +46,12 @@ html, body {
 
   #global-logo {
     float: left; }
-    #global-logo h2, #global-logo a {
+    #global-logo > h2,
+    #global-logo > a,
+    #global-logo > div {
       display: inline-block;
       vertical-align: bottom; }
-    #global-logo a {
+    #global-logo .bar-link {
       line-height: 54px;
       height: 54px;
       text-decoration: none;
@@ -77,36 +79,27 @@ html, body {
     transition: box-shadow 0.1s ease-in-out; }
 
   /********************************* Sidebars ***/
-  .sidebar-container {
+  #sidebar-global-wrapper:hover .sidebar {
+    left: 0; }
+
+  .sidebar {
     position: fixed;
     top: 0;
-    right: 0;
     bottom: 0;
-    left: 0;
-    z-index: -1; }
-    .sidebar-container.open {
-      z-index: 1000; }
-    .sidebar-container > div {
-      position: fixed;
-      top: 0;
-      height: 100vh;
-      left: -360px;
-      width: 360px;
-      max-width: 360px;
-      z-index: 1001;
-      -webkit-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      -moz-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-      .sidebar-container > div.open {
-        left: 0; }
-    .sidebar-container .titles {
+    left: -360px;
+    width: 360px;
+    max-width: 360px;
+    -webkit-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+    .sidebar .titles {
       padding: 30px 0 40px 0;
       text-align: center; }
-    .sidebar-container ul, .sidebar-container li, .sidebar-container a {
+    .sidebar ul, .sidebar li, .sidebar a {
       width: 100%; }
-    .sidebar-container ul {
+    .sidebar ul {
       list-style: none; }
-    .sidebar-container a {
+    .sidebar a {
       width: 100%;
       text-align: right;
       font-size: 18px;

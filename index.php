@@ -14,8 +14,26 @@
 	<body>
 		<div id="global-menu-bar">
 			<div id="global-logo">
-				<h2><a href="#" class="sidebar-open" data-sidebar="global">&gt;</a></h2>
-				<h2><a href="/">Lions and dragons</a></h2>
+				<!-- Sidebar wrapper -->
+				<div id="sidebar-global-wrapper">
+					<!-- Toggle Text -->
+					<h2><a href="#" class="bar-link">&gt;</a></h2>
+					
+					<!-- Actual sidebar -->
+					<div class="sidebar" id="global-sidebar">
+						<div class="titles">
+							<h2>Reminder Thing</h2>
+							<h6>By Fru1tStudio</h6>
+						</div>
+						
+						<ul class="expand-hidden">
+							<li><a href="#" class="window-open" data-window="list">ToDo</a></li>
+							<li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
+						</ul>
+					</div>
+				</div>
+				
+				<h2><a href="/" class="bar-link">Lions and dragons</a></h2>
 			</div>
 			<div class="tabs" id="global-tabs">
 				<!-- 
@@ -46,20 +64,6 @@
 			
 			<div id="window-thetwo">
 				<div class="window-close">CLOSE MEEEE</div>
-			</div>
-		</div>
-		
-		<div class="sidebar-container">
-			<div id="sidebar-global">
-				<div class="titles">
-					<h2>Homework Thing</h2>
-					<h6>By Fru1tStudio</h6>
-				</div>
-				
-				<ul class="expand-hidden">
-					<li><a href="#" class="window-open" data-window="list">ToDo</a></li>
-					<li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
-				</ul>
 			</div>
 		</div>
 		

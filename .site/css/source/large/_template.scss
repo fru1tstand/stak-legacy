@@ -24,11 +24,13 @@
 #global-logo {
 	float: left;
 	
-	h2, a {
+	> h2,
+	> a,
+	> div {
 		display: inline-block;
 		vertical-align: bottom;
 	}
-	a {
+	.bar-link {
 		line-height: $global-menu-tab-height + $global-menu-top-padding - 1;
 		height: $global-menu-tab-height + $global-menu-top-padding - 1;
 		text-decoration: none;
@@ -65,33 +67,19 @@
 }
 
 /********************************* Sidebars ***/
-.sidebar-container {
+#sidebar-global-wrapper:hover .sidebar {
+	left: 0;
+}
+.sidebar {
 	position: fixed;
 	top: 0;
-	right: 0;
 	bottom: 0;
-	left: 0;
-	z-index: -1;
+	left: -$width-small;
+	width: $width-small;
+	max-width: $width-small;
 	
-	&.open {
-		z-index: $sidebar-z-index;
-	}
-	
-	> div {
-		position: fixed;
-		top: 0;
-		height: 100vh;
-		left: -$width-small;
-		width: $width-small;
-		max-width: $width-small;
-		z-index: $sidebar-z-index + 1;
-		
-		@include transition(left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
-		
-		&.open {
-			left: 0;
-		}
-	}
+	@include transition(left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+
 	
 	.titles {
 		padding: 30px 0 40px 0;

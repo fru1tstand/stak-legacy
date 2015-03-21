@@ -6,7 +6,7 @@ header("content-type: text/css");
 
 //Set default colors
 $globalLogoDefault = "#99F";
-$globalLogoHover = "#999";
+$globalLogoHover = "#66C";
 $globalMenuBarBorder = "#AAA";
 $globalMenuTabBorder = "#AAA";
 
@@ -21,7 +21,7 @@ $sidebarBackground = "#EEE";
 $sidebarLinkBackgroundDefault = "#FFF";
 $sidebarLinkBackgroundHover = "#F9F9F9";
 $sidebarLinkDefault = "#99F";
-$sidebarLinkHover = "#000";
+$sidebarLinkHover = "#66C";
 
 //Anything before
 echo <<<CSS
@@ -33,10 +33,10 @@ echo <<<template
 #global-menu-bar {
 	border-color: $globalMenuBarBorder;
 }
-#global-logo a:link, #global-logo a:visited {
+#global-logo .bar-link:link, #global-logo .bar-link:visited {
 	color: $globalLogoDefault;
 }
-#global-logo a:hover, #global-logo a:active {
+#global-logo .bar-link:hover, #global-logo .bar-link:active {
 	color: $globalLogoHover;
 }
 #global-menu ul, #global-menu li {
@@ -57,15 +57,16 @@ echo <<<template
 			-4px -4px 15px -15px $menuTabActive inset;
 }
 
-.sidebar-container > div {
+.sidebar {
 	background-color: $sidebarBackground;
 }
-.sidebar-container a {
+.sidebar a:link,
+.sidebar a:visited {
 	background-color: $sidebarLinkBackgroundDefault;
 	color: $sidebarLinkDefault;
 }
-.sidebar-container a:hover,
-.sidebar-container a:active {
+.sidebar a:hover,
+.sidebar a:active {
 	background-color: $sidebarLinkBackgroundHover;
 	color: $sidebarLinkHover;
 }
