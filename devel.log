@@ -1,0 +1,9 @@
+
+This file serves to provide a means to keep track of all the little things in the code that I don't want in production.
+It will list things such as:
+	TODO comments
+	Development hacks/extra code
+	Development settings to be changed in production
+
+***************************************************************************************************
+

@@ -18,9 +18,10 @@
 				<h2><a href="/">Lions and dragons</a></h2>
 			</div>
 			<div class="tabs" id="global-tabs">
-				<!-- No, that's not a programming error. It's an HTML fix for
-						whitespace poo in between display: inline-block; elements.
-						-->
+				<!-- 
+					Whitespace fix for "display: inline-block;" elements
+					*See code/inline-block-whitespace
+				-->
 				<ul class="collapse-hidden"
 					><li class="window-open" data-window="list">ToDo</li
 					><li class="window-open" data-window="thetwo">The Two</li>
@@ -31,7 +32,7 @@
 		
 		<div class="window-container">
 		
-			<div id="window-list" class="open" style="display: block;">
+			<div id="window-list">
 				<ul class="list-fullscreen">
 					<li>
 						<div>asdf</div>
@@ -63,5 +64,7 @@
 		</div>
 		
 		<script src="/.site/js/global.js"></script>
+		<script src="/.site/js/devel.js"></script>
+		
 	</body>
 </html>

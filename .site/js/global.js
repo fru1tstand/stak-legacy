@@ -70,9 +70,19 @@
 		});
 	}
 	
+	function openWindowByName(windowName) {
+		var hWindow = document.getElementById(windowName);
+		if (!hWindow)
+			return;
+		
+		openWindow(hWindow);
+	}
+	
 	function openWindowAddClass() {
 		currentWindow.classList.add("open");
 	}
+	
+	window.openWindowByName = openWindowByName;
 	
 } (this, document));
 
@@ -145,5 +155,4 @@
 		
 		sidebarClose(node.parentNode);
 	}
-	
 } (this, document));
