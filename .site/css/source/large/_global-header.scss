@@ -1,5 +1,6 @@
 #global-menu-bar {
 	border-bottom: 1px solid;
+	height: $global-menu-tab-height + $global-menu-top-padding;
 	
 	div {
 		vertical-align: bottom;

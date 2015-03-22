@@ -27,9 +27,8 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 @media (min-width: $width-large - $width-clearance) {
 	/* Template items */
 	@import 'large/tabs';
-	@import 'large/windows';
 	@import 'large/sidebar';
 	
-	/* Everything else */
+	/* Customization */
 	@import 'large/global-header';
 }

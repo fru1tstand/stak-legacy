@@ -1,6 +1,4 @@
 /*************************************** template */
-$hover-window-transition-time: 0.2s;
-
 * {
 	box-sizing: border-box;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -15,12 +13,12 @@ html, body {
 	min-height: 100vh;
 }
 
-.clearfix {
-	clear: both;
-}
-
-.window-container {
+#window-container {
 	margin-top: -$global-menu-tab-height - $global-menu-top-padding;
 	padding-top: $global-menu-tab-height + $global-menu-top-padding;
 	height: 100%;
+	
+	> div {
+		height: 100%;
+	}
 }

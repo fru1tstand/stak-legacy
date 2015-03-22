@@ -13,8 +13,10 @@ $globalMenuTabBorder = "#CCC";
 $windowBackground = "#F9F9F9";
 $windowText = "inherit";
 
-$menuTabHover = "#00F";
-$menuTabActive = "#0F0";
+$menuTab = "#99F";
+$menuTabHover = "#66C";
+$menuTabShadowHover = "#00F";
+$menuTabShadowActive = "#0F0";
 
 $sidebarBackground = "#EEE";
 $sidebarLinkBackgroundDefault = "#FFF";
@@ -42,18 +44,20 @@ echo <<<template
 	border-color: $globalMenuTabBorder;
 }
 
-.window-container > div {
+#window-container > div {
 	background-color: $windowBackground;
 	color: $windowText;
 }
 
+.tabs {
+	color: $menuTab;
+}
 .tabs li:hover {
-	box-shadow: 4px -4px 15px -15px $menuTabHover inset,
-			-4px -4px 15px -15px $menuTabHover inset;
+	color: $menuTabHover;
+	box-shadow: 0px -10px 30px -30px $menuTabShadowHover inset;
 }
 .tabs li.active {
-	box-shadow: 4px -4px 15px -15px $menuTabActive inset,
-			-4px -4px 15px -15px $menuTabActive inset;
+	box-shadow: 0px -10px 30px -30px $menuTabShadowActive inset;
 }
 
 .sidebar {

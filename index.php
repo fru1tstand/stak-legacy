@@ -28,7 +28,7 @@ use content\IncludeContent;
 						</div>
 						
 						<ul class="expand-hidden">
-							<li><a href="#" class="window-open" data-window="list">ToDo</a></li>
+							<li><a href="#" class="window-open" data-window="list">List</a></li>
 							<li><a href="#" class="window-open" data-window="thetwo">The Two</a></li>
 						</ul>
 					</div>
@@ -42,7 +42,7 @@ use content\IncludeContent;
 					*See code/inline-block-whitespace
 				-->
 				<ul class="collapse-hidden"
-					><li class="window-open" data-window="list">ToDo</li
+					><li class="window-open" data-window="list">List</li
 					><li class="window-open" data-window="thetwo">The Two</li>
 				</ul>
 			</div>
@@ -50,9 +50,11 @@ use content\IncludeContent;
 		</div>
 		
 		<div id="window-container">
-			<?php 
-				IncludeContent::ListWindow();
-			?>
+			<div>
+				<?php 
+					IncludeContent::ListWindow();
+				?>
+			</div>
 		</div>
 		
 		<script src="/.site/js/global.js"></script>
