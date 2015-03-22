@@ -29,26 +29,20 @@ echo <<<CSS
 @charset "UTF-8";
 CSS;
 
+/**
+ * Template
+ */
 echo <<<template
-
-#global-menu-bar {
-	border-color: $globalMenuBarBorder;
-}
-#global-logo .bar-link:link, #global-logo .bar-link:visited {
-	color: $globalLogoDefault;
-}
-#global-logo .bar-link:hover, #global-logo .bar-link:active {
-	color: $globalLogoHover;
-}
-#global-tabs ul, #global-tabs li {
-	border-color: $globalMenuTabBorder;
-}
-
 #window-container > div {
 	background-color: $windowBackground;
 	color: $windowText;
 }
+template;
 
+/**
+ * Tabs
+ */
+echo <<<tabs
 .tabs {
 	color: $menuTab;
 }
@@ -59,7 +53,12 @@ echo <<<template
 .tabs li.active {
 	box-shadow: 0px -10px 30px -30px $menuTabShadowActive inset;
 }
+tabs;
 
+/**
+ * Sidebar
+ */
+echo <<<sidebar
 .sidebar {
 	background-color: $sidebarBackground;
 }
@@ -73,15 +72,28 @@ echo <<<template
 	background-color: $sidebarLinkBackgroundHover;
 	color: $sidebarLinkHover;
 }
+sidebar;
 
-template;
-
-echo <<<pagetodo
-
-.list-fullscreen {
-	border-color: #FFF;
+/**
+ * Global Header
+ */
+echo <<<globalheader
+#global-menu-bar {
+	border-color: $globalMenuBarBorder;
 }
+#global-logo .bar-link:link,
+#global-logo .bar-link:visited {
+	color: $globalLogoDefault;
+}
+#global-logo .bar-link:hover,
+#global-logo .bar-link:active {
+	color: $globalLogoHover;
+}
+#global-tabs ul,
+#global-tabs li {
+	border-color: $globalMenuTabBorder;
+}
+globalheader;
 
-pagetodo;
 ?>
 

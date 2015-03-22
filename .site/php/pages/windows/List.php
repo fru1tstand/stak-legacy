@@ -1,9 +1,6 @@
-<ul class="list-fullscreen">
-	<li>
-		<div>asdf</div>
-	</li>
-	<li>Something</li>
-	<li>Something</li>
-	<li>Something</li>
-	
-</ul>
+<div class="split-left">
+
+</div>
+<div class="split-right">
+
+</div>
