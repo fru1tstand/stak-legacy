@@ -7,8 +7,8 @@ header("content-type: text/css");
 //Set default colors
 $globalLogoDefault = "#99F";
 $globalLogoHover = "#66C";
-$globalMenuBarBorder = "#AAA";
-$globalMenuTabBorder = "#AAA";
+$globalMenuBarBorder = "#CCC";
+$globalMenuTabBorder = "#CCC";
 
 $windowBackground = "#F9F9F9";
 $windowText = "inherit";
@@ -17,7 +17,6 @@ $menuTabHover = "#00F";
 $menuTabActive = "#0F0";
 
 $sidebarBackground = "#EEE";
-
 $sidebarLinkBackgroundDefault = "#FFF";
 $sidebarLinkBackgroundHover = "#F9F9F9";
 $sidebarLinkDefault = "#99F";
@@ -39,7 +38,7 @@ echo <<<template
 #global-logo .bar-link:hover, #global-logo .bar-link:active {
 	color: $globalLogoHover;
 }
-#global-menu ul, #global-menu li {
+#global-tabs ul, #global-tabs li {
 	border-color: $globalMenuTabBorder;
 }
 

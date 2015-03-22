@@ -6,9 +6,6 @@
 		<meta charset="UTF-8" />
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
 		<link href="/.site/php/css/theme.php" rel="stylesheet" type="text/css">
-		
-<?php include(".site/php/ascii-art.php"); ?>
-
 	</head>
 	
 	<body>
