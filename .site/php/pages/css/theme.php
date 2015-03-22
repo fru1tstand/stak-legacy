@@ -1,5 +1,5 @@
 <?php
-namespace homework_fru1tme_theme;
+namespace css;
 
 //Some prep
 header("content-type: text/css");

@@ -1,3 +1,7 @@
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/source/Autoload.php';
+use content\IncludeContent;
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5,7 +9,7 @@
 		<title>Fru1tMe - Homework Thing</title>
 		<meta charset="UTF-8" />
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
-		<link href="/.site/php/css/theme.php" rel="stylesheet" type="text/css">
+		<link href="/.site/php/pages/css/theme.php" rel="stylesheet" type="text/css">
 	</head>
 	
 	<body>
@@ -45,23 +49,10 @@
 			<div class="clearfix"></div>
 		</div>
 		
-		<div class="window-container">
-		
-			<div id="window-list">
-				<ul class="list-fullscreen">
-					<li>
-						<div>asdf</div>
-					</li>
-					<li>Something</li>
-					<li>Something</li>
-					<li>Something</li>
-					
-				</ul>
-			</div>
-			
-			<div id="window-thetwo">
-				<div class="window-close">CLOSE MEEEE</div>
-			</div>
+		<div id="window-container">
+			<?php 
+				IncludeContent::ListWindow();
+			?>
 		</div>
 		
 		<script src="/.site/js/global.js"></script>
