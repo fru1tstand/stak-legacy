@@ -25,8 +25,16 @@ html, body {
 
 /****** Livin' Large */
 @media (min-width: 1422px) {
-  /*************************************** large/template */
-  /***************************** Windows ***/
+  /* Template items */
+  .tabs ul {
+    list-style: none;
+    cursor: pointer; }
+  .tabs li {
+    display: inline-block;
+    -webkit-transition: box-shadow 0.1s ease-in-out;
+    -moz-transition: box-shadow 0.1s ease-in-out;
+    transition: box-shadow 0.1s ease-in-out; }
+
   .window-container > div {
     height: 100%;
     width: 100%;
@@ -38,7 +46,32 @@ html, body {
     .window-container > div.open {
       opacity: 1; }
 
-  /***************************** tabs ***/
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -360px;
+    width: 360px;
+    max-width: 360px;
+    -webkit-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+    .sidebar .titles {
+      padding: 30px 0 40px 0;
+      text-align: center; }
+    .sidebar ul, .sidebar li, .sidebar a {
+      width: 100%; }
+    .sidebar ul {
+      list-style: none; }
+    .sidebar a {
+      width: 100%;
+      text-align: right;
+      font-size: 18px;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block; }
+
+  /* Everything else */
   #global-menu-bar {
     border-bottom: 1px solid; }
     #global-menu-bar div {
@@ -69,49 +102,7 @@ html, body {
       padding: 0 20px;
       border-left: 1px solid; }
 
-  .tabs ul {
-    list-style: none;
-    cursor: pointer; }
-  .tabs li {
-    display: inline-block;
-    -webkit-transition: box-shadow 0.1s ease-in-out;
-    -moz-transition: box-shadow 0.1s ease-in-out;
-    transition: box-shadow 0.1s ease-in-out; }
-
-  /********************************* Sidebars ***/
   #sidebar-global-wrapper:hover .sidebar {
-    left: 0; }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: -360px;
-    width: 360px;
-    max-width: 360px;
-    -webkit-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-    -moz-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-    transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-    .sidebar .titles {
-      padding: 30px 0 40px 0;
-      text-align: center; }
-    .sidebar ul, .sidebar li, .sidebar a {
-      width: 100%; }
-    .sidebar ul {
-      list-style: none; }
-    .sidebar a {
-      width: 100%;
-      text-align: right;
-      font-size: 18px;
-      text-decoration: none;
-      padding: 10px 20px;
-      display: block; }
-
-  .list-fullscreen {
-    height: 100%;
-    border-right: 1px solid;
-    width: 400px; }
-    .list-fullscreen li {
-      padding: 10px; } }
+    left: 0; } }
 
 /*# sourceMappingURL=global.css.map */
