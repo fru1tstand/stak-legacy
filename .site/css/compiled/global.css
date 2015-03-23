@@ -60,6 +60,94 @@ html, body {
       padding: 10px 20px;
       display: block; }
 
+  .split-left,
+  .split-right {
+    height: 100%;
+    overflow: auto; }
+
+  .split-left {
+    width: 360px;
+    float: left; }
+
+  .split-right {
+    border-left: 1px solid #999;
+    margin-left: 360px; }
+
+  .tasklist {
+    width: 100%;
+    list-style: none; }
+    .tasklist li {
+      height: 61px;
+      border-bottom: 1px solid; }
+      .tasklist li > div {
+        height: 60px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden; }
+    .tasklist .due-in,
+    .tasklist .task,
+    .tasklist .modifier,
+    .tasklist .quick-edit {
+      display: inline-block; }
+    .tasklist .quick-edit > div,
+    .tasklist .due-in:hover .quick-edit {
+      width: 194px; }
+    .tasklist .task {
+      width: 300px;
+      vertical-align: middle; }
+      .tasklist .task .title, .tasklist .task .subtitle {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .tasklist .task .title {
+        font-size: 18px; }
+      .tasklist .task .subtitle {
+        font-size: 10px; }
+    .tasklist .due-in {
+      font-size: 22px;
+      line-height: 60px;
+      vertical-align: middle;
+      height: 100%;
+      cursor: pointer; }
+      .tasklist .due-in > div {
+        vertical-align: top;
+        height: 100%; }
+      .tasklist .due-in .modifier {
+        width: 60px;
+        padding-left: 14px; }
+        .tasklist .due-in .modifier:before {
+          width: 18px;
+          display: inline-block;
+          vertical-align: top;
+          font-weight: bold; }
+    .tasklist .quick-edit {
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      /* First nest is wrapper, second nest are the buttons */
+      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+      .tasklist .quick-edit > div {
+        height: 100%; }
+        .tasklist .quick-edit > div > div:before {
+          width: 60px;
+          float: left;
+          height: 100%;
+          text-align: center; }
+      .tasklist .quick-edit .complete:before {
+        content: '\2714'; }
+      .tasklist .quick-edit .edit:before {
+        content: '\2710'; }
+      .tasklist .quick-edit .delete:before {
+        content: '\2716'; }
+    .tasklist .future .modifier:before {
+      content: "+"; }
+    .tasklist .past .modifier:before {
+      content: "-"; }
+    .tasklist .far-future .modifier:before {
+      content: ">"; }
+
   /* Customization */
   #global-menu-bar {
     border-bottom: 1px solid;

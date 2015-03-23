@@ -1,0 +1,105 @@
+$task-height: 60px;
+$task-due-width: 60px;
+$task-due-left-padding: 14px;
+
+.tasklist {
+	width: 100%;
+	list-style: none;
+	
+	li {
+		height: $task-height + 1;
+		border-bottom: 1px solid;
+		
+		> div {
+			height: $task-height;
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+	}
+	
+	.due-in,
+	.task,
+	.modifier,
+	.quick-edit {
+		display: inline-block;
+	}
+	
+	.quick-edit > div,
+	.due-in:hover .quick-edit {
+		width: $task-height * 3 + $task-due-left-padding;
+	}
+	
+	.task {
+		width: $width-small - $task-due-width;
+		vertical-align: middle;
+		
+		.title, .subtitle {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		.title {
+			font-size: 18px;
+		}
+		.subtitle {
+			font-size: 10px;
+		}
+	}
+		
+	.due-in {
+		font-size: 22px;
+		line-height: $task-height;
+		vertical-align: middle;
+		height: 100%;
+		cursor: pointer;
+		
+		> div {
+			vertical-align: top;
+			height: 100%;
+		}
+		
+		.modifier {
+			width: $task-due-width;
+			padding-left: $task-due-left-padding;
+			
+			&:before {
+				width: 18px;
+				display: inline-block;
+				vertical-align: top;
+				font-weight: bold;
+			}
+		}
+	}
+	
+	.quick-edit {
+		width: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		
+		/* First nest is wrapper, second nest are the buttons */
+		> div {
+			height: 100%;
+			> div:before {
+				width: $task-height;
+				float: left;
+				height: 100%;
+				text-align: center;
+			}
+		}
+		.complete:before {
+			content: '\2714';
+		}
+		.edit:before {
+			content: '\2710';
+		}
+		.delete:before {
+			content: '\2716';
+		}
+		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	}
+	
+	.future .modifier:before 	{ content: "+"; }
+	.past .modifier:before 		{ content: "-"; }
+	.far-future .modifier:before{ content: ">"; }
+}

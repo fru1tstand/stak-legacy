@@ -1,7 +1,6 @@
 <?php
 namespace css;
 
-//Some prep
 header("content-type: text/css");
 
 //Set default colors
@@ -23,6 +22,13 @@ $sidebarLinkBackgroundDefault = "#FFF";
 $sidebarLinkBackgroundHover = "#F9F9F9";
 $sidebarLinkDefault = "#99F";
 $sidebarLinkHover = "#66C";
+
+$tasklistDueinFuture = "#0A0";
+$tasklistDueinPast = "#F00";
+$tasklistDueinFarFuture = "#0AA";
+$tasklistQuickEdit = "#99F";
+$tasklistQuickEditBackground = "transparent";
+$tasklistQuickEditBackgroundHover = "#EEE";
 
 //Anything before
 echo <<<CSS
@@ -95,5 +101,30 @@ echo <<<globalheader
 }
 globalheader;
 
-?>
+/**
+ * Task List
+ */
+echo <<<tasklist
+.tasklist li {
+	border-color: #999;
+}
+.tasklist .future {
+	color: $tasklistDueinFuture;
+}
+.tasklist .past {
+	color: $tasklistDueinPast;
+}
+.tasklist .far-future {
+	color: $tasklistDueinFarFuture;
+}
+.tasklist .quick-edit > div > div:before {
+	background-color: $tasklistQuickEditBackground;
+	color: $tasklistQuickEdit;
+}
+.tasklist .quick-edit > div > div:hover:before {
+	background-color: $tasklistQuickEditBackgroundHover;
+}
 
+tasklist;
+
+?>

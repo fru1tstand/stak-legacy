@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+ 
 @mixin transition($params...) {
 	-webkit-transition: $params;
 	-moz-transition: $params;
@@ -29,6 +29,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 	@import 'large/tabs';
 	@import 'large/sidebar';
 	@import 'large/split-screen';
+	@import 'large/tasklist';
 	
 	/* Customization */
 	@import 'large/global-header';

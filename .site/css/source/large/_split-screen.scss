@@ -1,0 +1,14 @@
+.split-left,
+.split-right {
+	height: 100%;
+	overflow: auto;
+}
+
+.split-left {
+	width: $width-small;
+	float: left;
+}
+.split-right {
+	border-left: 1px solid #999;
+	margin-left: $width-small;
+}
