@@ -16,8 +16,8 @@ html, body {
   min-height: 100vh; }
 
 #window-container {
-  margin-top: -55px;
-  padding-top: 55px;
+  margin-top: -45px;
+  padding-top: 45px;
   height: 100%; }
   #window-container > div {
     height: 100%; }
@@ -151,7 +151,7 @@ html, body {
   /* Customization */
   #global-menu-bar {
     border-bottom: 1px solid;
-    height: 55px; }
+    height: 45px; }
     #global-menu-bar div {
       vertical-align: bottom; }
 
@@ -163,8 +163,8 @@ html, body {
       display: inline-block;
       vertical-align: bottom; }
     #global-logo .bar-link {
-      line-height: 54px;
-      height: 54px;
+      line-height: 44px;
+      height: 44px;
       text-decoration: none;
       margin-left: 15px; }
 
@@ -175,8 +175,8 @@ html, body {
       text-align: right;
       border-right: 1px solid; }
     #global-tabs li {
-      height: 40px;
-      line-height: 40px;
+      height: 30px;
+      line-height: 30px;
       padding: 0 20px;
       border-left: 1px solid; }
 
