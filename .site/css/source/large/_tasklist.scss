@@ -6,9 +6,14 @@ $task-due-left-padding: 14px;
 	width: 100%;
 	list-style: none;
 	
+	&.completed {
+		
+	}
+	
 	li {
-		height: $task-height + 1;
+		height: $task-height;
 		border-bottom: 1px solid;
+		overflow: hidden;
 		
 		> div {
 			height: $task-height;
@@ -96,10 +101,15 @@ $task-due-left-padding: 14px;
 		.delete:before {
 			content: '\2716';
 		}
+		.uncomplete:before {
+			content: '\21BA';
+		}
 		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 	}
 	
+	.complete .modifier:before 	{ content: " "; }
 	.future .modifier:before 	{ content: "+"; }
 	.past .modifier:before 		{ content: "-"; }
 	.far-future .modifier:before{ content: ">"; }
+	.far-past .modifier:before 	{ content: ">"; }
 }

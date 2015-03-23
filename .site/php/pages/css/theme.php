@@ -23,12 +23,21 @@ $sidebarLinkBackgroundHover = "#F9F9F9";
 $sidebarLinkDefault = "#99F";
 $sidebarLinkHover = "#66C";
 
+$tasklistTask = "#000";
+$tasklistBorder = "#CCC";
 $tasklistDueinFuture = "#0A0";
 $tasklistDueinPast = "#F00";
-$tasklistDueinFarFuture = "#0AA";
+$tasklistDueinFarFuture = "#99F";
 $tasklistQuickEdit = "#99F";
 $tasklistQuickEditBackground = "transparent";
 $tasklistQuickEditBackgroundHover = "#EEE";
+
+$tasklistCompletedDuein = "#999";
+$tasklistCompletedTask = "#999";
+$tasklistCompletedBackground = "#EEE";
+$tasklistCompletedQuickEditBackground = "transparent";
+$tasklistCompletedQuickEditBackgroundHover = "#FFF";
+
 
 //Anything before
 echo <<<CSS
@@ -106,12 +115,13 @@ globalheader;
  */
 echo <<<tasklist
 .tasklist li {
-	border-color: #999;
+	border-color: $tasklistBorder;
 }
 .tasklist .future {
 	color: $tasklistDueinFuture;
 }
-.tasklist .past {
+.tasklist .past,
+.tasklist .far-past {
 	color: $tasklistDueinPast;
 }
 .tasklist .far-future {
@@ -123,6 +133,22 @@ echo <<<tasklist
 }
 .tasklist .quick-edit > div > div:hover:before {
 	background-color: $tasklistQuickEditBackgroundHover;
+}
+
+.tasklist.completed {
+	background-color: $tasklistCompletedBackground;
+}
+.tasklist.completed .task {
+	color: $tasklistCompletedTask;
+}
+.tasklist.completed .complete {
+	color: $tasklistCompletedDuein;
+}
+.tasklist.completed .quick-edit > div > div:before {
+	background-color: $tasklistCompletedQuickEditBackground;
+}
+.tasklist.completed .quick-edit > div > div:hover:before {
+	background-color: $tasklistCompletedQuickEditBackgroundHover;
 }
 
 tasklist;

@@ -77,8 +77,9 @@ html, body {
     width: 100%;
     list-style: none; }
     .tasklist li {
-      height: 61px;
-      border-bottom: 1px solid; }
+      height: 60px;
+      border-bottom: 1px solid;
+      overflow: hidden; }
       .tasklist li > div {
         height: 60px;
         width: 100%;
@@ -141,11 +142,17 @@ html, body {
         content: '\2710'; }
       .tasklist .quick-edit .delete:before {
         content: '\2716'; }
+      .tasklist .quick-edit .uncomplete:before {
+        content: '\21BA'; }
+    .tasklist .complete .modifier:before {
+      content: " "; }
     .tasklist .future .modifier:before {
       content: "+"; }
     .tasklist .past .modifier:before {
       content: "-"; }
     .tasklist .far-future .modifier:before {
+      content: ">"; }
+    .tasklist .far-past .modifier:before {
       content: ">"; }
 
   /* Customization */

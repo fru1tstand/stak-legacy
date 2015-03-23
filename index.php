@@ -18,7 +18,7 @@ use content\IncludeContent;
 				<!-- Sidebar wrapper -->
 				<div id="sidebar-global-wrapper">
 					<!-- Toggle Text -->
-					<h2><a href="#" class="bar-link">&gt;</a></h2>
+					<h2><a href="#" class="bar-link">&#x2630;</a></h2>
 					
 					<!-- Actual sidebar -->
 					<div class="sidebar" id="global-sidebar">
