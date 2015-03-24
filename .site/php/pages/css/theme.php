@@ -117,6 +117,9 @@ echo <<<tasklist
 .tasklist li {
 	border-color: $tasklistBorder;
 }
+.tasklist .task a {
+	color: $tasklistTask;
+}
 .tasklist .future {
 	color: $tasklistDueinFuture;
 }
@@ -127,27 +130,28 @@ echo <<<tasklist
 .tasklist .far-future {
 	color: $tasklistDueinFarFuture;
 }
-.tasklist .quick-edit > div > div:before {
+.tasklist .quick-edit > div > a::before {
 	background-color: $tasklistQuickEditBackground;
 	color: $tasklistQuickEdit;
 }
-.tasklist .quick-edit > div > div:hover:before {
+.tasklist .quick-edit > div > a:hover::before {
 	background-color: $tasklistQuickEditBackgroundHover;
 }
 
 .tasklist.completed {
 	background-color: $tasklistCompletedBackground;
+	border-color: $tasklistBorder;
 }
-.tasklist.completed .task {
+.tasklist.completed .task a {
 	color: $tasklistCompletedTask;
 }
 .tasklist.completed .complete {
 	color: $tasklistCompletedDuein;
 }
-.tasklist.completed .quick-edit > div > div:before {
+.tasklist.completed .quick-edit > div > a::before {
 	background-color: $tasklistCompletedQuickEditBackground;
 }
-.tasklist.completed .quick-edit > div > div:hover:before {
+.tasklist.completed .quick-edit > div > a:hover::before {
 	background-color: $tasklistCompletedQuickEditBackgroundHover;
 }
 

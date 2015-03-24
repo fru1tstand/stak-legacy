@@ -13,6 +13,10 @@ html, body {
 	min-height: 100vh;
 }
 
+a {
+	text-decoration: none;
+}
+
 #window-container {
 	margin-top: -$global-menu-tab-height - $global-menu-top-padding;
 	padding-top: $global-menu-tab-height + $global-menu-top-padding;

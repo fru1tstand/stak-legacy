@@ -7,7 +7,7 @@ $task-due-left-padding: 14px;
 	list-style: none;
 	
 	&.completed {
-		
+		border-bottom: 1px solid;
 	}
 	
 	li {
@@ -68,7 +68,7 @@ $task-due-left-padding: 14px;
 			width: $task-due-width;
 			padding-left: $task-due-left-padding;
 			
-			&:before {
+			&::before {
 				width: 18px;
 				display: inline-block;
 				vertical-align: top;
@@ -85,31 +85,31 @@ $task-due-left-padding: 14px;
 		/* First nest is wrapper, second nest are the buttons */
 		> div {
 			height: 100%;
-			> div:before {
+			> a::before {
 				width: $task-height;
 				float: left;
 				height: 100%;
 				text-align: center;
 			}
 		}
-		.complete:before {
+		.complete::before {
 			content: '\2714';
 		}
-		.edit:before {
+		.edit::before {
 			content: '\2710';
 		}
-		.delete:before {
+		.delete::before {
 			content: '\2716';
 		}
-		.uncomplete:before {
+		.uncomplete::before {
 			content: '\21BA';
 		}
 		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 	}
 	
-	.complete .modifier:before 	{ content: " "; }
-	.future .modifier:before 	{ content: "+"; }
-	.past .modifier:before 		{ content: "-"; }
-	.far-future .modifier:before{ content: ">"; }
-	.far-past .modifier:before 	{ content: ">"; }
+	.complete .modifier::before 	{ content: " "; }
+	.future .modifier::before 		{ content: "+"; }
+	.past .modifier::before 		{ content: "-"; }
+	.far-future .modifier::before	{ content: ">"; }
+	.far-past .modifier::before 	{ content: ">"; }
 }

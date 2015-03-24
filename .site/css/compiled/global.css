@@ -15,6 +15,9 @@ html, body {
   max-height: 100vh;
   min-height: 100vh; }
 
+a {
+  text-decoration: none; }
+
 #window-container {
   margin-top: -45px;
   padding-top: 45px;
@@ -76,6 +79,8 @@ html, body {
   .tasklist {
     width: 100%;
     list-style: none; }
+    .tasklist.completed {
+      border-bottom: 1px solid; }
     .tasklist li {
       height: 60px;
       border-bottom: 1px solid;
@@ -116,7 +121,7 @@ html, body {
       .tasklist .due-in .modifier {
         width: 60px;
         padding-left: 14px; }
-        .tasklist .due-in .modifier:before {
+        .tasklist .due-in .modifier::before {
           width: 18px;
           display: inline-block;
           vertical-align: top;
@@ -131,28 +136,28 @@ html, body {
       transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .quick-edit > div {
         height: 100%; }
-        .tasklist .quick-edit > div > div:before {
+        .tasklist .quick-edit > div > a::before {
           width: 60px;
           float: left;
           height: 100%;
           text-align: center; }
-      .tasklist .quick-edit .complete:before {
+      .tasklist .quick-edit .complete::before {
         content: '\2714'; }
-      .tasklist .quick-edit .edit:before {
+      .tasklist .quick-edit .edit::before {
         content: '\2710'; }
-      .tasklist .quick-edit .delete:before {
+      .tasklist .quick-edit .delete::before {
         content: '\2716'; }
-      .tasklist .quick-edit .uncomplete:before {
+      .tasklist .quick-edit .uncomplete::before {
         content: '\21BA'; }
-    .tasklist .complete .modifier:before {
+    .tasklist .complete .modifier::before {
       content: " "; }
-    .tasklist .future .modifier:before {
+    .tasklist .future .modifier::before {
       content: "+"; }
-    .tasklist .past .modifier:before {
+    .tasklist .past .modifier::before {
       content: "-"; }
-    .tasklist .far-future .modifier:before {
+    .tasklist .far-future .modifier::before {
       content: ">"; }
-    .tasklist .far-past .modifier:before {
+    .tasklist .far-past .modifier::before {
       content: ">"; }
 
   /* Customization */

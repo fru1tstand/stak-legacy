@@ -6,14 +6,14 @@
 					<div class="modifier">&#x2714;</div
 					><div class="quick-edit">
 						<div>
-							<div class="uncomplete"></div>
-							<div class="edit"></div>
-							<div class="delete"></div>
+							<a href="#" class="uncomplete"></a>
+							<a href="#" class="edit"></a>
+							<a href="#" class="delete"></a>
 						</div>
 					</div>
 				</div
 				><div class="task">
-					<div class="title">Physics Homework webassign</div>
+					<a href="#" class="title">Physics Homework webassign</a>
 				</div>
 			</div>
 		</li>	
@@ -25,14 +25,14 @@
 					<div class="modifier">2</div
 					><div class="quick-edit">
 						<div>
-							<div class="complete"></div>
-							<div class="edit"></div>
-							<div class="delete"></div>
+							<a href="#" class="complete"></a>
+							<a href="#" class="edit"></a>
+							<a href="#" class="delete"></a>
 						</div>
 					</div>
 				</div
 				><div class="task">
-					<div class="title">Giant music project</div>
+					<a href="#" class="title">Giant music project</a>
 					<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
 				</div>
 			</div>
@@ -43,14 +43,14 @@
 					<div class="modifier">9</div
 					><div class="quick-edit">
 						<div>
-							<div class="complete"></div>
-							<div class="edit"></div>
-							<div class="delete"></div>
+							<a href="#" class="complete"></a>
+							<a href="#" class="edit"></a>
+							<a href="#" class="delete"></a>
 						</div>
 					</div>
 				</div
 				><div class="task">
-					<div class="title">Cool thing to do</div>
+					<a href="#" class="title">Cool thing to do</a>
 				</div>
 			</div>
 		</li>
