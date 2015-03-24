@@ -10,6 +10,10 @@ $task-due-left-padding: 14px;
 		border-bottom: 1px solid;
 	}
 	
+	&.todo {
+		padding-bottom: $split-screen-option-height;
+	}
+	
 	li {
 		height: $task-height;
 		border-bottom: 1px solid;
@@ -25,7 +29,7 @@ $task-due-left-padding: 14px;
 	
 	.due-in,
 	.task,
-	.modifier,
+	.timeleft,
 	.quick-edit {
 		display: inline-block;
 	}
@@ -64,16 +68,11 @@ $task-due-left-padding: 14px;
 			height: 100%;
 		}
 		
-		.modifier {
+		.timeleft {
 			width: $task-due-width;
-			padding-left: $task-due-left-padding;
-			
-			&::before {
-				width: 18px;
-				display: inline-block;
-				vertical-align: top;
-				font-weight: bold;
-			}
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
 		}
 	}
 	
@@ -85,31 +84,14 @@ $task-due-left-padding: 14px;
 		/* First nest is wrapper, second nest are the buttons */
 		> div {
 			height: 100%;
-			> a::before {
+			> a {
 				width: $task-height;
 				float: left;
 				height: 100%;
 				text-align: center;
 			}
 		}
-		.complete::before {
-			content: '\2714';
-		}
-		.edit::before {
-			content: '\2710';
-		}
-		.delete::before {
-			content: '\2716';
-		}
-		.uncomplete::before {
-			content: '\21BA';
-		}
+		
 		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 	}
-	
-	.complete .modifier::before 	{ content: " "; }
-	.future .modifier::before 		{ content: "+"; }
-	.past .modifier::before 		{ content: "-"; }
-	.far-future .modifier::before	{ content: ">"; }
-	.far-past .modifier::before 	{ content: ">"; }
 }

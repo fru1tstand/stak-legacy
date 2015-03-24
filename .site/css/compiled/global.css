@@ -2,6 +2,9 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0; }
 
+.spin-container:hover .spin {
+  animation: 2s linear 0s normal none infinite running fa-spin; }
+
 /*************************************** template */
 * {
   box-sizing: border-box;
@@ -45,6 +48,7 @@ a {
     left: -360px;
     width: 360px;
     max-width: 360px;
+    z-index: 1000;
     -webkit-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
     -moz-transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
     transition: left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
@@ -63,6 +67,7 @@ a {
       padding: 10px 20px;
       display: block; }
 
+  /*********************************************_split-screen.scss*/
   .split-left,
   .split-right {
     height: 100%;
@@ -71,6 +76,27 @@ a {
   .split-left {
     width: 360px;
     float: left; }
+    .split-left .options {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 360px;
+      /* The last 1px in the list is border anyway */
+      height: 36px;
+      border-top: 1px solid #000;
+      z-index: 900;
+      overflow: hidden;
+      -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+      .split-left .options > div {
+        height: 450px;
+        overflow: auto; }
+      .split-left .options:hover {
+        height: 450px; }
+    .split-left .icon {
+      text-align: center;
+      line-height: 35px; }
 
   .split-right {
     border-left: 1px solid #999;
@@ -81,6 +107,8 @@ a {
     list-style: none; }
     .tasklist.completed {
       border-bottom: 1px solid; }
+    .tasklist.todo {
+      padding-bottom: 35px; }
     .tasklist li {
       height: 60px;
       border-bottom: 1px solid;
@@ -92,7 +120,7 @@ a {
         overflow: hidden; }
     .tasklist .due-in,
     .tasklist .task,
-    .tasklist .modifier,
+    .tasklist .timeleft,
     .tasklist .quick-edit {
       display: inline-block; }
     .tasklist .quick-edit > div,
@@ -118,14 +146,11 @@ a {
       .tasklist .due-in > div {
         vertical-align: top;
         height: 100%; }
-      .tasklist .due-in .modifier {
+      .tasklist .due-in .timeleft {
         width: 60px;
-        padding-left: 14px; }
-        .tasklist .due-in .modifier::before {
-          width: 18px;
-          display: inline-block;
-          vertical-align: top;
-          font-weight: bold; }
+        display: inline-block;
+        vertical-align: top;
+        text-align: center; }
     .tasklist .quick-edit {
       width: 0;
       white-space: nowrap;
@@ -136,29 +161,11 @@ a {
       transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .quick-edit > div {
         height: 100%; }
-        .tasklist .quick-edit > div > a::before {
+        .tasklist .quick-edit > div > a {
           width: 60px;
           float: left;
           height: 100%;
           text-align: center; }
-      .tasklist .quick-edit .complete::before {
-        content: '\2714'; }
-      .tasklist .quick-edit .edit::before {
-        content: '\2710'; }
-      .tasklist .quick-edit .delete::before {
-        content: '\2716'; }
-      .tasklist .quick-edit .uncomplete::before {
-        content: '\21BA'; }
-    .tasklist .complete .modifier::before {
-      content: " "; }
-    .tasklist .future .modifier::before {
-      content: "+"; }
-    .tasklist .past .modifier::before {
-      content: "-"; }
-    .tasklist .far-future .modifier::before {
-      content: ">"; }
-    .tasklist .far-past .modifier::before {
-      content: ">"; }
 
   /* Customization */
   #global-menu-bar {
@@ -169,7 +176,7 @@ a {
 
   #global-logo {
     float: left; }
-    #global-logo > h2,
+    #global-logo > h3,
     #global-logo > a,
     #global-logo > div {
       display: inline-block;

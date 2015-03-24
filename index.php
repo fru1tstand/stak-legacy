@@ -8,6 +8,7 @@ use content\IncludeContent;
 	<head>
 		<title>Fru1tMe - Homework Thing</title>
 		<meta charset="UTF-8" />
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
 		<link href="/.site/php/pages/css/theme.php" rel="stylesheet" type="text/css">
 	</head>
@@ -18,7 +19,7 @@ use content\IncludeContent;
 				<!-- Sidebar wrapper -->
 				<div id="sidebar-global-wrapper">
 					<!-- Toggle Text -->
-					<h2><a href="#" class="bar-link">&#x2630;</a></h2>
+					<h3><a href="#" class="bar-link"><i class="fa fa-bars"></i></a></h3>
 					
 					<!-- Actual sidebar -->
 					<div class="sidebar" id="global-sidebar">
@@ -34,7 +35,7 @@ use content\IncludeContent;
 					</div>
 				</div>
 				
-				<h2><a href="/" class="bar-link">Lions and dragons</a></h2>
+				<h3><a href="/" class="bar-link">Lions and dragons</a></h3>
 			</div>
 			<div class="tabs" id="global-tabs">
 				<!-- 

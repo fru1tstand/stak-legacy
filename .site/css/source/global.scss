@@ -7,9 +7,13 @@
 }
 
 $sidebar-z-index: 1000;
+$split-screen-option-z-index: 900;
 
 $global-menu-top-padding: 15px;
 $global-menu-tab-height: 30px;
+
+$split-screen-option-height: 35px;
+$split-screen-option-extended-height: 450px;
 
 $width-clearance: 18px;
 $width-small: 360px;
@@ -21,6 +25,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+@import 'fa-extention';
 @import 'template';
 
 /****** Livin' Large */

@@ -1,3 +1,4 @@
+/*********************************************_split-screen.scss*/
 .split-left,
 .split-right {
 	height: 100%;
@@ -7,6 +8,33 @@
 .split-left {
 	width: $width-small;
 	float: left;
+	
+	.options {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: $width-small;
+		/* The last 1px in the list is border anyway */
+		height: $split-screen-option-height + 1;
+		
+		border-top: 1px solid #000;
+		z-index: $split-screen-option-z-index;
+		overflow: hidden;
+		@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+		
+		> div {
+			height: $split-screen-option-extended-height;
+			overflow: auto;
+		}
+		
+		&:hover {
+			height: $split-screen-option-extended-height;
+		}
+	}
+	.icon {
+		text-align: center;
+		line-height: $split-screen-option-height;
+	}
 }
 .split-right {
 	border-left: 1px solid #999;

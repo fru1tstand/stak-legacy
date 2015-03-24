@@ -38,6 +38,8 @@ $tasklistCompletedBackground = "#EEE";
 $tasklistCompletedQuickEditBackground = "transparent";
 $tasklistCompletedQuickEditBackgroundHover = "#FFF";
 
+$splitScreenOptionsBackground = "#FFF";
+$splitScreenOptionsBorder = "#CCC";
 
 //Anything before
 echo <<<CSS
@@ -123,18 +125,17 @@ echo <<<tasklist
 .tasklist .future {
 	color: $tasklistDueinFuture;
 }
-.tasklist .past,
-.tasklist .far-past {
+.tasklist .past {
 	color: $tasklistDueinPast;
 }
 .tasklist .far-future {
 	color: $tasklistDueinFarFuture;
 }
-.tasklist .quick-edit > div > a::before {
+.tasklist .quick-edit > div > a {
 	background-color: $tasklistQuickEditBackground;
 	color: $tasklistQuickEdit;
 }
-.tasklist .quick-edit > div > a:hover::before {
+.tasklist .quick-edit > div > a:hover {
 	background-color: $tasklistQuickEditBackgroundHover;
 }
 
@@ -148,13 +149,21 @@ echo <<<tasklist
 .tasklist.completed .complete {
 	color: $tasklistCompletedDuein;
 }
-.tasklist.completed .quick-edit > div > a::before {
+.tasklist.completed .quick-edit > div > a {
 	background-color: $tasklistCompletedQuickEditBackground;
 }
-.tasklist.completed .quick-edit > div > a:hover::before {
+.tasklist.completed .quick-edit > div > a:hover {
 	background-color: $tasklistCompletedQuickEditBackgroundHover;
 }
-
 tasklist;
 
+/**
+ * Split Screen
+ */
+echo <<<split
+.split-left .options {
+	background-color: $splitScreenOptionsBackground;
+	border-color: $splitScreenOptionsBorder;
+}
+split;
 ?>
