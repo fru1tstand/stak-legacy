@@ -83,15 +83,44 @@ a {
       width: 360px;
       /* The last 1px in the list is border anyway */
       height: 36px;
+      /* height: $split-screen-option-extended-height; */
       border-top: 1px solid #000;
       z-index: 900;
       overflow: hidden;
       -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
       -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
       transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-      .split-left .options > div {
-        height: 450px;
+      .split-left .options .content {
+        height: 415px;
         overflow: auto; }
+        .split-left .options .content .title {
+          font-weight: bold;
+          padding: 2px 20px; }
+        .split-left .options .content .buttons {
+          text-align: center;
+          margin: 20px 0 40px 0; }
+          .split-left .options .content .buttons > div {
+            display: inline-block;
+            width: 20px; }
+          .split-left .options .content .buttons button {
+            cursor: pointer;
+            border: none;
+            font-size: 22px;
+            width: 75px;
+            height: 75px;
+            line-height: 75px; }
+        .split-left .options .content input {
+          display: none; }
+        .split-left .options .content label {
+          cursor: pointer;
+          padding: 2px 0 2px 50px;
+          width: 100%;
+          display: inline-block;
+          border-left: 4px solid transparent; }
+        .split-left .options .content ul {
+          list-style: none; }
+        .split-left .options .content form > ul > li {
+          margin-bottom: 20px; }
       .split-left .options:hover {
         height: 450px; }
     .split-left .icon {

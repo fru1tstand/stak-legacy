@@ -16,21 +16,63 @@
 		width: $width-small;
 		/* The last 1px in the list is border anyway */
 		height: $split-screen-option-height + 1;
+/* height: $split-screen-option-extended-height; */
 		
 		border-top: 1px solid #000;
 		z-index: $split-screen-option-z-index;
 		overflow: hidden;
 		@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
-		> div {
-			height: $split-screen-option-extended-height;
+		.content {
+			height: $split-screen-option-extended-height - $split-screen-option-height;
 			overflow: auto;
+			
+			.title {
+				font-weight: bold;
+				padding: 2px 20px;
+			}
+			.buttons {
+				text-align: center;
+				margin: 20px 0 40px 0;
+				
+				> div {
+					display: inline-block;
+					width: 20px;
+				}
+				button {
+					cursor: pointer;
+					border: none;
+					font-size: 22px;
+					width: 75px;
+					height: 75px;
+					line-height: 75px;
+				}
+			}
+			
+			input {
+				display: none;
+			}
+			label {
+				cursor: pointer;
+				padding: 2px 0 2px 50px;
+				width: 100%;
+				display: inline-block;
+				border-left: 4px solid transparent;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			form > ul > li {
+				margin-bottom: 20px;
+			}
 		}
 		
 		&:hover {
 			height: $split-screen-option-extended-height;
 		}
 	}
+	
 	.icon {
 		text-align: center;
 		line-height: $split-screen-option-height;
