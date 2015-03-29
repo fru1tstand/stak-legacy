@@ -162,10 +162,13 @@ a {
       -moz-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
       transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .task .title, .tasklist .task .subtitle {
-        max-width: 300px;
+        width: 300px;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis; }
+        text-overflow: ellipsis;
+        -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+        -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+        transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .task .title {
         font-size: 18px; }
       .tasklist .task .subtitle {
@@ -178,7 +181,7 @@ a {
       .tasklist .task:hover {
         padding-left: 14px; }
         .tasklist .task:hover .title, .tasklist .task:hover .subtitle {
-          max-width: 286px; }
+          width: 286px; }
     .tasklist .due-in {
       font-size: 22px;
       line-height: 60px;

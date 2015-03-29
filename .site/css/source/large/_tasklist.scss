@@ -45,10 +45,12 @@ $task-due-left-padding: 14px;
 		@include transition(padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		.title, .subtitle {
-			max-width: $width-small - $task-due-width;
+			width: $width-small - $task-due-width;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
+			
+			@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		}
 		.title {
 			font-size: 18px;
@@ -68,7 +70,7 @@ $task-due-left-padding: 14px;
 			padding-left: $task-due-left-padding;
 			
 			.title, .subtitle {
-				max-width: $width-small - $task-due-width - $task-due-left-padding;
+				width: $width-small - $task-due-width - $task-due-left-padding;
 			}
 		}
 	}
