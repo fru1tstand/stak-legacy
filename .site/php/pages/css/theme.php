@@ -23,7 +23,10 @@ $sidebarLinkBackgroundHover = "#F9F9F9";
 $sidebarLinkDefault = "#99F";
 $sidebarLinkHover = "#66C";
 
-$tasklistTask = "#000";
+$tasklistTaskBackground = "transparent";
+$tasklistTaskHoverBackground = "#EEE";
+$tasklistTaskTitle = "#000";
+$tasklistTaskSubtitle = "#000";
 $tasklistBorder = "#CCC";
 $tasklistDueinFuture = "#0A0";
 $tasklistDueinPast = "#F00";
@@ -33,7 +36,9 @@ $tasklistQuickEditBackground = "transparent";
 $tasklistQuickEditBackgroundHover = "#EEE";
 
 $tasklistCompletedDuein = "#999";
-$tasklistCompletedTask = "#999";
+$tasklistCompletedTaskBackground = "transparent";
+$tasklistCompletedTaskTitle = "#999";
+$tasklistCompletedTaskSubtitle = "#999";
 $tasklistCompletedBackground = "#transparent";
 $tasklistCompletedQuickEditBackground = "transparent";
 $tasklistCompletedQuickEditBackgroundHover = "#EEE";
@@ -130,8 +135,17 @@ echo <<<tasklist
 .tasklist li {
 	border-color: $tasklistBorder;
 }
-.tasklist .task a {
-	color: $tasklistTask;
+.tasklist .task {
+	background-color: $tasklistTaskBackground;
+}
+.tasklist .task:hover {
+	background-color: $tasklistTaskHoverBackground;
+}
+.tasklist .task .title {
+	color: $tasklistTaskTitle;
+}
+.tasklist .task .subtitle {
+	color: $tasklistTaskSubtitle;
 }
 .tasklist .future {
 	color: $tasklistDueinFuture;
@@ -154,8 +168,14 @@ echo <<<tasklist
 	background-color: $tasklistCompletedBackground;
 	border-color: $tasklistBorder;
 }
-.tasklist.completed .task a {
-	color: $tasklistCompletedTask;
+.tasklist.completed .task {
+	background-color: $tasklistCompletedTaskBackground;
+}
+.tasklist.completed .task .title {
+	color: $tasklistCompletedTaskTitle;
+}
+.tasklist.completed .task .subtitle {
+	color: $tasklistCompletedTaskSubtitle;
 }
 .tasklist.completed .complete {
 	color: $tasklistCompletedDuein;

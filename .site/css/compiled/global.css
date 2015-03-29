@@ -151,14 +151,18 @@ a {
     .tasklist .task,
     .tasklist .timeleft,
     .tasklist .quick-edit {
-      display: inline-block; }
+      display: inline-block;
+      vertical-align: top; }
     .tasklist .quick-edit > div,
     .tasklist .due-in:hover .quick-edit {
       width: 194px; }
     .tasklist .task {
       width: 300px;
-      vertical-align: middle; }
+      -webkit-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .task .title, .tasklist .task .subtitle {
+        max-width: 300px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis; }
@@ -166,10 +170,18 @@ a {
         font-size: 18px; }
       .tasklist .task .subtitle {
         font-size: 10px; }
+      .tasklist .task > div:nth-child(1) {
+        height: 60px; }
+      .tasklist .task > div {
+        display: inline-block;
+        vertical-align: middle; }
+      .tasklist .task:hover {
+        padding-left: 14px; }
+        .tasklist .task:hover .title, .tasklist .task:hover .subtitle {
+          max-width: 286px; }
     .tasklist .due-in {
       font-size: 22px;
       line-height: 60px;
-      vertical-align: middle;
       height: 100%;
       cursor: pointer; }
       .tasklist .due-in > div {

@@ -12,9 +12,11 @@
 						</div>
 					</div>
 				</div
-				><div class="task">
-					<a href="#" class="title">Physics Homework webassign</a>
-				</div>
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Physics Homework webassign</div>
+					</div>
+				</a>
 			</div>
 		</li>	
 	</ul>
@@ -31,10 +33,12 @@
 						</div>
 					</div>
 				</div
-				><div class="task">
-					<a href="#" class="title">Giant music project</a>
-					<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
-				</div>
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Giant music project</div>
+						<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
+					</div>
+				</a>
 			</div>
 		</li>
 		<li>
@@ -49,10 +53,12 @@
 						</div>
 					</div>
 				</div
-				><div class="task">
-					<a href="#" class="title">Giant music project</a>
-					<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
-				</div>
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Giant music project that has a long title that wont fit</div>
+						<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
+					</div>
+				</a>
 			</div>
 		</li>
 		<li>
@@ -67,10 +73,12 @@
 						</div>
 					</div>
 				</div
-				><div class="task">
-					<a href="#" class="title">Giant music project</a>
-					<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
-				</div>
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Giant music project</div>
+						<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
+					</div>
+				</a>
 			</div>
 		</li>
 		<li>
@@ -85,9 +93,11 @@
 						</div>
 					</div>
 				</div
-				><div class="task">
-					<a href="#" class="title">Cool thing to do</a>
-				</div>
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Cool thing to do</div>
+					</div>
+				</a>
 			</div>
 		</li>
 

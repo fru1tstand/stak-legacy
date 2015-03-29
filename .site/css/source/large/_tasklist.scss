@@ -32,6 +32,7 @@ $task-due-left-padding: 14px;
 	.timeleft,
 	.quick-edit {
 		display: inline-block;
+		vertical-align: top;
 	}
 	
 	.quick-edit > div,
@@ -41,9 +42,10 @@ $task-due-left-padding: 14px;
 	
 	.task {
 		width: $width-small - $task-due-width;
-		vertical-align: middle;
+		@include transition(padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		.title, .subtitle {
+			max-width: $width-small - $task-due-width;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -54,12 +56,26 @@ $task-due-left-padding: 14px;
 		.subtitle {
 			font-size: 10px;
 		}
+		> div:nth-child(1) {
+			height: $task-height;
+		}
+		> div {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		&:hover {
+			padding-left: $task-due-left-padding;
+			
+			.title, .subtitle {
+				max-width: $width-small - $task-due-width - $task-due-left-padding;
+			}
+		}
 	}
 		
 	.due-in {
 		font-size: 22px;
 		line-height: $task-height;
-		vertical-align: middle;
 		height: 100%;
 		cursor: pointer;
 		
