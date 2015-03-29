@@ -38,6 +38,7 @@ $task-due-left-padding: 14px;
 	.quick-edit > div,
 	.due-in:hover .quick-edit {
 		width: $task-height * 3 + $task-due-left-padding;
+		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s);
 	}
 	
 	.task {
@@ -110,6 +111,6 @@ $task-due-left-padding: 14px;
 			}
 		}
 		
-		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s);
 	}
 }

@@ -21,7 +21,7 @@
 		border-top: 1px solid #000;
 		z-index: $split-screen-option-z-index;
 		overflow: hidden;
-		@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+		@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s);
 		
 		.content {
 			height: $split-screen-option-extended-height - $split-screen-option-height;
@@ -69,6 +69,7 @@
 		}
 		
 		&:hover {
+			@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s);
 			height: $split-screen-option-extended-height;
 		}
 	}

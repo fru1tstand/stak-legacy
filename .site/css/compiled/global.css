@@ -87,9 +87,9 @@ a {
       border-top: 1px solid #000;
       z-index: 900;
       overflow: hidden;
-      -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+      -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
+      -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
+      transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s; }
       .split-left .options .content {
         height: 415px;
         overflow: auto; }
@@ -122,6 +122,9 @@ a {
         .split-left .options .content form > ul > li {
           margin-bottom: 20px; }
       .split-left .options:hover {
+        -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+        -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+        transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
         height: 450px; }
     .split-left .icon {
       text-align: center;
@@ -155,7 +158,10 @@ a {
       vertical-align: top; }
     .tasklist .quick-edit > div,
     .tasklist .due-in:hover .quick-edit {
-      width: 194px; }
+      width: 194px;
+      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s; }
     .tasklist .task {
       width: 300px;
       -webkit-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
@@ -200,9 +206,9 @@ a {
       white-space: nowrap;
       overflow: hidden;
       /* First nest is wrapper, second nest are the buttons */
-      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
+      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
+      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s; }
       .tasklist .quick-edit > div {
         height: 100%; }
         .tasklist .quick-edit > div > a {
