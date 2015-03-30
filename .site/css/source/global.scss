@@ -1,5 +1,11 @@
 @charset "UTF-8";
- 
+/*
+	IE 7- support? BWAHAHAHAHAhahAHAhaHAhaHahahaHA.
+	No.
+	This is an HTML5 applet. It sure as hell better be treated like one.
+	Spend more time INNOVATING than COMPLYING.
+	- Kodlee, 2015.
+*/
 @mixin transition($params...) {
 	-webkit-transition: $params;
 	-moz-transition: $params;

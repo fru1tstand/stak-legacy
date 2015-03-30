@@ -4,10 +4,14 @@ namespace css;
 header("content-type: text/css");
 
 //Set default colors
+$bodyBackground = "#CCC";
+$bodyBorder = "#999";
+
 $globalLogoDefault = "#99F";
 $globalLogoHover = "#66C";
 $globalMenuBarBorder = "#CCC";
 $globalMenuTabBorder = "#CCC";
+$globalMenuBackground = "#FFF";
 
 $windowBackground = "#F9F9F9";
 $windowText = "inherit";
@@ -69,6 +73,10 @@ CSS;
  * Template
  */
 echo <<<template
+body {
+	border-color: $bodyBorder;
+	background-color: $bodyBackground;
+}
 #window-container > div {
 	background-color: $windowBackground;
 	color: $windowText;
@@ -116,6 +124,7 @@ sidebar;
 echo <<<globalheader
 #global-menu-bar {
 	border-color: $globalMenuBarBorder;
+	background-color: $globalMenuBackground;
 }
 #global-logo .bar-link:link,
 #global-logo .bar-link:visited {
@@ -246,7 +255,18 @@ echo <<<listpage
 .page-list-task-detail {
 	background-color: #F0F0F0;
 }
+.hierarchy {
+	color: #333;
+}
 .page-list-task-detail .hint {
+	color: #999;
+}
+
+.page-list-task-detail .tags li {
+	background-color: #333;
+	color: #F0F0F0;
+}
+.page-list-task-detail .aboutme span {
 	color: #999;
 }
 listpage;

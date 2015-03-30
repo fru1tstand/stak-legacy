@@ -3,11 +3,28 @@ $page-list-footer-height: 200px;
 $page-list-datetime-font-size: 24px;
 $page-list-dow-font-size: 14px;
 $page-list-time-width: 110px;
-$page-list-date-active-scale: 1.2;
+$page-list-date-margin-bottom: -6px;
+$page-list-date-detail-scale: 0.8;
 
 .page-list {
 	min-height: 100%;
 	margin-bottom: - $page-list-footer-height;
+	
+	.date, .time {
+		font-size: $page-list-datetime-font-size;
+	}
+	.dow {
+		font-size: $page-list-dow-font-size;
+		float: left;
+	}
+	.time {
+		float: right;
+		width: $page-list-time-width;
+		text-align: right;
+	}
+	.date {
+		margin-bottom: $page-list-date-margin-bottom;
+	}
 }
 .page-list-push,
 .page-list-footer {
@@ -22,42 +39,8 @@ $page-list-date-active-scale: 1.2;
 	text-align: right;
 	cursor: default;
 	
-	.date,
-	.time,
-	.dow {
-		@include transition(font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1),
-				width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
-	}
-	
-	.date, .time {
-		font-size: 24px;
-	}
-	.dow {
-		font-size: $page-list-dow-font-size;
-		float: left;
-	}
-	.time {
-		float: right;
-		width: $page-list-time-width;
-	}
-	.date {
-		margin-bottom: -6px;
-	}
-	
 	> div {
 		display: inline-block;
-	}
-}
-.page-list-date:hover,
-.page-list-date.active {
-	.dow {
-		font-size: $page-list-dow-font-size * $page-list-date-active-scale;
-	}
-	.date, .time {
-		font-size: $page-list-datetime-font-size * $page-list-date-active-scale;
-	}
-	.time {
-		width: $page-list-time-width * $page-list-date-active-scale;
 	}
 }
 
@@ -65,8 +48,81 @@ $page-list-date-active-scale: 1.2;
 	border-bottom: 1px solid;
 	padding: 14px;
 	
+	@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	
 	.hint { }
 	.title {
 		font-size: 30px;
+	}
+	
+	.tags {
+		div {
+			font-size: 20px;
+		}
+		li {
+			padding: 2px 25px;
+			margin: 2px 0;
+			display: inline-block;
+			text-align: center;
+		}
+	}
+	ul {
+		list-style: none;
+	}
+	
+	.due {
+		float: right;
+		clear: right;
+		background-color: #FFF;
+		margin-left: 4px;
+		.text,
+		.header {
+			font-weight: bold;
+			text-align: center;
+		}
+		.header {
+			background-color: #CCC;
+			padding: 3px 0;
+		}
+		
+		.container {
+			padding: 10px 25px;
+		}
+		
+		.date, .time {
+			font-size: $page-list-datetime-font-size * $page-list-date-detail-scale;
+		}
+		.dow {
+			font-size: $page-list-dow-font-size * $page-list-date-detail-scale;
+		}
+		.time {
+			width: $page-list-time-width * $page-list-date-detail-scale;
+		}
+		.date {
+			margin-bottom: $page-list-date-margin-bottom * $page-list-date-detail-scale;
+		}
+	}
+	
+	.block {
+		border-left: 2px solid #999;
+		padding: 5px 10px;
+	}
+	.subtitle {
+		font-weight: bold;
+		margin-top: 25px;
+	}
+	.aboutme {
+		padding: 0;
+		
+		li {
+			padding-left: 10px;
+		}
+/* 		li:before { */
+/* 			content: '\002022'; */
+/* 			padding-right: 10px; */
+/* 		} */
+		li:nth-child(even) {
+			background-color: #FFF;
+		}
 	}
 }

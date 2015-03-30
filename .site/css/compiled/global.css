@@ -1,3 +1,10 @@
+/*
+	IE 7- support? BWAHAHAHAHAhahAHAhaHAhaHahahaHA.
+	No.
+	This is an HTML5 applet. It sure as hell better be treated like one.
+	Spend more time INNOVATING than COMPLYING.
+	- Kodlee, 2015.
+*/
 ul, ol, h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0; }
@@ -12,12 +19,18 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 
 html, body {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   font-size: 16px;
   height: 100vh;
   max-height: 100vh;
-  min-height: 100vh; }
+  min-height: 100vh;
+  max-width: 1920px; }
 
+@media (min-width: 1920px) {
+  body {
+    border: 1px solid;
+    border-top: none;
+    border-bottom: none; } }
 a {
   text-decoration: none; }
 
@@ -30,6 +43,9 @@ a {
 
 .hidden {
   display: none; }
+
+.clear {
+  clear: both; }
 
 /****** Livin' Large */
 @media (min-width: 1422px) {
@@ -82,11 +98,10 @@ a {
     .split-left .options {
       position: fixed;
       bottom: 0;
-      left: 0;
       width: 360px;
       /* The last 1px in the list is border anyway */
       height: 36px;
-      /* height: $split-screen-option-extended-height; */
+      max-height: 100vh;
       border-top: 1px solid #000;
       z-index: 900;
       overflow: hidden;
@@ -95,6 +110,7 @@ a {
       transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s; }
       .split-left .options .content {
         height: 415px;
+        max-height: 100vh;
         overflow: auto; }
         .split-left .options .content .title {
           font-weight: bold;
@@ -223,6 +239,17 @@ a {
   .page-list {
     min-height: 100%;
     margin-bottom: -200px; }
+    .page-list .date, .page-list .time {
+      font-size: 24px; }
+    .page-list .dow {
+      font-size: 14px;
+      float: left; }
+    .page-list .time {
+      float: right;
+      width: 110px;
+      text-align: right; }
+    .page-list .date {
+      margin-bottom: -6px; }
 
   .page-list-push,
   .page-list-footer {
@@ -233,41 +260,64 @@ a {
     border-bottom: 1px solid;
     text-align: right;
     cursor: default; }
-    .page-list-date .date,
-    .page-list-date .time,
-    .page-list-date .dow {
-      -webkit-transition: font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      -moz-transition: font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      transition: font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-    .page-list-date .date, .page-list-date .time {
-      font-size: 24px; }
-    .page-list-date .dow {
-      font-size: 14px;
-      float: left; }
-    .page-list-date .time {
-      float: right;
-      width: 110px; }
-    .page-list-date .date {
-      margin-bottom: -6px; }
     .page-list-date > div {
       display: inline-block; }
 
-  .page-list-date:hover .dow,
-  .page-list-date.active .dow {
-    font-size: 16.8px; }
-  .page-list-date:hover .date, .page-list-date:hover .time,
-  .page-list-date.active .date,
-  .page-list-date.active .time {
-    font-size: 28.8px; }
-  .page-list-date:hover .time,
-  .page-list-date.active .time {
-    width: 132px; }
-
   .page-list-task-detail {
     border-bottom: 1px solid;
-    padding: 14px; }
+    padding: 14px;
+    -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
     .page-list-task-detail .title {
       font-size: 30px; }
+    .page-list-task-detail .tags div {
+      font-size: 20px; }
+    .page-list-task-detail .tags li {
+      padding: 2px 25px;
+      margin: 2px 0;
+      display: inline-block;
+      text-align: center; }
+    .page-list-task-detail ul {
+      list-style: none; }
+    .page-list-task-detail .due {
+      float: right;
+      clear: right;
+      background-color: #FFF;
+      margin-left: 4px; }
+      .page-list-task-detail .due .text,
+      .page-list-task-detail .due .header {
+        font-weight: bold;
+        text-align: center; }
+      .page-list-task-detail .due .header {
+        background-color: #CCC;
+        padding: 3px 0; }
+      .page-list-task-detail .due .container {
+        padding: 10px 25px; }
+      .page-list-task-detail .due .date, .page-list-task-detail .due .time {
+        font-size: 19.2px; }
+      .page-list-task-detail .due .dow {
+        font-size: 11.2px; }
+      .page-list-task-detail .due .time {
+        width: 88px; }
+      .page-list-task-detail .due .date {
+        margin-bottom: -4.8px; }
+    .page-list-task-detail .block {
+      border-left: 2px solid #999;
+      padding: 5px 10px; }
+    .page-list-task-detail .subtitle {
+      font-weight: bold;
+      margin-top: 25px; }
+    .page-list-task-detail .aboutme {
+      padding: 0;
+      /* 		li:before { */
+      /* 			content: '\002022'; */
+      /* 			padding-right: 10px; */
+      /* 		} */ }
+      .page-list-task-detail .aboutme li {
+        padding-left: 10px; }
+      .page-list-task-detail .aboutme li:nth-child(even) {
+        background-color: #FFF; }
 
   /* Customization */
   #global-menu-bar {
