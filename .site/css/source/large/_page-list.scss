@@ -1,0 +1,72 @@
+$page-list-footer-height: 200px;
+
+$page-list-datetime-font-size: 24px;
+$page-list-dow-font-size: 14px;
+$page-list-time-width: 110px;
+$page-list-date-active-scale: 1.2;
+
+.page-list {
+	min-height: 100%;
+	margin-bottom: - $page-list-footer-height;
+}
+.page-list-push,
+.page-list-footer {
+	height: $page-list-footer-height;
+}
+.page-list-footer {
+}
+
+.page-list-date {
+	padding: 10px 25px;
+	border-bottom: 1px solid;
+	text-align: right;
+	cursor: default;
+	
+	.date,
+	.time,
+	.dow {
+		@include transition(font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1),
+				width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	}
+	
+	.date, .time {
+		font-size: 24px;
+	}
+	.dow {
+		font-size: $page-list-dow-font-size;
+		float: left;
+	}
+	.time {
+		float: right;
+		width: $page-list-time-width;
+	}
+	.date {
+		margin-bottom: -6px;
+	}
+	
+	> div {
+		display: inline-block;
+	}
+}
+.page-list-date:hover,
+.page-list-date.active {
+	.dow {
+		font-size: $page-list-dow-font-size * $page-list-date-active-scale;
+	}
+	.date, .time {
+		font-size: $page-list-datetime-font-size * $page-list-date-active-scale;
+	}
+	.time {
+		width: $page-list-time-width * $page-list-date-active-scale;
+	}
+}
+
+.page-list-task-detail {
+	border-bottom: 1px solid;
+	padding: 14px;
+	
+	.hint { }
+	.title {
+		font-size: 30px;
+	}
+}

@@ -28,6 +28,9 @@ a {
   #window-container > div {
     height: 100%; }
 
+.hidden {
+  display: none; }
+
 /****** Livin' Large */
 @media (min-width: 1422px) {
   /* Template items */
@@ -37,9 +40,9 @@ a {
   .tabs li {
     display: inline-block;
     font-size: 15px;
-    -webkit-transition: box-shadow 0.1s ease-in-out;
-    -moz-transition: box-shadow 0.1s ease-in-out;
-    transition: box-shadow 0.1s ease-in-out; }
+    -webkit-transition: box-shadow 0.3s ease-in-out;
+    -moz-transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out; }
 
   .sidebar {
     position: fixed;
@@ -137,13 +140,13 @@ a {
   .tasklist {
     width: 100%;
     list-style: none; }
-    .tasklist.completed {
-      border-bottom: 1px solid; }
+    .tasklist.completed li {
+      border-bottom-style: solid; }
     .tasklist.todo {
       padding-bottom: 35px; }
     .tasklist li {
       height: 60px;
-      border-bottom: 1px solid;
+      border-bottom: 1px dashed;
       overflow: hidden; }
       .tasklist li > div {
         height: 60px;
@@ -216,6 +219,55 @@ a {
           float: left;
           height: 100%;
           text-align: center; }
+
+  .page-list {
+    min-height: 100%;
+    margin-bottom: -200px; }
+
+  .page-list-push,
+  .page-list-footer {
+    height: 200px; }
+
+  .page-list-date {
+    padding: 10px 25px;
+    border-bottom: 1px solid;
+    text-align: right;
+    cursor: default; }
+    .page-list-date .date,
+    .page-list-date .time,
+    .page-list-date .dow {
+      -webkit-transition: font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: font-size 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+    .page-list-date .date, .page-list-date .time {
+      font-size: 24px; }
+    .page-list-date .dow {
+      font-size: 14px;
+      float: left; }
+    .page-list-date .time {
+      float: right;
+      width: 110px; }
+    .page-list-date .date {
+      margin-bottom: -6px; }
+    .page-list-date > div {
+      display: inline-block; }
+
+  .page-list-date:hover .dow,
+  .page-list-date.active .dow {
+    font-size: 16.8px; }
+  .page-list-date:hover .date, .page-list-date:hover .time,
+  .page-list-date.active .date,
+  .page-list-date.active .time {
+    font-size: 28.8px; }
+  .page-list-date:hover .time,
+  .page-list-date.active .time {
+    width: 132px; }
+
+  .page-list-task-detail {
+    border-bottom: 1px solid;
+    padding: 14px; }
+    .page-list-task-detail .title {
+      font-size: 30px; }
 
   /* Customization */
   #global-menu-bar {

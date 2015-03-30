@@ -6,8 +6,8 @@ $task-due-left-padding: 14px;
 	width: 100%;
 	list-style: none;
 	
-	&.completed {
-		border-bottom: 1px solid;
+	&.completed li {
+		border-bottom-style: solid;
 	}
 	
 	&.todo {
@@ -16,7 +16,7 @@ $task-due-left-padding: 14px;
 	
 	li {
 		height: $task-height;
-		border-bottom: 1px solid;
+		border-bottom: 1px dashed;
 		overflow: hidden;
 		
 		> div {

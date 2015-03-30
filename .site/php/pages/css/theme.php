@@ -37,8 +37,8 @@ $tasklistQuickEditBackgroundHover = "#EEE";
 
 $tasklistCompletedDuein = "#999";
 $tasklistCompletedTaskBackground = "transparent";
-$tasklistCompletedTaskTitle = "#999";
-$tasklistCompletedTaskSubtitle = "#999";
+$tasklistCompletedTaskTitle = "#000";
+$tasklistCompletedTaskSubtitle = "#000";
 $tasklistCompletedBackground = "#transparent";
 $tasklistCompletedQuickEditBackground = "transparent";
 $tasklistCompletedQuickEditBackgroundHover = "#EEE";
@@ -57,6 +57,9 @@ $splitScreenOptionsButtonBackground = "transparent";
 $splitScreenOptionsButton = "#99F";
 $splitScreenOptionsButtonHoverBackground = "#EEE";
 
+$listpageDate = "#000";
+
+namespace hide;
 //Anything before
 echo <<<CSS
 @charset "UTF-8";
@@ -223,4 +226,29 @@ echo <<<split
 	background-color: $splitScreenOptionsButtonHoverBackground;
 }
 split;
+
+namespace unhide;
+/**
+ * List page for tasks
+ */
+echo <<<listpage
+.page-list-date,
+.page-list-task-detail {
+	border-color: #999;
+}
+.page-list-date:hover,
+.page-list-date.active {
+	color: $listpageDate;
+}
+.page-list-date {
+	color: #999;
+}
+.page-list-task-detail {
+	background-color: #F0F0F0;
+}
+.page-list-task-detail .hint {
+	color: #999;
+}
+listpage;
+
 ?>

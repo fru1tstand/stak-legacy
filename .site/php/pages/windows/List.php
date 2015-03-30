@@ -183,5 +183,52 @@
 	</div>
 </div>
 <div class="split-right">
-
+	<div class="page-list">
+		<div class="page-list-date">
+			<div>
+				<div class="date">March 28th, 2015</div>
+				<div class="dow">Wednesday</div> <div class="time">12:00 PM</div>
+			</div>
+		</div>
+		<div class="page-list-task-detail">
+			<div class="hint">No task selected. Click one to see details.</div>
+<!-- 			<div class="title">Giant music project</div> -->
+<!-- 			<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div> -->
+<!-- 			<p> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+<!-- 				This is a really long<br /> -->
+				
+<!-- 			</p> -->
+		</div>
+		
+		<div class="page-list-push"></div>
+	</div>
+	<div class="page-list-footer">
+		
+	</div>
 </div>
