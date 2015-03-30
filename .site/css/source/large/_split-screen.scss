@@ -12,11 +12,10 @@
 	.options {
 		position: fixed;
 		bottom: 0;
-		left: 0;
 		width: $width-small;
 		/* The last 1px in the list is border anyway */
 		height: $split-screen-option-height + 1;
-/* height: $split-screen-option-extended-height; */
+		max-height: 100vh;
 		
 		border-top: 1px solid #000;
 		z-index: $split-screen-option-z-index;
@@ -25,6 +24,7 @@
 		
 		.content {
 			height: $split-screen-option-extended-height - $split-screen-option-height;
+			max-height: 100vh;
 			overflow: auto;
 			
 			.title {
