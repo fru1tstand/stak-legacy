@@ -39,14 +39,6 @@ $tasklistQuickEdit = "#99F";
 $tasklistQuickEditBackground = "transparent";
 $tasklistQuickEditBackgroundHover = "#EEE";
 
-$tasklistCompletedDuein = "#999";
-$tasklistCompletedTaskBackground = "transparent";
-$tasklistCompletedTaskTitle = "#000";
-$tasklistCompletedTaskSubtitle = "#000";
-$tasklistCompletedBackground = "#transparent";
-$tasklistCompletedQuickEditBackground = "transparent";
-$tasklistCompletedQuickEditBackgroundHover = "#EEE";
-
 $splitScreenOptionsBackground = "#FFF";
 $splitScreenOptionsBorder = "#CCC";
 $splitScreenOptionsTitle = "#99F";
@@ -140,6 +132,7 @@ echo <<<globalheader
 }
 globalheader;
 
+namespace unhide;
 /**
  * Task List
  */
@@ -153,20 +146,11 @@ echo <<<tasklist
 .tasklist .task:hover {
 	background-color: $tasklistTaskHoverBackground;
 }
-.tasklist .task .title {
+.tasklist .title {
 	color: $tasklistTaskTitle;
 }
-.tasklist .task .subtitle {
+.tasklist .subtitle {
 	color: $tasklistTaskSubtitle;
-}
-.tasklist .future {
-	color: $tasklistDueinFuture;
-}
-.tasklist .past {
-	color: $tasklistDueinPast;
-}
-.tasklist .far-future {
-	color: $tasklistDueinFarFuture;
 }
 .tasklist .quick-edit a {
 	background-color: $tasklistQuickEditBackground;
@@ -176,27 +160,8 @@ echo <<<tasklist
 	background-color: $tasklistQuickEditBackgroundHover;
 }
 
-.tasklist.completed {
-	background-color: $tasklistCompletedBackground;
-	border-color: $tasklistBorder;
-}
-.tasklist.completed .task {
-	background-color: $tasklistCompletedTaskBackground;
-}
-.tasklist.completed .task .title {
-	color: $tasklistCompletedTaskTitle;
-}
-.tasklist.completed .task .subtitle {
-	color: $tasklistCompletedTaskSubtitle;
-}
-.tasklist.completed .complete {
-	color: $tasklistCompletedDuein;
-}
-.tasklist.completed .quick-edit a {
-	background-color: $tasklistCompletedQuickEditBackground;
-}
-.tasklist.completed .quick-edit a:hover {
-	background-color: $tasklistCompletedQuickEditBackgroundHover;
+.tasklist .complete .title {
+	color: #999;
 }
 tasklist;
 
@@ -236,7 +201,6 @@ echo <<<split
 }
 split;
 
-namespace unhide;
 /**
  * List page for tasks
  */

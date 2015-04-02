@@ -1,30 +1,9 @@
 <div class="split-left">
-	<ul class="tasklist completed">
+	<ul class="tasklist">
 		<li>
 			<div>
-				<div class="due-in complete">
-					<div class="timeleft"><i class="fa fa-check"></i></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-undo"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
-						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Physics Homework webassign</div>
-					</div>
-				</a>
-			</div>
-		</li>	
-	</ul>
-	<ul class="tasklist todo">
-		<li>
-			<div>
-				<div class="due-in past">
-					<div class="timeleft">- 4</div
+				<div class="tag-wrapper">
+					<div class="tag" style="border-color: #99F;"></div
 					><div class="quick-edit">
 						<div>
 							<a href="#"><i class="fa fa-check-square-o"></i></a>
@@ -41,10 +20,29 @@
 				</a>
 			</div>
 		</li>
+		<li class="complete">
+			<div>
+				<div class="tag-wrapper">
+					<div class="tag"></div
+					><div class="quick-edit">
+						<div>
+							<a href="#"><i class="fa fa-undo"></i></a>
+							<a href="#"><i class="fa fa-pencil"></i></a>
+							<a href="#"><i class="fa fa-trash"></i></a>
+						</div>
+					</div>
+				</div
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Physics Homework webassign</div>
+					</div>
+				</a>
+			</div>
+		</li>	
 		<li>
 			<div>
-				<div class="due-in future">
-					<div class="timeleft">+ 0</div
+				<div class="tag-wrapper">
+					<div class="tag" style="border-color: #99F;"></div
 					><div class="quick-edit">
 						<div>
 							<a href="#"><i class="fa fa-check-square-o"></i></a>
@@ -63,8 +61,8 @@
 		</li>
 		<li>
 			<div>
-				<div class="due-in future">
-					<div class="timeleft">+ 2</div
+				<div class="tag-wrapper">
+					<div class="tag" style="border-color: #F99;"></div
 					><div class="quick-edit">
 						<div>
 							<a href="#"><i class="fa fa-check-square-o"></i></a>
@@ -83,8 +81,8 @@
 		</li>
 		<li>
 			<div>
-				<div class="due-in far-future">
-					<div class="timeleft">&gt; 9</div
+				<div class="tag-wrapper">
+					<div class="tag" style="border-color: #9F9;"></div
 					><div class="quick-edit">
 						<div>
 							<a href="#"><i class="fa fa-check-square-o"></i></a>

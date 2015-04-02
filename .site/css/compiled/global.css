@@ -169,25 +169,24 @@ a {
         width: 100%;
         white-space: nowrap;
         overflow: hidden; }
-    .tasklist .due-in,
+    .tasklist .tag-wrapper,
     .tasklist .task,
-    .tasklist .timeleft,
     .tasklist .quick-edit {
       display: inline-block;
       vertical-align: top; }
     .tasklist .quick-edit > div,
-    .tasklist .due-in:hover .quick-edit {
-      width: 194px;
+    .tasklist .tag-wrapper:hover .quick-edit {
+      width: 192px;
       -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
       -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
       transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s; }
     .tasklist .task {
-      width: 300px;
+      width: 330px;
       -webkit-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
       -moz-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
       transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .task .title, .tasklist .task .subtitle {
-        width: 300px;
+        width: 330px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -204,30 +203,28 @@ a {
         display: inline-block;
         vertical-align: middle; }
       .tasklist .task:hover {
-        padding-left: 14px; }
+        padding-left: 12px; }
         .tasklist .task:hover .title, .tasklist .task:hover .subtitle {
-          width: 286px; }
-    .tasklist .due-in {
+          width: 318px; }
+    .tasklist .tag-wrapper {
       font-size: 22px;
       line-height: 60px;
       height: 100%;
       cursor: pointer; }
-      .tasklist .due-in > div {
-        vertical-align: top;
-        height: 100%; }
-      .tasklist .due-in .timeleft {
-        width: 60px;
+      .tasklist .tag-wrapper .tag {
+        width: 30px;
+        height: 60px;
         display: inline-block;
         vertical-align: top;
-        text-align: center; }
+        border-left: 8px solid; }
     .tasklist .quick-edit {
       width: 0;
       white-space: nowrap;
       overflow: hidden;
       /* First nest is wrapper, second nest are the buttons */
-      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
-      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
-      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s; }
+      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tasklist .quick-edit > div {
         height: 100%; }
         .tasklist .quick-edit > div > a {

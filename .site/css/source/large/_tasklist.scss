@@ -1,6 +1,6 @@
 $task-height: 60px;
-$task-due-width: 60px;
-$task-due-left-padding: 14px;
+$task-tag-color-width: 30px;
+$task-tag-color-padding-right: 12px;
 
 .tasklist {
 	width: 100%;
@@ -27,26 +27,25 @@ $task-due-left-padding: 14px;
 		}
 	}
 	
-	.due-in,
+	.tag-wrapper,
 	.task,
-	.timeleft,
 	.quick-edit {
 		display: inline-block;
 		vertical-align: top;
 	}
 	
 	.quick-edit > div,
-	.due-in:hover .quick-edit {
-		width: $task-height * 3 + $task-due-left-padding;
+	.tag-wrapper:hover .quick-edit {
+		width: $task-height * 3 + $task-tag-color-padding-right;
 		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s);
 	}
 	
 	.task {
-		width: $width-small - $task-due-width;
+		width: $width-small - $task-tag-color-width;
 		@include transition(padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		.title, .subtitle {
-			width: $width-small - $task-due-width;
+			width: $width-small - $task-tag-color-width;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -68,30 +67,26 @@ $task-due-left-padding: 14px;
 		}
 		
 		&:hover {
-			padding-left: $task-due-left-padding;
+			padding-left: $task-tag-color-padding-right;
 			
 			.title, .subtitle {
-				width: $width-small - $task-due-width - $task-due-left-padding;
+				width: $width-small - $task-tag-color-width - $task-tag-color-padding-right;
 			}
 		}
 	}
 		
-	.due-in {
+	.tag-wrapper {
 		font-size: 22px;
 		line-height: $task-height;
 		height: 100%;
 		cursor: pointer;
 		
-		> div {
-			vertical-align: top;
-			height: 100%;
-		}
-		
-		.timeleft {
-			width: $task-due-width;
+		.tag {
+			width: $task-tag-color-width;
+			height: $task-height;
 			display: inline-block;
 			vertical-align: top;
-			text-align: center;
+			border-left: 8px solid;
 		}
 	}
 	
@@ -111,6 +106,6 @@ $task-due-left-padding: 14px;
 			}
 		}
 		
-		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s);
+		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 	}
 }
