@@ -169,6 +169,19 @@ a {
         width: 100%;
         white-space: nowrap;
         overflow: hidden; }
+    .tasklist .label {
+      height: 20px;
+      line-height: 20px;
+      font-size: 12px;
+      text-align: center;
+      color: #000;
+      padding: 0 20px; }
+      .tasklist .label .count {
+        float: left; }
+      .tasklist .label .count::before {
+        content: "("; }
+      .tasklist .label .count::after {
+        content: ")"; }
     .tasklist .tag-wrapper,
     .tasklist .task,
     .tasklist .quick-edit {

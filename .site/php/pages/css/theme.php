@@ -38,6 +38,9 @@ $tasklistDueinFarFuture = "#99F";
 $tasklistQuickEdit = "#99F";
 $tasklistQuickEditBackground = "transparent";
 $tasklistQuickEditBackgroundHover = "#EEE";
+$tasklistLabel = "#333";
+$tasklistLabelBackground = "#EEE";
+$tasklistCompleteTitle = "#999";
 
 $splitScreenOptionsBackground = "#FFF";
 $splitScreenOptionsBorder = "#CCC";
@@ -159,9 +162,13 @@ echo <<<tasklist
 .tasklist .quick-edit a:hover {
 	background-color: $tasklistQuickEditBackgroundHover;
 }
+.tasklist .label {
+	color: $tasklistLabel;
+	background-color: $tasklistLabelBackground;
+}
 
 .tasklist .complete .title {
-	color: #999;
+	color: $tasklistCompleteTitle;
 }
 tasklist;
 

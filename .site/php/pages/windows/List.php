@@ -1,5 +1,8 @@
 <div class="split-left">
 	<ul class="tasklist">
+		<li class="label">
+			<span class="count">1</span><span>Overdue</span>
+		</li>
 		<li>
 			<div>
 				<div class="tag-wrapper">
@@ -20,25 +23,10 @@
 				</a>
 			</div>
 		</li>
-		<li class="complete">
-			<div>
-				<div class="tag-wrapper">
-					<div class="tag"></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-undo"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
-						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Physics Homework webassign</div>
-					</div>
-				</a>
-			</div>
-		</li>	
+		
+		<li class="label">
+			<span class="count">2</span><span>Today</span>
+		</li>
 		<li>
 			<div>
 				<div class="tag-wrapper">
@@ -78,6 +66,29 @@
 					</div>
 				</a>
 			</div>
+		</li>
+		<li class="complete">
+			<div>
+				<div class="tag-wrapper">
+					<div class="tag"></div
+					><div class="quick-edit">
+						<div>
+							<a href="#"><i class="fa fa-undo"></i></a>
+							<a href="#"><i class="fa fa-pencil"></i></a>
+							<a href="#"><i class="fa fa-trash"></i></a>
+						</div>
+					</div>
+				</div
+				><a class="task" href="#">
+					<div></div><div>
+						<div class="title">Physics Homework webassign</div>
+					</div>
+				</a>
+			</div>
+		</li>
+		
+		<li class="label">
+			<span class="count">1</span><span>Future</span>
 		</li>
 		<li>
 			<div>
