@@ -1,7 +1,7 @@
 $task-height: 60px;
-$task-tag-color-width: 30px;
-$task-tag-color-padding-right: 12px;
-$task-label: 20px; 
+$task-tag-width: 30px;
+$task-tag-padding-right: 12px;
+$task-label: 20px;
 
 .tasklist {
 	width: 100%;
@@ -55,16 +55,16 @@ $task-label: 20px;
 	
 	.quick-edit > div,
 	.tag-wrapper:hover .quick-edit {
-		width: $task-height * 3 + $task-tag-color-padding-right;
+		width: $task-height * 3 + $task-tag-padding-right;
 		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s);
 	}
 	
 	.task {
-		width: $width-small - $task-tag-color-width;
+		width: $width-small - $task-tag-width;
 		@include transition(padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		.title, .subtitle {
-			width: $width-small - $task-tag-color-width;
+			width: $width-small - $task-tag-width;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -86,10 +86,10 @@ $task-label: 20px;
 		}
 		
 		&:hover {
-			padding-left: $task-tag-color-padding-right;
+			padding-left: $task-tag-padding-right;
 			
 			.title, .subtitle {
-				width: $width-small - $task-tag-color-width - $task-tag-color-padding-right;
+				width: $width-small - $task-tag-width - $task-tag-padding-right;
 			}
 		}
 	}
@@ -101,7 +101,7 @@ $task-label: 20px;
 		cursor: pointer;
 		
 		.tag {
-			width: $task-tag-color-width;
+			width: $task-tag-width;
 			height: $task-height;
 			display: inline-block;
 			vertical-align: top;

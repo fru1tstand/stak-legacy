@@ -270,7 +270,7 @@
 					<div class="subtitle">Description</div>
 					<div class="block">
 						<div class="hint hidden">Nothing to see here...</div>
-						<div class="">This is a really large mustic project that has to do with colonial music and how people just generally sucked at playing music. It ain't the music we hear today because that shit is the shit. I mean all the bass and treble and mixtrapes and whatnot, it's like morgan freeman took a shit and the result was the music we have today. That shit's cool.</div>
+						<div class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut laoreet ex. Nunc eget nisi et nibh varius mollis. Nam tincidunt placerat ipsum, ac maximus ipsum ullamcorper et. Suspendisse pulvinar velit sed metus laoreet ultrices. Maecenas libero diam, volutpat nec vehicula vel, dignissim vel dui. Donec iaculis consectetur mi non efficitur. Mauris feugiat enim metus, quis fermentum erat imperdiet sed. Maecenas enim neque, volutpat in posuere ac, fermentum id eros. Proin vel arcu ut metus pretium auctor. Nullam erat mi, vestibulum vel suscipit ut, ornare ut sem. Maecenas hendrerit magna vitae fermentum hendrerit. Duis vel facilisis nisl. </div>
 					</div>
 
 					<div class="clear"></div>
