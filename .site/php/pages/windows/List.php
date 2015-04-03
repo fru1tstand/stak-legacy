@@ -204,74 +204,75 @@
 			</div>
 		</div>
 		
-		<div class="page-list-task-detail">
+		<div class="page-list-details">
 			<!-- No Task -->
 			<div class="hint hidden">No task selected. Click one to see details.</div>
 			
 			<!-- Task -->
 			<div class="">
-				<div class="due">
+				<div class="title">Giant music project that comes close to exceeding two linel l</div>
+				<div class="hierarchy">
+					Project
+					<i class="fa fa-caret-right"></i>
+					Research
+					<i class="fa fa-caret-right"></i>
+					Websites
+					<i class="fa fa-caret-right"></i>
+					Reminder
+				</div>
+				<div class="tags">
+					<ul>
+						<li>School</li>
+						<li>Project</li>
+						<li>Important</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+				
+				<div class="page-list-infobar">
 					<div class="header">Due</div>
-					<div class="container">
+					<div class="date-container">
 						<div class="date">March 29th, 2015</div>
 						<div class="dow">Thursday</div> <div class="time">1:15 PM</div>
 						<div class="clear"></div>
 					</div>
-<!-- 					<div class="header">Completed</div> -->
-<!-- 					<div class="container"> -->
-<!-- 						<div class="date">March 30th, 2015</div> -->
-<!-- 						<div class="dow">Friday</div> <div class="time">2:14 AM</div> -->
-<!-- 						<div class="clear"></div> -->
-<!-- 					</div> -->
-				</div>
 					
-				<div class="task">
-					<div class="title">Giant music project that comes close to exceeding two linel l</div>
-				
-					<div class="hierarchy">
-						Project
-						<i class="fa fa-caret-right"></i>
-						Research
-						<i class="fa fa-caret-right"></i>
-						Websites
-						<i class="fa fa-caret-right"></i>
-						Reminder
+					<div class="header">Completed</div>
+					<div class="date-container">
+						<div class="date">September 30th, 2015</div>
+						<div class="dow">Friday</div> <div class="time">2:14 AM</div>
+						<div class="clear"></div>
 					</div>
-					<div class="tags">
+					
+					<div class="stats">
 						<ul>
-							<li>School</li>
-							<li>Project</li>
-							<li>Important</li>
+							<li>
+								<span>Due In</span>
+								<span>3 Days</span>
+							</li>
+							<li>
+								<span>Created</span>
+								<span>September 30th, 2015</span>
+							</li>
+							<li>
+								<span>Type</span>
+								<span>Reminder</span>
+							</li>
+							<li>
+								<span title="Primary Tag">PTag</span>
+								<span>VeryLongWordThatHappensToGoOffThePage</span>
+							</li>
 						</ul>
 					</div>
-					
+				</div>
+				
+				<div class="task">
 					<div class="subtitle">Description</div>
 					<div class="block">
 						<div class="hint hidden">Nothing to see here...</div>
 						<div class="">This is a really large mustic project that has to do with colonial music and how people just generally sucked at playing music. It ain't the music we hear today because that shit is the shit. I mean all the bass and treble and mixtrapes and whatnot, it's like morgan freeman took a shit and the result was the music we have today. That shit's cool.</div>
 					</div>
-					
-					<div class="subtitle">About me</div>
-					<div class="block aboutme">
-						<ul>
-							<!-- Am due/Was due ... day(s) [ago]/tomorrow/today/yesterday | Was completed ... early/late -->
-							<li>I am due in about <span>3 days</span></li>
-							<li>I was created on <span>March 1st, 2015</span> at <span>3:15 PM</span></li>
-							<li>I've been viewed <span>9</span> times in the week, <span>23</span> times in the month, and <span>310</span> times total</li>
-							
-							<!-- reminder for a task/strong independent task/subtask that's part of a larger whole -->
-							<li>I am a <span>reminder</span> for a task</li>
-							
-							<!-- Optionals -->
-							<!-- [if edited] once/twice/x times -->
-							<li>I was edited <span>once</span> before</li>
-							<!-- [if no views for >= 180 days]  -->
-							<li>I've been forgotten! It's been <span>180</span> days since the last time I've been looked at</li>
-							<!-- [if same due time as another task] -->
-							<li>There's <span>one</span> other task with the same due date as me</li>
-						</ul>
-					</div>
-					
+
 					<div class="clear"></div>
 				</div>
 			</div>

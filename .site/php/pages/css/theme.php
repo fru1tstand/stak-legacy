@@ -56,9 +56,24 @@ $splitScreenOptionsButtonBackground = "transparent";
 $splitScreenOptionsButton = "#99F";
 $splitScreenOptionsButtonHoverBackground = "#EEE";
 
-$listpageDate = "#000";
+$listpageDate = "#999";
+$listpageDateActive = "#000";
+$listpageDetailsBorder = "#999";
+$listpageDetailsBackground = "#F0F0F0";
+$listpageHierarchy = "#333";
+$listpageHint = "#999";
+$listpageTagsBackground = "#333";
+$listpageTags = "#F0F0F0";
+$listpageDetailsBorder = "#CCC";
 
-namespace hide;
+$listpageInfobarBackground = "#FFF";
+$listpageInfobarHeaderBackground = "#CCC";
+$listpageInfobarHeader = "#000";
+$listpageInfobarStatsBackground = "#F0F0F0";
+$listpageInfobarStatsBorder = "#FFF";
+$listpageInfobarStats = "#000";
+$listpageInfobarStatsSeparator = "#CCC";
+
 //Anything before
 echo <<<CSS
 @charset "UTF-8";
@@ -135,7 +150,7 @@ echo <<<globalheader
 }
 globalheader;
 
-namespace unhide;
+
 /**
  * Task List
  */
@@ -213,32 +228,47 @@ split;
  */
 echo <<<listpage
 .page-list-date,
-.page-list-task-detail {
-	border-color: #999;
+.page-list-details {
+	border-color: $listpageDetailsBorder;
 }
 .page-list-date:hover,
 .page-list-date.active {
-	color: $listpageDate;
+	color: $listpageDateActive;
 }
 .page-list-date {
-	color: #999;
+	color: $listpageDate;
 }
-.page-list-task-detail {
-	background-color: #F0F0F0;
+.page-list-details {
+	background-color: $listpageDetailsBackground;
 }
-.hierarchy {
-	color: #333;
+.page-list-details .hierarchy {
+	color: $listpageHierarchy;
 }
-.page-list-task-detail .hint {
-	color: #999;
+.page-list-details .hint {
+	color: $listpageHint;
+}
+.page-list-details .tags li {
+	background-color: $listpageTagsBackground;
+	color: $listpageTags;
+}
+.page-list-details .block {
+	border-color: $listpageDetailsBorder;
 }
 
-.page-list-task-detail .tags li {
-	background-color: #333;
-	color: #F0F0F0;
+.page-list-infobar {
+	background-color: $listpageInfobarBackground;
 }
-.page-list-task-detail .aboutme span {
-	color: #999;
+.page-list-infobar .header {
+	background-color: $listpageInfobarHeaderBackground;
+	color: $listpageInfobarHeader;
+}
+.page-list-infobar .stats {
+	border-color: $listpageInfobarStatsBorder;
+	background-color: $listpageInfobarStatsBackground;
+	color: $listpageInfobarStats;
+}
+.page-list-infobar .stats li:nth-child(n+2) {
+	border-color: $listpageInfobarStatsSeparator;
 }
 listpage;
 
