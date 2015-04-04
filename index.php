@@ -10,7 +10,7 @@ use content\IncludeContent;
 		<meta charset="UTF-8" />
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
-		<link href="/.site/php/pages/css/theme.php" rel="stylesheet" type="text/css">
+		<link href="/.site/php/css/theme.php" rel="stylesheet" type="text/css">
 	</head>
 	
 	<body>
