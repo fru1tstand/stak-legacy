@@ -36,7 +36,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 @import 'template';
 
 /****** Livin' Large */
-@media (min-width: $width-large - $width-clearance) {
+/* @media (min-width: $width-large - $width-clearance) { */
 	/* Template items */
 	@import 'large/tabs';
 	@import 'large/sidebar';
@@ -46,4 +46,4 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 	
 	/* Customization */
 	@import 'large/global-header';
-}
+/* } */
