@@ -27,35 +27,6 @@ $sidebarLinkBackgroundHover = "#F9F9F9";
 $sidebarLinkDefault = "#99F";
 $sidebarLinkHover = "#66C";
 
-$tasklistTaskBackground = "transparent";
-$tasklistTaskHoverBackground = "#EEE";
-$tasklistTaskTitle = "#000";
-$tasklistTaskSubtitle = "#000";
-$tasklistBorder = "#CCC";
-$tasklistDueinFuture = "#0A0";
-$tasklistDueinPast = "#F00";
-$tasklistDueinFarFuture = "#99F";
-$tasklistQuickEdit = "#99F";
-$tasklistQuickEditBackground = "transparent";
-$tasklistQuickEditBackgroundHover = "#EEE";
-$tasklistLabel = "#333";
-$tasklistLabelBackground = "#EEE";
-$tasklistCompleteTitle = "#999";
-
-$splitScreenOptionsBackground = "#FFF";
-$splitScreenOptionsBorder = "#CCC";
-$splitScreenOptionsTitle = "#99F";
-$splitScreenOptionsLabel = "#999";
-$splitScreenOptionsLabelHover = "#333";
-$splitScreenOptionsLabelHoverBackground = "#EEE";
-$splitScreenOptionsGroupBackground = "transparent";
-$splitScreenOptionsChecked = "#333";
-$splitScreenOptionsCheckedBorder = "#333";
-$splitScreenOptionsCheckedBackground = "#F6F6F6";
-$splitScreenOptionsButtonBackground = "transparent";
-$splitScreenOptionsButton = "#99F";
-$splitScreenOptionsButtonHoverBackground = "#EEE";
-
 $listpageDate = "#999";
 $listpageDateActive = "#000";
 $listpageDetailsBorder = "#999";
@@ -74,6 +45,7 @@ $listpageInfobarStatsBorder = "#FFF";
 $listpageInfobarStats = "#000";
 $listpageInfobarStatsSeparator = "#CCC";
 
+namespace hide;
 //Anything before
 echo <<<CSS
 @charset "UTF-8";
@@ -150,78 +122,13 @@ echo <<<globalheader
 }
 globalheader;
 
-
 /**
  * Task List
  */
+
 echo <<<tasklist
-.tasklist li {
-	border-color: $tasklistBorder;
-}
-.tasklist .task {
-	background-color: $tasklistTaskBackground;
-}
-.tasklist .task:hover {
-	background-color: $tasklistTaskHoverBackground;
-}
-.tasklist .title {
-	color: $tasklistTaskTitle;
-}
-.tasklist .subtitle {
-	color: $tasklistTaskSubtitle;
-}
-.tasklist .quick-edit a {
-	background-color: $tasklistQuickEditBackground;
-	color: $tasklistQuickEdit;
-}
-.tasklist .quick-edit a:hover {
-	background-color: $tasklistQuickEditBackgroundHover;
-}
-.tasklist .label {
-	color: $tasklistLabel;
-	background-color: $tasklistLabelBackground;
-}
 
-.tasklist .complete .title {
-	color: $tasklistCompleteTitle;
-}
 tasklist;
-
-/**
- * Split Screen
- */
-echo <<<split
-.split-left .options {
-	background-color: $splitScreenOptionsBackground;
-	border-color: $splitScreenOptionsBorder;
-}
-.split-left .options .content .title {
-	color: $splitScreenOptionsTitle;
-}
-.split-left .options .content label {
-	color: $splitScreenOptionsLabel;
-}
-.split-left .options .content form > ul > li {
-	background-color: $splitScreenOptionsGroupBackground;
-}
-.split-left .options .content input:checked + label {
-	color: $splitScreenOptionsChecked;
-	border-color: $splitScreenOptionsCheckedBorder;
-	background-color: $splitScreenOptionsCheckedBackground;
-}
-.split-left .options .content label:hover,
-.split-left .options .content input:checked + label:hover {
-	background-color: $splitScreenOptionsLabelHoverBackground;
-	color: $splitScreenOptionsLabelHover;
-}
-.split-left .options .content .buttons button {
-	background-color: $splitScreenOptionsButtonBackground;
-	color: $splitScreenOptionsButton;
-}
-.split-left .options .content .buttons button:hover {
-	background-color: $splitScreenOptionsButtonHoverBackground;
-}
-split;
 
 /**
  * List page for tasks

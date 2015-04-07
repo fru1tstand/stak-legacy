@@ -24,6 +24,7 @@ html, body {
   height: 100vh;
   max-height: 100vh;
   min-height: 100vh;
+  box-shadow: 0 0 10px 2px #999;
   max-width: 1920px; }
 
 @media (min-width: 1920px) {
@@ -40,6 +41,14 @@ a {
   height: 100%; }
   #window-container > div {
     height: 100%; }
+
+.middler,
+.middle {
+  display: inline-block;
+  vertical-align: middle; }
+
+.middler {
+  height: 100%; }
 
 .hidden {
   display: none; }
@@ -95,56 +104,6 @@ a {
 .split-left {
   width: 360px;
   float: left; }
-  .split-left .options {
-    position: fixed;
-    bottom: 0;
-    width: 360px;
-    /* The last 1px in the list is border anyway */
-    height: 36px;
-    max-height: 100vh;
-    border-top: 1px solid #000;
-    z-index: 900;
-    overflow: hidden;
-    -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
-    -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
-    transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s; }
-    .split-left .options .content {
-      height: 415px;
-      max-height: 100vh;
-      overflow: auto; }
-      .split-left .options .content .title {
-        font-weight: bold;
-        padding: 2px 20px; }
-      .split-left .options .content .buttons {
-        text-align: center;
-        margin: 20px 0 40px 0; }
-        .split-left .options .content .buttons > div {
-          display: inline-block;
-          width: 20px; }
-        .split-left .options .content .buttons button {
-          cursor: pointer;
-          border: none;
-          font-size: 22px;
-          width: 75px;
-          height: 75px;
-          line-height: 75px; }
-      .split-left .options .content input {
-        display: none; }
-      .split-left .options .content label {
-        cursor: pointer;
-        padding: 2px 0 2px 50px;
-        width: 100%;
-        display: inline-block;
-        border-left: 4px solid transparent; }
-      .split-left .options .content ul {
-        list-style: none; }
-      .split-left .options .content form > ul > li {
-        margin-bottom: 20px; }
-    .split-left .options:hover {
-      -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
-      -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
-      transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
-      height: 450px; }
   .split-left .icon {
     text-align: center;
     line-height: 35px; }
@@ -153,137 +112,167 @@ a {
   border-left: 1px solid #999;
   margin-left: 360px; }
 
-.tasklist {
-  width: 100%;
-  list-style: none;
+.split-left-options-container {
+  position: fixed;
+  bottom: 0;
+  width: 360px;
+  /* The last 1px in the list is border anyway */
+  height: 36px;
+  max-height: 100vh;
+  border-top: 1px solid #000;
+  z-index: 900;
   overflow: hidden;
+  -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
+  -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s;
+  transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s; }
+  .split-left-options-container .content {
+    height: 415px;
+    max-height: 100vh;
+    overflow: auto; }
+  .split-left-options-container:hover {
+    -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+    -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+    transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
+    height: 450px; }
+
+.tasklist-tag-container,
+.tasklists-container,
+.tasklist-container,
+.tasklist,
+.tasklist .task,
+.timescope-container,
+.timescope {
+  width: 360px; }
+
+.tasklists-container {
+  padding-bottom: 35px; }
+
+.tasklist-tag-container {
+  height: 42px; }
+  .tasklist-tag-container .tag {
+    float: left;
+    width: 42px;
+    height: 42px;
+    padding: 14px; }
+    .tasklist-tag-container .tag > span {
+      display: block;
+      width: 14px;
+      height: 14px; }
+  .tasklist-tag-container .title {
+    height: 42px;
+    width: 318px;
+    padding-right: 14px;
+    line-height: 42px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; }
+
+.timescope-container label {
+  cursor: pointer; }
+
+.timescope {
+  font-size: 12px; }
+  .timescope .visibility,
+  .timescope .count {
+    padding: 0 5px; }
+  .timescope .count,
+  .timescope .visibility > div,
+  .timescope .name {
+    height: 24px;
+    line-height: 24px; }
+  .timescope .count {
+    float: left; }
+    .timescope .count:before {
+      content: '('; }
+    .timescope .count:after {
+      content: ')'; }
+  .timescope .visibility {
+    float: right; }
+    .timescope .visibility .fa-caret-down {
+      display: block; }
+    .timescope .visibility .fa-caret-left {
+      display: none; }
+  .timescope .name {
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+
+.task {
+  height: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 0;
   -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-  .tasklist.completed li {
-    border-bottom-style: solid; }
-  .tasklist.todo {
-    padding-bottom: 35px; }
-  .tasklist li {
-    height: 60px;
-    overflow: hidden; }
-    .tasklist li > div {
-      height: 60px;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden; }
-  .tasklist li:nth-child(n+2) {
-    border-top: 1px dashed; }
-  .tasklist .label {
-    height: 20px;
-    line-height: 20px;
-    font-size: 12px;
-    text-align: center;
-    color: #000;
-    padding: 0 20px; }
-    .tasklist .label .count {
-      float: left; }
-    .tasklist .label .count::before {
-      content: "("; }
-    .tasklist .label .count::after {
-      content: ")"; }
-  .tasklist .tag-wrapper,
-  .tasklist .task,
-  .tasklist .quick-edit {
+  .task .tag,
+  .task .body,
+  .task .quick-edit {
     display: inline-block;
-    vertical-align: top; }
-  .tasklist .quick-edit > div,
-  .tasklist .tag-wrapper:hover .quick-edit {
-    width: 192px;
-    -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
-    -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
-    transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s; }
-  .tasklist .task {
-    width: 330px;
-    -webkit-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-    -moz-transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-    transition: padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-    .tasklist .task .title, .tasklist .task .subtitle {
-      width: 330px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-      transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-    .tasklist .task .title {
-      font-size: 18px; }
-    .tasklist .task .subtitle {
-      font-size: 10px; }
-    .tasklist .task > div:nth-child(1) {
-      height: 60px; }
-    .tasklist .task > div {
-      display: inline-block;
-      vertical-align: middle; }
-    .tasklist .task:hover {
-      padding-left: 12px; }
-      .tasklist .task:hover .title, .tasklist .task:hover .subtitle {
-        width: 318px; }
-  .tasklist .tag-wrapper {
-    font-size: 22px;
-    line-height: 60px;
-    height: 100%;
-    cursor: pointer; }
-    .tasklist .tag-wrapper .tag {
-      width: 30px;
-      height: 60px;
-      display: inline-block;
-      vertical-align: top;
-      border-left: 8px solid; }
-  .tasklist .quick-edit {
-    width: 0;
-    white-space: nowrap;
+    vertical-align: top;
+    height: 60px; }
+  .task label {
+    display: block;
+    height: 60px;
+    width: 100%; }
+  .task .tag {
+    width: 60px;
+    margin-right: -52px;
+    border-left: 8px solid;
+    /* Quick-edit peek */ }
+    .task .tag:hover + .quick-edit {
+      width: 180px; }
+  .task .body {
+    padding: 0 8px;
+    width: 352px;
+    -webkit-transition: background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1), margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1), margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1), margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+    .task .body:hover {
+      margin-left: 16px; }
+      .task .body:hover .title,
+      .task .body:hover .hierarchy {
+        width: 320px; }
+  .task .title,
+  .task .hierarchy {
+    width: 336px;
     overflow: hidden;
-    /* First nest is wrapper, second nest are the buttons */
+    white-space: nowrap;
+    text-overflow: ellipsis;
     -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
     -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
     transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
-    .tasklist .quick-edit > div {
-      height: 100%; }
-      .tasklist .quick-edit > div > a {
-        width: 60px;
-        float: left;
-        height: 100%;
-        text-align: center; }
+  .task .title {
+    font-size: 14px; }
+  .task .hierarchy {
+    font-size: 10px; }
 
-.tasklist-tag-select {
-  list-style: none; }
-  .tasklist-tag-select .color {
-    width: 42px;
-    text-align: center; }
-    .tasklist-tag-select .color span {
-      display: inline-block;
-      vertical-align: middle; }
-    .tasklist-tag-select .color span:nth-child(1) {
-      height: 100%; }
-    .tasklist-tag-select .color span:nth-child(2) {
-      height: 14px;
-      width: 14px; }
-  .tasklist-tag-select .tag {
-    font-weight: bold;
-    font-size: 18px;
-    width: 318px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden; }
-
-.tasklist-toggle {
-  cursor: pointer; }
-  .tasklist-toggle > div {
+.quick-edit {
+  width: 0;
+  overflow: hidden;
+  -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+  -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+  transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+  .quick-edit a {
     display: inline-block;
-    vertical-align: top;
-    height: 42px;
-    line-height: 42px; }
+    width: 60px;
+    height: 60px;
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 60px;
+    text-align: center; }
+  .quick-edit:hover {
+    width: 180px; }
 
-.tasklist-hider {
+/* Timescope collapse */
+.timescope-container > input:checked ~ .task {
+  height: 0; }
+.timescope-container > input:checked + label .visibility .fa-caret-down {
   display: none; }
-  .tasklist-hider:checked + .tasklist {
-    height: 0; }
+.timescope-container > input:checked + label .visibility .fa-caret-left {
+  display: block; }
 
 .page-list {
   min-height: 100%;

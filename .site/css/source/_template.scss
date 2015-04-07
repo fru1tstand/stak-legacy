@@ -11,6 +11,7 @@ html, body {
 	height: 100vh;
 	max-height: 100vh;
 	min-height: 100vh;
+	box-shadow: 0 0 10px 2px #999;
 	
 	max-width: $width-max;
 }
@@ -37,10 +38,17 @@ a {
 	}
 }
 
+.middler,
+.middle {
+	display: inline-block;
+	vertical-align: middle;
+}
+.middler {
+	height: 100%;
+}
 .hidden {
 	display: none;
 }
-
 .clear {
 	clear: both;
 }

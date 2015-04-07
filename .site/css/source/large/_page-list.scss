@@ -82,20 +82,7 @@ $page-list-sidebar-border-width: 2px;
 		font-weight: bold;
 		margin-top: 25px;
 	}
-	.aboutme {
-		padding: 0;
-		
-		li {
-			padding-left: 10px;
-		}
-/* 		li:before { */
-/* 			content: '\002022'; */
-/* 			padding-right: 10px; */
-/* 		} */
-		li:nth-child(even) {
-			background-color: #FFF;
-		}
-	}
+
 }
 .page-list-infobar {
 	clear: right;

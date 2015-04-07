@@ -1,130 +1,205 @@
+$tasklist-width: $width-small;
 $task-height: 60px;
-$task-tag-width: 30px;
-$task-tag-padding-right: 12px;
-$task-label: 20px;
+$task-tag-width: $task-height;
+$task-tag-color-width: 8px;
+$task-tag-space: $task-tag-color-width;
 
-.tasklist {
-	width: 100%;
-	list-style: none;
+$tag-color-size: 14px;
+
+$timescope-height: 24px;
+
+.tasklist-tag-container,
+.tasklists-container,
+.tasklist-container,
+.tasklist,
+.tasklist .task,
+.timescope-container,
+.timescope {
+	width: $tasklist-width;
+}
+
+.tasklists-container {
+	padding-bottom: $split-screen-option-height;
+}
+
+.tasklist-tag-container {
+	height: $tag-color-size * 3;
 	
-	&.completed li {
-		border-bottom-style: solid;
+	.tag {
+		float: left;
+		width: $tag-color-size * 3;
+		height: $tag-color-size * 3;
+		padding: $tag-color-size;
+		
+		> span {
+			display: block;
+			width: $tag-color-size;
+			height: $tag-color-size;
+		}
 	}
 	
-	&.todo {
-		padding-bottom: $split-screen-option-height;
-	}
-	
-	li {
-		height: $task-height;
-		border-bottom: 1px dashed;
+	.title {
+		height: $tag-color-size * 3;
+		width: $tasklist-width - $tag-color-size * 3;
+		padding-right: $tag-color-size;
+		line-height: $tag-color-size * 3;
+		font-weight: bold;
+		
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		overflow: hidden;
-		
-		> div {
-			height: $task-height;
-			width: 100%;
-			white-space: nowrap;
-			overflow: hidden;
-		}
 	}
-	.label {
-		height: $task-label;
-		line-height: $task-label;
-		font-size: 12px;
-		text-align: center;
-		color: #000;
-		padding: 0 20px;
-		
-		.count {
-			float: left;
-		}
-		.count::before {
-			content: "(";
-		}
-		.count::after {
-			content: ")";
-		}
+}
+.timescope-container {
+	label {
+		cursor: pointer;
+	}
+}
+
+.timescope {
+	font-size: 12px;
+	
+	.visibility,
+	.count {
+		padding: 0 5px;
 	}
 	
-	.tag-wrapper,
-	.task,
+	.count,
+	.visibility > div,
+	.name {
+		height: $timescope-height;
+		line-height: $timescope-height;
+	}
+	
+	.count {
+		float: left;
+		
+		&:before {
+			content: '(';
+		}
+		&:after {
+			content: ')';
+		}
+	}
+	.visibility {
+		float: right;
+		
+		.fa-caret-down {
+			display: block;
+		}
+		.fa-caret-left {
+			display: none;
+		}
+	}
+	.name {
+		text-align: center;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}
+
+.task {
+	height: $task-height;
+	white-space: nowrap;
+	overflow: hidden;
+	font-size: 0;
+	
+	@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	
+	.tag,
+	.body,
 	.quick-edit {
 		display: inline-block;
 		vertical-align: top;
+		height: $task-height;
 	}
-	
-	.quick-edit > div,
-	.tag-wrapper:hover .quick-edit {
-		width: $task-height * 3 + $task-tag-padding-right;
-		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s);
+	label {
+		display: block;
+		height: $task-height;
+		width: 100%;
 	}
-	
-	.task {
-		width: $width-small - $task-tag-width;
-		@include transition(padding-left 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	.tag {
+		width: $task-tag-width;
+		margin-right: -($task-tag-width - $task-tag-color-width);
+		border-left: $task-tag-color-width solid;
 		
-		.title, .subtitle {
-			width: $width-small - $task-tag-width;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			
-			@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+		/* Quick-edit peek */
+		&:hover + .quick-edit {
+			width: $task-height * 3;
 		}
-		.title {
-			font-size: 18px;
-		}
-		.subtitle {
-			font-size: 10px;
-		}
-		> div:nth-child(1) {
-			height: $task-height;
-		}
-		> div {
-			display: inline-block;
-			vertical-align: middle;
-		}
+	}
+
+	
+	.body {
+		padding: 0 $task-tag-space;
+		width: $tasklist-width - $task-tag-color-width;
+		
+		@include transition(
+				background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1),
+				margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		&:hover {
-			padding-left: $task-tag-padding-right;
+			margin-left: $task-tag-color-width * 2;
 			
-			.title, .subtitle {
-				width: $width-small - $task-tag-width - $task-tag-padding-right;
+			.title,
+			.hierarchy {
+				width: $tasklist-width 
+						- $task-tag-color-width 
+						- $task-tag-space * 2 
+						- $task-tag-color-width * 2;
 			}
-		}
-	}
-		
-	.tag-wrapper {
-		font-size: 22px;
-		line-height: $task-height;
-		height: 100%;
-		cursor: pointer;
-		
-		.tag {
-			width: $task-tag-width;
-			height: $task-height;
-			display: inline-block;
-			vertical-align: top;
-			border-left: 8px solid;
 		}
 	}
 	
-	.quick-edit {
-		width: 0;
-		white-space: nowrap;
+	.title,
+	.hierarchy {
+		width: $tasklist-width - $task-tag-color-width - $task-tag-space * 2;
 		overflow: hidden;
-		
-		/* First nest is wrapper, second nest are the buttons */
-		> div {
-			height: 100%;
-			> a {
-				width: $task-height;
-				float: left;
-				height: 100%;
-				text-align: center;
-			}
-		}
+		white-space: nowrap;
+		text-overflow: ellipsis;
 		
 		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	}
+	
+	.title {
+		font-size: 14px;
+	}
+	.hierarchy {
+		font-size: 10px;
+	}
+}
+
+.quick-edit {
+	width: 0;
+	overflow: hidden;
+	
+	@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+	
+	a {
+		display: inline-block;
+		width: $task-height;
+		height: $task-height;
+		text-decoration: none;
+		font-size: 24px;
+		line-height: $task-height;
+		text-align: center;
+	}
+	
+	&:hover {
+		width: $task-height * 3;
+	}
+}
+
+/* Timescope collapse */
+.timescope-container > input:checked {
+	~ .task {
+		height: 0;
+	}
+	+ label .visibility .fa-caret-down {
+		display: none;
+	}
+	+ label .visibility .fa-caret-left {
+		display: block;
 	}
 }

@@ -1,200 +1,69 @@
 <div class="split-left">
-	<ul class="tasklist">
-		<li class="label">
-			<span class="count">1</span><span>Overdue</span>
-		</li>
-		<li>
-			<div>
-				<div class="tag-wrapper">
-					<div class="tag" style="border-color: #99F;"></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-check-square-o"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
-						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Giant music project</div>
-						<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
-					</div>
-				</a>
-			</div>
-		</li>
+	<!-- Multi-tag View -->
+	<div class="tasklists-container">
+	
+		<div class="tasklist-container">
 		
-		<li class="label">
-			<span class="count">2</span><span>Today</span>
-		</li>
-		<li>
-			<div>
-				<div class="tag-wrapper">
-					<div class="tag" style="border-color: #99F;"></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-check-square-o"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
-						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Giant music project that has a long title that wont fit</div>
-						<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
-					</div>
-				</a>
+			<div class="tasklist-tag-container">
+				<div class="tag"><span style="background-color:#99F"></span></div>
+				<div class="title">School tag that's bery long and stuff but doesn't quite make it</div>
 			</div>
-		</li>
-		<li>
-			<div>
-				<div class="tag-wrapper">
-					<div class="tag" style="border-color: #F99;"></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-check-square-o"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
+			
+			<div class="tasklist">
+				<div class="timescope-container">
+					<!-- timescope container Hash1 = MD5("tag: $tagName; ts: $tsContainerName;") -->
+					<input type="checkbox" id="tsc-hash1" class="hidden">
+					<label for="tsc-hash1">
+						<div class="timescope">
+							<div class="count">1</div>
+							<div class="visibility">
+								<div class="fa fa-caret-down"></div>
+								<div class="fa fa-caret-left"></div>
+							</div>
+							<div class="name">Overdue</div>
 						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Giant music project</div>
-						<div class="subtitle">Project &rarr; Research &rarr; Websites &rarr; Reminder</div>
-					</div>
-				</a>
-			</div>
-		</li>
-		<li class="complete">
-			<div>
-				<div class="tag-wrapper">
-					<div class="tag"></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-undo"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
+					</label>
+					
+					<div class="task">
+						<div class="tag" style="border-color: #99F"></div>
+						<div class="quick-edit">
+							<a href="#">
+								<i class="fa fa-check-square-o"></i>
+							</a>
+							<a href="#">
+								<i class="fa fa-pencil"></i>
+							</a>
+							<a href="#">
+								<i class="fa fa-trash"></i>
+							</a>
 						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Physics Homework webassign</div>
-					</div>
-				</a>
-			</div>
-		</li>
-		
-		<li class="label">
-			<span class="count">1</span><span>Future</span>
-		</li>
-		<li>
-			<div>
-				<div class="tag-wrapper">
-					<div class="tag" style="border-color: #9F9;"></div
-					><div class="quick-edit">
-						<div>
-							<a href="#"><i class="fa fa-check-square-o"></i></a>
-							<a href="#"><i class="fa fa-pencil"></i></a>
-							<a href="#"><i class="fa fa-trash"></i></a>
+						<div class="body">
+							<label>
+								<div class="middler"></div>
+								<div class="middle">
+									<div class="title">Some Title that's quite long and annoyiong to deal with even with the special html</div>
+									<div class="hierarchy">An <i class="fa fa-caret-right"></i> Example</div>
+								</div>
+							</label>
 						</div>
-					</div>
-				</div
-				><a class="task" href="#">
-					<div></div><div>
-						<div class="title">Cool thing to do</div>
-					</div>
-				</a>
-			</div>
-		</li>
+					</div><!-- .task -->
 
-	</ul>
-	<div class="options">
+					
+				</div> <!-- .timescope-container -->
+				
+			</div> <!-- .tasklist -->
+			
+		</div> <!-- .tasklist-container -->
+		
+	</div> <!-- .tasklists-container -->
+	
+	<div class="split-left-options-container">
 		<div class="icon spin-container"><span class="fa fa-cog spin"></span></div>
 		<div class="content">
-			<form action="#" method="post">
-				<ul>
-					<li>
-						<div class="title">Tags</div>
-						<ul>
-							<li>
-								<input type="checkbox" id="tag_none" name="tags[]" value="none" checked="checked" />
-								<label for="tag_none">(no tag)</label>
-								<input type="checkbox" id="tag_school" name="tags[]" value="none" checked="checked" />
-								<label for="tag_school">School</label>
-								<input type="checkbox" id="tag_work" name="tags[]" value="none" checked="checked" />
-								<label for="tag_work">Work</label>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<div class="title">Completed Tasks</div>
-						<ul>
-							<li>
-								<input type="radio" name="completed" id="completed_hidden" value="0" />
-								<label for="completed_hidden">Hidden</label>
-							</li>
-							<li>
-								<input type="radio" name="completed" id="completed_one" value="1" />
-								<label for="completed_one">One</label>
-							</li>
-							<li>
-								<input type="radio" name="completed" id="completed_three" value="3" checked="checked" />
-								<label for="completed_three">Three</label>
-							</li>
-							<li>
-								<input type="radio" name="completed" id="completed_five" value="5" />
-								<label for="completed_five">Five</label>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<div class="title">Date-less Tasks</div>
-						<ul>
-							<li>
-								<input type="radio" name="dateless" id="dateless_hidden" value="hidden" checked="checked" />
-								<label for="dateless_hidden">Hidden</label>
-							</li>
-							<li>
-								<input type="radio" name="dateless" id="dateless_top" value="top" />
-								<label for="dateless_top">At the top</label>
-							</li>
-							<li>
-								<input type="radio" name="dateless" id="dateless_bottom" value="bottom" />
-								<label for="dateless_bottom">At the bottom</label>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<div class="title">Time Scope</div>
-						<ul>
-							<li>
-								<input type="radio" name="time" id="time_days" value="days" checked="checked" />
-								<label for="time_days">Days</label>
-							</li>
-							<li>
-								<input type="radio" name="time" id="time_weeks" value="weeks" />
-								<label for="time_weeks">Weeks</label>
-							</li>
-							<li>
-								<input type="radio" name="time" id="time_months" value="months" />
-								<label for="time_months">Months</label>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				
-				<div class="buttons">
-					<button type="submit"><i class="fa fa-check"></i></button>
-					<div></div>
-					<button type="reset"><i class="fa fa-times"></i></button>
-				</div>
-			</form>
 		</div>
 	</div>
 </div>
+
 <div class="split-right">
 	<div class="page-list">
 		<div class="page-list-date">
@@ -266,7 +135,7 @@
 					</div>
 				</div>
 				
-				<div class="task">
+				<div class="task-more">
 					<div class="subtitle">Description</div>
 					<div class="block">
 						<div class="hint hidden">Nothing to see here...</div>
