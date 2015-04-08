@@ -19,11 +19,26 @@ $timescope-height: 24px;
 }
 
 .tasklists-container {
+	@extend .noselect;
 	padding-bottom: $split-screen-option-height;
+	label {
+		cursor: pointer;
+		display: block;
+	}
 }
 
 .tasklist-tag-container {
 	height: $tag-color-size * 3;
+	font-size: 16px;
+	
+	.visibility {
+		padding: 0 $tag-color-size;
+	}
+	
+	.visibility div,
+	.title {
+		line-height: $tag-color-size * 3;
+	}
 	
 	.tag {
 		float: left;
@@ -40,24 +55,22 @@ $timescope-height: 24px;
 	
 	.title {
 		height: $tag-color-size * 3;
-		width: $tasklist-width - $tag-color-size * 3;
-		padding-right: $tag-color-size;
-		line-height: $tag-color-size * 3;
 		font-weight: bold;
-		
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
 	}
 }
-.timescope-container {
-	label {
-		cursor: pointer;
-	}
+
+.task,
+.timescope {
+	@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 }
 
 .timescope {
 	font-size: 12px;
+	height: $timescope-height;
+	overflow: hidden;
 	
 	.visibility,
 	.count {
@@ -81,16 +94,6 @@ $timescope-height: 24px;
 			content: ')';
 		}
 	}
-	.visibility {
-		float: right;
-		
-		.fa-caret-down {
-			display: block;
-		}
-		.fa-caret-left {
-			display: none;
-		}
-	}
 	.name {
 		text-align: center;
 		overflow: hidden;
@@ -104,8 +107,6 @@ $timescope-height: 24px;
 	white-space: nowrap;
 	overflow: hidden;
 	font-size: 0;
-	
-	@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 	
 	.tag,
 	.body,
@@ -123,11 +124,6 @@ $timescope-height: 24px;
 		width: $task-tag-width;
 		margin-right: -($task-tag-width - $task-tag-color-width);
 		border-left: $task-tag-color-width solid;
-		
-		/* Quick-edit peek */
-		&:hover + .quick-edit {
-			width: $task-height * 3;
-		}
 	}
 
 	
@@ -140,7 +136,7 @@ $timescope-height: 24px;
 				margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
 		
 		&:hover {
-			margin-left: $task-tag-color-width * 2;
+			margin-left: $task-tag-color-width;
 			
 			.title,
 			.hierarchy {
@@ -185,9 +181,32 @@ $timescope-height: 24px;
 		line-height: $task-height;
 		text-align: center;
 	}
+}
+
+.visibility {
+	float: right;
 	
-	&:hover {
-		width: $task-height * 3;
+	.fa-caret-down {
+		display: block;
+	}
+	.fa-caret-left {
+		display: none;
+	}
+}
+
+/* Quick edit peek */
+.quick-edit:hover,
+.task .tag:hover + .quick-edit {
+	width: $task-height * 3;
+}
+
+/* Collapse caret displays */
+.tasklists-container input:checked {
+	+ label .visibility .fa-caret-down {
+		display: none;
+	}
+	+ label .visibility .fa-caret-left {
+		display: block;
 	}
 }
 
@@ -196,10 +215,12 @@ $timescope-height: 24px;
 	~ .task {
 		height: 0;
 	}
-	+ label .visibility .fa-caret-down {
-		display: none;
-	}
-	+ label .visibility .fa-caret-left {
-		display: block;
+}
+
+/* Tag collapse */
+.tasklist-container > input:checked {
+	~ .tasklist .task,
+	~ .tasklist .timescope {
+		height: 0;
 	}
 }

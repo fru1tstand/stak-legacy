@@ -1,18 +1,23 @@
 <div class="split-left">
 	<!-- Multi-tag View -->
 	<div class="tasklists-container">
-	
 		<div class="tasklist-container">
-		
-			<div class="tasklist-tag-container">
-				<div class="tag"><span style="background-color:#99F"></span></div>
-				<div class="title">School tag that's bery long and stuff but doesn't quite make it</div>
-			</div>
+			<input type="checkbox" id="tlc-hash1" class="hidden" />
+			<label for="tlc-hash1">
+				<div class="tasklist-tag-container">
+					<div class="tag"><span style="background-color:#99F"></span></div>
+					<div class="visibility">
+						<div class="fa fa-caret-down"></div>
+						<div class="fa fa-caret-left"></div>
+					</div>
+					<div class="title">School tag that's bery long and stuff but doesn't quite make it</div>
+				</div>
+			</label>
 			
 			<div class="tasklist">
 				<div class="timescope-container">
 					<!-- timescope container Hash1 = MD5("tag: $tagName; ts: $tsContainerName;") -->
-					<input type="checkbox" id="tsc-hash1" class="hidden">
+					<input type="checkbox" id="tsc-hash1" class="hidden" />
 					<label for="tsc-hash1">
 						<div class="timescope">
 							<div class="count">1</div>
