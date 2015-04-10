@@ -6,7 +6,7 @@ use content\IncludeContent;
 
 <html lang="en">
 	<head>
-		<title>Fru1tMe - Homework Thing</title>
+		<title>Fru1tMe - Stak: The Task Tool</title>
 		<meta charset="UTF-8" />
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
 		<link href="/.site/php/css/theme.php" rel="stylesheet" type="text/css">

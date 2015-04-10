@@ -35,7 +35,7 @@
 							<a class="edit" href="#"></a>
 							<a class="delete" href="#"></a>
 						</div>
-						<label class="tasklist-task-controller">
+						<label class="tasklist-task-toggle">
 							<span class="middler"></span>
 							<span class="middle">
 								<span class="title">Some Title that's quite long and annoyiong to deal with even with the special html</span>
@@ -65,7 +65,7 @@
 							<a class="edit" href="#"></a>
 							<a class="delete" href="#"></a>
 						</div>
-						<label class="tasklist-task-controller">
+						<label class="tasklist-task-toggle">
 							<span class="middler"></span>
 							<span class="middle">
 								<span class="title">Giant Music Project</span>
@@ -80,7 +80,7 @@
 							<a class="edit" href="#"></a>
 							<a class="delete" href="#"></a>
 						</div>
-						<label class="tasklist-task-controller">
+						<label class="tasklist-task-toggle">
 							<span class="middler"></span>
 							<span class="middle">
 								<span class="title">Physics Webassign 24 - 40</span>

@@ -82,6 +82,7 @@ $timescope-height: 24px;
 	}
 }
 
+/* Timescope */
 .tasklist-timescope {
 	@extend .transition-height;
 	
@@ -108,6 +109,7 @@ $timescope-height: 24px;
 	}
 }
 
+/* An actual task */
 .tasklist-task {
 	@extend .transition-height;
 	
@@ -117,7 +119,7 @@ $timescope-height: 24px;
 	font-size: 0;
 	
 	> div,
-	.tasklist-task-controller {
+	.tasklist-task-toggle {
 		display: inline-block;
 		vertical-align: top;
 		height: $task-height;
@@ -130,7 +132,8 @@ $timescope-height: 24px;
 	}
 }
 
-.tasklist-task-controller {
+/* Task controller (shows task details) */
+.tasklist-task-toggle {
 	width: $tasklist-width - $task-tag-color-width;
 	padding: 0 $task-tag-space;
 	@include transition(
