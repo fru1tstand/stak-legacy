@@ -8,154 +8,141 @@ $tag-color-size: 14px;
 
 $timescope-height: 24px;
 
+/* Make sure we're all on the same boat */
+.tasklist-viewstyle-container,
 .tasklist-tag-container,
-.tasklists-container,
-.tasklist-container,
-.tasklist,
-.tasklist .task,
-.timescope-container,
-.timescope {
+.tasklist-tag,
+.tasklist-timescope-group,
+.tasklist-task,
+.tasklist-timescope-container,
+.tasklist-timescope {
 	width: $tasklist-width;
 }
 
-.tasklists-container {
+/* Contains an entire viewstyle */
+.tasklist-viewstyle-container {
 	@extend .noselect;
 	padding-bottom: $split-screen-option-height;
-	label {
+	
+	/* Content box? Psh. Fine. Spans it is. */
+	label,
+	label span {
 		cursor: pointer;
 		display: block;
 	}
 }
 
-.tasklist-tag-container {
+/* Input controllers and their respective toggles */
+.tasklist-tag-container-controller,
+.tasklist-timescope-container-controller {
+	display: none; /* But secretly */
+}
+.tasklist-tag-container-toggle,
+.tasklist-tag-container-toggle span,
+.tasklist-timescope-container-toggle,
+.tasklist-timescope-container-toggle span {
+	display: block;
+}
+
+/* Those triangle things that move for visibility */
+.visibility-toggle {
+	@extend .fa;
+	@extend .fa-caret-down;
+	
+	float: right;
+	@include default-transition(transform);
+}
+.tasklist-tag-container-controller:checked + label .visibility-toggle ,
+.tasklist-timescope-container-controller:checked + label .visibility-toggle  {
+	@include transform(rotate(90deg));
+}
+
+/* Container for the tag display and toggle */
+.tasklist-tag,
+.tasklist-tag .visibility-toggle,
+.tasklist-tag .title {
 	height: $tag-color-size * 3;
+	line-height: $tag-color-size * 3;
+}
+.tasklist-tag {
 	font-size: 16px;
 	
-	.visibility {
+	.visibility-toggle {
 		padding: 0 $tag-color-size;
 	}
-	
-	.visibility div,
-	.title {
-		line-height: $tag-color-size * 3;
-	}
-	
 	.tag {
 		float: left;
-		width: $tag-color-size * 3;
-		height: $tag-color-size * 3;
-		padding: $tag-color-size;
-		
-		> span {
-			display: block;
-			width: $tag-color-size;
-			height: $tag-color-size;
-		}
+		margin: $tag-color-size;
+		width: $tag-color-size;
+		height: $tag-color-size;
 	}
-	
 	.title {
-		height: $tag-color-size * 3;
+		@extend .ellipsis;
 		font-weight: bold;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
 	}
 }
 
-.task,
-.timescope {
-	@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
-}
-
-.timescope {
+.tasklist-timescope {
+	@extend .transition-height;
+	
 	font-size: 12px;
 	height: $timescope-height;
 	overflow: hidden;
+	padding: 0 5px;
 	
-	.visibility,
-	.count {
-		padding: 0 5px;
-	}
-	
-	.count,
-	.visibility > div,
-	.name {
+	> span {
 		height: $timescope-height;
 		line-height: $timescope-height;
 	}
-	
 	.count {
 		float: left;
+		font-weight: bold;
 		
-		&:before {
-			content: '(';
-		}
-		&:after {
-			content: ')';
-		}
+		&:before 	{ content: '('; }
+		&:after 	{ content: ')'; }
 	}
 	.name {
+		@extend .ellipsis;
 		text-align: center;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
+		padding: 0 5px;
 	}
 }
 
-.task {
+.tasklist-task {
+	@extend .transition-height;
+	
 	height: $task-height;
 	white-space: nowrap;
 	overflow: hidden;
 	font-size: 0;
 	
-	.tag,
-	.body,
-	.quick-edit {
+	> div,
+	.tasklist-task-controller {
 		display: inline-block;
 		vertical-align: top;
 		height: $task-height;
 	}
-	label {
-		display: block;
-		height: $task-height;
-		width: 100%;
-	}
+	
 	.tag {
 		width: $task-tag-width;
 		margin-right: -($task-tag-width - $task-tag-color-width);
 		border-left: $task-tag-color-width solid;
 	}
+}
 
-	
-	.body {
-		padding: 0 $task-tag-space;
-		width: $tasklist-width - $task-tag-color-width;
+.tasklist-task-controller {
+	width: $tasklist-width - $task-tag-color-width;
+	padding: 0 $task-tag-space;
+	@include transition(
+			background-color 0.2s $default-transition-pattern,
+			margin $default-transition-time $default-transition-pattern);
 		
-		@include transition(
-				background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1),
-				margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
-		
-		&:hover {
-			margin-left: $task-tag-color-width;
-			
-			.title,
-			.hierarchy {
-				width: $tasklist-width 
-						- $task-tag-color-width 
-						- $task-tag-space * 2 
-						- $task-tag-color-width * 2;
-			}
-		}
-	}
-	
 	.title,
 	.hierarchy {
-		width: $tasklist-width - $task-tag-color-width - $task-tag-space * 2;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
+		@extend .ellipsis;
+		@extend .transition-width;
 		
-		@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
+		width: $tasklist-width - $task-tag-color-width - $task-tag-space * 2;
 	}
 	
 	.title {
@@ -163,64 +150,74 @@ $timescope-height: 24px;
 	}
 	.hierarchy {
 		font-size: 10px;
+		
+		i {
+			@extend .fa;
+			@extend .fa-caret-right;
+			padding: 0 3px;
+		}
+	}
+	
+	&:hover {
+		margin-left: $task-tag-color-width;
+		
+		.title,
+		.hierarchy {
+			width: $tasklist-width 
+					- $task-tag-color-width 
+					- $task-tag-space * 2 
+					- $task-tag-color-width * 2;
+		}
 	}
 }
 
-.quick-edit {
+.tasklist-quick-edit {
+	@extend .transition-width;
+	
 	width: 0;
 	overflow: hidden;
 	
-	@include transition(width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1));
-	
-	a {
+	a:link::before,
+	a:visited::before {
 		display: inline-block;
 		width: $task-height;
 		height: $task-height;
-		text-decoration: none;
 		font-size: 24px;
 		line-height: $task-height;
 		text-align: center;
 	}
-}
-
-.visibility {
-	float: right;
 	
-	.fa-caret-down {
-		display: block;
+	.set-complete {
+		@extend .fa;
+		@extend .fa-check-square-o;
 	}
-	.fa-caret-left {
-		display: none;
+	.edit {
+		@extend .fa;
+		@extend .fa-pencil;
+	}
+	.delete {
+		@extend .fa;
+		@extend .fa-trash;
 	}
 }
 
 /* Quick edit peek */
-.quick-edit:hover,
-.task .tag:hover + .quick-edit {
+.tasklist-quick-edit:hover,
+.tasklist-task .tag:hover + .tasklist-quick-edit {
 	width: $task-height * 3;
 }
 
-/* Collapse caret displays */
-.tasklists-container input:checked {
-	+ label .visibility .fa-caret-down {
-		display: none;
-	}
-	+ label .visibility .fa-caret-left {
-		display: block;
-	}
-}
-
 /* Timescope collapse */
-.timescope-container > input:checked {
-	~ .task {
+.tasklist-timescope-container > input:checked {
+	~ .tasklist-task {
 		height: 0;
 	}
 }
 
 /* Tag collapse */
-.tasklist-container > input:checked {
-	~ .tasklist .task,
-	~ .tasklist .timescope {
+.tasklist-tag-container > input:checked {
+	~ .tasklist-timescope-group .tasklist-task,
+	~ .tasklist-timescope-group .tasklist-timescope {
 		height: 0;
 	}
 }

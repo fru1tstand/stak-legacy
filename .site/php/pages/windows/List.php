@@ -1,66 +1,103 @@
 <div class="split-left">
 	<!-- Multi-tag View -->
-	<div class="tasklists-container">
-		<div class="tasklist-container">
-			<input type="checkbox" id="tlc-hash1" class="hidden" />
-			<label for="tlc-hash1">
-				<div class="tasklist-tag-container">
-					<div class="tag"><span style="background-color:#99F"></span></div>
-					<div class="visibility">
-						<div class="fa fa-caret-down"></div>
-						<div class="fa fa-caret-left"></div>
-					</div>
-					<div class="title">School tag that's bery long and stuff but doesn't quite make it</div>
-				</div>
+	<div class="tasklist-viewstyle-container">
+	
+		<div class="tasklist-tag-container">
+			<!-- Controls the entire tag group -->
+			<input class="tasklist-tag-container-controller" type="checkbox" id="tc-hash1" />
+			
+			<label class="tasklist-tag-container-toggle" for="tc-hash1">
+				<span class="tasklist-tag">
+					<span class="tag" style="background-color:#99F"></span>
+					<span class="visibility-toggle"></span>
+					<span class="title">School tag that's very long and stuff but doesn't quite make it</span>
+				</span>
 			</label>
 			
-			<div class="tasklist">
-				<div class="timescope-container">
-					<!-- timescope container Hash1 = MD5("tag: $tagName; ts: $tsContainerName;") -->
-					<input type="checkbox" id="tsc-hash1" class="hidden" />
-					<label for="tsc-hash1">
-						<div class="timescope">
-							<div class="count">1</div>
-							<div class="visibility">
-								<div class="fa fa-caret-down"></div>
-								<div class="fa fa-caret-left"></div>
-							</div>
-							<div class="name">Overdue</div>
-						</div>
+			<div class="tasklist-timescope-group">
+			
+				<div class="tasklist-timescope-container">
+					<!-- Controls this timescope for the tag -->
+					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash1" />
+					
+					<label class="tasklist-timescope-container-toggle" for="tsc-hash1">
+						<span class="tasklist-timescope">
+							<span class="count">1</span>
+							<span class="visibility-toggle"></span>
+							<span class="name">Overdue</span>
+						</span>
 					</label>
 					
-					<div class="task">
+					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
-						<div class="quick-edit">
-							<a href="#">
-								<i class="fa fa-check-square-o"></i>
-							</a>
-							<a href="#">
-								<i class="fa fa-pencil"></i>
-							</a>
-							<a href="#">
-								<i class="fa fa-trash"></i>
-							</a>
+						<div class="tasklist-quick-edit">
+							<a class="set-complete" href="#"></a>
+							<a class="edit" href="#"></a>
+							<a class="delete" href="#"></a>
 						</div>
-						<div class="body">
-							<label>
-								<div class="middler"></div>
-								<div class="middle">
-									<div class="title">Some Title that's quite long and annoyiong to deal with even with the special html</div>
-									<div class="hierarchy">An <i class="fa fa-caret-right"></i> Example</div>
-								</div>
-							</label>
-						</div>
-					</div><!-- .task -->
+						<label class="tasklist-task-controller">
+							<span class="middler"></span>
+							<span class="middle">
+								<span class="title">Some Title that's quite long and annoyiong to deal with even with the special html</span>
+								<span class="hierarchy">An<i></i>Example</span>
+							</span>
+						</label>
+					</div><!-- .tasklist-task -->
 
-					
-				</div> <!-- .timescope-container -->
+				</div> <!-- .tasklist-timescope-container -->
 				
-			</div> <!-- .tasklist -->
-			
-		</div> <!-- .tasklist-container -->
+				<div class="tasklist-timescope-container">
+					<!-- Controls this timescope for the tag -->
+					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash2" />
+					
+					<label class="tasklist-timescope-container-toggle" for="tsc-hash2">
+						<span class="tasklist-timescope">
+							<span class="count">2</span>
+							<span class="visibility-toggle"></span>
+							<span class="name">Today</span>
+						</span>
+					</label>
+					
+					<div class="tasklist-task">
+						<div class="tag" style="border-color: #99F"></div>
+						<div class="tasklist-quick-edit">
+							<a class="set-complete" href="#"></a>
+							<a class="edit" href="#"></a>
+							<a class="delete" href="#"></a>
+						</div>
+						<label class="tasklist-task-controller">
+							<span class="middler"></span>
+							<span class="middle">
+								<span class="title">Giant Music Project</span>
+								<span class="hierarchy hidden"></span>
+							</span>
+						</label>
+					</div><!-- .tasklist-task -->
+					<div class="tasklist-task">
+						<div class="tag" style="border-color: #99F"></div>
+						<div class="tasklist-quick-edit">
+							<a class="set-complete" href="#"></a>
+							<a class="edit" href="#"></a>
+							<a class="delete" href="#"></a>
+						</div>
+						<label class="tasklist-task-controller">
+							<span class="middler"></span>
+							<span class="middle">
+								<span class="title">Physics Webassign 24 - 40</span>
+								<span class="hierarchy">Physics<i></i>Homework<i></i>Webassign</span>
+							</span>
+						</label>
+					</div><!-- .tasklist-task -->
+					
+				</div> <!-- .tasklist-timescope-container -->
+				
+				
+				
+			</div> <!-- .tasklist-timescope-group -->
+
+		</div> <!-- .tasklist-tag-container -->
 		
-	</div> <!-- .tasklists-container -->
+	</div> <!-- .tasklist-viewstyle-container -->
 	
 	<div class="split-left-options-container">
 		<div class="icon spin-container"><span class="fa fa-cog spin"></span></div>

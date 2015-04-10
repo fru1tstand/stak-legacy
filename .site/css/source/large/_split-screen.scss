@@ -1,4 +1,14 @@
 /*********************************************_split-screen.scss*/
+#window-container {
+	margin-top: -$global-menu-tab-height - $global-menu-top-padding;
+	padding-top: $global-menu-tab-height + $global-menu-top-padding;
+	height: 100%;
+	
+	> div {
+		height: 100%;
+	}
+}
+
 .split-left,
 .split-right {
 	height: 100%;

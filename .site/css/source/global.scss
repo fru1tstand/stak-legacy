@@ -1,49 +1,36 @@
 @charset "UTF-8";
-/*
-	IE 7- support? BWAHAHAHAHAhahAHAhaHAhaHahahaHA.
-	No.
-	This is an HTML5 applet. It sure as hell better be treated like one.
-	Spend more time INNOVATING than COMPLYING.
-	- Kodlee, 2015.
+
+/* 
+	We're awesome, so our fonts reflect that. 
+	Font Awesome by Dave Gandy - http://fontawesome.io
 */
-@mixin transition($params...) {
-	-webkit-transition: $params;
-	-moz-transition: $params;
-	transition: $params; 
-}
+// These need to be in a specific order
+@import "font-awesome/variables";
+@import "font-awesome/mixins";
+@import "font-awesome/path";
+@import "font-awesome/core";
+@import "font-awesome/larger";
+@import "font-awesome/fixed-width";
+@import "font-awesome/list";
+@import "font-awesome/bordered-pulled";
+@import "font-awesome/animated";
+@import "font-awesome/rotated-flipped";
+@import "font-awesome/stacked";
+@import "font-awesome/icons";
+@import "font-awesome/fa-extention";
 
-$sidebar-z-index: 1000;
-$split-screen-option-z-index: 900;
-
-$global-menu-top-padding: 15px;
-$global-menu-tab-height: 30px;
-
-$split-screen-option-height: 35px;
-$split-screen-option-extended-height: 450px;
-
-$width-clearance: 18px;
-$width-small: 360px;
-$width-medium: 768px;
-$width-large: 1440px;
-$width-max: 1920px;
-
-ul, ol, h1, h2, h3, h4, h5, h6 {
-	padding: 0;
-	margin: 0;
-}
-
-@import 'fa-extention';
+@import 'variables';
 @import 'template';
 
-/****** Livin' Large */
+// Large!
 /* @media (min-width: $width-large - $width-clearance) { */
-	/* Template items */
+	// Templating items
 	@import 'large/tabs';
 	@import 'large/sidebar';
 	@import 'large/split-screen';
 	@import 'large/tasklist';
 	@import 'large/page-list';
 	
-	/* Customization */
+	// Size-specific tweaks
 	@import 'large/global-header';
 /* } */

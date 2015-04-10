@@ -1,4 +1,6 @@
 /*************************************** template */
+// *** For globaly applicable rules
+
 * {
 	box-sizing: border-box;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -24,29 +26,53 @@ html, body {
 	}
 }
 
+// *** Precise control of spacing
+ul, ol, h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 0;
+}
+
+// *** Everybody hates this
 a {
 	text-decoration: none;
 }
 
-#window-container {
-	margin-top: -$global-menu-tab-height - $global-menu-top-padding;
-	padding-top: $global-menu-tab-height + $global-menu-top-padding;
-	height: 100%;
-	
-	> div {
-		height: 100%;
-	}
-}
-
+// *** Vertically centers stuff
 .middler,
 .middle {
-	display: inline-block;
+	display: inline-block !important;
 	vertical-align: middle;
 }
 .middler {
 	height: 100%;
 }
 
+// *** "Debug"
+.hidden {
+	display: none;
+}
+.clear {
+	clear: both;
+}
+
+// *** Mixins
+@mixin transition($params...) {
+	-webkit-transition: $params;
+	-moz-transition: $params;
+	transition: $params; 
+}
+@mixin default-transition($property) {
+	@include transition($property $default-transition-time $default-transition-pattern);
+}
+
+@mixin transform($params...) {
+	-webkit-transform: $params;
+	-moz-transform: $params;
+	-ms-transform: $params;
+	transform: $params;
+}
+
+// *** Extendables
 .noselect {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -54,10 +80,15 @@ a {
 	-o-user-select: none;
 	user-select: none;  
 }
-
-.hidden {
-	display: none;
+.ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
-.clear {
-	clear: both;
+
+.transition-width {
+	@include default-transition(width);
+}
+.transition-height {
+	@include default-transition(height);
 }
