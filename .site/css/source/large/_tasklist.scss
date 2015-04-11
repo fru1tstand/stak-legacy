@@ -8,6 +8,12 @@ $tag-color-size: 14px;
 
 $timescope-height: 24px;
 
+/* Useful for later... */
+.tasklist-transition-group {
+	@include transition(height $default-transition-time $default-transition-pattern,
+			background-color 0.2s $default-transition-pattern);
+}
+
 /* Make sure we're all on the same boat */
 .tasklist-viewstyle-container,
 .tasklist-tag-container,
@@ -65,6 +71,8 @@ $timescope-height: 24px;
 	line-height: $tag-color-size * 3;
 }
 .tasklist-tag {
+	@extend .tasklist-transition-group;
+	
 	font-size: 16px;
 	
 	.visibility-toggle {
@@ -84,7 +92,7 @@ $timescope-height: 24px;
 
 /* Timescope */
 .tasklist-timescope {
-	@extend .transition-height;
+	@extend .tasklist-transition-group;
 	
 	font-size: 12px;
 	height: $timescope-height;
@@ -111,7 +119,7 @@ $timescope-height: 24px;
 
 /* An actual task */
 .tasklist-task {
-	@extend .transition-height;
+	@extend .tasklist-transition-group;
 	
 	height: $task-height;
 	white-space: nowrap;
@@ -134,11 +142,10 @@ $timescope-height: 24px;
 
 /* Task controller (shows task details) */
 .tasklist-task-toggle {
+	@extend .transition-margin;
+	
 	width: $tasklist-width - $task-tag-color-width;
 	padding: 0 $task-tag-space;
-	@include transition(
-			background-color 0.2s $default-transition-pattern,
-			margin $default-transition-time $default-transition-pattern);
 		
 	.title,
 	.hierarchy {
@@ -174,14 +181,18 @@ $timescope-height: 24px;
 	}
 }
 
-.tasklist-quick-edit {
+.tasklist-quickedit {
 	@extend .transition-width;
 	
 	width: 0;
 	overflow: hidden;
 	
-	a:link::before,
-	a:visited::before {
+	a {
+		@extend .tasklist-transition-group;
+		@extend .fa;
+	}
+	
+	a::before {
 		display: inline-block;
 		width: $task-height;
 		height: $task-height;
@@ -191,22 +202,22 @@ $timescope-height: 24px;
 	}
 	
 	.set-complete {
-		@extend .fa;
-		@extend .fa-check-square-o;
+		@extend .fa-check;
+	}
+	.set-uncomplete {
+		@extend .fa-times;
 	}
 	.edit {
-		@extend .fa;
 		@extend .fa-pencil;
 	}
 	.delete {
-		@extend .fa;
 		@extend .fa-trash;
 	}
 }
 
 /* Quick edit peek */
-.tasklist-quick-edit:hover,
-.tasklist-task .tag:hover + .tasklist-quick-edit {
+.tasklist-quickedit:hover,
+.tasklist-task .tag:hover + .tasklist-quickedit {
 	width: $task-height * 3;
 }
 

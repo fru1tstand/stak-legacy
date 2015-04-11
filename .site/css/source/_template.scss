@@ -92,3 +92,6 @@ a {
 .transition-height {
 	@include default-transition(height);
 }
+.transition-margin {
+	@include default-transition(margin);
+}

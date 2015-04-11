@@ -45,7 +45,6 @@ $listpageInfobarStatsBorder = "#FFF";
 $listpageInfobarStats = "#000";
 $listpageInfobarStatsSeparator = "#CCC";
 
-namespace hide;
 //Anything before
 echo <<<CSS
 @charset "UTF-8";
@@ -125,9 +124,73 @@ globalheader;
 /**
  * Task List
  */
+$tasklistTagText = "#000";
+$tasklistTagBackground = "transparent";
+$tasklistTagTextHover = "#000";
+$tasklistTagBackgroundHover = "#E0E0E0";
 
+$tasklistTimescopeText = "#000";
+$tasklistTimescopeBackground = "#F0F0F0";
+$tasklistTimescopeTextHover = "#000";
+$tasklistTimescopeBackgroundHover = "#E0E0E0";
+
+$tasklistTaskText = "#000";
+$tasklistTaskBackground = "transparent";
+$tasklistTaskTextHover = "#000";
+$tasklistTaskBackgroundHover = "#E0E0E0";
+
+$tasklistTaskCompleteText = "#999";
+$tasklistTaskCompleteBackground = "#F3F3F3";
+$tasklistTaskCompleteTextHover = "#999";
+$tasklistTaskCompleteBackgroundHover = "#F3F3F3";
+
+$tasklistQuickeditIcon = "#99F";
+$tasklistQuickeditBackground = "#transparent";
+$tasklistQuickeditIconHover = "#99F";
+$tasklistQuickeditBackgroundHover = "#FFF";
 echo <<<tasklist
-
+.tasklist-tag {
+	color: $tasklistTagText;
+	background-color: $tasklistTagBackground;
+}
+.tasklist-tag:hover {
+	color: $tasklistTagTextHover;
+	background-color: $tasklistTagBackgroundHover;
+}
+.tasklist-timescope {
+	color: $tasklistTimescopeText;
+	background-color: $tasklistTimescopeBackground;
+}
+.tasklist-timescope:hover {
+	color: $tasklistTimescopeTextHover;
+	background-color: $tasklistTimescopeBackgroundHover;
+}
+.tasklist-task {
+	color: $tasklistTaskText;
+	background-color: $tasklistTaskBackground;
+}
+.tasklist-task.complete {
+	color: $tasklistTaskCompleteText;
+	background-color: $tasklistTaskCompleteBackground;
+}
+.tasklist-task:hover {
+	color: $tasklistTaskTextHover;
+	background-color: $tasklistTaskBackgroundHover;
+}
+.tasklist-task.complete:hover {
+	color: $tasklistTaskCompleteTextHover;
+	background-color: $tasklistTaskCompleteBackgroundHover;
+}
+.tasklist-quickedit a:link,
+.tasklist-quickedit a:visited {
+	color: $tasklistQuickeditIcon;
+	background-color: $tasklistQuickeditBackground;
+}
+.tasklist-quickedit a:hover,
+.tasklist-quickedit a:active {
+	color: $tasklistQuickeditIconHover;
+	background-color: $tasklistQuickeditBackgroundHover;
+}
 tasklist;
 
 /**

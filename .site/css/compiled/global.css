@@ -11,7 +11,7 @@
   src: url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.fa, .visibility-toggle, .tasklist-task-toggle .hierarchy i, .tasklist-quick-edit .set-complete, .tasklist-quick-edit .edit, .tasklist-quick-edit .delete {
+.fa, .visibility-toggle, .tasklist-task-toggle .hierarchy i, .tasklist-quickedit a {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -69,9 +69,9 @@
 .pull-left {
   float: left; }
 
-.fa.pull-left, .pull-left.visibility-toggle, .tasklist-task-toggle .hierarchy i.pull-left, .tasklist-quick-edit .pull-left.set-complete, .tasklist-quick-edit .pull-left.edit, .tasklist-quick-edit .pull-left.delete {
+.fa.pull-left, .pull-left.visibility-toggle, .tasklist-task-toggle .hierarchy i.pull-left, .tasklist-quickedit a.pull-left {
   margin-right: .3em; }
-.fa.pull-right, .pull-right.visibility-toggle, .tasklist-task-toggle .hierarchy i.pull-right, .tasklist-quick-edit .pull-right.set-complete, .tasklist-quick-edit .pull-right.edit, .tasklist-quick-edit .pull-right.delete {
+.fa.pull-right, .pull-right.visibility-toggle, .tasklist-task-toggle .hierarchy i.pull-right, .tasklist-quickedit a.pull-right {
   margin-left: .3em; }
 
 .fa-spin {
@@ -194,12 +194,13 @@
 .fa-th-list:before {
   content: ""; }
 
-.fa-check:before {
+.fa-check:before, .tasklist-quickedit .set-complete:before {
   content: ""; }
 
 .fa-remove:before,
 .fa-close:before,
-.fa-times:before {
+.fa-times:before,
+.tasklist-quickedit .set-uncomplete:before {
   content: ""; }
 
 .fa-search-plus:before {
@@ -345,7 +346,7 @@
 .fa-picture-o:before {
   content: ""; }
 
-.fa-pencil:before, .tasklist-quick-edit .edit:before {
+.fa-pencil:before, .tasklist-quickedit .edit:before {
   content: ""; }
 
 .fa-map-marker:before {
@@ -364,7 +365,7 @@
 .fa-share-square-o:before {
   content: ""; }
 
-.fa-check-square-o:before, .tasklist-quick-edit .set-complete:before {
+.fa-check-square-o:before {
   content: ""; }
 
 .fa-arrows:before {
@@ -1606,7 +1607,7 @@
 .fa-bell-slash-o:before {
   content: ""; }
 
-.fa-trash:before, .tasklist-quick-edit .delete:before {
+.fa-trash:before, .tasklist-quickedit .delete:before {
   content: ""; }
 
 .fa-copyright:before {
@@ -1847,15 +1848,20 @@ a {
   overflow: hidden; }
 
 .transition-width, .tasklist-task-toggle .title,
-.tasklist-task-toggle .hierarchy, .tasklist-quick-edit {
+.tasklist-task-toggle .hierarchy, .tasklist-quickedit {
   -webkit-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
 
-.transition-height, .tasklist-timescope, .tasklist-task {
+.transition-height {
   -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+
+.transition-margin, .tasklist-task-toggle {
+  -webkit-transition: margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+  -moz-transition: margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+  transition: margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
 
 /* @media (min-width: $width-large - $width-clearance) { */
 .tabs ul {
@@ -1940,6 +1946,12 @@ a {
     -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
     transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s;
     height: 450px; }
+
+/* Useful for later... */
+.tasklist-transition-group, .tasklist-tag, .tasklist-timescope, .tasklist-task, .tasklist-quickedit a {
+  -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1);
+  -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1);
+  transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1); }
 
 /* Make sure we're all on the same boat */
 .tasklist-viewstyle-container,
@@ -2044,10 +2056,7 @@ a {
 /* Task controller (shows task details) */
 .tasklist-task-toggle {
   width: 352px;
-  padding: 0 8px;
-  -webkit-transition: background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1), margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-  -moz-transition: background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1), margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
-  transition: background-color 0.2s cubic-bezier(0.3, 0.3, 0.02, 1), margin 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
+  padding: 0 8px; }
   .tasklist-task-toggle .title,
   .tasklist-task-toggle .hierarchy {
     width: 336px; }
@@ -2063,11 +2072,10 @@ a {
     .tasklist-task-toggle:hover .hierarchy {
       width: 320px; }
 
-.tasklist-quick-edit {
+.tasklist-quickedit {
   width: 0;
   overflow: hidden; }
-  .tasklist-quick-edit a:link::before,
-  .tasklist-quick-edit a:visited::before {
+  .tasklist-quickedit a::before {
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -2076,8 +2084,8 @@ a {
     text-align: center; }
 
 /* Quick edit peek */
-.tasklist-quick-edit:hover,
-.tasklist-task .tag:hover + .tasklist-quick-edit {
+.tasklist-quickedit:hover,
+.tasklist-task .tag:hover + .tasklist-quickedit {
   width: 180px; }
 
 /* Timescope collapse */

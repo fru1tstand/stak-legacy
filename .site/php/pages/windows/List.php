@@ -30,7 +30,7 @@
 					
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
-						<div class="tasklist-quick-edit">
+						<div class="tasklist-quickedit">
 							<a class="set-complete" href="#"></a>
 							<a class="edit" href="#"></a>
 							<a class="delete" href="#"></a>
@@ -58,10 +58,10 @@
 						</span>
 					</label>
 					
-					<div class="tasklist-task">
+					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #99F"></div>
-						<div class="tasklist-quick-edit">
-							<a class="set-complete" href="#"></a>
+						<div class="tasklist-quickedit">
+							<a class="set-uncomplete" href="#"></a>
 							<a class="edit" href="#"></a>
 							<a class="delete" href="#"></a>
 						</div>
@@ -75,7 +75,7 @@
 					</div><!-- .tasklist-task -->
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
-						<div class="tasklist-quick-edit">
+						<div class="tasklist-quickedit">
 							<a class="set-complete" href="#"></a>
 							<a class="edit" href="#"></a>
 							<a class="delete" href="#"></a>

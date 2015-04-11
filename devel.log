@@ -6,7 +6,14 @@ It will list things such as:
 
 ***************************************************************************************************
 
-Add single tag list view 
-	Create single tag selector (dropdown from ul)
+List view
+	Create single tag mode
+		Create single tag selector (dropdown from ul)
+	
+	Create single list mode (all tags merged together)
+	
+	Add tasklist options
+		Spacing
+		Hide complete tasks
 		
 Add buttons to task details
