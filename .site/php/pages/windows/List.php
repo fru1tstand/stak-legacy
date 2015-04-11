@@ -31,9 +31,9 @@
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
-							<a class="set-complete" href="#"></a>
-							<a class="edit" href="#"></a>
-							<a class="delete" href="#"></a>
+							<a href="#"><i class="complete"></i></a>
+							<a href="#"><i class="edit"></i></a>
+							<a href="#"><i class="delete"></i></a>
 						</div>
 						<label class="tasklist-task-toggle">
 							<span class="middler"></span>
@@ -61,9 +61,9 @@
 					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
-							<a class="set-uncomplete" href="#"></a>
-							<a class="edit" href="#"></a>
-							<a class="delete" href="#"></a>
+							<a href="#"><i class="uncomplete"></i></a>
+							<a href="#"><i class="edit"></i></a>
+							<a href="#"><i class="delete"></i></a>
 						</div>
 						<label class="tasklist-task-toggle">
 							<span class="middler"></span>
@@ -76,9 +76,9 @@
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
-							<a class="set-complete" href="#"></a>
-							<a class="edit" href="#"></a>
-							<a class="delete" href="#"></a>
+							<a href="#"><i class="complete"></i></a>
+							<a href="#"><i class="edit"></i></a>
+							<a href="#"><i class="delete"></i></a>
 						</div>
 						<label class="tasklist-task-toggle">
 							<span class="middler"></span>

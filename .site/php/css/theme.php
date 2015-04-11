@@ -142,7 +142,7 @@ $tasklistTaskBackgroundHover = "#E0E0E0";
 $tasklistTaskCompleteText = "#999";
 $tasklistTaskCompleteBackground = "#F3F3F3";
 $tasklistTaskCompleteTextHover = "#999";
-$tasklistTaskCompleteBackgroundHover = "#F3F3F3";
+$tasklistTaskCompleteBackgroundHover = "#E0E0E0";
 
 $tasklistQuickeditIcon = "#99F";
 $tasklistQuickeditBackground = "#transparent";
