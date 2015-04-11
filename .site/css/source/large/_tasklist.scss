@@ -244,7 +244,7 @@ $timescope-height: 24px;
 		@extend .fa-times;
 		
 		&::after {
-			content: "unfinished";
+			content: "un-complete";
 		}
 	}
 	.edit {

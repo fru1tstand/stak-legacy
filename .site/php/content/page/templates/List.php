@@ -1,3 +1,14 @@
+<?php 
+namespace content\page\templates;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/utils/Autoload.php';
+use content\IncludePage;
+
+
+//Make sure we're being loaded from a proper source
+if (!IncludePage::validate()) return;
+
+?>
+
 <div class="split-left">
 	<!-- Multi-tag View -->
 	<div class="tasklist-viewstyle-container">

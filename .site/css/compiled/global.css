@@ -2111,7 +2111,7 @@ a {
   .tasklist-quickedit .complete::after {
     content: "complete"; }
   .tasklist-quickedit .uncomplete::after {
-    content: "unfinished"; }
+    content: "un-complete"; }
   .tasklist-quickedit .edit::after {
     content: "edit"; }
   .tasklist-quickedit .delete::after {

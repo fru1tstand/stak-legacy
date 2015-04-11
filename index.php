@@ -1,15 +1,18 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/source/Autoload.php';
-use content\IncludeContent;
+<?php 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/utils/Autoload.php';
+use content\IncludePage;
+
+
 ?>
 
 <!DOCTYPE html>
 
 <html lang="en">
 	<head>
-		<title>Fru1tMe - Stak: The Task Tool</title>
 		<meta charset="UTF-8" />
+		<title>Fru1tMe - Stak: The Task Whatcham'callit</title>
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
-		<link href="/.site/php/css/theme.php" rel="stylesheet" type="text/css">
+		<link href="/.site/php/content/css/theme.php" rel="stylesheet" type="text/css">
 	</head>
 	
 	<body>
@@ -52,7 +55,7 @@ use content\IncludeContent;
 		<div id="window-container">
 			<div>
 				<?php 
-					IncludeContent::ListWindow();
+					IncludePage::ListTemplate();
 				?>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <?php
-namespace css;
+namespace content\css;
 
 header("content-type: text/css");
 
