@@ -1853,7 +1853,7 @@ a {
   -moz-transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   transition: width 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
 
-.transition-height {
+.transition-height, .tasklist-tag-container-toggle {
   -webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   -moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1); }
@@ -1974,7 +1974,8 @@ a {
 
 /* Input controllers and their respective toggles */
 .tasklist-tag-container-controller,
-.tasklist-timescope-container-controller {
+.tasklist-timescope-container-controller,
+.tasklist-tag-option-controller {
   display: none;
   /* But secretly */ }
 
@@ -2000,15 +2001,21 @@ a {
 
 /* Container for the tag display and toggle */
 .tasklist-tag,
+.tasklist-tag-container-toggle,
 .tasklist-tag .visibility-toggle,
 .tasklist-tag .title {
   height: 42px;
-  line-height: 42px; }
+  line-height: 42px;
+  overflow: hidden; }
 
 .tasklist-tag {
   font-size: 16px; }
   .tasklist-tag .visibility-toggle {
     padding: 0 14px; }
+  .tasklist-tag .spacer {
+    float: right;
+    width: 14px;
+    height: 42px; }
   .tasklist-tag .tag {
     float: left;
     margin: 14px;
@@ -2129,6 +2136,11 @@ a {
 /* Tag collapse */
 .tasklist-tag-container > input:checked ~ .tasklist-timescope-group .tasklist-task,
 .tasklist-tag-container > input:checked ~ .tasklist-timescope-group .tasklist-timescope {
+  height: 0; }
+
+.tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container .tasklist-tag-container-toggle,
+.tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container .tasklist-task,
+.tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container .tasklist-timescope {
   height: 0; }
 
 .page-list {

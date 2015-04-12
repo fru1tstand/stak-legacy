@@ -40,7 +40,8 @@ $timescope-height: 24px;
 
 /* Input controllers and their respective toggles */
 .tasklist-tag-container-controller,
-.tasklist-timescope-container-controller {
+.tasklist-timescope-container-controller,
+.tasklist-tag-option-controller {
 	display: none; /* But secretly */
 }
 .tasklist-tag-container-toggle,
@@ -65,10 +66,12 @@ $timescope-height: 24px;
 
 /* Container for the tag display and toggle */
 .tasklist-tag,
+.tasklist-tag-container-toggle,
 .tasklist-tag .visibility-toggle,
 .tasklist-tag .title {
 	height: $tag-color-size * 3;
 	line-height: $tag-color-size * 3;
+	overflow: hidden;
 }
 .tasklist-tag {
 	@extend .tasklist-transition-group;
@@ -77,6 +80,11 @@ $timescope-height: 24px;
 	
 	.visibility-toggle {
 		padding: 0 $tag-color-size;
+	}
+	.spacer {
+		float: right;
+		width: $tag-color-size;
+		height: $tag-color-size * 3;
 	}
 	.tag {
 		float: left;
@@ -283,3 +291,16 @@ $timescope-height: 24px;
 		height: 0;
 	}
 }
+
+//Single tag mode styles
+.tasklist-tag-container-toggle {
+	@extend .transition-height;
+}
+.tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container {
+	.tasklist-tag-container-toggle,
+	.tasklist-task,
+	.tasklist-timescope {
+		height: 0;
+	}
+}
+

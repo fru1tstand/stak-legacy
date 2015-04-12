@@ -11,8 +11,8 @@ if (!IncludePage::validate()) return;
 ?>
 
 <div class="split-left">
-
-	<?php TasklistStyleGenerator::singleListMode(); ?>
+	
+	<?php TasklistStyleGenerator::singleTagMode(); ?>
 	
 	<div class="split-left-options-container">
 		<div class="icon spin-container"><span class="fa fa-cog spin"></span></div>
