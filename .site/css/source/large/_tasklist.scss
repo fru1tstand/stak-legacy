@@ -51,13 +51,19 @@ $timescope-height: 24px;
 	display: block;
 }
 
-/* Those triangle things that move for visibility */
-.visibility-toggle {
+/* Those triangle things that change direction for visibility */
+.visibility-toggle,
+.options-toggle {
 	@extend .fa;
-	@extend .fa-caret-down;
-	
 	float: right;
+	
 	@include default-transition(transform);
+}
+.visibility-toggle {
+	@extend .fa-caret-down;
+}
+.options-toggle {
+	@extend .fa-caret-down;
 }
 .tasklist-tag-container-controller:checked + label .visibility-toggle ,
 .tasklist-timescope-container-controller:checked + label .visibility-toggle  {
@@ -68,7 +74,9 @@ $timescope-height: 24px;
 .tasklist-tag,
 .tasklist-tag-container-toggle,
 .tasklist-tag .visibility-toggle,
-.tasklist-tag .title {
+.tasklist-tag .options-toggle,
+.tasklist-tag .title,
+.tasklist-tag .spacer {
 	height: $tag-color-size * 3;
 	line-height: $tag-color-size * 3;
 	overflow: hidden;
@@ -78,13 +86,13 @@ $timescope-height: 24px;
 	
 	font-size: 16px;
 	
-	.visibility-toggle {
+	.visibility-toggle,
+	.options-toggle {
 		padding: 0 $tag-color-size;
 	}
 	.spacer {
 		float: right;
 		width: $tag-color-size;
-		height: $tag-color-size * 3;
 	}
 	.tag {
 		float: left;
@@ -292,10 +300,11 @@ $timescope-height: 24px;
 	}
 }
 
-//Single tag mode styles
+/* Single tag mode */
 .tasklist-tag-container-toggle {
 	@extend .transition-height;
 }
+/* Hide non-activated tags */
 .tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container {
 	.tasklist-tag-container-toggle,
 	.tasklist-task,

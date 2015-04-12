@@ -11,7 +11,8 @@
   src: url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("//netdna.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-.fa, .visibility-toggle, .tasklist-task-toggle .hierarchy i, .tasklist-quickedit i {
+.fa, .visibility-toggle,
+.options-toggle, .tasklist-task-toggle .hierarchy i, .tasklist-quickedit i {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -69,9 +70,11 @@
 .pull-left {
   float: left; }
 
-.fa.pull-left, .pull-left.visibility-toggle, .tasklist-task-toggle .hierarchy i.pull-left, .tasklist-quickedit i.pull-left {
+.fa.pull-left, .pull-left.visibility-toggle,
+.pull-left.options-toggle, .tasklist-task-toggle .hierarchy i.pull-left, .tasklist-quickedit i.pull-left {
   margin-right: .3em; }
-.fa.pull-right, .pull-right.visibility-toggle, .tasklist-task-toggle .hierarchy i.pull-right, .tasklist-quickedit i.pull-right {
+.fa.pull-right, .pull-right.visibility-toggle,
+.pull-right.options-toggle, .tasklist-task-toggle .hierarchy i.pull-right, .tasklist-quickedit i.pull-right {
   margin-left: .3em; }
 
 .fa-spin {
@@ -749,7 +752,7 @@
 .fa-money:before {
   content: ""; }
 
-.fa-caret-down:before, .visibility-toggle:before {
+.fa-caret-down:before, .visibility-toggle:before, .options-toggle:before {
   content: ""; }
 
 .fa-caret-up:before {
@@ -1985,8 +1988,9 @@ a {
 .tasklist-timescope-container-toggle span {
   display: block; }
 
-/* Those triangle things that move for visibility */
-.visibility-toggle {
+/* Those triangle things that change direction for visibility */
+.visibility-toggle,
+.options-toggle {
   float: right;
   -webkit-transition: transform 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
   -moz-transition: transform 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
@@ -2003,19 +2007,21 @@ a {
 .tasklist-tag,
 .tasklist-tag-container-toggle,
 .tasklist-tag .visibility-toggle,
-.tasklist-tag .title {
+.tasklist-tag .options-toggle,
+.tasklist-tag .title,
+.tasklist-tag .spacer {
   height: 42px;
   line-height: 42px;
   overflow: hidden; }
 
 .tasklist-tag {
   font-size: 16px; }
-  .tasklist-tag .visibility-toggle {
+  .tasklist-tag .visibility-toggle,
+  .tasklist-tag .options-toggle {
     padding: 0 14px; }
   .tasklist-tag .spacer {
     float: right;
-    width: 14px;
-    height: 42px; }
+    width: 14px; }
   .tasklist-tag .tag {
     float: left;
     margin: 14px;
@@ -2138,6 +2144,8 @@ a {
 .tasklist-tag-container > input:checked ~ .tasklist-timescope-group .tasklist-timescope {
   height: 0; }
 
+/* Single tag mode */
+/* Hide non-activated tags */
 .tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container .tasklist-tag-container-toggle,
 .tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container .tasklist-task,
 .tasklist-tag-option-controller:not(:checked) + .tasklist-tag-container .tasklist-timescope {
