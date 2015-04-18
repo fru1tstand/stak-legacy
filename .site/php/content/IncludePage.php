@@ -23,7 +23,7 @@ class IncludePage {
 	// *** Templates
 	public static function ListTemplate() {
 		self::$validation = true;
-		include \PHP_CONTENT_PATH . "/page/templates/List.php";
+		include PHP_PATH . "/content/page/templates/List.php";
 	}
 }
 ?>

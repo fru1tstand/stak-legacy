@@ -5,10 +5,9 @@
  */
 
 define("PHP_PATH", $_SERVER['DOCUMENT_ROOT'] . '/.site/php', false);
-define("PHP_CONTENT_PATH", PHP_PATH . "/content");
 define("STAK_SESSION_NAME", "me-fru1t-stak");
 
-//Auto-includes classes that aren't known to the interpreter at runtime.
+// Auto-includes classes that aren't known to the interpreter at runtime.
 spl_autoload_register(function($className) {
 	//So we don't need to worry about window-linux directory-ing
 	$className = str_replace("\\", "/", $className);
@@ -18,6 +17,11 @@ spl_autoload_register(function($className) {
 // Placing these here AFTER the autoload definition.
 use core\Settings;
 use data\Session;
+
+// Set up dependency injection modules with the settings. Also set settings instance.
+$settings = new \core\MockSettings();
+Settings::setInstance($settings);
+$settings->setup();
 
 if (true) {
 	spl_autoload_register(function($className) {
