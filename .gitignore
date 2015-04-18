@@ -8,3 +8,4 @@ apache_error.log
 .externalToolBuilders/
 .gitignore
 build.xml
+.idea/

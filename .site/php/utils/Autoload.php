@@ -1,6 +1,6 @@
 <?php
 namespace utils;
-
+use pagedata\Session;
 
 /**
  * This file serves as an overarching container for the site. It provides a means of
@@ -20,5 +20,5 @@ spl_autoload_register(function($className) {
 });
 
 //Starts the session
-\pagedata\Session::start(STAK_SESSION_NAME);
+Session::start(STAK_SESSION_NAME);
 ?>
