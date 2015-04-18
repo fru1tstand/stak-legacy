@@ -11,5 +11,9 @@ List view
 		Spacing
 		Hide complete tasks
 		Toggle style view
-		
+
 Add buttons to task details
+
+Add testing framework
+	Create unit tests for Tag
+	Create unit tests for Task

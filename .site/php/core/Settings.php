@@ -2,22 +2,46 @@
 namespace core;
 
 /**
- * Contains... well... static settings.
+ * Defines settings for an instance of stak
  * @package core
  */
-class Settings {
+abstract class Settings {
+
+	/* @var Settings */
+	private static $settings;
+
+	public static function setInstance(Settings $settings) {
+		self::$settings = $settings;
+	}
+
+
+	// I provide a wrapper so that we're not passing a variable down the line. Cleaner seeing
+	// Settings::* than $settings->* and having the possibility of writing over $settings.
+	public static function getEnableDebug() {
+		return self::$settings->enableDebug();
+	}
+
+	public static function getIncludeTests() {
+		return self::$settings->includeTests();
+	}
+
+
+	// Implementor methods
 	/**
-	 * Set to true to enable debug mode. Enables debug message storage.
-	 *
-	 * Production: false
+	 * Sets up dependencies
 	 */
-	const DEBUG = true;
+	public abstract function setup();
 
 	/**
-	 * Set to true to enable inclusion of testing folders. (We don't want mocks and other tests
-	 * inside our production environment)
-	 *
-	 * Production false
+	 * Enables debugging mode which allows debug messages to be stored.
+	 * @return bool
 	 */
-	const INCLUDE_TESTS = true;
+	protected abstract function enableDebug();
+
+	/**
+	 * Set to true to enable inclusion of test folders. (We don't want mocks and other testing
+	 * files in production)
+	 * @return bool
+	 */
+	protected abstract function includeTests();
 }

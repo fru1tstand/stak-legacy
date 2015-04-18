@@ -1,10 +1,7 @@
 <?php
-namespace utils;
-
 /**
- * This file serves as an overarching container for the site. It provides a means of
- * auto-loading dependencies, as well as starting the session, etc. It is included
- * in every PHP file.
+ * This file serves as an init file. It provides missing dependencies and sets up sessions,
+ * constants, etc before any other php script runs. It is included in every PHP file.
  */
 
 define("PHP_PATH", $_SERVER['DOCUMENT_ROOT'] . '/.site/php', false);
@@ -20,9 +17,9 @@ spl_autoload_register(function($className) {
 
 // Placing these here AFTER the autoload definition.
 use core\Settings;
-use pagedata\Session;
+use data\Session;
 
-if (Settings::INCLUDE_TESTS) {
+if (true) {
 	spl_autoload_register(function($className) {
 		$className = str_replace("\\", "/", $className);
 		include_once(PHP_PATH . "tests/" . $className . ".php");
@@ -31,4 +28,3 @@ if (Settings::INCLUDE_TESTS) {
 
 // Start the stak session
 Session::start(STAK_SESSION_NAME);
-?>

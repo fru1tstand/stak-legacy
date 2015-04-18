@@ -2,7 +2,7 @@
 namespace stak;
 use core\Response;
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/utils/Autoload.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/Autoload.php";
 
 abstract class Tag {
 	// Constants

@@ -1,7 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/utils/Autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/Autoload.php';
 use content\IncludePage;
-
 
 ?>
 
@@ -42,7 +41,7 @@ use content\IncludePage;
 			<div class="tabs" id="global-tabs">
 				<!--
 					Whitespace fix for "display: inline-block;" elements
-					*See code/inline-block-whitespace
+					*See http://fru1t.me/code/inline-block-whitespace
 				-->
 				<ul class="collapse-hidden"
 					><li class="window-open" data-window="list">List</li

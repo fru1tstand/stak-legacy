@@ -1,6 +1,6 @@
 <?php
 namespace stak;
-require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/utils/Autoload.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/Autoload.php";
 use core\Response;
 
 /**

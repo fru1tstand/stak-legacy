@@ -1,6 +1,6 @@
 <?php
 namespace core;
-require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/utils/Autoload.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/Autoload.php";
 
 /**
  * Provides a way for a function to provide more detail than a simple boolean response. As a
