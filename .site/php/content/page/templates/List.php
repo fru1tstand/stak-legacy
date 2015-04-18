@@ -1,8 +1,8 @@
-<?php 
+<?php
 namespace content\page\templates;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/utils/Autoload.php';
 use content\IncludePage;
-use content\page\generators\TasklistStyleGenerator;
+use content\page\processors\ListProcessor;
 
 
 //Make sure we're being loaded from a proper source
@@ -11,9 +11,9 @@ if (!IncludePage::validate()) return;
 ?>
 
 <div class="split-left">
-	
-	<?php TasklistStyleGenerator::singleTagMode(); ?>
-	
+
+	<?php ListProcessor::singleTagMode(); ?>
+
 	<div class="split-left-options-container">
 		<div class="icon spin-container"><span class="fa fa-cog spin"></span></div>
 		<div class="content">
@@ -29,11 +29,11 @@ if (!IncludePage::validate()) return;
 				<div class="dow">Wednesday</div> <div class="time">12:00 PM</div>
 			</div>
 		</div>
-		
+
 		<div class="page-list-details">
 			<!-- No Task -->
 			<div class="hint hidden">No task selected. Click one to see details.</div>
-			
+
 			<!-- Task -->
 			<div class="">
 				<div class="title">Giant music project that comes close to exceeding two linel l</div>
@@ -54,7 +54,7 @@ if (!IncludePage::validate()) return;
 					</ul>
 				</div>
 				<div class="clear"></div>
-				
+
 				<div class="page-list-infobar">
 					<div class="header">Due</div>
 					<div class="date-container">
@@ -62,14 +62,14 @@ if (!IncludePage::validate()) return;
 						<div class="dow">Thursday</div> <div class="time">1:15 PM</div>
 						<div class="clear"></div>
 					</div>
-					
+
 					<div class="header">Completed</div>
 					<div class="date-container">
 						<div class="date">September 30th, 2015</div>
 						<div class="dow">Friday</div> <div class="time">2:14 AM</div>
 						<div class="clear"></div>
 					</div>
-					
+
 					<div class="stats">
 						<ul>
 							<li>
@@ -91,7 +91,7 @@ if (!IncludePage::validate()) return;
 						</ul>
 					</div>
 				</div>
-				
+
 				<div class="task-more">
 					<div class="subtitle">Description</div>
 					<div class="block">
@@ -103,10 +103,10 @@ if (!IncludePage::validate()) return;
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="page-list-push"></div>
 	</div>
 	<div class="page-list-footer">
-		
+
 	</div>
 </div>

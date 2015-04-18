@@ -1,24 +1,24 @@
-<?php 
-namespace content\page\generators;
+<?php
+namespace content\page\processors;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/utils/Autoload.php';
 
 
-class TasklistStyleGenerator {
-	
+class ListProcessor {
+
 	/**
 	 * Multi-tag mode. Each tag has its own tasklist and timescopes. All tags are displayed within
 	 * the viewstyle container.
 	 */
 	public static function multiTagMode() {
-		
+
 echo <<<multitag
 	<!-- Multi-tag View -->
 	<div class="tasklist-viewstyle-container">
-	
+
 		<div class="tasklist-tag-container">
 			<!-- Controls the entire tag group -->
 			<input class="tasklist-tag-container-controller" type="checkbox" id="tc-hash1" />
-			
+
 			<label class="tasklist-tag-container-toggle" for="tc-hash1">
 				<span class="tasklist-tag">
 					<span class="tag" style="background-color:#99F"></span>
@@ -26,13 +26,13 @@ echo <<<multitag
 					<span class="title">School tag that's very long and stuff but doesn't quite make it</span>
 				</span>
 			</label>
-			
+
 			<div class="tasklist-timescope-group">
-			
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash1" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash1">
 						<span class="tasklist-timescope">
 							<span class="count">1</span>
@@ -40,7 +40,7 @@ echo <<<multitag
 							<span class="name">Overdue</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
@@ -58,11 +58,11 @@ echo <<<multitag
 					</div><!-- .tasklist-task -->
 
 				</div> <!-- .tasklist-timescope-container -->
-				
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash2" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash2">
 						<span class="tasklist-timescope">
 							<span class="count">2</span>
@@ -70,7 +70,7 @@ echo <<<multitag
 							<span class="name">Today</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
@@ -104,11 +104,11 @@ echo <<<multitag
 				</div> <!-- .tasklist-timescope-container -->
 			</div> <!-- .tasklist-timescope-group -->
 		</div> <!-- .tasklist-tag-container -->
-		
+
 		<div class="tasklist-tag-container">
 			<!-- Controls the entire tag group -->
 			<input class="tasklist-tag-container-controller" type="checkbox" id="tc-hash2" />
-			
+
 			<label class="tasklist-tag-container-toggle" for="tc-hash2">
 				<span class="tasklist-tag">
 					<span class="tag" style="background-color:#0F0"></span>
@@ -116,13 +116,13 @@ echo <<<multitag
 					<span class="title">Important</span>
 				</span>
 			</label>
-			
+
 			<div class="tasklist-timescope-group">
-			
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash3" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash3">
 						<span class="tasklist-timescope">
 							<span class="count">1</span>
@@ -130,7 +130,7 @@ echo <<<multitag
 							<span class="name">Overdue</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #0F0"></div>
 						<div class="tasklist-quickedit">
@@ -148,11 +148,11 @@ echo <<<multitag
 					</div><!-- .tasklist-task -->
 
 				</div> <!-- .tasklist-timescope-container -->
-				
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash4" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash4">
 						<span class="tasklist-timescope">
 							<span class="count">2</span>
@@ -160,7 +160,7 @@ echo <<<multitag
 							<span class="name">Today</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #0F0"></div>
 						<div class="tasklist-quickedit">
@@ -194,12 +194,12 @@ echo <<<multitag
 				</div> <!-- .tasklist-timescope-container -->
 			</div> <!-- .tasklist-timescope-group -->
 		</div> <!-- .tasklist-tag-container -->
-		
+
 	</div> <!-- .tasklist-viewstyle-container -->
 multitag;
 
 	}
-	
+
 	public static function singleListMode() {
 
 echo <<<singlelist
@@ -209,7 +209,7 @@ echo <<<singlelist
 			<div class="tasklist-timescope-container">
 				<!-- Controls this timescope for the tag -->
 				<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash1" />
-				
+
 				<label class="tasklist-timescope-container-toggle" for="tsc-hash1">
 					<span class="tasklist-timescope">
 						<span class="count">1</span>
@@ -217,7 +217,7 @@ echo <<<singlelist
 						<span class="name">Overdue</span>
 					</span>
 				</label>
-				
+
 				<div class="tasklist-task">
 					<div class="tag" style="border-color: #99F"></div>
 					<div class="tasklist-quickedit">
@@ -235,11 +235,11 @@ echo <<<singlelist
 				</div><!-- .tasklist-task -->
 
 			</div> <!-- .tasklist-timescope-container -->
-			
+
 			<div class="tasklist-timescope-container">
 				<!-- Controls this timescope for the tag -->
 				<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash2" />
-				
+
 				<label class="tasklist-timescope-container-toggle" for="tsc-hash2">
 					<span class="tasklist-timescope">
 						<span class="count">2</span>
@@ -247,7 +247,7 @@ echo <<<singlelist
 						<span class="name">Today</span>
 					</span>
 				</label>
-				
+
 				<div class="tasklist-task complete">
 					<div class="tag" style="border-color: #0F0"></div>
 					<div class="tasklist-quickedit">
@@ -278,17 +278,17 @@ echo <<<singlelist
 						</span>
 					</label>
 				</div><!-- .tasklist-task -->
-				
+
 			</div> <!-- .tasklist-timescope-container -->
-				
+
 		</div> <!-- Timescope group -->
 	</div> <!-- tasklist viewstyle -->
 singlelist;
 
 	}
-	
+
 	public static function singleTagMode() {
-		
+
 echo <<<singletag
 	<!-- Single tag mode -->
 	<div class="tasklist-viewstyle-container">
@@ -315,9 +315,9 @@ echo <<<singletag
 					<span class="title">Projects</span>
 				</span>
 			</label>
-			
+
 		</div>
-		
+
 		<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-hash1" />
 		<div class="tasklist-tag-container">
 			<label class="tasklist-tag-container-toggle" for="tc-master">
@@ -327,13 +327,13 @@ echo <<<singletag
 					<span class="title">School tag that's very long and stuff but doesn't quite make it</span>
 				</span>
 			</label>
-			
+
 			<div class="tasklist-timescope-group">
-			
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash1" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash1">
 						<span class="tasklist-timescope">
 							<span class="count">1</span>
@@ -341,7 +341,7 @@ echo <<<singletag
 							<span class="name">Overdue</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
@@ -359,11 +359,11 @@ echo <<<singletag
 					</div><!-- .tasklist-task -->
 
 				</div> <!-- .tasklist-timescope-container -->
-				
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash2" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash2">
 						<span class="tasklist-timescope">
 							<span class="count">2</span>
@@ -371,7 +371,7 @@ echo <<<singletag
 							<span class="name">Today</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #99F"></div>
 						<div class="tasklist-quickedit">
@@ -405,7 +405,7 @@ echo <<<singletag
 				</div> <!-- .tasklist-timescope-container -->
 			</div> <!-- .tasklist-timescope-group -->
 		</div> <!-- .tasklist-tag-container -->
-		
+
 		<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-hash2" />
 		<div class="tasklist-tag-container">
 			<label class="tasklist-tag-container-toggle" for="tc-master">
@@ -415,13 +415,13 @@ echo <<<singletag
 					<span class="title">Important</span>
 				</span>
 			</label>
-			
+
 			<div class="tasklist-timescope-group">
-			
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash3" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash3">
 						<span class="tasklist-timescope">
 							<span class="count">1</span>
@@ -429,7 +429,7 @@ echo <<<singletag
 							<span class="name">Overdue</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #9FF"></div>
 						<div class="tasklist-quickedit">
@@ -447,11 +447,11 @@ echo <<<singletag
 					</div><!-- .tasklist-task -->
 
 				</div> <!-- .tasklist-timescope-container -->
-				
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash4" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash4">
 						<span class="tasklist-timescope">
 							<span class="count">2</span>
@@ -459,7 +459,7 @@ echo <<<singletag
 							<span class="name">Today</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #9FF"></div>
 						<div class="tasklist-quickedit">
@@ -490,11 +490,11 @@ echo <<<singletag
 							</span>
 						</label>
 					</div><!-- .tasklist-task -->
-					
+
 				</div> <!-- .tasklist-timescope-container -->
 			</div> <!-- .tasklist-timescope-group -->
 		</div> <!-- .tasklist-tag-container -->
-		
+
 		<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-hash3" />
 		<div class="tasklist-tag-container">
 			<label class="tasklist-tag-container-toggle" for="tc-master">
@@ -504,13 +504,13 @@ echo <<<singletag
 					<span class="title">Projects</span>
 				</span>
 			</label>
-			
+
 			<div class="tasklist-timescope-group">
-			
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash5" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash5">
 						<span class="tasklist-timescope">
 							<span class="count">1</span>
@@ -518,7 +518,7 @@ echo <<<singletag
 							<span class="name">Overdue</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task">
 						<div class="tag" style="border-color: #0F0"></div>
 						<div class="tasklist-quickedit">
@@ -536,11 +536,11 @@ echo <<<singletag
 					</div><!-- .tasklist-task -->
 
 				</div> <!-- .tasklist-timescope-container -->
-				
+
 				<div class="tasklist-timescope-container">
 					<!-- Controls this timescope for the tag -->
 					<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash6" />
-					
+
 					<label class="tasklist-timescope-container-toggle" for="tsc-hash6">
 						<span class="tasklist-timescope">
 							<span class="count">2</span>
@@ -548,7 +548,7 @@ echo <<<singletag
 							<span class="name">Today</span>
 						</span>
 					</label>
-					
+
 					<div class="tasklist-task complete">
 						<div class="tag" style="border-color: #0F0"></div>
 						<div class="tasklist-quickedit">
@@ -579,7 +579,7 @@ echo <<<singletag
 							</span>
 						</label>
 					</div><!-- .tasklist-task -->
-					
+
 				</div> <!-- .tasklist-timescope-container -->
 			</div> <!-- .tasklist-timescope-group -->
 		</div> <!-- .tasklist-tag-container -->
@@ -588,4 +588,3 @@ singletag;
 
 	}
 }
-?>
