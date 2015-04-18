@@ -1,11 +1,8 @@
-access.log
-error.log
-apache_custom.log
-apache_error.log
-.site/css/compiled/*
+# Eclipse
 .settings/
 .sass-cache/
 .externalToolBuilders/
-.gitignore
 build.xml
+
+# PhpStorm
 .idea/
