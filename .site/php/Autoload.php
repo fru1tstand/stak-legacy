@@ -18,12 +18,15 @@ spl_autoload_register(function($className) {
 use core\Settings;
 use data\Session;
 
-// Set up dependency injection modules with the settings. Also set settings instance.
+// Set up dependency injection modules with the settings. Also set settings instance. This mess
+// is here to remind myself that in prod, we'd never do something so horrid.
+// TODO: production, replace MockSettings with ProdSettings or something
+include PHP_PATH . "tests/core/MockSettings.php";
 $settings = new \core\MockSettings();
 Settings::setInstance($settings);
 $settings->setup();
 
-if (true) {
+if (Settings::INCLUDE_TESTS()) {
 	spl_autoload_register(function($className) {
 		$className = str_replace("\\", "/", $className);
 		include_once(PHP_PATH . "tests/" . $className . ".php");

@@ -17,11 +17,11 @@ abstract class Settings {
 
 	// I provide a wrapper so that we're not passing a variable down the line. Cleaner seeing
 	// Settings::* than $settings->* and having the possibility of writing over $settings.
-	public static function getEnableDebug() {
+	public static function ENABLE_DEBUG() {
 		return self::$settings->enableDebug();
 	}
 
-	public static function getIncludeTests() {
+	public static function INCLUDE_TESTS() {
 		return self::$settings->includeTests();
 	}
 

@@ -7,7 +7,7 @@ class MockSettings extends Settings {
 	 * Sets up dependencies
 	 */
 	public function setup() {
-		// TODO: Implement setup() method.
+		// TODO: Implement setup() method. Currently no dependency injection system has been chosen
 	}
 
 	/**
