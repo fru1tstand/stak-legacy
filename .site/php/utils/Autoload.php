@@ -1,10 +1,9 @@
 <?php
 namespace utils;
-use pagedata\Session;
 
 /**
  * This file serves as an overarching container for the site. It provides a means of
- * autoloading dependencies, as well as starting the session, etc. It is included
+ * auto-loading dependencies, as well as starting the session, etc. It is included
  * in every PHP file.
  */
 
@@ -19,6 +18,17 @@ spl_autoload_register(function($className) {
 	include_once(PHP_PATH . "/" . $className . ".php");
 });
 
-//Starts the session
+// Placing these here AFTER the autoload definition.
+use core\Settings;
+use pagedata\Session;
+
+if (Settings::INCLUDE_TESTS) {
+	spl_autoload_register(function($className) {
+		$className = str_replace("\\", "/", $className);
+		include_once(PHP_PATH . "tests/" . $className . ".php");
+	});
+}
+
+// Start the stak session
 Session::start(STAK_SESSION_NAME);
 ?>

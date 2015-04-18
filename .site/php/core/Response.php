@@ -134,7 +134,7 @@ class Response {
      * @param string $debug
      */
     public function addDebug($debug) {
-		if (Settings::DEBUG_ENABLED)
+		if (Settings::DEBUG)
         	$this->add(self::TYPE_DEBUG, $debug);
     }
 
