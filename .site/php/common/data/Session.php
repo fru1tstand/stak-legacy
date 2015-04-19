@@ -1,5 +1,6 @@
 <?php
-namespace data;
+namespace common\data;
+
 /**
  * Handles session data
  * @version 0.2

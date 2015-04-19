@@ -1,5 +1,5 @@
 <?php
-namespace content\css;
+namespace stak\content\css;
 
 header("content-type: text/css");
 

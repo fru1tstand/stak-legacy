@@ -1,10 +1,13 @@
 <?php
 namespace stak;
-use core\Response;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
+use common\base\Response;
 
-require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/Autoload.php";
-
-abstract class Tag {
+/**
+ * A label that can be attached to a Task
+ * @package stak
+ */
+abstract class AbstractTag {
 	// Constants
 	const NAME_MAX_LENGTH = 128;
 

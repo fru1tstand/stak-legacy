@@ -1,12 +1,11 @@
 <?php
-namespace core;
-require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/Autoload.php";
+namespace common\base;
 
 /**
  * Provides a way for a function to provide more detail than a simple boolean response. As a
  * parameter, it should be passed-by-reference so it doesn't interfere with already existing return
  * statements.
- * @package core
+ * @package stak
  */
 class Response {
     //Message types
@@ -134,7 +133,7 @@ class Response {
      * @param string $debug
      */
     public function addDebug($debug) {
-		if (Settings::DEBUG)
+		if (AbstractSettings::DEBUG)
         	$this->add(self::TYPE_DEBUG, $debug);
     }
 

@@ -1,6 +1,6 @@
 <?php
-namespace content\page\processors;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/Autoload.php';
+namespace stak\content\page\processors;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 
 
 class ListProcessor {

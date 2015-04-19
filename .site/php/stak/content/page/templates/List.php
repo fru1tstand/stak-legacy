@@ -1,9 +1,8 @@
 <?php
-namespace content\page\templates;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/Autoload.php';
-use content\IncludePage;
-use content\page\processors\ListProcessor;
-
+namespace stak\content\page\templates;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
+use stak\content\IncludePage;
+use stak\content\page\processors\ListProcessor;
 
 //Make sure we're being loaded from a proper source
 if (!IncludePage::validate()) return;

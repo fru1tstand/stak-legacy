@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/Autoload.php';
-use content\IncludePage;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/autoload.php';
+use stak\content\IncludePage;
 
 ?>
 
@@ -11,7 +11,7 @@ use content\IncludePage;
 		<meta charset="UTF-8" />
 		<title>Fru1tMe - Stak: The Task Whatcham'callit</title>
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
-		<link href="/.site/php/content/css/theme.php" rel="stylesheet" type="text/css">
+		<link href="/.site/php/stak/content/css/theme.php" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>

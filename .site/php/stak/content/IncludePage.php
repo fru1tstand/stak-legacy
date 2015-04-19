@@ -1,6 +1,6 @@
 <?php
-namespace content;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/Autoload.php';
+namespace stak\content;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 
 class IncludePage {
 
@@ -23,7 +23,6 @@ class IncludePage {
 	// *** Templates
 	public static function ListTemplate() {
 		self::$validation = true;
-		include PHP_PATH . "/content/page/templates/List.php";
+		include PHP_PATH . "/stak/content/page/templates/List.php";
 	}
 }
-?>
