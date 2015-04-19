@@ -5,19 +5,19 @@ use common\data\Session;
 use common\Milk\inject\Injector;
 
 /**
- * Class AbstractAutoload
+ * Class BaseAutoload
  * @package common\base
  */
-abstract class AbstractAutoload {
+abstract class BaseAutoload {
 	/* @var Injector */
 	private static $injector = null;
 
 	/**
 	 * Initializes the website.
 	 * Sets up auto-loading, Milk injector, and session.
-	 * @param AbstractAutoload $autoload
+	 * @param BaseAutoload $autoload
 	 */
-	public static function init(AbstractAutoload $autoload) {
+	public static function init(BaseAutoload $autoload) {
 		// Set up auto-loading
 		spl_autoload_register(function ($className) use ($autoload) {
 			// Replace namespace backslashes with folder directory forward slashes
@@ -40,8 +40,8 @@ abstract class AbstractAutoload {
 		self::$injector = $autoload->getMilkInjector();
 
 		// Set up session
-		/** @var AbstractSettings $settings */
-		$settings = self::getInjector()->getInstance(AbstractSettings::class);
+		/** @var BaseSettings $settings */
+		$settings = self::getInjector()->getInstance(BaseSettings::class);
 		Session::start($settings->getWebSessionName());
 	}
 

@@ -1,7 +1,7 @@
 <?php
 namespace common\base;
 
-abstract class AbstractSettings {
+abstract class BaseSettings {
 	/**
 	 * Determines if debugging is enabled. Mainly used for debug messages, but also has some
 	 * other side effects.

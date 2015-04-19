@@ -1,6 +1,6 @@
 <?php
 namespace common\base;
-use stak\autoload;
+use stak\Autoload;
 
 /**
  * Provides a way for a function to provide more detail than a simple boolean response. As a
@@ -134,7 +134,7 @@ class Response {
      * @param string $debug
      */
     public function addDebug($debug) {
-		if (autoload::getInjector()->getInstance(AbstractSettings::class)->enableDebug())
+		if (Autoload::getInjector()->getInstance(BaseSettings::class)->enableDebug())
         	$this->add(self::TYPE_DEBUG, $debug);
     }
 
