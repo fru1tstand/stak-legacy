@@ -35,7 +35,7 @@ $listpageHierarchy = "#333";
 $listpageHint = "#999";
 $listpageTagsBackground = "#333";
 $listpageTags = "#F0F0F0";
-$listpageDetailsBorder = "#CCC";
+$listpageDetailsBlockBorder = "#CCC";
 
 $listpageInfobarBackground = "#FFF";
 $listpageInfobarHeaderBackground = "#CCC";
@@ -222,7 +222,7 @@ echo <<<listpage
 	color: $listpageTags;
 }
 .page-list-details .block {
-	border-color: $listpageDetailsBorder;
+	border-color: $listpageDetailsBlockBorder;
 }
 
 .page-list-infobar {
