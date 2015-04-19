@@ -20,6 +20,7 @@ abstract class Task {
 	/** @var  Tag[] */	protected $tags;
 	/** @var  Task */	protected $parent;
 	/** @var  Task[] */	protected $children;
+	/** @var  int */	protected $creationDate;
 
 
 	// Getters
@@ -88,6 +89,15 @@ abstract class Task {
 	 */
 	public function getChildren() {
 		return $this->children;
+	}
+
+	/**
+	 * Gets the creation date of the task in UTC+0 unix time.
+	 * @see getDueDate
+	 * @return int
+	 */
+	public function getCreationDate() {
+		return $this->creationDate;
 	}
 
 
