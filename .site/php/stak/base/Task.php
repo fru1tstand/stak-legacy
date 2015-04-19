@@ -1,5 +1,5 @@
 <?php
-namespace stak;
+namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
 
@@ -7,19 +7,19 @@ use common\base\Response;
  * This class provides the common definition of a Task
  * @package stak
  */
-abstract class AbstractTask {
+abstract class Task {
 	// Constants
 	const TITLE_MAX_LENGTH = 512;
 
 	// Task fields
-	/* @var string */			protected $title;
-	/* @var string */			protected $description;
-	/* @var int */				protected $dueDate;
-	/* @var int */				protected $completedDate;
-	/* @var AbstractTag */		protected $primaryTag;
-	/* @var AbstractTag[] */	protected $tags;
-	/* @var AbstractTask */		protected $parent;
-	/* @var AbstractTask[] */	protected $children;
+	/* @var string */	protected $title;
+	/* @var string */	protected $description;
+	/* @var int */		protected $dueDate;
+	/* @var int */		protected $completedDate;
+	/* @var Tag */		protected $primaryTag;
+	/* @var Tag[] */	protected $tags;
+	/* @var Task */		protected $parent;
+	/* @var Task[] */	protected $children;
 
 
 	// Getters
@@ -60,7 +60,7 @@ abstract class AbstractTask {
 
 	/**
 	 * Gets the primary tag of the task, or null if one is not set
-	 * @return null | AbstractTag
+	 * @return null | Tag
 	 */
 	public function getPrimaryTag() {
 		return $this->primaryTag;
@@ -68,7 +68,7 @@ abstract class AbstractTask {
 
 	/**
 	 * Gets all tags of this task. Returns an empty array if there are none.
-	 * @return AbstractTag[]
+	 * @return Tag[]
 	 */
 	public function getTags() {
 		return $this->tags;
@@ -76,7 +76,7 @@ abstract class AbstractTask {
 
 	/**
 	 * Gets the parent of this task, or null if one isn't set.
-	 * @return null | AbstractTask
+	 * @return null | Task
 	 */
 	public function getParent() {
 		return $this->parent;
@@ -84,7 +84,7 @@ abstract class AbstractTask {
 
 	/**
 	 * Gets the children of this task or an empty array if none exist.
-	 * @return AbstractTask[]
+	 * @return Task[]
 	 */
 	public function getChildren() {
 		return $this->children;
@@ -94,19 +94,19 @@ abstract class AbstractTask {
 	// Processed "getters"
 	/**
 	 * Checks if this task has the given tag.
-	 * @param AbstractTag $tag
+	 * @param Tag $tag
 	 * @return bool
 	 */
-	public function containsTag(AbstractTag $tag) {
+	public function containsTag(Tag $tag) {
 		return is_array($this->tags) && in_array($tag, $this->tags);
 	}
 
 	/**
 	 * Checks if this task has the given task as a child.
-	 * @param AbstractTask $child
+	 * @param Task $child
 	 * @return bool
 	 */
-	public function containsChild(AbstractTask $child) {
+	public function containsChild(Task $child) {
 		return is_array($this->children) && in_array($child, $this->children);
 	}
 
@@ -191,11 +191,11 @@ abstract class AbstractTask {
 	 * Attempts to set the primary tag for the task. Automatically adds primary tag to
 	 * tag list if
 	 * not added already. Pass null to remove.
-	 * @param AbstractTag      $primaryTag
+	 * @param Tag      $primaryTag
 	 * @param Response $response
 	 * @return bool True on success; false otherwise
 	 */
-	public function setPrimaryTag(AbstractTag &$primaryTag = null, Response &$response = null) {
+	public function setPrimaryTag(Tag &$primaryTag = null, Response &$response = null) {
 		Response::getInstance($response, "Task::setPrimaryTag");
 
 		// Add to tag list of not already
@@ -231,11 +231,11 @@ abstract class AbstractTask {
 
 	/**
 	 * Attempts to add a tag to the task.
-	 * @param AbstractTag      $tag
+	 * @param Tag      $tag
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function addTag(AbstractTag &$tag, Response &$response = null) {
+	public function addTag(Tag &$tag, Response &$response = null) {
 		Response::getInstance($response, "Task::addTag");
 
 		// Task tags should never not be an array. If it isn't there's an issue. Flag it.
@@ -277,11 +277,11 @@ abstract class AbstractTask {
 
 	/**
 	 * Attempts to remove a tag from the task.
-	 * @param AbstractTag      $tag
+	 * @param Tag      $tag
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function removeTag(AbstractTag $tag, Response &$response = null) {
+	public function removeTag(Tag $tag, Response &$response = null) {
 		Response::getInstance($response, "Task::removeTag");
 
 		// False if not found, else, tag index
@@ -320,11 +320,11 @@ abstract class AbstractTask {
 
 	/**
 	 * Attempts to set the parent. Pass null to remove.
-	 * @param AbstractTask     $parent
+	 * @param Task     $parent
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setParent(AbstractTask &$parent = null, Response &$response = null) {
+	public function setParent(Task &$parent = null, Response &$response = null) {
 		Response::getInstance($response, "Task::setParent");
 
 		if (!$this->updateParent($parent, $response))
@@ -355,11 +355,11 @@ abstract class AbstractTask {
 
 	/**
 	 * Attempts to add a child task to this task.
-	 * @param AbstractTask     $child
+	 * @param Task     $child
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function addChild(AbstractTask &$child, Response &$response = null) {
+	public function addChild(Task &$child, Response &$response = null) {
 		Response::getInstance($response, "Task::addChild");
 
 		// Children field should never not be an array. If it isn't, there's an issue. Flag it.
@@ -401,11 +401,11 @@ abstract class AbstractTask {
 
 	/**
 	 * Attempts to remove a child from this task.
-	 * @param AbstractTask     $child
+	 * @param Task     $child
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function removeChild(AbstractTask $child, Response &$response = null) {
+	public function removeChild(Task $child, Response &$response = null) {
 		Response::getInstance($response, "Task:: removeChild");
 
 		//false if not found, else, tag index
@@ -513,7 +513,7 @@ abstract class AbstractTask {
 		else {
 			// Check they're all tags
 			foreach ($tags as $tag) {
-				if (!($tag instanceof AbstractTag)) {
+				if (!($tag instanceof Tag)) {
 					$response->addError("One of these tags just doesn't belong here");
 					break;
 				}
@@ -532,7 +532,7 @@ abstract class AbstractTask {
 		else {
 			// Check they're all tasks
 			foreach ($children as $child) {
-				if (!($child instanceof AbstractTask)) {
+				if (!($child instanceof Task)) {
 					$response->addError("One of these tasks just doesn't belong here");
 					break;
 				}
@@ -582,16 +582,16 @@ abstract class AbstractTask {
 
 	/**
 	 * Called when {@link setPrimaryTag} is called. Passed null when removing.
-	 * @param AbstractTag      $primaryTag
+	 * @param Tag      $primaryTag
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updatePrimaryTag(AbstractTag $primaryTag = null,
+	protected abstract function updatePrimaryTag(Tag $primaryTag = null,
 												 Response &$response = null);
 
 	/**
 	 * Called when {@link setTags} is called. Passed an empty array when removing all tags.
-	 * @param AbstractTag[]    $tags
+	 * @param Tag[]    $tags
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
@@ -599,27 +599,27 @@ abstract class AbstractTask {
 
 	/**
 	 * Called when {@link addTag} is called.
-	 * @param AbstractTag      $tag
+	 * @param Tag      $tag
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateAddTag(AbstractTag $tag, Response &$response = null);
+	protected abstract function updateAddTag(Tag $tag, Response &$response = null);
 
 	/**
 	 * Called when {@link removeTag} is called.
-	 * @param AbstractTag      $tag
+	 * @param Tag      $tag
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateRemoveTag(AbstractTag $tag, Response &$response = null);
+	protected abstract function updateRemoveTag(Tag $tag, Response &$response = null);
 
 	/**
 	 * Called when {@link setParent} is called. Passed null when removing.
-	 * @param AbstractTask     $task
+	 * @param Task     $task
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateParent(AbstractTask $task = null, Response &$response = null);
+	protected abstract function updateParent(Task $task = null, Response &$response = null);
 
 	/**
 	 * Called when {@link setChildren} is called.
@@ -631,17 +631,17 @@ abstract class AbstractTask {
 
 	/**
 	 * Called when {@link addChild} is called.
-	 * @param AbstractTask     $child
+	 * @param Task     $child
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateAddChild(AbstractTask $child, Response &$response = null);
+	protected abstract function updateAddChild(Task $child, Response &$response = null);
 
 	/**
 	 * Called when {@link removeChild} is called.
-	 * @param AbstractTask     $child
+	 * @param Task     $child
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateRemoveChild(AbstractTask $child, Response &$response = null);
+	protected abstract function updateRemoveChild(Task $child, Response &$response = null);
 }

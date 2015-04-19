@@ -1,5 +1,5 @@
 <?php
-namespace stak;
+namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
 
@@ -8,7 +8,7 @@ use common\base\Response;
  * abstract class code since this class provides no new logic.
  * @package stak
  */
-class MockTag extends AbstractTag {
+class MockTag extends Tag {
 
 	// Implementor methods. These all return true because we don't have any processing to do with
 	// them in mock form.

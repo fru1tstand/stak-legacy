@@ -25,15 +25,17 @@ abstract class BaseAutoload {
 
 			// Normal PHP path
 			$path = $autoload->getPhpSourcePath() . "/" . $className . ".php";
-			if (file_exists($path))
+			if (file_exists($path)) {
 				/** @noinspection PhpIncludeInspection */
 				include_once($path);
+			}
 
 			// PHPTests path
 			$path = $autoload->getPhpSourcePath() . "tests/" . $className . ".php";
-			if (file_exists($path))
+			if (file_exists($path)) {
 				/** @noinspection PhpIncludeInspection */
 				include_once($path);
+			}
 		});
 
 		// Set up Milk

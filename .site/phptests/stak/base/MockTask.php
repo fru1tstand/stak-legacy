@@ -1,5 +1,5 @@
 <?php
-namespace stak;
+namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
 
@@ -8,7 +8,7 @@ use common\base\Response;
  * abstract class code since this class provides no new logic.
  * @package stak
  */
-class MockTask extends AbstractTask {
+class MockTask extends Task {
 
 	// Implementor methods. These all return true because we don't have any processing to do with
 	// them in mock form.
@@ -20,20 +20,20 @@ class MockTask extends AbstractTask {
 		return true; }
 	protected function updateCompletedDate($completedDate, Response &$response = null) {
 		return true; }
-	protected function updatePrimaryTag(AbstractTag $primaryTag = null, Response &$response = null) {
+	protected function updatePrimaryTag(Tag $primaryTag = null, Response &$response = null) {
 		return true; }
 	protected function updateTags(array $tags, Response &$response = null) {
 		return true; }
-	protected function updateAddTag(AbstractTag $tag, Response &$response = null) {
+	protected function updateAddTag(Tag $tag, Response &$response = null) {
 		return true; }
-	protected function updateRemoveTag(AbstractTag $tag, Response &$response = null) {
+	protected function updateRemoveTag(Tag $tag, Response &$response = null) {
 		return true; }
-	protected function updateParent(AbstractTask $task = null, Response &$response = null) {
+	protected function updateParent(Task $task = null, Response &$response = null) {
 		return true; }
 	protected function updateChildren(array $children, Response &$response = null) {
 		return true; }
-	protected function updateAddChild(AbstractTask $child, Response &$response = null) {
+	protected function updateAddChild(Task $child, Response &$response = null) {
 		return true; }
-	protected function updateRemoveChild(AbstractTask $child, Response &$response = null) {
+	protected function updateRemoveChild(Task $child, Response &$response = null) {
 		return true; }
 }
