@@ -109,7 +109,7 @@ abstract class AbstractTag {
 		if (is_null($color))
 			return true;
 
-		if (!preg_match("/[0-9a-fA-F]{6}/"))
+		if (!preg_match("/[0-9a-fA-F]{6}/", $color))
 			$response->addError("I don't understand the color '$color'");
 
 		return !$response->hasFailed();
