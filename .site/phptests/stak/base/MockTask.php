@@ -10,6 +10,25 @@ use common\base\Response;
  */
 class MockTask extends Task {
 
+	/**
+	 * Simple constructor
+	 * @param $title
+	 * @param $description
+	 * @param $dueDate
+	 * @param $completedDate
+	 * @param $primaryTag
+	 * @param $tags
+	 */
+	public function __construct($title, $description, $dueDate, $completedDate, $primaryTag,
+								$tags) {
+		$this->title = $title;
+		$this->description = $description;
+		$this->dueDate = $dueDate;
+		$this->completedDate = $completedDate;
+		$this->primaryTag = $primaryTag;
+		$this->tags = $tags;
+	}
+
 	// Implementor methods. These all return true because we don't have any processing to do with
 	// them in mock form.
 	protected function updateTitle($title, Response &$response = null) {

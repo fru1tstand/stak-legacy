@@ -10,6 +10,16 @@ use common\base\Response;
  */
 class MockTag extends Tag {
 
+	/**
+	 * Simple constructor
+	 * @param $name
+	 * @param $color
+	 */
+	public function __construct($name, $color) {
+		$this->name = $name;
+		$this->color = $color;
+	}
+
 	// Implementor methods. These all return true because we don't have any processing to do with
 	// them in mock form.
 	protected function updateName($name, Response &$response = null) {
