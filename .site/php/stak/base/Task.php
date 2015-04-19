@@ -12,14 +12,14 @@ abstract class Task {
 	const TITLE_MAX_LENGTH = 512;
 
 	// Task fields
-	/* @var string */	protected $title;
-	/* @var string */	protected $description;
-	/* @var int */		protected $dueDate;
-	/* @var int */		protected $completedDate;
-	/* @var Tag */		protected $primaryTag;
-	/* @var Tag[] */	protected $tags;
-	/* @var Task */		protected $parent;
-	/* @var Task[] */	protected $children;
+	/** @var  string */	protected $title;
+	/** @var  string */	protected $description;
+	/** @var  int */	protected $dueDate;
+	/** @var  int */	protected $completedDate;
+	/** @var  Tag */	protected $primaryTag;
+	/** @var  Tag[] */	protected $tags;
+	/** @var  Task */	protected $parent;
+	/** @var  Task[] */	protected $children;
 
 
 	// Getters
