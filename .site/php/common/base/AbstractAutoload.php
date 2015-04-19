@@ -38,9 +38,9 @@ abstract class AbstractAutoload {
 		self::$injector = $autoload->getMilkInjector();
 
 		// Set up session
-		Session::start(self::getInjector()
-				->getInstance(AbstractSettings::class)
-				->getWebSessionName());
+		/** @var AbstractSettings $settings */
+		$settings = self::getInjector()->getInstance(AbstractSettings::class);
+		Session::start($settings->getWebSessionName());
 	}
 
 
