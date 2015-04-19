@@ -15,7 +15,7 @@ abstract class AbstractModule {
 	}
 
 	/**
-	 * Starts the juici-- er... Milking... Process.
+	 * Starts the milking process.
 	 * @param string $fullyQualifiedClassName The binding class (abstract class/interface)
 	 * @return Binder
 	 */
