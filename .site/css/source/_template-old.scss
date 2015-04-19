@@ -22,7 +22,7 @@ $nav-menu-collapsed-maxwidth: 650px;
 	height: $nav-menu-collapsed-height;
 	width: 100%;
 	max-width: $nav-menu-collapsed-maxwidth;
-	margin: 0px auto;
+	margin: 0 auto;
 	border-right: 1px solid;
 	border-left: 1px solid;
 	border-color: #000;
@@ -34,7 +34,7 @@ $nav-menu-collapsed-maxwidth: 650px;
 		border: 1px solid;
 		border-top: none;
 		max-width: $nav-menu-collapsed-maxwidth;
-		margin: 0px auto;
+		margin: 0 auto;
 		vertical-align: top;
 	}
 }
