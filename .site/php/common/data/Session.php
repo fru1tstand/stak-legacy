@@ -83,7 +83,6 @@ class Session {
 
 	/**
 	 * Checks if a session with given name exists
-	 * @param string $name The name of the session to check
 	 * @return boolean True if the session is active; otherwise, false
 	 */
 	private static function hasSessionStarted() {
