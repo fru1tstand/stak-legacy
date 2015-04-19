@@ -20,6 +20,7 @@ class Milk {
 	 */
 	public static function createInjector(AbstractModule... $modules) {
 		$mapping = [];
+		/** @var AbstractModule $module */
 		foreach ($modules as $module)
 			$mapping = array_merge($mapping, $module->getMap());
 		return new Injector($mapping);
