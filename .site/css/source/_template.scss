@@ -1,5 +1,5 @@
 /*************************************** template */
-// *** For globaly applicable rules
+// *** For globally applicable rules
 
 * {
 	box-sizing: border-box;
@@ -14,7 +14,7 @@ html, body {
 	max-height: 100vh;
 	min-height: 100vh;
 	box-shadow: 0 0 10px 2px #999;
-	
+
 	max-width: $width-max;
 }
 
@@ -59,7 +59,7 @@ a {
 @mixin transition($params...) {
 	-webkit-transition: $params;
 	-moz-transition: $params;
-	transition: $params; 
+	transition: $params;
 }
 @mixin default-transition($property) {
 	@include transition($property $default-transition-time $default-transition-pattern);
@@ -72,13 +72,12 @@ a {
 	transform: $params;
 }
 
-// *** Extendables
+// *** Extendable
 .noselect {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;  
+	user-select: none;
 }
 .ellipsis {
 	text-overflow: ellipsis;

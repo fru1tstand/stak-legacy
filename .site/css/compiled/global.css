@@ -1,6 +1,6 @@
 @charset "UTF-8";
-/* 
-	We're awesome, so our fonts reflect that. 
+/*
+	We're awesome, so our fonts reflect that.
 	Font Awesome by Dave Gandy - http://fontawesome.io
 */
 /* FONT PATH
@@ -1841,7 +1841,6 @@ a {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none; }
 
 .ellipsis, .tasklist-tag .title, .tasklist-timescope .name, .tasklist-task-toggle .title,

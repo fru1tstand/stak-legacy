@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-/* 
-	We're awesome, so our fonts reflect that. 
+/*
+	We're awesome, so our fonts reflect that.
 	Font Awesome by Dave Gandy - http://fontawesome.io
 */
 // These need to be in a specific order
@@ -24,13 +24,13 @@
 
 // Large!
 /* @media (min-width: $width-large - $width-clearance) { */
-	// Templating items
+	// Template items
 	@import 'large/tabs';
 	@import 'large/sidebar';
 	@import 'large/split-screen';
 	@import 'large/tasklist';
 	@import 'large/page-list';
-	
+
 	// Size-specific tweaks
 	@import 'large/global-header';
 /* } */
