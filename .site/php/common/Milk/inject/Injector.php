@@ -55,14 +55,35 @@ class Injector {
 		$reflectionClass = new ReflectionClass($this->mapping[$name]->getImplementation());
 
 		$resultObject = null;
-		if (is_null($reflectionClass->getConstructor())
-				|| count($reflectionClass->getConstructor()->getParameters()) == 0)
-			$resultObject = $reflectionClass->newInstance();
 
-		// TODO: Finish injector
-		// Didn't find a class
+		// No constructor or no parameter constructor
+		if (is_null($reflectionClass->getConstructor())
+				|| count($reflectionClass->getConstructor()->getParameters()) == 0) {
+			$resultObject = $reflectionClass->newInstance();
+		}
+
+		// Has parameters
+		if (!is_null($reflectionClass->getConstructor())
+				&& count($reflectionClass->getConstructor()->getParameters()) != 0) {
+			$instanceArgs = array();
+
+			// Get objects necessary to create the reflected class
+			$params = $reflectionClass->getConstructor()->getParameters();
+			foreach ($params as $param) {
+				if (is_null($param->getClass()))
+					throw new Exception("'$name' doesn't seem to have a Milk-friendly constructor");
+
+				// Recursive call to get parameters needed
+				$instanceArgs[] = $this->getInstance($param->getClass());
+			}
+
+			// Finally, make the object
+			$resultObject = $reflectionClass->newInstanceArgs($instanceArgs);
+		}
+
+		// One last check
 		if (is_null($resultObject))
-			throw new Exception("Finish the job please");
+			throw new Exception("I don't know what happened, but '$name' couldn't be instantiated");
 
 		if ($this->mapping[$name]->isSingleton())
 			$this->singletonInstances[$name] = $resultObject;
