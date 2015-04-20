@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 use stak\content\IncludePage;
 
 ?>
