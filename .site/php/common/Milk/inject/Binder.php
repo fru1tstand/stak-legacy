@@ -19,16 +19,16 @@ class Binder {
 	/**
 	 * Creates a binder with the given fully qualified class name. We bind from abstract to
 	 * implementation.
-	 * @param string $fullyQualifiedClassName The host (abstract class/interface)
+	 * @param string $fullyQualifiedName The host (abstract class/interface)
 	 * @param AbstractModule $module The calling module
 	 * @throws Exception Thrown if passed class could not be found.
 	 * @return Binder
 	 */
-	public function __construct($fullyQualifiedClassName, AbstractModule &$module) {
-		if (!class_exists($fullyQualifiedClassName))
-			throw new Exception("I don't recognize the class called '$fullyQualifiedClassName'");
+	public function __construct($fullyQualifiedName, AbstractModule &$module) {
+		if (!class_exists($fullyQualifiedName) && !interface_exists($fullyQualifiedName))
+			throw new Exception("I don't recognize the class called '$fullyQualifiedName'");
 		$this->isSingleton = false;
-		$this->abstract = $fullyQualifiedClassName;
+		$this->abstract = $fullyQualifiedName;
 		$this->module = &$module;
 		return $this;
 	}
@@ -46,14 +46,14 @@ class Binder {
 
 	/**
 	 * Completes a mapping from the bound class to this passed class.
-	 * @param string $fullyQualifiedClassName The target (implementation)
+	 * @param string $fullyQualifiedName The target (implementation)
 	 * @throws Exception Thrown if passed class could not be found.
 	 */
-	public function to($fullyQualifiedClassName) {
-		if (!class_exists($fullyQualifiedClassName))
-			throw new Exception("I don't recognize the class called '$fullyQualifiedClassName'");
+	public function to($fullyQualifiedName) {
+		if (!class_exists($fullyQualifiedName) && !interface_exists($fullyQualifiedName))
+			throw new Exception("I don't recognize the class called '$fullyQualifiedName'");
 
-		$this->implementation = $fullyQualifiedClassName;
+		$this->implementation = $fullyQualifiedName;
 
 		// Complete bind and set referring module to null. This helps with the debugging.
 		$this->module->completeBind($this);
