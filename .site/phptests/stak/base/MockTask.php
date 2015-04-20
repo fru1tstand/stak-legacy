@@ -18,15 +18,17 @@ class MockTask extends Task {
 	 * @param $completedDate
 	 * @param $primaryTag
 	 * @param $tags
+	 * @param $type
 	 */
 	public function __construct($title, $description, $dueDate, $completedDate, $primaryTag,
-								$tags) {
+								$tags, $type) {
 		$this->title = $title;
 		$this->description = $description;
 		$this->dueDate = $dueDate;
 		$this->completedDate = $completedDate;
 		$this->primaryTag = $primaryTag;
 		$this->tags = $tags;
+		$this->type = $type;
 	}
 
 	// Implementor methods. These all return true because we don't have any processing to do with

@@ -11,6 +11,11 @@ abstract class Task {
 	// Constants
 	const TITLE_MAX_LENGTH = 512;
 
+	const TYPE_NORMAL = 0;
+	const TYPE_REMINDER = 1;
+	const TYPE_TEMPLATE = 2;
+	const TYPE_CONTAINER = 3;
+
 	// Task fields
 	/** @var  string */	protected $title;
 	/** @var  string */	protected $description;
@@ -21,6 +26,7 @@ abstract class Task {
 	/** @var  Task */	protected $parent;
 	/** @var  Task[] */	protected $children;
 	/** @var  int */	protected $creationDate;
+	/** @var  int */	protected $type;
 
 
 	// Getters
@@ -98,6 +104,14 @@ abstract class Task {
 	 */
 	public function getCreationDate() {
 		return $this->creationDate;
+	}
+
+	/**
+	 * Gets the task type (normal, template, reminder...)
+	 * @return int
+	 */
+	public function getType() {
+		return $this->type;
 	}
 
 
@@ -329,7 +343,8 @@ abstract class Task {
 	}
 
 	/**
-	 * Attempts to set the parent. Pass null to remove.
+	 * Attempts to set the parent for this task. Automatically adds this task as a child of the
+	 * parent class. Pass null to remove.
 	 * @param Task     $parent
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
@@ -337,6 +352,21 @@ abstract class Task {
 	public function setParent(Task &$parent = null, Response &$response = null) {
 		Response::getInstance($response, "Task::setParent");
 
+		if ($this->parent instanceof Task) {
+			$response->addError("I already have a parent");
+			return false;
+		}
+
+		if ($this == $parent) {
+			$response->addError("You can't add yourself as your own parent");
+			return false;
+		}
+
+		// Add as child to parent
+		if ($parent != null && !$parent->addChild($this, $response))
+			return false;
+
+		// Add parent to myself
 		if (!$this->updateParent($parent, $response))
 			return false;
 
@@ -345,7 +375,9 @@ abstract class Task {
 	}
 
 	/**
-	 * Attempts to set all children for this task. Pass an empty array to remove all children.
+	 * Attempts to set all children for this task. Automatically adds this task as a parent of
+	 * the child classes. Pass an empty array to remove
+	 * all children.
 	 * @param array    $children
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
@@ -356,6 +388,13 @@ abstract class Task {
 		if (!self::isValidChildren($children, $response))
 			return false;
 
+		foreach ($children as $child) {
+			if ($this == $child) {
+				$response->addError("You can't add yourself as your own child");
+				return false;
+			}
+		}
+
 		if (!$this->updateChildren($children, $response))
 			return false;
 
@@ -364,7 +403,8 @@ abstract class Task {
 	}
 
 	/**
-	 * Attempts to add a child task to this task.
+	 * Attempts to add a child task to this task. Automatically adds this task as a parent of the
+	 * child class.
 	 * @param Task     $child
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
@@ -402,6 +442,13 @@ abstract class Task {
 		if (!self::isValidChildren($children, $response))
 			return false;
 
+		// Set as their parent
+		/** @var Task $child */
+		foreach ($children as $child)
+			if (!$child->setParent($this))
+				return false;
+
+		// Add as my children
 		foreach ($children as $child)
 			if (!$this->addChild($child, $response))
 				return false;
