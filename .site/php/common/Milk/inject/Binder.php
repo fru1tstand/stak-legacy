@@ -9,10 +9,11 @@ use \Exception;
  */
 class Binder {
 	// Instance fields and methods
-	/* @var string */			private $abstract;
-	/* @var string */			private $implementation;
-	/* @var bool */				private $isSingleton;
-	/* @var AbstractModule */	private $module;
+	/** @var string */			private $abstract;
+	/** @var string */			private $implementation;
+	/** @var bool */			private $isSingleton;
+	/** @var bool */			private $isStatic;
+	/** @var AbstractModule */	private $module;
 
 
 	// Setters
@@ -26,16 +27,17 @@ class Binder {
 	 */
 	public function __construct($fullyQualifiedName, AbstractModule &$module) {
 		if (!class_exists($fullyQualifiedName) && !interface_exists($fullyQualifiedName))
-			throw new Exception("I don't recognize the class called '$fullyQualifiedName'");
+			throw new Exception("I don't recognize '$fullyQualifiedName'");
 		$this->isSingleton = false;
+		$this->isStatic = false;
 		$this->abstract = $fullyQualifiedName;
 		$this->module = &$module;
 		return $this;
 	}
 
 	/**
-	 * Completes a mapping from the bound class to this passed class as a singleton instance when
-	 * created.
+	 * Completes a mapping from the bound abstract class/interface to the passed class as a
+	 * singleton instance.
 	 * @param string $fullyQualifiedClassName The target (implementation)
 	 * @throws Exception Thrown if passed class could not be found.
 	 */
@@ -45,12 +47,23 @@ class Binder {
 	}
 
 	/**
-	 * Completes a mapping from the bound class to this passed class.
+	 * Creates a mapping from the bound abstract class/interface to the passed class as a static
+	 * implementation.
+	 * @param $fullyQualifiedClassName
+	 * @throws Exception
+	 */
+	public function asStaticTo($fullyQualifiedClassName) {
+		$this->isStatic = true;
+		$this->to($fullyQualifiedClassName);
+	}
+
+	/**
+	 * Completes a mapping from the bound abstract class/interface to this passed class.
 	 * @param string $fullyQualifiedName The target (implementation)
 	 * @throws Exception Thrown if passed class could not be found.
 	 */
 	public function to($fullyQualifiedName) {
-		if (!class_exists($fullyQualifiedName) && !interface_exists($fullyQualifiedName))
+		if (!class_exists($fullyQualifiedName))
 			throw new Exception("I don't recognize the class called '$fullyQualifiedName'");
 
 		$this->implementation = $fullyQualifiedName;
@@ -81,5 +94,12 @@ class Binder {
 	 */
 	public function isSingleton() {
 		return $this->isSingleton;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isStatic() {
+		return $this->isStatic;
 	}
 }
