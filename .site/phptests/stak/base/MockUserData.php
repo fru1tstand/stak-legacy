@@ -9,11 +9,28 @@ use stak\base\userdata\TaskFilter;
  */
 class MockUserData implements UserData {
 	/**
+	 * Returns if the user is logged in or not.
+	 * @return bool
+	 */
+	public static function isLoggedIn() {
+		return true;
+	}
+
+	/**
+	 * As a mock, we don't have a user. Also, I haven't coded in a user class so... that's a
+	 * thing too.
+	 * @return mixed
+	 */
+	public static function getLoggedInUser() {
+		return true;
+	}
+
+	/**
 	 * Gets a set of fake tasks. Currently ignores filters.
 	 * @param TaskFilter $filter
 	 * @return mixed
 	 */
-	public function getTasks(TaskFilter $filter = null) {
+	public static function getTasks(TaskFilter $filter = null) {
 		// Create tags
 		$schoolTag = new MockTag("School tag that's very long & will run off the page. "
 				. "Consequently this tag is also the maximum length in character which is 128.",

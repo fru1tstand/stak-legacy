@@ -14,6 +14,6 @@ class MockStakModule extends AbstractModule {
 		self::bind(StakSettings::class)->asSingletonTo(MockStakSettings::class);
 		self::bind(Tag::class)->to(MockTag::class);
 		self::bind(Task::class)->to(MockTask::class);
-		self::bind(UserData::class)->to(MockUserData::class);
+		self::bind(UserData::class)->asStaticTo(MockUserData::class);
 	}
 }

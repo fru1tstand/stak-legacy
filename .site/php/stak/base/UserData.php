@@ -8,10 +8,26 @@ use stak\base\userdata\TaskFilter;
  * @package stak
  */
 interface UserData {
+
+	// Login / User Validation methods
 	/**
-	 * Gets tasks with the given filter. Pass null to get all tasks.
-	 * @param TaskFilter $filter
+	 * Returns if the user is logged in or not.
+	 * @return bool
+	 */
+	public static function isLoggedIn();
+
+	/**
+	 * Returns the current logged in user's account. Returns null if no user is logged in.
 	 * @return mixed
 	 */
-	public function getTasks(TaskFilter $filter = null);
+	public static function getLoggedInUser();
+
+	// Task methods
+	/**
+	 * Retrieves an array of tasks that conform to the given filter for the logged in user.
+	 * Returns an empty array if no user is logged in.
+	 * @param TaskFilter $filter
+	 * @return Task[]
+	 */
+	public static function getTasks(TaskFilter $filter = null);
 }
