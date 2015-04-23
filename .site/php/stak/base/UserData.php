@@ -2,6 +2,7 @@
 namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use stak\base\userdata\TaskFilter;
+use stak\base\userdata\TagFilter;
 
 /**
  * Provides an interface to access user data like stored tasks, tags, settings, account info, etc.
@@ -22,11 +23,21 @@ interface UserData {
 	 */
 	public static function getLoggedInUser();
 
+
+	// Tag methods
+	/**
+	 * Gets all tags the current logged in user owns. Returns an empty array if no user is logged
+	 * in.
+	 * @param TagFilter $filter Used to filter result tag set.
+	 * @return Tag[]
+	 */
+	public static function getTags(TagFilter $filter = null);
+
 	// Task methods
 	/**
-	 * Retrieves an array of tasks that conform to the given filter for the logged in user.
-	 * Returns an empty array if no user is logged in.
-	 * @param TaskFilter $filter
+	 * Gets all tasks the current logged in user owns. Returns an empty array if no user is
+	 * logged in.
+	 * @param TaskFilter $filter Used to filter result task set.
 	 * @return Task[]
 	 */
 	public static function getTasks(TaskFilter $filter = null);
