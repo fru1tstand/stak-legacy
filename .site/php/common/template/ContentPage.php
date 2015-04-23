@@ -4,7 +4,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 use common\base\Response;
 
 /**
- * Defines a template page
+ * Defines a template content page.
+ * The structure for templating using this file is as follows
+ * 	- Master Page (index/home/other root template name)
+ * 		- Content Page
+ * 			- Page Processor
+ * 			- Page Content
+ * 				- Sub-divided page content ad infinitum
  * @package common\template
  */
 interface ContentPage {
