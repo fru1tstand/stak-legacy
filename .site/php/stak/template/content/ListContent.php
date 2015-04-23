@@ -1,17 +1,12 @@
 <?php
-namespace stak\content\page\templates;
+namespace stak\template\content;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
-use stak\content\IncludePage;
-use stak\content\page\processors\ListProcessor;
-
-//Make sure we're being loaded from a proper source
-if (!IncludePage::validate()) return;
+use stak\template\processors\ListProcessor;
 
 ?>
-
 <div class="split-left">
 
-	<?php ListProcessor::singleTagMode(); ?>
+	<?php ListProcessor::showRequestedView(); ?>
 
 	<div class="split-left-options-container">
 		<div class="icon spin-container"><span class="fa fa-cog spin"></span></div>

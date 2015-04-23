@@ -1,7 +1,15 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
-use stak\content\IncludePage;
+use stak\template\processors\IndexProcessor;
+use common\base\Response;
 
+//TODO: Handle errors properly
+$page = IndexProcessor::getRequestedPage();
+$response = null;
+Response::getInstance($response, "Index Root");
+if (!$page::canLoad($response))
+	print_r($response);
+$includeContent = $page::getContentLocation();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +19,7 @@ use stak\content\IncludePage;
 		<meta charset="UTF-8" />
 		<title>Fru1tMe - Stak: The Task Whatcham'callit</title>
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
-		<link href="/.site/php/stak/content/css/theme.php" rel="stylesheet" type="text/css">
+		<link href="/.site/php/stak/css/theme.php" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -53,9 +61,8 @@ use stak\content\IncludePage;
 
 		<div id="window-container">
 			<div>
-				<?php
-					IncludePage::ListTemplate();
-				?>
+				<?php /** @noinspection PhpIncludeInspection */
+				include $includeContent; ?>
 			</div>
 		</div>
 
