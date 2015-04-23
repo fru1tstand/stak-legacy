@@ -15,16 +15,16 @@ use common\base\Response;
  */
 interface ContentPage {
 	/**
-	 * Returns if the page can be loaded. This method is called before any HTML is sent. Headers
-	 * and other information can be used. This method is where you should check for security and
-	 * system state.
+	 * Returns whether or not the page should be loaded. This method is called before any HTML is
+	 * sent to the requester. This is where all the checks for valid users, permissions, session
+	 * state, etc is done.
 	 * @param Response $response
 	 * @return bool True if the page can be loaded; false otherwise.
 	 */
 	public static function canLoad(Response &$response = null);
 
 	/**
-	 * Returns the location of the content (this method should not itself print any html).
+	 * Returns the absolute location of the page content. 
 	 * @return string
 	 */
 	public static function getContentLocation();
