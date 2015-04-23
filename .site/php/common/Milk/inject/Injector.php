@@ -54,10 +54,6 @@ class Injector {
 		// Get binder
 		$binder = $this->binders[$name];
 
-		// Check if it's a static implementation (no need to instantiate, simply return impl)
-		if ($binder->isStatic())
-			return $binder->getImplementation();
-
 		// Check if it's a singleton and we have it instantiated already (simply return it)
 		if ($binder->isSingleton()
 			&& !is_null($this->singletonInstances[$binder->getImplementation()]))
@@ -68,7 +64,11 @@ class Injector {
 		$constructor = $class->getConstructor();
 		$resultObject = null;
 
-		// No constructor or constructor with empty parameter list, we can simply create an instance
+		// Check if it's a static implementation (no need to instantiate, simply return impl)
+		if ($binder->isStatic())
+			return $class->newInstanceWithoutConstructor();
+
+		// No constructor or constructor with empty parameter listpage, we can simply create an instance
 		if (is_null($constructor) || count($constructor->getParameters()) == 0) {
 			$resultObject = $class->newInstance();
 		}
