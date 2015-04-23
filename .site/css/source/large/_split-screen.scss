@@ -3,7 +3,7 @@
 	margin-top: -$global-menu-tab-height - $global-menu-top-padding;
 	padding-top: $global-menu-tab-height + $global-menu-top-padding;
 	height: 100%;
-	
+
 	> div {
 		height: 100%;
 	}
@@ -18,7 +18,7 @@
 .split-left {
 	width: $width-small;
 	float: left;
-	
+
 	.icon {
 		text-align: center;
 		line-height: $split-screen-option-height;
@@ -36,18 +36,18 @@
 	/* The last 1px in the list is border anyway */
 	height: $split-screen-option-height + 1;
 	max-height: 100vh;
-	
+
 	border-top: 1px solid #000;
 	z-index: $split-screen-option-z-index;
 	overflow: hidden;
 	@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0.3s);
-	
+
 	.content {
 		height: $split-screen-option-extended-height - $split-screen-option-height;
 		max-height: 100vh;
 		overflow: auto;
 	}
-	
+
 	&:hover {
 		@include transition(height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1) 0s);
 		height: $split-screen-option-extended-height;
