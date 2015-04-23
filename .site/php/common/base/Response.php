@@ -21,7 +21,7 @@ class Response {
      * @param Response $response
      * @param string $fnName
      */
-    public static function getInstance(Response &$response, $fnName = null) {
+    public static function getInstance(Response &$response = null, $fnName = null) {
         if (is_null($response))
             $response = new Response();
 
@@ -148,7 +148,7 @@ class Response {
             $this->messages = [];
         if (!is_array($this->messageTypes))
             $this->messageTypes = [];
-        if (!is_array($this->messageTypes[$type]))
+        if (!isset($this->messageTypes[$type]) || !is_array($this->messageTypes[$type]))
             $this->messageTypes[$type] = [];
 
         $this->messages[$this->messageIndex] = $message;
