@@ -150,4 +150,12 @@ class MockUserData implements UserData {
 
 		return self::$cachedTasks;
 	}
+
+	/**
+	 * Gets the user's timezone
+	 * @return int
+	 */
+	public static function getTimezone() {
+		return -8;
+	}
 }

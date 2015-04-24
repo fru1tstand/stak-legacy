@@ -33,6 +33,7 @@ interface UserData {
 	 */
 	public static function getTags(TagFilter $filter = null);
 
+
 	// Task methods
 	/**
 	 * Gets all tasks the current logged in user owns. Returns an empty array if no user is
@@ -41,4 +42,12 @@ interface UserData {
 	 * @return Task[]
 	 */
 	public static function getTasks(TaskFilter $filter = null);
+
+
+	// Other
+	/**
+	 * Gets the user's UTC timezone
+	 * @return int
+	 */
+	public static function getTimezone();
 }
