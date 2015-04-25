@@ -2,25 +2,29 @@
 namespace common\ppunit\html;
 
 use common\ppunit\UnitTest;
-use stak\template\processors\IndexProcessor;
-use common\base\Response;
+use ReflectionClass;
+use ReflectionMethod;
 use Exception;
 
 // Make sure we've been included and have the information necessary to make the page
-/** @var \ReflectionObject $reflectionObject */
-/** @var \ReflectionMethod[] $tests */
 /** @var UnitTest $unitTest */
-if (!isset($ppunitTestPage, $tests, $reflectionObject, $unitTest))
+if (!isset($ppunitTestPage, $className))
 	exit;
 
-//TODO: For the love of all that is holy, make this page look half decent.
+// Get all tests
+/** @var ReflectionMethod[] $tests */
+$tests = array();
+$testClass = new ReflectionClass($className);
+$passedTests = 0;
+foreach ($testClass->getMethods() as $method) {
+	// Check if its static
+	if (!$method->isStatic())
+		continue;
 
-$page = IndexProcessor::getRequestedPage();
-$response = null;
-Response::getInstance($response, "Index Root");
-if (!$page::canLoad($response))
-	print_r($response);
-$includeContent = $page::getContentLocation();
+	// Check if its a test
+	if (strpos($method->getDocComment(), "@Test"))
+		$tests[] = $method;
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,40 +32,211 @@ $includeContent = $page::getContentLocation();
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>PPUnit - <?php $reflectionObject->getParentClass()->getName(); ?></title>
+	<title>PPUnit - <?php echo $testClass->getName(); ?></title>
+
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body, html {
+			height: 100%;
+		}
+		body {
+			color: #a9b7c6;
+			background-color: #313335;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+		.clearfix {
+			clear: both;
+		}
+
+		.container {
+			background-color: #2b2b2b;
+			box-shadow: 0 0 4px 1px #000;
+			margin: 0 auto;
+			min-width: 800px;
+			max-width: 1300px;
+			width: 75%;
+			min-height: 100%;
+		}
+
+		.title {
+			color: #c9c9c9;
+			padding: 15px 30px;
+			font-size: 26px;
+			border-bottom: 4px solid #3c3f41;
+		}
+		.subtitle {
+			color: #cc7832;
+			border-bottom: 1px solid #555;
+			padding: 5px 30px;
+		}
+
+		.stats, .title, .run {
+			margin-bottom: 40px;
+		}
+		.stats .content,
+		.results {
+			padding: 10px 15px;
+		}
+		.stats .content span {
+			color: #6aabc8;
+		}
+		.stats .left,
+		.stats .right {
+			box-sizing: border-box;
+			width: 50%;
+			float: right;
+		}
+		.stats .left {
+			border-right: 1px solid #555;
+			float: left;
+		}
+		.stats .right span {
+			font-family: monospace;
+			padding-right: 5px;
+		}
+
+		.run {
+			padding: 0 15px;
+			font-family: monospace;
+		}
+		.run > div {
+			padding: 15px 0;
+		}
+		.run pre {
+			height: 14px;
+			font-size: 14px;
+			line-height: 14px;
+			overflow: hidden;
+			background-color: #000;
+			-webkit-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+			-moz-transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+			transition: height 0.5s cubic-bezier(0.3, 0.3, 0.02, 1);
+		}
+		.run pre:hover {
+			height: 200px;
+			overflow: auto;
+		}
+		.lnno {
+			padding: 0 10px;
+			color: #50964f;
+		}
+		.lnno::before {
+			content: '[Lines ';
+		}
+		.lnno::after {
+			content: ']';
+		}
+		.output {
+			padding-left: 20px;
+		}
+		.method {
+			color: #ffc66d;
+		}
+		.pass {
+			color: #0A0;
+		}
+		.fail {
+			color: #F33;
+		}
+
+		.progressbar {
+			background-color: #3c3f41;
+			height: 20px;
+			line-height: 20px;
+		}
+		.progress-value {
+			height: 100%;
+			float: left;
+			background-color: #0A0;
+		}
+		.nowidth {
+			width: 0;
+			white-space: nowrap;
+		}
+		.nowidth div {
+			padding: 0 10px;
+			color: #99FFFF;
+			font-size: 14px;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="container">
+		<div class="title">PPUnitTest</div>
+		<div class="stats">
+			<div class="left">
+				<div class="subtitle">File Information</div>
+				<div class="content">
+					<div>Running tests from <span><?php echo $testClass->getName(); ?></span></div>
+					<div>Found <span><?php echo count($tests); ?></span> test(s)</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="subtitle">Tests Found</div>
+				<div class="content">
+					<?php
+					foreach ($tests as $test) {
+						echo "<div><span>", $test->getStartLine(), "-", $test->getEndLine(),
+						'</span>', $test->getName(), "</div>";
+					}
+					?>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
 
-<?php
-$passedTests = 0;
-echo "<div>Testing ", count($tests), " test(s).<br /><br />";
-foreach ($tests as $test) {
-	echo "<div>Running ", $test->getName(), "...</div>";
-	try {
-		$test->invoke($unitTest);
-		$passedTests++;
-		echo "Passed!<br /><br />";
-	}
-	catch (Exception $e) {
-		echo "The test failed with error: ", $e->getMessage(), ".";
-		echo "<ol>";
-		foreach ($e->getTrace() as $trace) {
-			echo "<li>",
-					"<div>File: ", ((isset($trace['file'])) ? $trace['file'] : ""), "</div>",
-					"<div>Line: ", ((isset($trace['line'])) ? $trace['line'] : ""), "</div>",
-					"<div>Class: ", ((isset($trace['class'])) ? $trace['class'] : ""), "</div>",
-					"<div>Args: ", print_r($trace['args']), "</div>",
-				"</li>";
+		<div class="subtitle">Run</div>
+		<div class="run">
+		<?php
+		foreach ($tests as $test) {
+			echo '<div class="singletest">';
+				echo '<div>Running <span class="method">', $test->getName(), '</span><span class="lnno">', $test->getStartLine(), "-",
+						$test->getEndLine(), '</span></div>';
+				echo '<div class="output">';
+			try {
+				$test->invoke(null);
+				$passedTests++;
+				echo '<div class="pass">Passed!</div>';
+			} catch (Exception $e) {
+				echo '<div>', $e->getMessage(), ' | Line ', $e->getTrace()[0]['line'], '</div>';
+				echo '<pre>Hover to see full trace', "\r\n";
+				print_r($e->getTrace());
+				echo '</pre>';
+				echo '<div class="fail">Failed.</div>';
+			}
+				echo '</div>';
+			echo '</div>';
 		}
-		echo "</ol><br /><br />";
-	}
-}
-if ($passedTests == count($tests))
-	echo "<div>Passed all tests!</div>";
-else
-	echo "<div>There were one or more errors</div>";
-?>
+		?>
+		</div>
 
+		<?php
+		$percentPass = round($passedTests / count($tests) * 100, 2);
+		?>
+		<div class="subtitle">Results</div>
+		<div class="results">
+			<div class="progressbar">
+				<div class="progress-value" style="width:<?php echo $percentPass; ?>%">
+					<div class="nowidth">
+						<div>
+							<?php echo $passedTests; ?> of <?php echo count($tests); ?>
+							test(s) passed (<?php echo $percentPass; ?>%)
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php
+			if ($passedTests == count($tests))
+				echo '<div class="pass">All tests passed!</div>';
+			else
+				echo '<div class="fail">There were some test errors...</div>';
+			?>
+
+		</div>
+	</div>
 </body>
 </html>
