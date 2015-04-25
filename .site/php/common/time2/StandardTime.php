@@ -1,10 +1,10 @@
 <?php
-namespace common\Time;
+namespace common\time;
 
 /**
  * Unifies timezones by providing methods of converting back and forth between UTC+0 and whatever
  * timezone you choose to be in
- * @package common\Time
+ * @package common\time
  */
 class StandardTime {
 	// Constants
@@ -47,9 +47,22 @@ class StandardTime {
 
 
 	// Convenience methods
+	/**
+	 * Gets the current UTC+0 time.
+	 * @return int
+	 */
 	public static function getTime() {
 		if (!date_default_timezone_get() == "UTC")
 			date_default_timezone_set("UTC");
 		return time();
+	}
+
+	/**
+	 * Returns the date portion of the given time
+	 * @param int $time
+	 * @return int
+	 */
+	public static function floorToDate($time) {
+		return $time - ($time % self::SECONDS_IN_DAY);
 	}
 }
