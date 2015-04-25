@@ -7,6 +7,9 @@ namespace common\Time;
  * @package common\Time
  */
 class StandardTime {
+	// Constants
+	const SECONDS_IN_DAY = 86400;
+
 	// Non-instantiable
 	private function __construct() { }
 
