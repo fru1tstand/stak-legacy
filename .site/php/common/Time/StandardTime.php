@@ -10,6 +10,7 @@ class StandardTime {
 	// Non-instantiable
 	private function __construct() { }
 
+	// Conversion methods
 	/**
 	 * Converts the passed time from whatever UTC timezone it was in, to UTC+0
 	 * @param int $time
@@ -39,5 +40,13 @@ class StandardTime {
 	public static function convert($time, $from, $to) {
 		// From -8 to +2 should add 10 hours, ((+2 [to]) - (-8 [from])) = 10
 		return $time + (60 * 60 * ($to - $from));
+	}
+
+
+	// Convenience methods
+	public static function getTime() {
+		if (!date_default_timezone_get() == "UTC")
+			date_default_timezone_set("UTC");
+		return time();
 	}
 }
