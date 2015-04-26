@@ -6,7 +6,7 @@ use stak\template\processors\ListProcessor;
 ?>
 <div class="split-left">
 
-	<?php ListProcessor::showRequestedView(); ?>
+	<?php ListProcessor::showRequestedTasklistView(); ?>
 
 	<div class="split-left-options-container">
 		<div class="icon spin-container"><span class="fa fa-cog spin"></span></div>
