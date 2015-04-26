@@ -1,6 +1,5 @@
 <?php
 namespace common\template;
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 use common\base\Response;
 
 /**
@@ -24,7 +23,7 @@ interface ContentPage {
 	public static function canLoad(Response &$response = null);
 
 	/**
-	 * Returns the absolute location of the page content. 
+	 * Returns the absolute location of the page content.
 	 * @return string
 	 */
 	public static function getContentLocation();
