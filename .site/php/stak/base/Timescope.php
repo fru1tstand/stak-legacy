@@ -2,6 +2,7 @@
 namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
+use common\time\StandardTime;
 
 /**
  * Defines a time categorical container for Tasks
@@ -109,8 +110,8 @@ abstract class Timescope {
 	}
 
 	/**
-	 * Sets the upper bound of the timescope in days. To disable, set upperBoundIsInfinite to
-	 * true. To bound it to "now", set isBoundNow to true.
+	 * Sets the upper bound of the timescope in days (inclusive). To disable, set
+	 * upperBoundIsInfinite to true. To bound it to "now", set isBoundNow to true.
 	 * @param          $days
 	 * @param Response $response
 	 * @return bool
@@ -129,8 +130,8 @@ abstract class Timescope {
 	}
 
 	/**
-	 * Sets the lower bound of the timescope in days. To disable, set lowerBoundIsInfinite to
-	 * true. To bound it to "now", set isBoundNow to true.
+	 * Sets the lower bound of the timescope in days (inclusive). To disable, set
+	 * lowerBoundIsInfinite to true. To bound it to "now", set isBoundNow to true.
 	 * @param          $days
 	 * @param Response $response
 	 * @return bool
@@ -237,6 +238,43 @@ abstract class Timescope {
 			return false;
 
 		$this->isBoundNow = $isBoundNow;
+		return true;
+	}
+
+
+	// Other
+	public function isWithinScope($time) {
+		$daysFromToday = (StandardTime::floorToDate($time)
+						 - StandardTime::floorToDate(StandardTime::getTime()))
+						 / StandardTime::SECONDS_IN_DAY;
+
+		// Check lower bound
+		if (!$this->lowerBoundIsInfinite) {
+			// Is it bound now?
+			if ($this->isBoundNow && $this->lowerBound == 0) {
+				if ($time < StandardTime::getTime())
+					return false;
+			}
+			// Otherwise, treat it normally
+			else {
+				if ($daysFromToday < $this->lowerBound)
+					return false;
+			}
+		}
+
+		// Upper bound
+		if (!$this->upperBoundIsInfinite) {
+			if ($this->isBoundNow && $this->upperBound == 0) {
+				if ($time > StandardTime::getTime())
+					return false;
+			}
+
+			else {
+				if ($daysFromToday > $this->upperBound)
+					return false;
+			}
+		}
+
 		return true;
 	}
 
