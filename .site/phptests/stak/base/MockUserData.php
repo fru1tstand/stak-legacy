@@ -11,6 +11,7 @@ use stak\base\userdata\TaskFilter;
 class MockUserData implements UserData {
 	private static $cachedTags = null;
 	private static $cachedTasks = null;
+	private static $cachedTimescopes = null;
 
 	/**
 	 * Returns if the user is logged in or not.
@@ -158,4 +159,21 @@ class MockUserData implements UserData {
 	public static function getTimezone() {
 		return -8;
 	}
+
+	/**
+	 * Gets the user's timescopes
+	 * @return Timescope[]
+	 */
+	public static function getTimescopes() {
+		if (is_null(self::$cachedTimescopes)) {
+			$todayBoundNow = new MockTimescope("Today", 0, false, 1, false, false, false, true);
+			$thisWeek = new MockTimescope("This Week", 0, false, 7, false, false, true, false);
+			$overdue = new MockTimescope("Overdue", null, true, 0, false, true, true, true);
+			$everythingElse = new MockTimescope("Everything Else", 8, false, null, true, true, true,
+					false);
+			self::$cachedTimescopes = array($todayBoundNow, $thisWeek, $overdue, $everythingElse);
+		}
+		return self::$cachedTimescopes;
+	}
+
 }

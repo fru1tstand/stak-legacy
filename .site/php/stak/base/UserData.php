@@ -50,4 +50,10 @@ interface UserData {
 	 * @return int
 	 */
 	public static function getTimezone();
+
+	/**
+	 * Gets the user's timescopes
+	 * @return Timescope[]
+	 */
+	public static function getTimescopes();
 }
