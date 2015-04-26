@@ -7,23 +7,32 @@ use ReflectionMethod;
 use Exception;
 
 // Make sure we've been included and have the information necessary to make the page
-/** @var UnitTest $unitTest */
-if (!isset($ppunitTestPage, $className))
+/** @var UnitTest[] $testClasses */
+if (!isset($testClasses))
 	exit;
 
 // Get all tests
 /** @var ReflectionMethod[] $tests */
 $tests = array();
-$testClass = new ReflectionClass($className);
 $passedTests = 0;
-foreach ($testClass->getMethods() as $method) {
-	// Check if its static
-	if (!$method->isStatic())
-		continue;
+$totalTests = 0;
 
-	// Check if its a test
-	if (strpos($method->getDocComment(), "@Test"))
-		$tests[] = $method;
+foreach ($testClasses as $class) {
+	$rc = new ReflectionClass($class);
+	foreach ($rc->getMethods() as $method) {
+		// Check if its static
+		if (!$method->isStatic())
+			continue;
+
+		if (!isset($tests[$rc->getName()]))
+			$tests[$rc->getName()] = array();
+
+		// Check if its a test
+		if (strpos($method->getDocComment(), "@Test")) {
+			$tests[$rc->getName()][] = $method;
+			$totalTests++;
+		}
+	}
 }
 ?>
 
@@ -32,7 +41,7 @@ foreach ($testClass->getMethods() as $method) {
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>PPUnit - <?php echo $testClass->getName(); ?></title>
+	<title>PPUnitTest</title>
 
 	<style>
 		* {
@@ -141,6 +150,9 @@ foreach ($testClass->getMethods() as $method) {
 		.fail {
 			color: #F33;
 		}
+		.test-class-name {
+			text-align: center;
+		}
 
 		.progressbar {
 			background-color: #3c3f41;
@@ -169,20 +181,22 @@ foreach ($testClass->getMethods() as $method) {
 		<div class="title">PPUnitTest</div>
 		<div class="stats">
 			<div class="left">
-				<div class="subtitle">File Information</div>
+				<div class="subtitle">Class(es)</div>
 				<div class="content">
-					<div>Running tests from <span><?php echo $testClass->getName(); ?></span></div>
-					<div>Found <span><?php echo count($tests); ?></span> test(s)</div>
+					<?php
+					foreach ($testClasses as $class) {
+						echo "<div><span>$class</span></div>";
+					}
+					?>
 				</div>
 			</div>
 			<div class="right">
-				<div class="subtitle">Tests Found</div>
+				<div class="subtitle">Test(s)</div>
 				<div class="content">
 					<?php
-					foreach ($tests as $test) {
-						echo "<div><span>", $test->getStartLine(), "-", $test->getEndLine(),
-						'</span>', $test->getName(), "</div>";
-					}
+					foreach ($tests as $testClass)
+						foreach ($testClass as $test)
+							echo "<div>{$test->getName()}</div>";
 					?>
 				</div>
 			</div>
@@ -192,30 +206,36 @@ foreach ($testClass->getMethods() as $method) {
 		<div class="subtitle">Run</div>
 		<div class="run">
 		<?php
-		foreach ($tests as $test) {
-			echo '<div class="singletest">';
-				echo '<div>Running <span class="method">', $test->getName(), '</span><span class="lnno">', $test->getStartLine(), "-",
-						$test->getEndLine(), '</span></div>';
-				echo '<div class="output">';
-			try {
-				$test->invoke(null);
-				$passedTests++;
-				echo '<div class="pass">Passed!</div>';
-			} catch (Exception $e) {
-				echo '<div>', $e->getMessage(), ' | Line ', $e->getTrace()[0]['line'], '</div>';
-				echo '<pre>Hover to see full trace', "\r\n";
-				print_r($e->getTrace());
-				echo '</pre>';
-				echo '<div class="fail">Failed.</div>';
-			}
+		foreach ($tests as $className => $testClass) {
+			echo "<div class=\"test-class-name\">$className</div>";
+
+			/** @var ReflectionMethod $test */
+			foreach ($testClass as $test) {
+
+				echo '<div class="singletest">';
+					echo '<div>Running <span class="method">', $test->getName(), '</span><span class="lnno">', $test->getStartLine(), "-",
+							$test->getEndLine(), '</span></div>';
+					echo '<div class="output">';
+				try {
+					$test->invoke(null);
+					$passedTests++;
+					echo '<div class="pass">Passed!</div>';
+				} catch (Exception $e) {
+					echo '<div>', $e->getMessage(), ' | Line ', $e->getTrace()[0]['line'], '</div>';
+					echo '<pre>Hover to see full trace', "\r\n";
+					print_r($e->getTrace());
+					echo '</pre>';
+					echo '<div class="fail">Failed.</div>';
+				}
+					echo '</div>';
 				echo '</div>';
-			echo '</div>';
+			}
 		}
 		?>
 		</div>
 
 		<?php
-		$percentPass = round($passedTests / count($tests) * 100, 2);
+		$percentPass = round($passedTests / $totalTests * 100, 2);
 		?>
 		<div class="subtitle">Results</div>
 		<div class="results">
@@ -223,14 +243,14 @@ foreach ($testClass->getMethods() as $method) {
 				<div class="progress-value" style="width:<?php echo $percentPass; ?>%">
 					<div class="nowidth">
 						<div>
-							<?php echo $passedTests; ?> of <?php echo count($tests); ?>
+							<?php echo $passedTests; ?> of <?php echo $totalTests; ?>
 							test(s) passed (<?php echo $percentPass; ?>%)
 						</div>
 					</div>
 				</div>
 			</div>
 			<?php
-			if ($passedTests == count($tests))
+			if ($passedTests == $totalTests)
 				echo '<div class="pass">All tests passed!</div>';
 			else
 				echo '<div class="fail">There were some test errors...</div>';
