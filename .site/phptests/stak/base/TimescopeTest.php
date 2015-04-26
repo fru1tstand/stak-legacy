@@ -6,31 +6,70 @@ use common\time\StandardTime;
 
 class TimescopeTest extends UnitTest {
 	/**
+	 * Tests a timescope with a range of [now, +2] days
 	 * @Test
 	 */
-	public static function testIsWithinScope() {
-		// timescope from now until 2 days from now (inclusive)
+	public static function testIsWithinScopeWithNow() {
+		self::addMessage("Testing with timescope range: [now, +2]");
 		$timescope = new MockTimescope("TestTimescope", 0, false, 2, false, false, false, true);
 
-		$validTime = time();
-		$validTime2 = time() + StandardTime::SECONDS_IN_DAY;
-		$validTime3 = time() + 100000;
+		// Pass
+		$now = time();
+		$nowPlusADay = time() + StandardTime::SECONDS_IN_DAY;
+		$nowPlus10000Seconds = time() + 100000;
 
-		$invalidLowerTime = time() - 1;
-		$invalidLowerTime2 = 1;
+		// Fail
+		$aSecondAgo = time() - 1;
+		$unixTime1 = 1;
 
-		$invalidUpperTime = time() + StandardTime::SECONDS_IN_DAY * 3;
-		$invalidUpperTime2 = time() + StandardTime::SECONDS_IN_DAY * 4;
+		$threeDaysFromNow = time() + StandardTime::SECONDS_IN_DAY * 3;
+		$fourDaysFromNow = time() + StandardTime::SECONDS_IN_DAY * 4;
 
-		self::assertTrue($timescope->isWithinScope($validTime), "Today");
-		self::assertTrue($timescope->isWithinScope($validTime2), "Tomorrow");
-		self::assertTrue($timescope->isWithinScope($validTime3), "+ 100,000 Seconds");
+		self::assertTrue($timescope->isWithinScope($now), "Now");
+		self::assertTrue($timescope->isWithinScope($nowPlusADay), "Tomorrow");
+		self::assertTrue($timescope->isWithinScope($nowPlus10000Seconds), "+ 100,000 Seconds");
 
-		self::assertFalse($timescope->isWithinScope($invalidLowerTime), "1 second ago");
-		self::assertFalse($timescope->isWithinScope($invalidLowerTime2), "Second 1 (unix time 1)");
+		self::assertFalse($timescope->isWithinScope($aSecondAgo), "1 second ago");
+		self::assertFalse($timescope->isWithinScope($unixTime1), "Second 1 (unix time 1)");
 
-		self::assertFalse($timescope->isWithinScope($invalidUpperTime), "3 days from now");
-		self::assertFalse($timescope->isWithinScope($invalidUpperTime2), "4 days from now");
+		self::assertFalse($timescope->isWithinScope($threeDaysFromNow), "3 days from now");
+		self::assertFalse($timescope->isWithinScope($fourDaysFromNow), "4 days from now");
+	}
+
+	/**
+	 * Tests a timescope with a range of [0, +2] days
+	 * @Test
+	 */
+	public static function testIsWithinScopeBasic() {
+		self::addMessage("Testing with timescope range: [0, 2]");
+		$timescope = new MockTimescope("TestTimescope", 0, false, 2, false, false, false, false);
+
+		// Pass
+		$now = time();
+		$beginningOfToday = StandardTime::floorToDate(time()); // Edge of lower bound
+		$nearMidnight2DaysFromNow =
+				StandardTime::floorToDate(time() + StandardTime::SECONDS_IN_DAY * 2)
+				+ StandardTime::SECONDS_IN_DAY - 1; // Edge of upper bound
+		$twentyFourHoursFromNow = time() + StandardTime::SECONDS_IN_DAY;
+
+		// Fail
+		$nearMidnightYesterday = StandardTime::floorToDate(time() - StandardTime::SECONDS_IN_DAY)
+								 + StandardTime::SECONDS_IN_DAY - 1; // Edge of lower bound
+		$twentyFourHoursAgo = time() - StandardTime::SECONDS_IN_DAY;
+		$startOf3DaysFromNow = StandardTime::floorToDate(time() + StandardTime::SECONDS_IN_DAY *
+																  3); // Edge of upper bound
+
+		self::assertTrue($timescope->isWithinScope($now), "Now");
+		self::assertTrue($timescope->isWithinScope($beginningOfToday), "Beginning of today");
+		self::assertTrue($timescope->isWithinScope($nearMidnight2DaysFromNow),
+				"Near midnight 2 days from now");
+		self::assertTrue($timescope->isWithinScope($twentyFourHoursFromNow), "24 hours from now");
+
+		self::assertFalse($timescope->isWithinScope($nearMidnightYesterday),
+				"Near midnight yesterday");
+		self::assertFalse($timescope->isWithinScope($twentyFourHoursAgo), "24 hours ago");
+		self::assertFalse($timescope->isWithinScope($startOf3DaysFromNow),
+				"Start of 3 days from now");
 	}
 }
 UnitTest::init(TimescopeTest::class);
