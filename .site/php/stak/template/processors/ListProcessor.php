@@ -1,5 +1,8 @@
 <?php
 namespace stak\template\processors;
+use stak\Autoload;
+use stak\base\Task;
+use stak\base\UserData;
 use stak\template\utils\TemplateUtils;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
@@ -9,9 +12,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
  * @package stak\template\page\processors
  */
 class ListProcessor {
-
-	// Init 'n stuff
-	public static function showRequestedView() {
+	/**
+	 * Fetches the requested view
+	 */
+	public static function showRequestedTasklistView() {
 		//TODO: Correctly get view from settings
 		$view = (isset($_GET['view'])) ? $_GET['view'] : '';
 		switch ($view) {
@@ -25,6 +29,14 @@ class ListProcessor {
 				self::showSingleTagView();
 				break;
 		}
+	}
+
+	public static function getRequestedTasks() {
+		// TODO: Correctly fetch requested tasks (was a filter applied?)
+
+		/** @var UserData $ud */
+		$ud = Autoload::getInjector()->getInstance(UserData::class);
+		return $ud::getTasks();
 	}
 
 	/**
@@ -49,4 +61,8 @@ class ListProcessor {
 	private static function showSingleTagView() {
 		TemplateUtils::includeFromContentLocation("/listpage/SingleTagView.php");
 	}
+
+
+	/* Single tag view methods */
+
 }
