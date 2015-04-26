@@ -2,12 +2,13 @@
 namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
+use common\security\Hashable;
 
 /**
  * A label that can be attached to a Task
  * @package stak
  */
-abstract class Tag {
+abstract class Tag implements Hashable {
 	// Constants
 	const NAME_MAX_LENGTH = 128;
 
@@ -74,6 +75,12 @@ abstract class Tag {
 
 		$this->color = $color;
 		return true;
+	}
+
+
+	// Other
+	public function getHash() {
+		return md5("Name: {$this->getName()}");
 	}
 
 

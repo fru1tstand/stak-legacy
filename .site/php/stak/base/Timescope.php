@@ -2,13 +2,14 @@
 namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
+use common\security\Hashable;
 use common\time\StandardTime;
 
 /**
  * Defines a time categorical container for Tasks
  * @package stak\base
  */
-abstract class Timescope {
+abstract class Timescope implements Hashable {
 	// Constants
 	const NAME_MAX_LENGTH = 128;
 
@@ -243,6 +244,11 @@ abstract class Timescope {
 
 
 	// Other
+	/**
+	 * Checks if the given time is within the range of this timescope
+	 * @param $time
+	 * @return bool
+	 */
 	public function isWithinScope($time) {
 		$daysFromToday = (StandardTime::floorToDate($time)
 						 - StandardTime::floorToDate(StandardTime::getTime()))
@@ -276,6 +282,15 @@ abstract class Timescope {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Returns a hash of this object
+	 * @return string
+	 */
+	public function getHash() {
+		return md5("Name: {$this->getName()}; "
+				   . "Range: [{$this->getLowerBound()}, {$this->getUpperBound()}]");
 	}
 
 

@@ -2,12 +2,13 @@
 namespace stak\base;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
+use common\security\Hashable;
 
 /**
  * This class provides the common definition of a Task
  * @package stak
  */
-abstract class Task {
+abstract class Task implements Hashable {
 	// Constants
 	const TITLE_MAX_LENGTH = 512;
 
@@ -132,6 +133,14 @@ abstract class Task {
 	 */
 	public function containsChild(Task $child) {
 		return is_array($this->children) && in_array($child, $this->children);
+	}
+
+	/**
+	 * Returns the hash of this object
+	 * @return string
+	 */
+	public function getHash() {
+		return md5("Title: {$this->getTitle()}; Due: {$this->getDueDate()}");
 	}
 
 
