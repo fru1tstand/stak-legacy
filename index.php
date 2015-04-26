@@ -19,7 +19,7 @@ $includeContent = $page::getContentLocation();
 		<meta charset="UTF-8" />
 		<title>Fru1tMe - Stak: The Task Whatcham'callit</title>
 		<link href="/.site/css/compiled/global.css" rel="stylesheet" type="text/css">
-		<link href="/.site/php/stak/css/theme.php" rel="stylesheet" type="text/css">
+		<link href="/.site/css/compiled/theme-mirror.php" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
