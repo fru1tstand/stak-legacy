@@ -1,8 +1,8 @@
 <?php
 namespace stak\filters;
 use common\base\Preconditions;
-use stak\base\Tag;
-use stak\base\Task;
+use stak\foundation\Tag;
+use stak\foundation\Task;
 
 /**
  * This class is used to filter task requests to the implemented UserData class. Maybe in the
