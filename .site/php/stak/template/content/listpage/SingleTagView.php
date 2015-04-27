@@ -1,6 +1,7 @@
 <?php
 namespace stak\template\content\listpage;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
+use stak\template\processors\ListProcessor;
 
 ?>
 <!-- Single tag mode -->
@@ -28,7 +29,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 					<span class="title">Projects</span>
 				</span>
 		</label>
-
 	</div>
 
 	<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-hash1" />

@@ -2,8 +2,8 @@
 namespace stak;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/common/base/BaseAutoload.php";
 use common\base\BaseAutoload;
-use common\Milk\inject\AbstractModule;
-use common\Milk\Milk;
+use common\milk\inject\AbstractModule;
+use common\milk\Milk;
 
 define("PHP_PATH", $_SERVER["DOCUMENT_ROOT"] . "/.site/php");
 

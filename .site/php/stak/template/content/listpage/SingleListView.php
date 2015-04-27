@@ -41,11 +41,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 			<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-hash2" />
 
 			<label class="tasklist-timescope-container-toggle" for="tsc-hash2">
-					<span class="tasklist-timescope">
-						<span class="count">2</span>
-						<span class="visibility-toggle"></span>
-						<span class="name">Today</span>
-					</span>
+				<span class="tasklist-timescope">
+					<span class="count">2</span>
+					<span class="visibility-toggle"></span>
+					<span class="name">Today</span>
+				</span>
 			</label>
 
 			<div class="tasklist-task complete">
@@ -57,10 +57,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 				</div>
 				<label class="tasklist-task-toggle">
 					<span class="middler"></span>
-						<span class="middle">
-							<span class="title">Giant Music Project</span>
-							<span class="hierarchy hidden"></span>
-						</span>
+					<span class="middle">
+						<span class="title">Giant Music Project</span>
+						<span class="hierarchy hidden"></span>
+					</span>
 				</label>
 			</div><!-- .tasklist-task -->
 			<div class="tasklist-task">

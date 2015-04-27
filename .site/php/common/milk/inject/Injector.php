@@ -1,5 +1,5 @@
 <?php
-namespace common\Milk\inject;
+namespace common\milk\inject;
 use \Exception;
 use \ReflectionClass;
 

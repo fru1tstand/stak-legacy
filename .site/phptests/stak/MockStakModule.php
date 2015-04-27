@@ -1,13 +1,11 @@
 <?php
 namespace stak;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
-use common\Milk\inject\AbstractModule;
-use stak\base\Tag;
-use stak\base\MockTag;
-use stak\base\Task;
-use stak\base\MockTask;
-use stak\base\UserData;
-use stak\base\MockUserData;
+use common\milk\inject\AbstractModule;
+use stak\foundation\Tag;
+use stak\foundation\MockTag;
+use stak\foundation\Task;
+use stak\foundation\MockTask;
 
 class MockStakModule extends AbstractModule {
 	public function configure() {

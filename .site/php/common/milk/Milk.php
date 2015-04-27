@@ -1,7 +1,7 @@
 <?php
-namespace common\Milk;
-use common\Milk\inject\AbstractModule;
-use common\Milk\inject\Injector;
+namespace common\milk;
+use common\milk\inject\AbstractModule;
+use common\milk\inject\Injector;
 
 /**
  * Here lies my poorly programmed implementation of Google's Java Guice.

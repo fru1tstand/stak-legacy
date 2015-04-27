@@ -1,12 +1,12 @@
 <?php
-namespace stak\base;
+namespace stak\foundation;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
 use common\security\Hashable;
 
 /**
  * This class provides the common definition of a Task
- * @package stak
+ * @package stak\foundation
  */
 abstract class Task implements Hashable {
 	// Constants

@@ -1,12 +1,12 @@
 <?php
-namespace stak\base;
+namespace stak;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
-use stak\base\userdata\TagFilter;
-use stak\base\userdata\TaskFilter;
+use stak\filters\TagFilter;
+use stak\filters\TaskFilter;
 
 /**
  * Mock implementation of UserData for testing
- * @package stak\base
+ * @package stak
  */
 class MockUserData implements UserData {
 	private static $cachedTags = null;

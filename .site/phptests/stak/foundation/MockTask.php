@@ -1,12 +1,12 @@
 <?php
-namespace stak\base;
+namespace stak\foundation;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
 
 /**
  * Mock implementation of Task that serves as a simple container. Also used to test the Task
  * abstract class code since this class provides no new logic.
- * @package stak
+ * @package stak\foundation
  */
 class MockTask extends Task {
 

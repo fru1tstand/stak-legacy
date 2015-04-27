@@ -1,11 +1,11 @@
 <?php
-namespace stak\base;
+namespace stak\foundation;
 
 use common\base\Response;
 
 /**
  * A mock implementation of Timescope
- * @package stak\base
+ * @package stak\foundation
  */
 class MockTimescope extends Timescope {
 

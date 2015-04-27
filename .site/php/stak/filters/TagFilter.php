@@ -1,5 +1,5 @@
 <?php
-namespace stak\base\userdata;
+namespace stak\filters;
 
 /**
  * Class TagFilter

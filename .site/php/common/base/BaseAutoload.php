@@ -2,7 +2,7 @@
 namespace common\base;
 
 use common\data\Session;
-use common\Milk\inject\Injector;
+use common\milk\inject\Injector;
 
 /**
  * Class BaseAutoload
@@ -14,7 +14,7 @@ abstract class BaseAutoload {
 
 	/**
 	 * Initializes the website.
-	 * Sets up auto-loading, Milk injector, and session.
+	 * Sets up auto-loading, milk injector, and session.
 	 * @param BaseAutoload $autoload
 	 */
 	public static function init(BaseAutoload $autoload) {

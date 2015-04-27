@@ -1,5 +1,5 @@
 <?php
-namespace stak\base\userdata;
+namespace stak\filters;
 use common\base\Preconditions;
 use stak\base\Tag;
 use stak\base\Task;

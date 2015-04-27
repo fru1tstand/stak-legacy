@@ -1,5 +1,5 @@
 <?php
-namespace stak\base;
+namespace stak\foundation;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\base\Response;
 use common\security\Hashable;
@@ -7,7 +7,7 @@ use common\time\StandardTime;
 
 /**
  * Defines a time categorical container for Tasks
- * @package stak\base
+ * @package stak\foundation
  */
 abstract class Timescope implements Hashable {
 	// Constants

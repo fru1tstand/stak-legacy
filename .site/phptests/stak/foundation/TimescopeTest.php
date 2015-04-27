@@ -1,9 +1,13 @@
 <?php
-namespace stak\base;
+namespace stak\foundation;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use common\ppunit\UnitTest;
 use common\time\StandardTime;
 
+/**
+ * Tests for the Timescope abstract class
+ * @package stak\foundation
+ */
 class TimescopeTest extends UnitTest {
 	/**
 	 * Tests a timescope with a range of [now, +2] days
