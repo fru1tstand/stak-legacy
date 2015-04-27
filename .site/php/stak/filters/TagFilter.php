@@ -3,7 +3,7 @@ namespace stak\filters;
 
 /**
  * Class TagFilter
- * @package stak\base\userdata
+ * @package stak\filters
  */
 class TagFilter {
 	//TODO: Implement

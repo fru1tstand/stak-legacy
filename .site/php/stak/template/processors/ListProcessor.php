@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 
 /**
  * The processing backend for the List template
- * @package stak\template\page\processors
+ * @package stak\template\processors
  */
 class ListProcessor {
 	/**

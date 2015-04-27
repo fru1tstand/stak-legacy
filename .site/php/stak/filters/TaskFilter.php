@@ -7,7 +7,7 @@ use stak\foundation\Task;
 /**
  * This class is used to filter task requests to the implemented UserData class. Maybe in the
  * future I'll add boolean logic. But for now, simplistic linear searching should suffice.
- * @package stak\base\userdata
+ * @package stak\filters
  */
 class TaskFilter {
 	// Filter fields

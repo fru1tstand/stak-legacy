@@ -1,7 +1,6 @@
 <?php
 namespace stak\template\content\listpage;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
-use stak\template\processors\ListProcessor;
 
 ?>
 <!-- Single tag mode -->

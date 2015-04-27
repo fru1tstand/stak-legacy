@@ -6,7 +6,7 @@ use stak\Autoload;
  * Provides a way for a function to provide more detail than a simple boolean response. As a
  * parameter, it should be passed-by-reference so it doesn't interfere with already existing return
  * statements.
- * @package stak
+ * @package common\base
  */
 class Response {
     //Message types
