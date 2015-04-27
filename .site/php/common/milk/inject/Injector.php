@@ -28,6 +28,7 @@ class Injector {
 		foreach ($mapping as $map) {
 			$this->binders[$map->getAbstract()] = $map;
 			$refClass = new ReflectionClass($map->getAbstract());
+			/** @var ReflectionClass $refClass */
 			while ($refClass = $refClass->getParentClass()) {
 				$this->binders[$refClass->getName()] = $map;
 			}
