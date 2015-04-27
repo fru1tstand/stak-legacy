@@ -1,6 +1,5 @@
 <?php
 namespace common\ppunit;
-use ReflectionObject;
 use Exception;
 
 /**
@@ -26,7 +25,9 @@ abstract class UnitTest {
 	}
 
 	protected static function showResultPage() {
+		/** @noinspection PhpUnusedLocalVariableInspection */
 		$testClasses = self::$testClasses;
+		/** @noinspection PhpIncludeInspection */
 		require str_replace("\\", "/", realpath(dirname(__FILE__))) . "/html/TestPageContent.php";
 	}
 
