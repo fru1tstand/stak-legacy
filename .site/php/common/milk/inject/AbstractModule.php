@@ -3,7 +3,7 @@ namespace common\Milk\inject;
 
 /**
  * Sets up dependencies
- * @package common\meelk\inject
+ * @package common\milk\inject
  * @see Milk
  */
 abstract class AbstractModule {
