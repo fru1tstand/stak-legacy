@@ -3,6 +3,9 @@ namespace stak;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use stak\filters\TaskFilter;
 use stak\filters\TagFilter;
+use stak\foundation\Tag;
+use stak\foundation\Task;
+use stak\foundation\Timescope;
 
 /**
  * Provides an interface to access user data like stored tasks, tags, settings, account info, etc.

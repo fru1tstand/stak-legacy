@@ -3,6 +3,12 @@ namespace stak;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use stak\filters\TagFilter;
 use stak\filters\TaskFilter;
+use stak\foundation\Tag;
+use stak\foundation\Task;
+use stak\foundation\Timescope;
+use stak\foundation\MockTag;
+use stak\foundation\MockTask;
+use stak\foundation\MockTimescope;
 
 /**
  * Mock implementation of UserData for testing
@@ -43,6 +49,7 @@ class MockUserData implements UserData {
 									 . "character which is 128", "99F");
 			$importantTag = new MockTag("Important", "F00");
 			$projectsTag = new MockTag("Projects", "9F9");
+			/** @noinspection HtmlUnknownTag */
 			$qaTag = new MockTag("Th!s <will> <break> !@$&^*^)*()[]\{\}<><> \"everything'!!",
 					"000");
 			self::$cachedTags = array(&$schoolTag, &$importantTag, &$projectsTag, &$qaTag);
