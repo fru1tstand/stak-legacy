@@ -1,8 +1,7 @@
 <?php
 namespace stak\template\processors;
 use stak\Autoload;
-use stak\base\Task;
-use stak\base\UserData;
+use stak\UserData;
 use stak\template\utils\TemplateUtils;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
