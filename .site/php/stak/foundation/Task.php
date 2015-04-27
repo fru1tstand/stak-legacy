@@ -144,6 +144,61 @@ abstract class Task implements Hashable {
 	}
 
 
+	// Sort method helpers
+	/**
+	 * Compares this Task to the incoming Task using the due date, in chronological order.
+	 * (Earliest - Latest) If two Tasks have the same due date, it then compares alphabetical.
+	 * Null always takes precedence, where a null due date will come before all others.
+	 * @param Task $o
+	 * @return int
+	 */
+	public function compareChronological(Task $o) {
+		// Precondition null checks
+		if (is_null($o->getDueDate()) && is_null($this->dueDate)) // both
+			return $this->compareAlphabetical($o);
+		if (is_null($o->getDueDate())) // Other
+			return 1;
+		if (is_null($this->dueDate)) // This
+			return -1;
+
+		$compare = $this->dueDate - $o->getDueDate();
+		if ($compare == 0)
+			return $this->compareAlphabetical($o);
+		return $compare;
+	}
+
+	/**
+	 * Compares this Task to the incoming Task using the due date in reverse chronological order.
+	 * (Lastest - Earliest) If two Tasks have the same due date, it then compares alphabetical.
+	 * Null always takes precedence, where a null due date will come before all others.
+	 * @param Task $o
+	 * @return int
+	 */
+	public function compareReverseChronological(Task $o) {
+		// Precondition null checks
+		if (is_null($o->getDueDate()) && is_null($this->dueDate)) // both
+			return $this->compareAlphabetical($o);
+		if (is_null($o->getDueDate())) // Other
+			return 1;
+		if (is_null($this->dueDate)) // This
+			return -1;
+
+		$compare = $o->getDueDate() - $this->dueDate;
+		if ($compare == 0)
+			return $this->compareAlphabetical($o);
+		return $compare;
+	}
+
+	/**
+	 * Compares this object to the incoming object using the title, in alphabetical order. (A-Z)
+	 * @param Task $o
+	 * @return int
+	 */
+	public function compareAlphabetical(Task $o) {
+		return strcmp($this->title, $o->getTitle());
+	}
+
+
 	// Setters
 	/**
 	 * Attempts to set the title of the task.
@@ -588,6 +643,12 @@ abstract class Task implements Hashable {
 		return $response->hasFailed();
 	}
 
+	/**
+	 * Checks if the given value is a valid array of Tasks.
+	 * @param array    $children
+	 * @param Response $response
+	 * @return bool
+	 */
 	public static function isValidChildren(array $children, Response &$response = null) {
 		Response::getInstance($response, "Task::isValidChildren");
 
@@ -609,8 +670,7 @@ abstract class Task implements Hashable {
 
 	// These are called when their corresponding #set* methods are called and before any local
 	// properties are set. The return boolean is used to determine whether or not the update
-	// should be completed locally (eg. A database write failed,
-	// returning false, so we shouldn't
+	// should be completed locally (eg. A database write failed, returning false, so we shouldn't
 	// update the value here, and instead properly handle an error response).
 	/**
 	 * Called when {@link setTitle} is called.
