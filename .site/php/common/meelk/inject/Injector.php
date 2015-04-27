@@ -6,7 +6,7 @@ use \ReflectionClass;
 /**
  * Where the magic happens. This is used to create instances of the requested abstract class or
  * interface.
- * @package common\Milk\inject
+ * @package common\meelk\inject
  */
 class Injector {
 	/* @var Binder[] */	private $binders;

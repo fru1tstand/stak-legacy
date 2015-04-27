@@ -9,7 +9,7 @@ use common\Milk\inject\Injector;
  * This package provides a light dependency injection framework that is based off Guice. It
  * promotes modularity within a project which drives the creation of better self-contained code.
  * It's also very useful for testing and code re-usability.
- * @package common\Milk
+ * @package common\meelk
  */
 class Milk {
 

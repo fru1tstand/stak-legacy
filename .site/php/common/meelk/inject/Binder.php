@@ -4,7 +4,7 @@ use \Exception;
 
 /**
  * Class Binder
- * @package common\Milk\inject
+ * @package common\meelk\inject
  * @see Milk
  */
 class Binder {
