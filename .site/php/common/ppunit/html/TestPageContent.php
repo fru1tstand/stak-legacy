@@ -194,9 +194,12 @@ foreach ($testClasses as $class) {
 				<div class="subtitle">Test(s)</div>
 				<div class="content">
 					<?php
-					foreach ($tests as $testClass)
-						foreach ($testClass as $test)
+					foreach ($tests as $testClass) {
+						/** @var ReflectionMethod $test */
+						foreach ($testClass as $test) {
 							echo "<div>{$test->getName()}</div>";
+						}
+					}
 					?>
 				</div>
 			</div>
@@ -207,7 +210,7 @@ foreach ($testClasses as $class) {
 		<div class="run">
 		<?php
 		foreach ($tests as $className => $testClass) {
-			echo "<div class=\"test-class-name\">$className</div>";
+			echo "<div class='test-class-name'>$className</div>";
 
 			/** @var ReflectionMethod $test */
 			foreach ($testClass as $test) {
