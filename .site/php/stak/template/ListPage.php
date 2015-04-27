@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 use common\template\ContentPage;
 use common\base\Response;
 use stak\Autoload;
-use stak\base\UserData;
+use stak\UserData;
 use stak\template\utils\TemplateUtils;
 
 class ListPage implements ContentPage {
