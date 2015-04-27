@@ -20,6 +20,8 @@ Create unit tests for Task
 
 
 ** Backend
+Change ppunittest trigger files. Instead of init, have the group method. Single file tests will
+	init with level 0. Groups of tests will init will 1+.
 Create a folder that's built atop of foundation that holds viewstyle-container, timescope
 	container, etc
 Create timescope container, timescope group, etc
