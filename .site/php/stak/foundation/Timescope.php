@@ -249,7 +249,7 @@ abstract class Timescope implements Hashable {
 	 * @param $time
 	 * @return bool
 	 */
-	public function isWithinScope($time) {
+	public function isWithinRange($time) {
 		$daysFromToday = (StandardTime::floorToDate($time)
 						 - StandardTime::floorToDate(StandardTime::getTime()))
 						 / StandardTime::SECONDS_IN_DAY;
