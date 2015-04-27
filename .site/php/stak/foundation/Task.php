@@ -168,28 +168,6 @@ abstract class Task implements Hashable {
 	}
 
 	/**
-	 * Compares this Task to the incoming Task using the due date in reverse chronological order.
-	 * (Lastest - Earliest) If two Tasks have the same due date, it then compares alphabetical.
-	 * Null always takes precedence, where a null due date will come before all others.
-	 * @param Task $o
-	 * @return int
-	 */
-	public function compareReverseChronological(Task $o) {
-		// Precondition null checks
-		if (is_null($o->getDueDate()) && is_null($this->dueDate)) // both
-			return $this->compareAlphabetical($o);
-		if (is_null($o->getDueDate())) // Other
-			return 1;
-		if (is_null($this->dueDate)) // This
-			return -1;
-
-		$compare = $o->getDueDate() - $this->dueDate;
-		if ($compare == 0)
-			return $this->compareAlphabetical($o);
-		return $compare;
-	}
-
-	/**
 	 * Compares this object to the incoming object using the title, in alphabetical order. (A-Z)
 	 * @param Task $o
 	 * @return int
