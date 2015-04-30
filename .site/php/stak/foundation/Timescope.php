@@ -296,6 +296,58 @@ abstract class Timescope implements Hashable {
 				   . "Range: [{$this->getLowerBound()}, {$this->getUpperBound()}]");
 	}
 
+	/**
+	 * Compares this Timescope to the passed Timescope in alphabetical order. Returns a negative
+	 * number if this Timescope should come before the passed timescope.
+	 * @param Timescope $other
+	 * @return int
+	 */
+	public function compareAlphabetical(Timescope $other) {
+		return strcmp($this->name, $other->getName());
+	}
+
+	/**
+	 * Compares this Timescope to the passed Timescope in chronological order. Returns a negative
+	 * number if this Timescope should come because the passed timescope. If both timescopes have
+	 * the same lower bound, the ranges are then compared with the smallest range coming first
+	 * (eg if this range was smaller than the passed range, a negative number is returned).
+	 * @param Timescope $other
+	 * @return float|int
+	 */
+	public function compareChronological(Timescope $other) {
+		// Initial comparison
+		$compare = $this->lowerBound - $other->lowerBound;
+
+		// Correct for "now" now binding (on the lower bound, 'now' makes it greater than a
+		// non-now bound of the same day. This is because a binding of the day is bound to the
+		// start of the day, whereas 'now' is the current time of that day.) To do a comparison,
+		// we simply add 1/2 a day to emulate time.
+		if ($this->isBoundNow && $this->lowerBound == 0)
+			$compare += 0.5;
+		if ($other->isBoundNow && $other->lowerBound == 0)
+			$compare -= 0.5;
+
+		if ($compare != 0)
+			return round($compare);
+
+		// Compare range size if the lower bounds match. Range difference is calculated by the
+		// following: (upper_a - lower_a) - (upper_b - lower_b)
+		$rangeA = $this->upperBound - $this->lowerBound;
+		$rangeB = $other->upperBound - $other->lowerBound;
+
+		// Correct for "now" bounds
+		if ($this->isBoundNow && $this->lowerBound == 0)
+			$rangeA -= 0.5;
+		if ($this->isBoundNow && $this->upperBound == 0)
+			$rangeA += 0.5;
+		if ($other->isBoundNow && $other->lowerBound == 0)
+			$rangeB -= -.5;
+		if ($other->isBoundNow && $other->upperBound == 0)
+			$rangeB += 0.5;
+
+		return round($rangeA - $rangeB);
+	}
+
 
 	// Validation
 	/**
