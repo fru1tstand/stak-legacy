@@ -22,16 +22,18 @@ class TimescopeContainer {
 	 * @param array     $tasks
 	 * @throws Exception If the tasks you give aren't actually tasks.
 	 */
-	public function __construct(Timescope $timescope, array $tasks = null) {
-		foreach ($tasks as $task)
+	public function __construct(Timescope &$timescope, array $tasks = null) {
+		$this->timescope = $timescope;
+		$this->tasks = array();
+
+		if (is_null($tasks))
+			return;
+
+		foreach ($tasks as $task) {
 			if (!($task instanceof Task))
 				throw new Exception("That wasn't a task you passed me!");
-
-		$this->timescope = $timescope;
-		$this->tasks = $tasks;
-
-		if (is_null($this->tasks) || !is_array($this->tasks))
-			$this->tasks = array();
+			$this->tasks[] = &$task;
+		}
 	}
 
 	/**
