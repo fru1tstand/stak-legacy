@@ -1,5 +1,6 @@
 <?php
 namespace stak\organizers;
+require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 use Exception;
 use stak\foundation\Task;
 use stak\foundation\Timescope;
