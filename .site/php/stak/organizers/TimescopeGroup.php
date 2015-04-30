@@ -43,7 +43,7 @@ class TimescopeGroup {
 	 * Adds the given task to this group by adding to all applicable containers in the group.
 	 * @param Task $task
 	 */
-	public function addTask(Task $task) {
+	public function addTask(Task &$task) {
 		foreach ($this->timescopeContainers as $tc)
 			$tc->addTaskIfWithinRange($task);
 	}
