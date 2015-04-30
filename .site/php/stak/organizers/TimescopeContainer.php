@@ -59,10 +59,10 @@ class TimescopeContainer {
 		return $this->tasks;
 	}
 
-	
-	// Sorting things
+
+	// Sorters
 	/**
-	 * Sorts this timescope's task list in chronological order
+	 * Sorts this container's tasks in chronological order
 	 */
 	public function sortChronological() {
 		usort($this->tasks, function(Task $a, Task $b) {
@@ -71,16 +71,7 @@ class TimescopeContainer {
 	}
 
 	/**
-	 * Sorts this timescope's task list in reverse chronological order
-	 */
-	public function sortReverseChronological() {
-		usort($this->tasks, function(Task $a, Task $b) {
-			return $b->compareChronological($a);
-		});
-	}
-
-	/**
-	 * Sorts this timescope's task list in alphabetical order
+	 * Sorts this container's tasks in alphabetical order
 	 */
 	public function sortAlphabetical() {
 		usort($this->tasks, function(Task $a, Task $b) {
@@ -88,12 +79,4 @@ class TimescopeContainer {
 		});
 	}
 
-	/**
-	 * Sorts this timescope's task list in reverse alphabetical order
-	 */
-	public function sortReverseAlphabetical() {
-		usort($this->tasks, function(Task $a, Task $b) {
-			return $b->compareAlphabetical($a);
-		});
-	}
 }
