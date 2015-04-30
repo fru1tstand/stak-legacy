@@ -38,7 +38,7 @@ class TimescopeContainer {
 	 * Adds the given task to this TimescopeContainer if the task falls within the timescope range.
 	 * @param Task $task
 	 */
-	public function addIfWithinRange(Task &$task) {
+	public function addTaskIfWithinRange(Task &$task) {
 		if ($this->timescope->isWithinRange($task->getDueDate()))
 			$this->tasks[] = &$task;
 	}

@@ -45,7 +45,7 @@ class TimescopeGroup {
 	 */
 	public function addTask(Task $task) {
 		foreach ($this->timescopeContainers as $tc)
-			$tc->addIfWithinRange($task);
+			$tc->addTaskIfWithinRange($task);
 	}
 
 
