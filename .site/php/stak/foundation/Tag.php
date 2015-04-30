@@ -84,6 +84,18 @@ abstract class Tag implements Hashable {
 	}
 
 
+	// Sorters
+	/**
+	 * Compares this Tag to the passed Tag returning a negative number if this tag should come
+	 * before the other in chronological order
+	 * @param Tag $other
+	 * @return int
+	 */
+	public function compareAlphabetical(Tag $other) {
+		return strcmp($this->name, $other->name);
+	}
+
+
 	//Validation
 	/**
 	 * Checks if the given value is a valid title.
