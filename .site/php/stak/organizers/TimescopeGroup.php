@@ -5,8 +5,7 @@ use stak\foundation\Task;
 use stak\foundation\Timescope;
 
 /**
- * TimescopeGroup contains a collection of TimescopeContainers in chronological order. This is
- * mainly used to package together a single tag's tasks.
+ * TimescopeGroup contains a collection of TimescopeContainers.
  * @package stak\organizers
  */
 class TimescopeGroup {
