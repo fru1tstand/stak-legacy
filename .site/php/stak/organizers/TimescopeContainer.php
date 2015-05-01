@@ -61,6 +61,18 @@ class TimescopeContainer {
 		return $this->tasks;
 	}
 
+    /**
+     * Returns the count of incomplete tasks in this container
+     * @return int
+     */
+    public function countIncompleteTasks() {
+        $result = 0;
+        foreach ($this->tasks as $task)
+            if (!$task->isComplete())
+                $result++;
+        return $result;
+    }
+
 
 	// Sorters
 	/**

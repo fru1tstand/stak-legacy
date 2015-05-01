@@ -115,6 +115,14 @@ abstract class Task implements Hashable {
 		return $this->type;
 	}
 
+    /**
+     * Returns true if the task is complete; false otherwise.
+     * @return bool
+     */
+    public function isComplete() {
+        return !is_null($this->completedDate);
+    }
+
 
 	// Processed "getters"
 	/**
