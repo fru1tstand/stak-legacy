@@ -1,8 +1,15 @@
 <?php
 namespace stak\template\processors;
 use stak\Autoload;
+use stak\foundation\Task;
+use stak\foundation\Timescope;
+use stak\organizers\TagGroup;
+use stak\organizers\TimescopeContainer;
+use stak\organizers\TimescopeGroup;
 use stak\UserData;
 use stak\template\utils\TemplateUtils;
+use stak\foundation\Tag;
+use stak\organizers\TagContainer;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 
@@ -30,12 +37,20 @@ class ListProcessor {
 		}
 	}
 
-	public static function getRequestedTasks() {
+	private static function getRequestedTasks() {
 		// TODO: Correctly fetch requested tasks (was a filter applied?)
 
 		/** @var UserData $ud */
 		$ud = Autoload::getInjector()->getInstance(UserData::class);
 		return $ud::getTasks();
+	}
+
+	private static function getRequestedTags() {
+		// TODO: Correctly fetch requested tags (was a filter applied?)
+
+		/** @var UserData $ud */
+		$ud = Autoload::getInjector()->getInstance(UserData::class);
+		return $ud::getTags();
 	}
 
 	/**
@@ -61,7 +76,53 @@ class ListProcessor {
 		TemplateUtils::includeFromContentLocation("/listpage/SingleTagView.php");
 	}
 
+	// Single Tag View
+	/**
+	 * Builds and returns the TagGroup organizer for the single tag view
+	 */
+	public static function getTagGroup() {
+		/** @var UserData $ud */
+		$ud = Autoload::getInjector()->getInstance(UserData::class);
 
-	/* Single tag view methods */
+		$tagGroup = new TagGroup();
 
+		// If for some reason, no one is logged in, return an empty tag group
+		if (!$ud->isLoggedIn())
+			return $tagGroup;
+
+		// Grab the timescopes, tags, and tags
+		$timescopes = $ud->getTimescopes();
+		$tags = self::getRequestedTags();
+		$tasks = self::getRequestedTasks();
+
+		// pre-sort so my poor server doesn't have to work as hard later
+		usort($timescopes, function(Timescope $a, Timescope $b) {
+			return $a->compareChronological($b);
+		});
+		usort($tags, function(Tag $a, Tag $b) {
+			return $a->compareAlphabetical($b);
+		});
+		usort($tasks, function(Task $a, Task $b) {
+			return $a->compareChronological($b);
+		});
+
+		// Create a container for each tag, each with their own TimescopeGroup consisting of the
+		// same array of timescopes
+		foreach ($tags as $tag) {
+			$timescopeContainers = array();
+			foreach ($timescopes as $timescope)
+				$timescopeContainers[] = new TimescopeContainer($timescope);
+
+			$tagGroup->addTagContainer(
+					new TagContainer($tag,
+							new TimescopeGroup($timescopeContainers)));
+		}
+
+		// Now add the tasks
+		foreach ($tasks as $task)
+			$tagGroup->addTask($task);
+
+		// That's it!
+		return $tagGroup;
+	}
 }

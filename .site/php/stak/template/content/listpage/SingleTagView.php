@@ -1,33 +1,32 @@
 <?php
 namespace stak\template\content\listpage;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
+use stak\template\processors\ListProcessor;
+use stak\foundation\Tag;
 
+$tagGroup = ListProcessor::getTagGroup();
 ?>
 <!-- Single tag mode -->
 <div class="tasklist-viewstyle-container">
 	<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-master" checked="checked" />
 	<div class="tasklist-tag-container">
-		<label class="tasklist-tag-container-toggle" for="tc-hash1">
-				<span class="tasklist-tag">
-					<span class="tag" style="background-color:#99F"></span>
-					<span class="spacer"></span>
-					<span class="title">School tag that's very long and stuff but doesn't quite make it</span>
-				</span>
+		<?php
+		foreach ($tagGroup->getTagContainers() as $tc) {
+			$tagHash = $tc->getTag()->getHash();
+			$tagName = htmlspecialchars($tc->getTag()->getName());
+			$tagColor = $tc->getTag()->getColor();
+
+			echo <<<HTML
+		<label class="tasklist-tag-container-toggle" for="tc-$tagHash">
+			<span class="tasklist-tag">
+				<span class="tag" style="background-color: #$tagColor"></span>
+				<span class="spacer"></span>
+				<span class="title">$tagName</span>
+			</span>
 		</label>
-		<label class="tasklist-tag-container-toggle" for="tc-hash2">
-				<span class="tasklist-tag">
-					<span class="tag" style="background-color:#9FF"></span>
-					<span class="spacer"></span>
-					<span class="title">Important</span>
-				</span>
-		</label>
-		<label class="tasklist-tag-container-toggle" for="tc-hash3">
-				<span class="tasklist-tag">
-					<span class="tag" style="background-color:#0F0"></span>
-					<span class="spacer"></span>
-					<span class="title">Projects</span>
-				</span>
-		</label>
+HTML;
+		}
+		?>
 	</div>
 
 	<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-hash1" />

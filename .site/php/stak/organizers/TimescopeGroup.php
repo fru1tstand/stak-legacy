@@ -26,7 +26,7 @@ class TimescopeGroup {
 			return;
 
 		foreach ($timescopeContainers as $tc) {
-			if (!($timescopeContainers instanceof TimescopeContainer))
+			if (!($tc instanceof TimescopeContainer))
 				throw new Exception("I was passed an invalid TimescopeContainer. I blame you.");
 			$this->timescopeContainers[] = &$tc;
 		}

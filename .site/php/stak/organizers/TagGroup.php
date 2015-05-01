@@ -1,5 +1,6 @@
 <?php
 namespace stak\organizers;
+use stak\foundation\Task;
 
 /**
  * TagGroup contains a collection of TagContainers. This class is currently unused directly, but
@@ -7,7 +8,7 @@ namespace stak\organizers;
  * @package stak\organizers
  */
 class TagGroup {
-	/** @var  TagContainer */	private $tagContainers;
+	/** @var  TagContainer[] */	private $tagContainers;
 
 	/**
 	 * Creates a new TagGroup, optionally instantiating it with the given containers
@@ -37,6 +38,15 @@ class TagGroup {
 		$this->tagContainers[] = &$tc;
 	}
 
+	/**
+	 * Adds a Task to all applicable tag containers in this group
+	 * @param \stak\foundation\Task $task
+	 */
+	public function addTask(Task $task) {
+		foreach ($this->tagContainers as $tc)
+			$tc->addTaskIfHasTag($task);
+	}
+
 
 	// Sorters
 	public function sortAlphabetical() {
@@ -50,7 +60,7 @@ class TagGroup {
 
 	// Getters
 	/**
-	 * @return TagContainer
+	 * @return TagContainer[]
 	 */
 	public function getTagContainers() {
 		return $this->tagContainers;
