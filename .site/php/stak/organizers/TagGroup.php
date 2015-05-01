@@ -1,6 +1,8 @@
 <?php
 namespace stak\organizers;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use stak\foundation\Task;
+use Exception;
 
 /**
  * TagGroup contains a collection of TagContainers. This class is currently unused directly, but
@@ -34,7 +36,7 @@ class TagGroup {
 	 * Simply adds a tag container to this group
 	 * @param TagContainer $tc
 	 */
-	public function addTagContainer(TagContainer &$tc) {
+	public function addTagContainer(TagContainer $tc) {
 		$this->tagContainers[] = &$tc;
 	}
 

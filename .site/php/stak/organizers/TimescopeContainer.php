@@ -22,7 +22,7 @@ class TimescopeContainer {
 	 * @param array     $tasks
 	 * @throws Exception If the tasks you give aren't actually tasks.
 	 */
-	public function __construct(Timescope &$timescope, array $tasks = null) {
+	public function __construct(Timescope $timescope, array $tasks = null) {
 		$this->timescope = $timescope;
 		$this->tasks = array();
 
@@ -32,7 +32,7 @@ class TimescopeContainer {
 		foreach ($tasks as $task) {
 			if (!($task instanceof Task))
 				throw new Exception("That wasn't a task you passed me!");
-			$this->tasks[] = &$task;
+			$this->tasks[] = $task;
 		}
 	}
 
@@ -40,9 +40,9 @@ class TimescopeContainer {
 	 * Adds the given task to this TimescopeContainer if the task falls within the timescope range.
 	 * @param Task $task
 	 */
-	public function addTaskIfWithinRange(Task &$task) {
+	public function addTaskIfWithinRange(Task $task) {
 		if ($this->timescope->isWithinRange($task->getDueDate()))
-			$this->tasks[] = &$task;
+			$this->tasks[] = $task;
 	}
 
 

@@ -28,7 +28,8 @@ class TimescopeGroup {
 		foreach ($timescopeContainers as $tc) {
 			if (!($tc instanceof TimescopeContainer))
 				throw new Exception("I was passed an invalid TimescopeContainer. I blame you.");
-			$this->timescopeContainers[] = &$tc;
+
+			$this->timescopeContainers[] = $tc;
 		}
 	}
 
@@ -36,15 +37,15 @@ class TimescopeGroup {
 	 * Simply adds a given TimescopeContainer to this group
 	 * @param TimescopeContainer $tc
 	 */
-	public function addTimescopeContainer(TimescopeContainer &$tc) {
-		$this->timescopeContainers[] = &$tc;
+	public function addTimescopeContainer(TimescopeContainer $tc) {
+		$this->timescopeContainers[] = $tc;
 	}
 
 	/**
 	 * Adds the given task to this group by adding to all applicable containers in the group.
 	 * @param Task $task
 	 */
-	public function addTask(Task &$task) {
+	public function addTask(Task $task) {
 		foreach ($this->timescopeContainers as $tc)
 			$tc->addTaskIfWithinRange($task);
 	}

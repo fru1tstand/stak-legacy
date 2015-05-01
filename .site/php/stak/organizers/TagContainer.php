@@ -20,16 +20,16 @@ class TagContainer {
 	 * @param Tag            $tag
 	 * @param TimescopeGroup $timescopeGroup
 	 */
-	public function __construct(Tag &$tag, TimescopeGroup &$timescopeGroup) {
-		$this->tag = &$tag;
-		$this->timescopeGroup = &$timescopeGroup;
+	public function __construct(Tag $tag, TimescopeGroup $timescopeGroup) {
+		$this->tag = $tag;
+		$this->timescopeGroup = $timescopeGroup;
 	}
 
 	/**
 	 * Adds the given task to this container if the task contains this container's tag
 	 * @param Task $task
 	 */
-	public function addTaskIfHasTag(Task &$task) {
+	public function addTaskIfHasTag(Task $task) {
 		foreach ($task->getTags() as $tag) {
 			if ($tag->getHash() === $this->tag->getHash()) {
 				$this->timescopeGroup->addTask($task);
