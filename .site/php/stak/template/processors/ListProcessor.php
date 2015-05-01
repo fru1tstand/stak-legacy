@@ -1,5 +1,6 @@
 <?php
 namespace stak\template\processors;
+require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use stak\Autoload;
 use stak\foundation\Task;
 use stak\foundation\Timescope;
@@ -10,8 +11,6 @@ use stak\UserData;
 use stak\template\utils\TemplateUtils;
 use stak\foundation\Tag;
 use stak\organizers\TagContainer;
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 
 /**
  * The processing backend for the List template
@@ -110,12 +109,12 @@ class ListProcessor {
 		// same array of timescopes
 		foreach ($tags as $tag) {
 			$timescopeContainers = array();
-			foreach ($timescopes as $timescope)
+			foreach ($timescopes as $timescope) {
 				$timescopeContainers[] = new TimescopeContainer($timescope);
+			}
 
-			$tagGroup->addTagContainer(
-					new TagContainer($tag,
-							new TimescopeGroup($timescopeContainers)));
+			$timescopeGroup = new TimescopeGroup($timescopeContainers);
+			$tagGroup->addTagContainer(new TagContainer($tag, $timescopeGroup));
 		}
 
 		// Now add the tasks
