@@ -52,7 +52,7 @@ class MockUserData implements UserData {
 			/** @noinspection HtmlUnknownTag */
 			$qaTag = new MockTag("Th!s <will> <break> !@$&^*^)*()[]\{\}<><> \"everything'!!",
 					"000");
-			self::$cachedTags = array(&$schoolTag, &$importantTag, &$projectsTag, &$qaTag);
+			self::$cachedTags = array($schoolTag, $importantTag, $projectsTag, $qaTag);
 		}
 
 		return self::$cachedTags;
@@ -66,10 +66,10 @@ class MockUserData implements UserData {
 	public static function getTasks(TaskFilter $filter = null) {
 		// Get tags
 		$tags = self::getTags();
-		$schoolTag = &$tags[0];
-		$importantTag = &$tags[1];
-		$projectsTag = &$tags[2];
-		$qaTag = &$tags[3];
+		$schoolTag = $tags[0];
+		$importantTag = $tags[1];
+		$projectsTag = $tags[2];
+		$qaTag = $tags[3];
 
 		// Create tasks
 		if (is_null(self::$cachedTasks)) {
