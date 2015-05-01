@@ -123,6 +123,14 @@ abstract class Task implements Hashable {
         return !is_null($this->completedDate);
     }
 
+    /**
+     * Returns true of the task has a parent; false otherwise.
+     * @return bool
+     */
+    public function hasParent() {
+        return !is_null($this->parent);
+    }
+
 
 	// Processed "getters"
 	/**
