@@ -11,12 +11,14 @@ use stak\UserData;
 use stak\template\utils\TemplateUtils;
 use stak\foundation\Tag;
 use stak\organizers\TagContainer;
+use Exception;
 
 /**
  * The processing backend for the List template
  * @package stak\template\processors
  */
 class ListProcessor {
+	// Fetchers
 	/**
 	 * Fetches the requested view
 	 */
@@ -36,6 +38,11 @@ class ListProcessor {
 		}
 	}
 
+	/**
+	 * Fetches the requested tasks
+	 * @return Task[]
+	 * @throws Exception
+	 */
 	private static function getRequestedTasks() {
 		// TODO: Correctly fetch requested tasks (was a filter applied?)
 
@@ -44,6 +51,11 @@ class ListProcessor {
 		return $ud::getTasks();
 	}
 
+	/**
+	 * Fetches the requested tags
+	 * @return Tag[]
+	 * @throws Exception
+	 */
 	private static function getRequestedTags() {
 		// TODO: Correctly fetch requested tags (was a filter applied?)
 
@@ -52,6 +64,20 @@ class ListProcessor {
 		return $ud::getTags();
 	}
 
+
+	// Hashing
+	/**
+	 * Gets the has of a timescope that's contained within a tag.
+	 * @param Timescope $ts
+	 * @param Tag       $tag
+	 * @return string
+	 */
+	public static function getTimescopeTagHash(Timescope $ts, Tag $tag) {
+		return md5("Timescope: {$ts->getHash()}; Tag: {$tag->getHash()}");
+	}
+
+
+	// Views
 	/**
 	 * Multi-tag mode. Each tag has its own tasklist and timescopes. All tags are displayed within
 	 * the viewstyle container.
@@ -75,7 +101,8 @@ class ListProcessor {
 		TemplateUtils::includeFromContentLocation("/listpage/SingleTagView.php");
 	}
 
-	// Single Tag View
+
+	// View-specific methods
 	/**
 	 * Builds and returns the TagGroup organizer for the single tag view
 	 */
