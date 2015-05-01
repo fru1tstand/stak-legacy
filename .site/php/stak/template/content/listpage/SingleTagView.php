@@ -86,10 +86,11 @@ HTML;
                 $taskHierarchy = null;
                 if ($task->hasParent())
                     $taskHierarchy = $task->getParent()->getTitle();
+                $slideFrame++;
 
                 echo <<<HTML
 
-                <div class="tasklist-task">
+                <div class="tasklist-task slide-in slide-frame-$slideFrame">
 					<div class="tag" style="border-color: #$taskColor"></div>
 					<div class="tasklist-quickedit">
 
