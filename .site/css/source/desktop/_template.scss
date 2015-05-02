@@ -1,0 +1,9 @@
+// *** Standard styles
+.container {
+	max-width: $media-desktop-max;
+	margin: 0 auto;
+}
+
+.left { float: left; }
+.right { float: right; }
+.float-clear { clear: both; }

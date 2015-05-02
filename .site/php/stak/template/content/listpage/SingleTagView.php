@@ -43,12 +43,12 @@ HTML;
 
 	<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-$tagHash" />
 	<div class="tasklist-tag-container">
-		<label class="tasklist-tag-container-toggle slide-in slide-frame-0" for="tc-master">
-				<span class="tasklist-tag">
-					<span class="tag" style="background-color: #$tagColor;"></span>
-					<span class="options-toggle"></span>
-					<span class="title">$tagName</span>
-				</span>
+		<label class="tasklist-tag-container-toggle tasklist-slide-transition slide-frame-0" for="tc-master">
+            <span class="tasklist-tag">
+                <span class="tag" style="background-color: #$tagColor;"></span>
+                <span class="tag-spacer"></span>
+                <span class="title">$tagName</span>
+            </span>
 		</label>
 		<div class="tasklist-timescope-group">
 
@@ -69,12 +69,12 @@ HTML;
 				<!-- Controls this timescope for the tag -->
 				<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-$tsContainHash" />
 
-				<label class="tasklist-timescope-container-toggle slide-in slide-frame-$slideFrame" for="tsc-$tsContainHash">
-						<span class="tasklist-timescope">
-							<span class="count">$tsContainIncompleteCount</span>
-							<span class="visibility-toggle"></span>
-							<span class="name">$tsContainName</span>
-						</span>
+				<label class="tasklist-timescope-container-toggle tasklist-slide-transition slide-frame-$slideFrame" for="tsc-$tsContainHash">
+                    <span class="tasklist-timescope">
+                        <span class="count">$tsContainIncompleteCount</span>
+                        <span class="visibility-toggle"></span>
+                        <span class="name">$tsContainName</span>
+                    </span>
 				</label>
 
 HTML;
@@ -90,7 +90,7 @@ HTML;
 
                 echo <<<HTML
 
-                <div class="tasklist-task slide-in slide-frame-$slideFrame">
+                <div class="tasklist-task tasklist-slide-transition slide-frame-$slideFrame">
 					<div class="tag" style="border-color: #$taskColor"></div>
 					<div class="tasklist-quickedit">
 

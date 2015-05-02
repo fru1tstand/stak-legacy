@@ -1,58 +1,41 @@
-/*************************************** template */
-// *** For globally applicable rules
+/********************************************************************************** template.scss */
 
+// *** Globally applied styles
 * {
-	box-sizing: border-box;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 html, body {
-	padding: 0;
-	margin: 0 auto;
 	font-size: 16px;
-	height: 100vh;
-	max-height: 100vh;
-	min-height: 100vh;
-	box-shadow: 0 0 10px 2px #999;
-
-	max-width: $width-max;
 }
 
-@media (min-width: $width-max) {
-	body {
-		border: 1px solid;
-		border-top: none;
-		border-bottom: none;
-	}
-}
-
-// *** Precise control of spacing
-ul, ol, h1, h2, h3, h4, h5, h6 {
-	padding: 0;
+// If we want spacing, we'll damn specify that we want spacing.
+html, body,
+ul, ol,
+h1, h2, h3, h4, h5, h6,
+hr {
 	margin: 0;
+	padding: 0;
 }
 
-// *** Everybody hates this
 a {
 	text-decoration: none;
 }
 
-// *** Vertically centers stuff
-.middler,
-.middle {
-	display: inline-block !important;
-	vertical-align: middle;
-}
-.middler {
-	height: 100%;
+hr {
+	display: block;
+	border: none;
+	height: 1px;
 }
 
-// *** "Debug"
-.hidden {
-	display: none;
+label {
+	cursor: pointer;
 }
-.clear {
-	clear: both;
+
+
+// Global classes
+.controller {
+	display: none;
 }
 
 // *** Mixins
@@ -61,16 +44,6 @@ a {
 	-moz-transition: $params;
 	transition: $params;
 }
-@mixin default-transition($property) {
-	@include transition($property $default-transition-time $default-transition-pattern);
-}
-
-@mixin transform($params...) {
-	-webkit-transform: $params;
-	-moz-transform: $params;
-	-ms-transform: $params;
-	transform: $params;
-}
 
 // *** Extends
 .noselect {
@@ -78,19 +51,4 @@ a {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-.ellipsis {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
-.transition-width {
-	@include default-transition(width);
-}
-.transition-height {
-	@include default-transition(height);
-}
-.transition-margin {
-	@include default-transition(margin);
 }

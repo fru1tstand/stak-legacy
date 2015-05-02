@@ -1,19 +1,14 @@
-// Variables that should be globally defined.
+// This file holds all global stak variables that may be used within multiple files.
 
-$sidebar-z-index: 1000;
-$split-screen-option-z-index: 900;
+// Animation constants
+$animation-style: cubic-bezier(0.07,0.62,0.01,1);
+$animation-length: 0.5s;
 
-$global-menu-top-padding: 15px;
-$global-menu-tab-height: 30px;
 
-$split-screen-option-height: 35px;
-$split-screen-option-extended-height: 450px;
+// Threshold (when to switch between mobile/tablet/desktop views)
+$media-desktop-max: 1920px;
+$media-desktop-min: 1100px;
 
-$width-clearance: 18px;
-$width-small: 360px;
-$width-medium: 768px;
-$width-large: 1440px;
-$width-max: 1920px;
 
-$default-transition-time: 0.5s;
-$default-transition-pattern: cubic-bezier(0.3, 0.3, 0.02, 1);
+// Nav
+$nav-desktop-peek-height: 60px;

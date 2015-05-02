@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@import 'variables';
+@import 'template';
+
+@media (min-width: $media-desktop-min) {
+	@import "desktop/template";
+
+	@import "desktop/navigation";
+	@import "desktop/sidebar";
+	@import "desktop/listpage";
+}

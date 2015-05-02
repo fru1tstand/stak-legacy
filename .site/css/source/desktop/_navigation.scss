@@ -1,0 +1,40 @@
+/******************************************************************************* _navigation.scss */
+$nav-wall-spacing: 20px;
+
+// Standard styles
+.nav,
+.nav a {
+	@include transition(color 0.4s $animation-style,
+			background-color 0.4s $animation-style);
+}
+.nav {
+	height: $nav-desktop-peek-height;
+	line-height: $nav-desktop-peek-height;
+
+	.left {
+		font-size: 19px;
+
+		.title {
+			display: inline-block;
+		}
+
+		label {
+			display: inline-block;
+			padding: 0 $nav-wall-spacing;
+			height: $nav-desktop-peek-height;
+		}
+	}
+}
+.nav-tabs {
+	list-style: none;
+
+	li {
+		display: inline;
+
+		a {
+			display: inline-block;
+			height: $nav-desktop-peek-height;
+			padding: 0 $nav-wall-spacing;
+		}
+	}
+}

@@ -26,6 +26,4 @@ class ListPage implements ContentPage {
 	public static function getContentLocation() {
 		return TemplateUtils::getContentLocation() . '/ListContent.php';
 	}
-
-
 }
