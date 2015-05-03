@@ -3,6 +3,7 @@
 // *** Globally applied styles
 * {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	box-sizing: border-box;
 }
 
 html, body {
@@ -37,12 +38,20 @@ label {
 .controller {
 	display: none;
 }
+.full-height {
+	height: 100vh;
+}
 
 // *** Mixins
 @mixin transition($params...) {
 	-webkit-transition: $params;
 	-moz-transition: $params;
 	transition: $params;
+}
+@mixin transition-delay($time) {
+	-webkit-transition-delay: $time;
+	-moz-transition-delay: $time;
+	transition-delay: $time;
 }
 
 // *** Extends

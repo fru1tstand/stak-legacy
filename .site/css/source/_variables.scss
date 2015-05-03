@@ -1,8 +1,9 @@
 // This file holds all global stak variables that may be used within multiple files.
 
 // Animation constants
-$animation-style: cubic-bezier(0.07,0.62,0.01,1);
-$animation-length: 0.5s;
+$animation-style: cubic-bezier(0.3, 0.3, 0.02, 1);
+$animation-time-relax: 0.6s;
+$animation-time-responsive: 0.3s;
 
 
 // Threshold (when to switch between mobile/tablet/desktop views)

@@ -1,6 +1,7 @@
 /********************************************************************************** template.scss */
 * {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  box-sizing: border-box; }
 
 html, body {
   font-size: 16px; }
@@ -26,6 +27,9 @@ label {
 .controller {
   display: none; }
 
+.full-height {
+  height: 100vh; }
+
 .noselect {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -49,13 +53,17 @@ label {
   /******************************************************************************* _navigation.scss */
   .nav,
   .nav a {
-    -webkit-transition: color 0.4s cubic-bezier(0.07, 0.62, 0.01, 1), background-color 0.4s cubic-bezier(0.07, 0.62, 0.01, 1);
-    -moz-transition: color 0.4s cubic-bezier(0.07, 0.62, 0.01, 1), background-color 0.4s cubic-bezier(0.07, 0.62, 0.01, 1);
-    transition: color 0.4s cubic-bezier(0.07, 0.62, 0.01, 1), background-color 0.4s cubic-bezier(0.07, 0.62, 0.01, 1); }
+    -webkit-transition: color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
 
   .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
     height: 60px;
-    line-height: 60px; }
+    line-height: 60px;
+    z-index: 800; }
     .nav .left {
       font-size: 19px; }
       .nav .left .title {
@@ -74,6 +82,9 @@ label {
         height: 60px;
         padding: 0 20px; }
 
+  .nav-push {
+    padding-top: 60px; }
+
   /********************************************************************************** _sidebar.scss */
   .sidebar {
     position: fixed;
@@ -84,9 +95,9 @@ label {
     height: 100vh;
     overflow: auto;
     z-index: 1000;
-    -webkit-transition: left 0.5s cubic-bezier(0.07, 0.62, 0.01, 1);
-    -moz-transition: left 0.5s cubic-bezier(0.07, 0.62, 0.01, 1);
-    transition: left 0.5s cubic-bezier(0.07, 0.62, 0.01, 1); }
+    -webkit-transition: left 0.6s cubic-bezier(0.3, 0.3, 0.02, 1);
+    -moz-transition: left 0.6s cubic-bezier(0.3, 0.3, 0.02, 1);
+    transition: left 0.6s cubic-bezier(0.3, 0.3, 0.02, 1); }
 
   .sidebar-closer {
     position: fixed;
@@ -122,12 +133,73 @@ label {
       padding: 10px 30px;
       text-align: right;
       border-right: 5px solid;
-      -webkit-transition: padding-right 0.2s cubic-bezier(0.07, 0.62, 0.01, 1);
-      -moz-transition: padding-right 0.2s cubic-bezier(0.07, 0.62, 0.01, 1);
-      transition: padding-right 0.2s cubic-bezier(0.07, 0.62, 0.01, 1); }
+      -webkit-transition: padding-right 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: padding-right 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: padding-right 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .sidebar-links a:hover {
         padding-right: 34px; }
 
-  /********************************************************************************* _listpage.scss */ }
+  /********************************************************************************* _listpage.scss */
+  .tasklist {
+    width: 33%;
+    float: left;
+    height: 100%; }
+
+  .tl-task {
+    height: 60px; }
+    .tl-task .left {
+      padding-left: 55px;
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      -webkit-transition: width 0.6s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: width 0.6s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: width 0.6s cubic-bezier(0.3, 0.3, 0.02, 1); }
+      .tl-task .left:hover {
+        width: 245px; }
+    .tl-task .info {
+      display: block;
+      height: 60px;
+      line-height: 60px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0 20px; }
+
+  .tl-quick-edit {
+    border-left: 5px solid;
+    width: 185px;
+    height: 60px;
+    font-size: 0; }
+    .tl-quick-edit a {
+      vertical-align: top;
+      display: inline-block;
+      height: 100%;
+      font-size: 26px;
+      width: 60px;
+      text-align: center;
+      padding-top: 14px;
+      -webkit-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
+    .tl-quick-edit .fa::after {
+      display: block;
+      font-size: 10px;
+      padding-top: 6px;
+      opacity: 0;
+      -webkit-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), opacity 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), opacity 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), opacity 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
+    .tl-quick-edit .fa-check::after {
+      content: 'complete'; }
+    .tl-quick-edit .fa-pencil::after {
+      content: 'edit'; }
+    .tl-quick-edit .fa-trash::after {
+      content: 'delete'; }
+    .tl-quick-edit a:hover {
+      padding-top: 8px; }
+      .tl-quick-edit a:hover .fa::after {
+        padding-top: 4px;
+        opacity: 1; } }
 
 /*# sourceMappingURL=styles.css.map */

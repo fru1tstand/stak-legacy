@@ -4,12 +4,16 @@ $nav-wall-spacing: 20px;
 // Standard styles
 .nav,
 .nav a {
-	@include transition(color 0.4s $animation-style,
-			background-color 0.4s $animation-style);
+	@include transition(color $animation-time-responsive $animation-style,
+			background-color $animation-time-responsive $animation-style);
 }
 .nav {
+	position: absolute;
+	left: 0;
+	right: 0;
 	height: $nav-desktop-peek-height;
 	line-height: $nav-desktop-peek-height;
+	z-index: 800;
 
 	.left {
 		font-size: 19px;
@@ -37,4 +41,8 @@ $nav-wall-spacing: 20px;
 			padding: 0 $nav-wall-spacing;
 		}
 	}
+}
+
+.nav-push {
+	padding-top: $nav-desktop-peek-height;
 }

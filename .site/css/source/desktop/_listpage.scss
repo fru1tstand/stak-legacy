@@ -1,1 +1,80 @@
 /********************************************************************************* _listpage.scss */
+
+$tl-task-height: 60px;
+$tl-task-left-width: $tl-task-height;
+$tl-task-tag-width: 5px;
+
+// *** Main page styles
+.tasklist {
+	width: 33%;
+	float: left;
+	height: 100%;
+}
+.listpage-content {
+}
+
+// *** Tasklist styles
+.tl-task {
+	height: $tl-task-height;
+
+	.left {
+		padding-left: $tl-task-left-width - $tl-task-tag-width;
+		width: $tl-task-left-width;
+		height: $tl-task-height;
+		overflow: hidden;
+
+		@include transition(width $animation-time-relax $animation-style);
+
+		&:hover {
+			width: $tl-task-tag-width + $tl-task-left-width * 4;
+		}
+	}
+	.info  {
+		display: block;
+		height: $tl-task-height;
+		line-height: $tl-task-height;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		padding: 0 $tl-task-height / 3;
+	}
+}
+.tl-quick-edit {
+	border-left: 5px solid;
+	width: $tl-task-left-width * 3 + $tl-task-tag-width;
+	height: $tl-task-height;
+	font-size: 0;
+
+	a {
+		vertical-align: top;
+		display: inline-block;
+		height: 100%;
+		font-size: 26px;
+		width: $tl-task-left-width;
+		text-align: center;
+		padding-top: 14px;
+		@include transition(padding-top $animation-time-responsive $animation-style,
+				color $animation-time-responsive $animation-style,
+				background-color $animation-time-responsive $animation-style);
+	}
+
+	// Adding text below picture on hover
+	.fa::after {
+		display: block;
+		font-size: 10px;
+		padding-top: 6px;
+		opacity: 0;
+		@include transition(padding-top $animation-time-responsive $animation-style,
+				opacity $animation-time-responsive $animation-style);
+	}
+	.fa-check::after { content: 'complete'; }
+	.fa-pencil::after { content: 'edit'; }
+	.fa-trash::after { content: 'delete'; }
+	a:hover {
+		padding-top: 8px;
+		.fa::after {
+			padding-top: 4px;
+			opacity: 1;
+		}
+	}
+}

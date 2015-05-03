@@ -11,7 +11,7 @@ $sidebar-wall-spacing: 30px;
 	overflow: auto;
 	z-index: 1000;
 
-	@include transition(left $animation-length $animation-style);
+	@include transition(left $animation-time-relax $animation-style);
 }
 
 .sidebar-closer {
@@ -60,7 +60,7 @@ $sidebar-wall-spacing: 30px;
 		text-align: right;
 		border-right: 5px solid;
 
-		@include transition(padding-right 0.2s $animation-style);
+		@include transition(padding-right $animation-time-responsive $animation-style);
 
 		&:hover {
 			padding-right: $sidebar-wall-spacing + 4px;
