@@ -149,6 +149,12 @@ label {
     width: 33%;
     float: left;
     height: 100%; }
+    .tasklist .controller[type=radio]:not(:checked) + div {
+      display: none; }
+    .tasklist .controller[type=radio]:checked + div {
+      display: block; }
+    .tasklist .controller[type=checkbox]:checked + div {
+      display: none; }
 
   .tl-task {
     height: 60px; }

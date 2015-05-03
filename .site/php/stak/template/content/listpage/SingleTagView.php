@@ -7,141 +7,104 @@ use stak\foundation\Tag;
 $tagGroup = ListProcessor::getTagGroup();
 ?>
 <!-- Single tag mode -->
-<div class="tasklist-viewstyle-container">
-	<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-master" checked="checked" />
-	<div class="tasklist-tag-container">
-		<?php
-		foreach ($tagGroup->getTagContainers() as $tagContain) {
-			$tagHash = $tagContain->getTag()->getHash();
-			$tagName = htmlspecialchars($tagContain->getTag()->getName());
-			$tagColor = $tagContain->getTag()->getColor();
+<input type="radio" class="controller" name="tasklist-tags-controller" id="tags-master" checked="checked" />
+<div>
+    <?php
+    foreach ($tagGroup->getTagContainers() as $tagContain) {
+        $tagHash = $tagContain->getTag()->getHash();
+        $tagName = htmlspecialchars($tagContain->getTag()->getName());
+        $tagColor = "#" . $tagContain->getTag()->getColor();
 
-			echo <<<HTML
+        echo <<<HTML
 
-		<label class="tasklist-tag-container-toggle" for="tc-$tagHash">
-			<span class="tasklist-tag">
-				<span class="tag" style="background-color: #$tagColor"></span>
-				<span class="spacer"></span>
-				<span class="title">$tagName</span>
-			</span>
-		</label>
+    <div class="tl-tag">
+        <div class="left"><div style="background-color: $tagColor;"></div></div>
+        <label class="name" for="tag-$tagHash">$tagName</label>
+    </div>
 
 HTML;
-		}
-		?>
-	</div>
+    }
+    ?>
+</div>
 
-	<?php
-	foreach ($tagGroup->getTagContainers() as $tagContain) {
-		$tagHash = $tagContain->getTag()->getHash();
-		$tagName = htmlspecialchars($tagContain->getTag()->getName());
-		$tagColor = $tagContain->getTag()->getColor();
-        $slideFrame = 0;
+<?php
+// Each tag has a div
+foreach ($tagGroup->getTagContainers() as $tagContain) {
+    $tagHash = $tagContain->getTag()->getHash();
+    $tagName = htmlspecialchars($tagContain->getTag()->getName());
+    $tagColor = "#" . $tagContain->getTag()->getColor();
 
-		// Tag container html
-		echo <<<HTML
+    echo <<<HTML
 
-	<input type="radio" name="tasklist-tag-select" class="tasklist-tag-option-controller" id="tc-$tagHash" />
-	<div class="tasklist-tag-container">
-		<label class="tasklist-tag-container-toggle tasklist-slide-transition slide-frame-0" for="tc-master">
-            <span class="tasklist-tag">
-                <span class="tag" style="background-color: #$tagColor;"></span>
-                <span class="tag-spacer"></span>
-                <span class="title">$tagName</span>
-            </span>
-		</label>
-		<div class="tasklist-timescope-group">
+<input type="radio" class="controller" name="tasklist-tags-controller" id="tag-$tagHash" />
+<div> <!-- .tag-container -->
+
+    <div class="tl-tag">
+        <div class="left"><div style="background-color: $tagColor;"></div></div>
+        <label class="name" for="tags-master">$tagName</label>
+    </div>
 
 HTML;
 
-		// timescope group html
-		foreach ($tagContain->getTimescopeGroup()->getTimescopeContainers() as $tsContain) {
-			$tsContainHash = ListProcessor::getTimescopeTagHash($tsContain->getTimescope(),
-							$tagContain->getTag());
-            $tsContainIncompleteCount = $tsContain->countIncompleteTasks();
-            $tsContainName = $tsContain->getTimescope()->getName();
-            $slideFrame++;
+    // Each timescope has a div
+    foreach ($tagContain->getTimescopeGroup()->getTimescopeContainers() as $tsContainer) {
+        // Hide if empty?
+        if ($tsContainer->getTimescope()->hideIfEmpty()) {
+            // No tasks at all
+            if (count($tsContainer->getTasks()) == 0)
+                continue;
 
-			// Timescope container html
-			echo <<<HTML
+            // Hidden complete tasks and all tasks are complete
+            if ($tsContainer->getTimescope()->hideCompleted()
+                && $tsContainer->countIncompleteTasks() == 0)
+                continue;
+        }
 
-			<div class="tasklist-timescope-container">
-				<!-- Controls this timescope for the tag -->
-				<input type="checkbox" class="tasklist-timescope-container-controller" id="tsc-$tsContainHash" />
+        $tsHash = ListProcessor::getTimescopeTagHash($tsContainer->getTimescope(),
+                        $tagContain->getTag());
+        $tsTodoCount = $tsContainer->countIncompleteTasks();
+        $tsName = $tsContainer->getTimescope()->getName();
 
-				<label class="tasklist-timescope-container-toggle tasklist-slide-transition slide-frame-$slideFrame" for="tsc-$tsContainHash">
-                    <span class="tasklist-timescope">
-                        <span class="count">$tsContainIncompleteCount</span>
-                        <span class="visibility-toggle"></span>
-                        <span class="name">$tsContainName</span>
-                    </span>
-				</label>
-
+        // Timescope container html
+        echo <<<HTML
+        <div class="tl-timescope">
+            <div class="left">$tsTodoCount</div>
+            <label class="name" for="timescope-$tsHash">$tsName</label>
+        </div>
+        <input type="checkbox" class="controller" id="timescope-$tsHash" />
+        <div> <!-- .timescope -->
 HTML;
 
-            // Task html
-            foreach ($tsContain->getTasks() as $task) {
-                $taskColor = $task->getPrimaryTag()->getColor();
-                $taskTitle = htmlspecialchars($task->getTitle());
-                $taskHierarchy = null;
-                if ($task->hasParent())
-                    $taskHierarchy = $task->getParent()->getTitle();
-                $slideFrame++;
+        // Each task then has its own div
+        foreach ($tsContainer->getTasks() as $task) {
+            // Hide completed tasks?
+            if ($tsContainer->getTimescope()->hideCompleted() && $task->isComplete())
+                continue;
 
-                echo <<<HTML
+            $taskColor = "#" . $task->getPrimaryTag()->getColor();
+            $taskTitle = htmlspecialchars($task->getTitle());
+            $taskHash = $task->getHash();
 
-                <div class="tasklist-task tasklist-slide-transition slide-frame-$slideFrame">
-					<div class="tag" style="border-color: #$taskColor"></div>
-					<div class="tasklist-quickedit">
+            // Times (x) to "uncomplete". Check to "complete".
+            $quickEditSymbol = (($task->isComplete()) ? "times" : "check");
 
+            $taskCompleteClass = (($task->isComplete()) ? "complete" : "");
+
+            echo <<<HTML
+            <div class="tl-task $taskCompleteClass">
+                <div class="left">
+                    <div class="tl-quick-edit" style="border-color: $taskColor;">
+                        <a href="#"><i class="fa fa-$quickEditSymbol"></i></a>
+                        <a href="#"><i class="fa fa-pencil"></i></a>
+                        <a href="#"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+                <label class="title" for="task-$taskHash">$taskTitle</label>
+            </div>
 HTML;
-                if (!$task->isComplete())
-                    echo '<a href="#"><i class="complete"></i></a>';
-                else
-                    echo '<a href="#"><i class="uncomplete"></i></a>';
-
-                echo <<<HTML
-
-						<a href="#"><i class="edit"></i></a>
-						<a href="#"><i class="delete"></i></a>
-					</div>
-					<label class="tasklist-task-toggle">
-						<span class="middler"></span>
-							<span class="middle">
-								<span class="title">$taskTitle</span>
-
-HTML;
-                if ($task->hasParent())
-                    echo '<span class="hierarchy">', $taskHierarchy, '</span>';
-
-                echo <<<HTML
-
-							</span>
-					</label>
-				</div><!-- .tasklist-task -->
-
-HTML;
-
-            }
-
-			// End timescope container html
-			echo <<<HTML
-
-			</div> <!-- .tasklist-timescope-container -->
-
-HTML;
-		}
-
-		// End tag container html
-		echo <<<HTML
-
-		</div> <!-- .tasklist-timescope-group -->
-	</div> <!-- .tasklist-tag-container -->
-
-HTML;
-
-
-	}
-	?>
-
-</div> <!-- .tasklist-viewstyle-container -->
+        } // End tasks for (all tasks are output by here)
+        echo "</div> <!-- .timescope -->";
+    } // End timescope for (all timescopes are output by here)
+    echo "</div> <!-- .tag-container -->";
+} // End tagGroup for (all tags are output by here)
+?>

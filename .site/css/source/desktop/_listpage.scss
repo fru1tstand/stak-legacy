@@ -11,11 +11,24 @@ $tl-timescope-height: 24px;
 	width: 33%;
 	float: left;
 	height: 100%;
+
+	// Radio controllers are "checked = display"
+	.controller[type=radio]:not(:checked) + div {
+		display: none;
+	}
+	.controller[type=radio]:checked + div {
+		display: block;
+	}
+
+	// Checkbox controllers are "checked = hide"
+	.controller[type=checkbox]:checked + div {
+		display: none;
+	}
 }
 .listpage-content {
 }
-// *** Single-item definitions
 
+// *** Single-item definitions
 // Task & Quick-edit
 .tl-task {
 	height: $tl-task-height;

@@ -19,7 +19,7 @@ $invBgLite = "#69D3BE";
 $invTxtLite = "2C3E50";
 
 $blendBg = $bg;
-$blendTxt = "#18BC9C";
+$blendTxt = $txt;
 $blendBgActive = "#ECF0F1";
 $blendTxtActive = "#18BC9C";
 $blendBgDisabled = $bg;
@@ -146,6 +146,11 @@ echo <<<HTML
     background-color: $bg;
     color: $txt;
 }
+.tl-task.complete {
+    background-color: $blendBgDisabled;
+    color: $blendTxtDisabled;
+}
+
 .tl-task:hover,
 .tl-quick-edit a:link,
 .tl-quick-edit a:visited {
