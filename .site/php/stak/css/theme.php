@@ -3,34 +3,75 @@ namespace stak\content\css;
 
 header("content-type: text/css");
 
-$defaultTxt = "#2C3E50";
-$defaultBg = "#FFF";
+$txt = "#2C3E50";
+$bg = "#FFF";
 
-
-$btnBg = "#95A5A6";
-$btnTxt = "#2C3E50";
-$btnBgActive = "#798D8F";
-$btnTxtActive = "#FFF";
-
-$invBg = "#149C82";
-$invTxt =  "#FFF";
-$invBgDisabled = "#18BC9C";
-$invTxtDisabled = "#FFF";
-$invBgDisabledLight = "#3BE6C4";
-$invTxtDisabledLight = "#FFF";
-$invBgActive = "#0F7864";
-$invTxtActive = "#FFF";
-
-$hiBgActive = "#1A242F";
-$hiTxtActive = "#FFF";
+$hiBgActive = "#2C3E50";
+$hiTxtActive = "#18BC9C";
 $hiBg = "#2C3E50";
 $hiTxt = "#FFF";
+
+$invBg = "#149C82";
+$invTxt = "#FFF";
+$invBgActive = "#149C82";
+$invTxtActive = "#2C3E50";
+$invBgLite = "#69D3BE";
+$invTxtLite = "2C3E50";
+
+$blendBg = $bg;
+$blendTxt = "#18BC9C";
+$blendBgActive = "#ECF0F1";
+$blendTxtActive = "#18BC9C";
+$blendBgDisabled = $bg;
+$blendTxtDisabled = "#B4BCC2";
+
+$primBg = "#2C3E50";
+$primTxt = "#FFF";
+$primBgActive = "#1A242F";
+$primTxtActive = "#FFF";
+$primBgDisabled = "#76818D";
+$primTxtDisabled = "#FFF";
+
+$succBg = "#18BC9C";
+$succTxt = "#FFF";
+$succBgActive = "#128F76";
+$succTxtActive = "#FFF";
+$succBgDisabled = "#69D3BE";
+$succTxtDisabled = "#FFF";
+
+$defBg = "#95A5A6";
+$defTxt = "#FFF";
+$defBgActive = "#798D8F";
+$defTxtActive = "#FFF";
+$defBgDisabled = "#BAC4C5";
+$defTxtDisabled = "#FFF";
+
+$infoBg = "#3498DB";
+$infoTxt = "#FFF";
+$infoBgActive = "#217DBB";
+$infoTxtActive = "#FFF";
+$infoBgDisabled = "#7BBCE7";
+$infoTxtDisabled = "#FFF";
+
+$warnBg = "#F39C12";
+$warnTxt = "#FFF";
+$warnBgActive = "#C87F0A";
+$warnTxtActive = "#FFF";
+$warnBgDisabled = "#F7BE65";
+$warnTxtDisabled = "#FFF";
+
+$dangBg = "#E74C3C";
+$dangTxt = "#FFF";
+$dangBgActive = "#D62C1A";
+$dangTxtActive = "#FFF";
+$dangBgDisabled = "#EF8A80";
+$dangTxtDisabled = "#FFF";
 
 // Global
 echo <<<HTML
 body {
-    background-color: $defaultBg;
-    color: $defaultTxt;
+    background-color: $bg;
+    color: $txt;
 }
 HTML;
 
@@ -39,80 +80,92 @@ echo <<<HTML
 .nav,
 .nav a:link,
 .nav a:visited {
-    background-color: $defaultBg;
-    color: $defaultTxt;
+    background-color: $bg;
+    color: $txt;
 }
 .nav a.active {
-    background-color: $invBgDisabledLight;
-    color: $invTxtDisabledLight;
+    background-color: $invBgLite;
+    color: $invTxtLite;
 }
 
 .nav:hover,
-.nav:hover a {
+.nav:hover a:link,
+.nav:hover a:visited {
     background-color: $hiBg;
     color: $hiTxt;
 }
-.nav:hover a.active {
+
+.nav:hover a:hover,
+.nav:hover a:active,
+.nav label:hover {
     background-color: $hiBgActive;
     color: $hiTxtActive;
 }
 
-.nav a:hover,
-.nav label:hover {
-    background-color: $hiBgActive;
-    color: $hiTxtActive;
+.nav:hover a.active {
+    background-color: $primBgActive;
+    color: $primTxtActive;
 }
 HTML;
 
 // Sidebar
 echo <<<HTML
 .sidebar {
-    background-color: $defaultBg;
-    color: $defaultTxt;
+    background-color: $bg;
+    color: $txt;
 }
-
 .sidebar-logo {
     background-color: $invBg;
     color: $invTxt;
 }
-
 .sidebar-links a:link,
 .sidebar-links a:visited {
-    background-color: transparent;
-    border-color: $btnBg;
-    color: $btnTxt;
+    background-color: $blendBg;
+    color: $blendTxt;
 }
 .sidebar-links a:hover,
-.sidebar-links a:active {
-    background-color: $btnBgActive;
-    color: $btnTxtActive;
-}
-hr {
-    background-color: $btnBg;
+.sidebar-links a:active,
+.sidebar hr {
+    background-color: $blendBgActive;
+    color: $blendTxtActive;
 }
 HTML;
 
 // Tasklist/Listpage
 echo <<<HTML
-.tl-task,
-.tl-task .left,
-.tl-tasl .info {
-    background-color: $defaultBg;
-    color: $defaultTxt;
+.tl-tag {
+    background-color: $blendBg;
+    color: $blendTxt;
+}
+.tl-tag:hover {
+    background-color: $blendBgActive;
+    color: $blendTxtActive;
 }
 
+.tl-task {
+    background-color: $bg;
+    color: $txt;
+}
+.tl-task:hover,
 .tl-quick-edit a:link,
 .tl-quick-edit a:visited {
-    background-color: $defaultBg;
-    color: $defaultTxt;
+    background-color: $blendBgActive;
+    color: $blendTxtActive;
 }
-.tl-quick-edit:hover a {
-    background-color: $hiBg;
-    color: $hiTxt;
-}
+
 .tl-quick-edit a:hover,
-.tl-quick-edit a:active {
-    background-color: $hiBgActive;
-    color: $hiTxtActive;
+.tl-quick-edit a:active,
+.tl-task .title:hover {
+    background-color: $blendBg;
+    color: $blendTxt;
+}
+
+.tl-timescope {
+    background-color: $invBgLite;
+    color: $invTxtLite;
+}
+.tl-timescope:hover {
+    background-color: $invBg;
+    color: $invTxt;
 }
 HTML;

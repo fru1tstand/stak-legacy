@@ -50,6 +50,12 @@ label {
   .float-clear {
     clear: both; }
 
+  .ellipsis, .tl-task .title, .tl-tag .name, .tl-timescope .name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block; }
+
   /******************************************************************************* _navigation.scss */
   .nav,
   .nav a {
@@ -132,7 +138,6 @@ label {
       font-size: 18px;
       padding: 10px 30px;
       text-align: right;
-      border-right: 5px solid;
       -webkit-transition: padding-right 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
       -moz-transition: padding-right 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
       transition: padding-right 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
@@ -148,7 +153,7 @@ label {
   .tl-task {
     height: 60px; }
     .tl-task .left {
-      padding-left: 55px;
+      padding-left: 50px;
       width: 60px;
       height: 60px;
       overflow: hidden;
@@ -156,19 +161,16 @@ label {
       -moz-transition: width 0.6s cubic-bezier(0.3, 0.3, 0.02, 1);
       transition: width 0.6s cubic-bezier(0.3, 0.3, 0.02, 1); }
       .tl-task .left:hover {
-        width: 245px; }
-    .tl-task .info {
-      display: block;
+        width: 240px; }
+    .tl-task .title {
       height: 60px;
       line-height: 60px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      padding: 0 20px; }
+      padding: 0 20px;
+      font-size: 14px; }
 
   .tl-quick-edit {
-    border-left: 5px solid;
-    width: 185px;
+    border-left: 10px solid;
+    width: 190px;
     height: 60px;
     font-size: 0; }
     .tl-quick-edit a {
@@ -179,13 +181,13 @@ label {
       width: 60px;
       text-align: center;
       padding-top: 14px;
-      -webkit-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
-      -moz-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
-      transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), background-color 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
+      -webkit-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      -moz-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
+      transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1); }
     .tl-quick-edit .fa::after {
       display: block;
       font-size: 10px;
-      padding-top: 6px;
+      padding-top: 8px;
       opacity: 0;
       -webkit-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), opacity 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
       -moz-transition: padding-top 0.3s cubic-bezier(0.3, 0.3, 0.02, 1), opacity 0.3s cubic-bezier(0.3, 0.3, 0.02, 1);
@@ -200,6 +202,36 @@ label {
       padding-top: 8px; }
       .tl-quick-edit a:hover .fa::after {
         padding-top: 4px;
-        opacity: 1; } }
+        opacity: 1; }
+
+  .tl-tag {
+    height: 48px; }
+    .tl-tag .left {
+      width: 48px; }
+      .tl-tag .left > div {
+        height: 16px;
+        width: 16px;
+        margin: 16px; }
+    .tl-tag .name {
+      height: 48px;
+      line-height: 48px;
+      font-size: 16px;
+      font-weight: bold;
+      padding-right: 16px; }
+
+  .tl-timescope {
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px; }
+    .tl-timescope .left {
+      width: 60px;
+      text-align: center;
+      font-weight: bold; }
+      .tl-timescope .left::before {
+        content: '('; }
+      .tl-timescope .left::after {
+        content: ')'; }
+    .tl-timescope .name {
+      text-align: center; } }
 
 /*# sourceMappingURL=styles.css.map */

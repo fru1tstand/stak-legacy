@@ -2,7 +2,9 @@
 
 $tl-task-height: 60px;
 $tl-task-left-width: $tl-task-height;
-$tl-task-tag-width: 5px;
+$tl-task-tag-width: 10px;
+$tl-tag-height: 48px;
+$tl-timescope-height: 24px;
 
 // *** Main page styles
 .tasklist {
@@ -12,8 +14,9 @@ $tl-task-tag-width: 5px;
 }
 .listpage-content {
 }
+// *** Single-item definitions
 
-// *** Tasklist styles
+// Task & Quick-edit
 .tl-task {
 	height: $tl-task-height;
 
@@ -26,21 +29,21 @@ $tl-task-tag-width: 5px;
 		@include transition(width $animation-time-relax $animation-style);
 
 		&:hover {
-			width: $tl-task-tag-width + $tl-task-left-width * 4;
+			width: $tl-task-left-width * 4;
 		}
 	}
-	.info  {
-		display: block;
+	.title  {
+		@extend .ellipsis;
+
 		height: $tl-task-height;
 		line-height: $tl-task-height;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
 		padding: 0 $tl-task-height / 3;
+		font-size: 14px;
 	}
+
 }
 .tl-quick-edit {
-	border-left: 5px solid;
+	border-left: $tl-task-tag-width solid;
 	width: $tl-task-left-width * 3 + $tl-task-tag-width;
 	height: $tl-task-height;
 	font-size: 0;
@@ -53,16 +56,14 @@ $tl-task-tag-width: 5px;
 		width: $tl-task-left-width;
 		text-align: center;
 		padding-top: 14px;
-		@include transition(padding-top $animation-time-responsive $animation-style,
-				color $animation-time-responsive $animation-style,
-				background-color $animation-time-responsive $animation-style);
+		@include transition(padding-top $animation-time-responsive $animation-style);
 	}
 
 	// Adding text below picture on hover
 	.fa::after {
 		display: block;
 		font-size: 10px;
-		padding-top: 6px;
+		padding-top: 8px;
 		opacity: 0;
 		@include transition(padding-top $animation-time-responsive $animation-style,
 				opacity $animation-time-responsive $animation-style);
@@ -76,5 +77,48 @@ $tl-task-tag-width: 5px;
 			padding-top: 4px;
 			opacity: 1;
 		}
+	}
+}
+
+// *** Tag
+.tl-tag {
+	height: $tl-tag-height;
+
+	.left {
+		width: $tl-tag-height;
+		> div {
+			height: $tl-tag-height / 3;
+			width: $tl-tag-height / 3;
+			margin: $tl-tag-height / 3;
+		}
+	}
+
+	.name {
+		@extend .ellipsis;
+		height: $tl-tag-height;
+		line-height: $tl-tag-height;
+		font-size: 16px;
+		font-weight: bold;
+		padding-right: $tl-tag-height / 3;
+	}
+}
+
+// *** Timescope
+.tl-timescope {
+	height: $tl-timescope-height;
+	line-height: $tl-timescope-height;
+	font-size: 12px;
+
+	.left {
+		width: $tl-task-left-width;
+		text-align: center;
+		font-weight: bold;
+
+		&::before { content: '('; }
+		&::after { content: ')'; }
+	}
+	.name {
+		@extend .ellipsis;
+		text-align: center;
 	}
 }

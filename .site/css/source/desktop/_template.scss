@@ -7,3 +7,10 @@
 .left { float: left; }
 .right { float: right; }
 .float-clear { clear: both; }
+
+.ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+}

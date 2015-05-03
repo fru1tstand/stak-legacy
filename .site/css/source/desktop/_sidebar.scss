@@ -58,7 +58,6 @@ $sidebar-wall-spacing: 30px;
 		font-size: 18px;
 		padding: 10px $sidebar-wall-spacing;
 		text-align: right;
-		border-right: 5px solid;
 
 		@include transition(padding-right $animation-time-responsive $animation-style);
 
