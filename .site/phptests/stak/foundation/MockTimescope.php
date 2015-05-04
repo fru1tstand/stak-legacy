@@ -27,35 +27,35 @@ class MockTimescope extends Timescope {
 		$this->isBoundNow = $isBoundNow;
 	}
 
-	protected function updateName($name, Response &$response = null) {
+	protected function updateName($name, Response $response = null) {
 		return true;
 	}
 
-	protected function updateLowerBound($day, Response &$response = null) {
+	protected function updateLowerBound($day, Response $response = null) {
 		return true;
 	}
 
-	protected function updateUpperBound($day, Response &$response = null) {
+	protected function updateUpperBound($day, Response $response = null) {
 		return true;
 	}
 
-	protected function updateHideIfEmpty($hideIfEmpty, Response &$response = null) {
+	protected function updateHideIfEmpty($hideIfEmpty, Response $response = null) {
 		return true;
 	}
 
-	protected function updateHideCompleted($hideComplete, Response &$response = null) {
+	protected function updateHideCompleted($hideComplete, Response $response = null) {
 		return true;
 	}
 
-	protected function updateLowerBoundIsInfinite($isInfinite, Response &$response = null) {
+	protected function updateLowerBoundIsInfinite($isInfinite, Response $response = null) {
 		return true;
 	}
 
-	protected function updateUpperBoundIsInfinite($isInfinite, Response &$response = null) {
+	protected function updateUpperBoundIsInfinite($isInfinite, Response $response = null) {
 		return true;
 	}
 
-	protected function updateIsBoundNow($isBoundNow, Response &$response = null) {
+	protected function updateIsBoundNow($isBoundNow, Response $response = null) {
 		return true;
 	}
 

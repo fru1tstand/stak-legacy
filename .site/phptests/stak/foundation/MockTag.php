@@ -22,8 +22,8 @@ class MockTag extends Tag {
 
 	// Implementor methods. These all return true because we don't have any processing to do with
 	// them in mock form.
-	protected function updateName($name, Response &$response = null) {
+	protected function updateName($name, Response $response = null) {
 		return true; }
-	protected function updateColor($color, Response &$response = null) {
+	protected function updateColor($color, Response $response = null) {
 		return true; }
 }

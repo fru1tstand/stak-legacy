@@ -38,28 +38,28 @@ class MockTask extends Task {
 
 	// Implementor methods. These all return true because we don't have any processing to do with
 	// them in mock form.
-	protected function updateTitle($title, Response &$response = null) {
+	protected function updateTitle($title, Response $response = null) {
 		return true; }
-	protected function updateDescription($description, Response &$response = null) {
+	protected function updateDescription($description, Response $response = null) {
 		return true; }
-	protected function updateDueDate($dueDate, Response &$response = null) {
+	protected function updateDueDate($dueDate, Response $response = null) {
 		return true; }
-	protected function updateCompletedDate($completedDate, Response &$response = null) {
+	protected function updateCompletedDate($completedDate, Response $response = null) {
 		return true; }
-	protected function updatePrimaryTag(Tag $primaryTag = null, Response &$response = null) {
+	protected function updatePrimaryTag(Tag $primaryTag = null, Response $response = null) {
 		return true; }
-	protected function updateTags(array $tags, Response &$response = null) {
+	protected function updateTags(array $tags, Response $response = null) {
 		return true; }
-	protected function updateAddTag(Tag $tag, Response &$response = null) {
+	protected function updateAddTag(Tag $tag, Response $response = null) {
 		return true; }
-	protected function updateRemoveTag(Tag $tag, Response &$response = null) {
+	protected function updateRemoveTag(Tag $tag, Response $response = null) {
 		return true; }
-	protected function updateParent(Task $task = null, Response &$response = null) {
+	protected function updateParent(Task $task = null, Response $response = null) {
 		return true; }
-	protected function updateChildren(array $children, Response &$response = null) {
+	protected function updateChildren(array $children, Response $response = null) {
 		return true; }
-	protected function updateAddChild(Task $child, Response &$response = null) {
+	protected function updateAddChild(Task $child, Response $response = null) {
 		return true; }
-	protected function updateRemoveChild(Task $child, Response &$response = null) {
+	protected function updateRemoveChild(Task $child, Response $response = null) {
 		return true; }
 }
