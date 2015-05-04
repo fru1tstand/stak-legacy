@@ -25,8 +25,8 @@ class MockTask extends Task {
 			$dueDate = null,
 			$completedDate = null,
 			$primaryTag = null,
-			$tags = null,
-			$type = null) {
+			$tags = array(),
+			$type = Task::TYPE_NORMAL) {
 		$this->title = $title;
 		$this->description = $description;
 		$this->dueDate = $dueDate;
