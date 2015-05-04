@@ -135,11 +135,11 @@ class TimescopeTest extends UnitTest {
 
 		$longTs = new MockTimescope("iojfewjidvsijodsvjiogdajigao4a gA 643w$%$#@^#@%$7546srte");
 
-		self::assertTrue($aTs->compareAlphabetical($zTs) == -1, "A comes before Z");
-		self::assertTrue($zTs->compareAlphabetical($aTs) == 1, "Z comes after A");
-		self::assertTrue($numTs->compareAlphabetical($aTs) == -1, "Numbers come before letters");
-		self::assertTrue($aTs->compareAlphabetical($aaTs) == -1, "Shorter strings of identical beginning come first");
-		self::assertTrue($longTs->compareAlphabetical($aTs) == 1, "Letters take precedence over length");
+		self::assertTrue($aTs->compareAlphabetical($zTs) < 0, "A comes before Z");
+		self::assertTrue($zTs->compareAlphabetical($aTs) > 0, "Z comes after A");
+		self::assertTrue($numTs->compareAlphabetical($aTs) < 0, "Numbers come before letters");
+		self::assertTrue($aTs->compareAlphabetical($aaTs)  < 0, "Shorter strings of identical beginning come first");
+		self::assertTrue($longTs->compareAlphabetical($aTs) > 0, "Letters take precedence over length");
 	}
 
 	/**
@@ -158,14 +158,14 @@ class TimescopeTest extends UnitTest {
 		$tsNowToFuture = new MockTimescope("", 0, false, 0, true, false, false, true);
 		$tsNowToThisWeek = new MockTimescope("", 0, false, 7, false, false, false, true);
 
-		self::assertTrue($ts500to1000a->compareChronological($ts500to1000b) == -1, "Same range, sorts alphabetical, A comes before B");
-		self::assertTrue($ts500to1000b->compareChronological($ts500to1000a) == 1, "Same range, sorta alphabetical, B comes after A");
-		self::assertTrue($ts500to1000a->compareChronological($ts500to1001) == -1, "Same lower bound, shorter range comes before longer range");
-		self::assertTrue($ts500to1001->compareChronological($ts500to1000a) == 1, "Same lower bound, longer range comes after shorter range");
-		self::assertTrue($tsNowToTomorrow->compareChronological($tsTodayToTomorrow) == 1, "Today starts before now");
-		self::assertTrue($tsNowToTomorrow->compareChronological($tsNowToFuture) == -1, "Same lower bound (now), finite length is less than infinite");
-		self::assertTrue($tsNowToFuture->compareChronological($tsTodayToTomorrow) == 1, "Lower bound takes precedence over length");
-		self::assertTrue($tsNowToTomorrow->compareChronological($tsNowToThisWeek) == -1, "Today (now) comes before this week (now)");
+		self::assertTrue($ts500to1000a->compareChronological($ts500to1000b) < 0, "Same range, sorts alphabetical, A comes before B");
+		self::assertTrue($ts500to1000b->compareChronological($ts500to1000a) > 0, "Same range, sorta alphabetical, B comes after A");
+		self::assertTrue($ts500to1000a->compareChronological($ts500to1001) < 0, "Same lower bound, shorter range comes before longer range");
+		self::assertTrue($ts500to1001->compareChronological($ts500to1000a) > 0, "Same lower bound, longer range comes after shorter range");
+		self::assertTrue($tsNowToTomorrow->compareChronological($tsTodayToTomorrow) > 0, "Today starts before now");
+		self::assertTrue($tsNowToTomorrow->compareChronological($tsNowToFuture) < 0, "Same lower bound (now), finite length is less than infinite");
+		self::assertTrue($tsNowToFuture->compareChronological($tsTodayToTomorrow) > 0, "Lower bound takes precedence over length");
+		self::assertTrue($tsNowToTomorrow->compareChronological($tsNowToThisWeek) < 0, "Today (now) comes before this week (now)");
 	}
 }
 TestRunner::run(new TimescopeTest());
