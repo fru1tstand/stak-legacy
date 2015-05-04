@@ -8,6 +8,7 @@ class FoundationTests extends GroupTests {
 	public function includeTests() {
 		new TimescopeTest();
 		new TagTest();
+		new TaskTest();
 	}
 
 	public function getRunLevel() {
