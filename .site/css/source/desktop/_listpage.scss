@@ -12,7 +12,7 @@ $tl-timescope-height: 24px;
 	float: left;
 	height: 100%;
 
-	// Radio controllers are "checked = display"
+	// Radio controller is strictly for tag. Checked = visible
 	.controller[type=radio]:not(:checked) + div {
 		display: none;
 	}
@@ -20,8 +20,8 @@ $tl-timescope-height: 24px;
 		display: block;
 	}
 
-	// Checkbox controllers are "checked = hide"
-	.controller[type=checkbox]:checked + div {
+	// Checkbox controllers are strictly for timescope. Checked = hidden
+	.controller[type=checkbox]:checked + .tl-timescope + div {
 		display: none;
 	}
 }
@@ -84,6 +84,7 @@ $tl-timescope-height: 24px;
 	.fa-check::after { content: 'complete'; }
 	.fa-pencil::after { content: 'edit'; }
 	.fa-trash::after { content: 'delete'; }
+	.fa-times::after { content: 'un-complete'; }
 	a:hover {
 		padding-top: 8px;
 		.fa::after {

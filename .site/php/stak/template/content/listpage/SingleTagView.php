@@ -67,11 +67,11 @@ HTML;
 
         // Timescope container html
         echo <<<HTML
+        <input type="checkbox" class="controller timescope-controller" id="timescope-$tsHash" />
         <div class="tl-timescope">
             <div class="left">$tsTodoCount</div>
             <label class="name" for="timescope-$tsHash">$tsName</label>
         </div>
-        <input type="checkbox" class="controller" id="timescope-$tsHash" />
         <div> <!-- .timescope -->
 HTML;
 

@@ -166,11 +166,17 @@ echo <<<HTML
 }
 
 .tl-timescope {
-    background-color: $invBgLite;
-    color: $invTxtLite;
+    background-color: $blendBg;
+    color: $blendTxt;
 }
-.tl-timescope:hover {
-    background-color: $invBg;
-    color: $invTxt;
+.tl-timescope:hover,
+.tasklist .controller[type=checkbox]:checked + .tl-timescope:hover{
+    background-color: $blendBgActive;
+    color: $blendTxtActive;
 }
+.tasklist .controller[type=checkbox]:checked + .tl-timescope {
+    background-color: $blendBgDisabled;
+    color: $blendTxtDisabled;
+}
+
 HTML;
