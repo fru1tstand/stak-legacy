@@ -97,7 +97,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setName($name, Response &$response = null) {
+	public function setName($name, Response $response = null) {
 		Response::getInstance($response, "Timescope::setName");
 
 		if (!self::isValidName($name, $response))
@@ -117,7 +117,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setUpperBound($days, Response &$response = null) {
+	public function setUpperBound($days, Response $response = null) {
 		Response::getInstance($response, "Timescope::setUpperBound");
 
 		if (!self::isValidBound($days, $response))
@@ -137,7 +137,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setLowerBound($days, Response &$response = null) {
+	public function setLowerBound($days, Response $response = null) {
 		Response::getInstance($response, "Timescope::setLowerBound");
 
 		if (!self::isValidBound($days, $response))
@@ -156,7 +156,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setUpperBoundIsInfinite($isInfinite, Response &$response = null) {
+	public function setUpperBoundIsInfinite($isInfinite, Response $response = null) {
 		Response::getInstance($response, "Timescope::setUpperBoundIsInfinite");
 
 		// Boolean-ize it
@@ -175,7 +175,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setLowerBoundIsInfinite($isInfinite, Response &$response = null) {
+	public function setLowerBoundIsInfinite($isInfinite, Response $response = null) {
 		Response::getInstance($response, "Timescope::setLowerBoundIsInfinite");
 
 		$isInfinite = !!$isInfinite;
@@ -193,7 +193,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setHideIfEmpty($hideIfEmpty, Response &$response = null) {
+	public function setHideIfEmpty($hideIfEmpty, Response $response = null) {
 		Response::getInstance($response, "Timescope::setHideIfEmpty");
 
 		$hideIfEmpty = !!$hideIfEmpty;
@@ -211,7 +211,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setHideCompleted($hideCompleted, Response &$response = null) {
+	public function setHideCompleted($hideCompleted, Response $response = null) {
 		Response::getInstance($response, "Timescope::setHideCompleted");
 
 		$hideCompleted = !!$hideCompleted;
@@ -230,7 +230,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public function setIsBoundNow($isBoundNow, Response &$response = null) {
+	public function setIsBoundNow($isBoundNow, Response $response = null) {
 		Response::getInstance($response, "Timescope::setLowerBoundIsInfinite");
 
 		$isBoundNow = !!$isBoundNow;
@@ -384,7 +384,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public static function isValidName($name, Response &$response = null) {
+	public static function isValidName($name, Response $response = null) {
 		Response::getInstance($response, "Timescope::isValidName");
 
 		// Must be longer than min length
@@ -407,7 +407,7 @@ abstract class Timescope implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public static function isValidBound($days, Response &$response = null) {
+	public static function isValidBound($days, Response $response = null) {
 		Response::getInstance($response, "Timescope::isValidBound");
 
 		// Must be an integer
@@ -419,19 +419,19 @@ abstract class Timescope implements Hashable {
 
 
 	// Implementor methods.
-	protected abstract function updateName($name, Response &$response = null);
+	protected abstract function updateName($name, Response $response = null);
 
-	protected abstract function updateLowerBound($day, Response &$response = null);
+	protected abstract function updateLowerBound($day, Response $response = null);
 
-	protected abstract function updateUpperBound($day, Response &$response = null);
+	protected abstract function updateUpperBound($day, Response $response = null);
 
-	protected abstract function updateHideIfEmpty($hideIfEmpty, Response &$response = null);
+	protected abstract function updateHideIfEmpty($hideIfEmpty, Response $response = null);
 
-	protected abstract function updateHideCompleted($hideComplete, Response &$response = null);
+	protected abstract function updateHideCompleted($hideComplete, Response $response = null);
 
-	protected abstract function updateLowerBoundIsInfinite($isInfinite, Response &$response = null);
+	protected abstract function updateLowerBoundIsInfinite($isInfinite, Response $response = null);
 
-	protected abstract function updateUpperBoundIsInfinite($isInfinite, Response &$response = null);
+	protected abstract function updateUpperBoundIsInfinite($isInfinite, Response $response = null);
 
-	protected abstract function updateIsBoundNow($isBoundNow, Response &$response = null);
+	protected abstract function updateIsBoundNow($isBoundNow, Response $response = null);
 }

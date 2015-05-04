@@ -200,7 +200,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setTitle($title, Response &$response = null) {
+	public function setTitle($title, Response $response = null) {
 		Response::getInstance($response, "Task::setTitle");
 
 		if (!self::isValidTitle($title, $response))
@@ -219,7 +219,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setDescription($description, Response &$response = null) {
+	public function setDescription($description, Response $response = null) {
 		Response::getInstance($response, "Task::setDescription");
 
 		if ($description === "") $description = null;
@@ -237,7 +237,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setDueDate($dueDate, Response &$response = null) {
+	public function setDueDate($dueDate, Response $response = null) {
 		Response::getInstance($response, "Task::setDueDate");
 
 		if (!self::isValidDate($dueDate, $response))
@@ -256,7 +256,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setCompletedDate($completedDate, Response &$response = null) {
+	public function setCompletedDate($completedDate, Response $response = null) {
 		Response::getInstance($response, "Task::setCompletedDate");
 
 		if (!self::isValidDate($completedDate, $response))
@@ -277,7 +277,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise
 	 */
-	public function setPrimaryTag(Tag &$primaryTag = null, Response &$response = null) {
+	public function setPrimaryTag(Tag &$primaryTag = null, Response $response = null) {
 		Response::getInstance($response, "Task::setPrimaryTag");
 
 		// Add to tag listpage of not already
@@ -298,7 +298,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setTags(array $tags, Response &$response = null) {
+	public function setTags(array $tags, Response $response = null) {
 		Response::getInstance($response, "Task::setTags");
 
 		if (!self::isValidTags($tags, $response))
@@ -317,7 +317,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function addTag(Tag &$tag, Response &$response = null) {
+	public function addTag(Tag &$tag, Response $response = null) {
 		Response::getInstance($response, "Task::addTag");
 
 		// Task tags should never not be an array. If it isn't there's an issue. Flag it.
@@ -344,7 +344,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function addTags(array $tags, Response &$response = null) {
+	public function addTags(array $tags, Response $response = null) {
 		Response::getInstance($response, "Task::addTags");
 
 		if (!self::isValidTags($tags, $response))
@@ -363,7 +363,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function removeTag(Tag $tag, Response &$response = null) {
+	public function removeTag(Tag $tag, Response $response = null) {
 		Response::getInstance($response, "Task::removeTag");
 
 		// False if not found, else, tag index
@@ -387,7 +387,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function removeTags(array $tags, Response &$response = null) {
+	public function removeTags(array $tags, Response $response = null) {
 		Response::getInstance($response, "Task::removeTags");
 
 		if (!self::isValidTags($tags, $response))
@@ -407,7 +407,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setParent(Task &$parent = null, Response &$response = null) {
+	public function setParent(Task &$parent = null, Response $response = null) {
 		Response::getInstance($response, "Task::setParent");
 
 		if ($this->parent instanceof Task) {
@@ -440,7 +440,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setChildren(array $children, Response &$response = null) {
+	public function setChildren(array $children, Response $response = null) {
 		Response::getInstance($response, "Task::setChildren");
 
 		if (!self::isValidChildren($children, $response))
@@ -467,7 +467,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function addChild(Task &$child, Response &$response = null) {
+	public function addChild(Task &$child, Response $response = null) {
 		Response::getInstance($response, "Task::addChild");
 
 		// Children field should never not be an array. If it isn't, there's an issue. Flag it.
@@ -494,7 +494,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function addChildren(array $children, Response &$response = null) {
+	public function addChildren(array $children, Response $response = null) {
 		Response::getInstance($response, "Task::addChildren");
 
 		if (!self::isValidChildren($children, $response))
@@ -520,7 +520,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function removeChild(Task $child, Response &$response = null) {
+	public function removeChild(Task $child, Response $response = null) {
 		Response::getInstance($response, "Task:: removeChild");
 
 		//false if not found, else, tag index
@@ -544,7 +544,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function removeChildren(array $children, Response &$response = null) {
+	public function removeChildren(array $children, Response $response = null) {
 		Response::getInstance($response, "Task::removeChildren");
 
 		if (!self::isValidChildren($children, $response))
@@ -566,7 +566,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True if valid; false otherwise
 	 */
-	public static function isValidTitle($title, Response &$response = null) {
+	public static function isValidTitle($title, Response $response = null) {
 		Response::getInstance($response, "Task::isValidTitle");
 
 		// Must be longer than minimum length
@@ -589,7 +589,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True if valid; false otherwise
 	 */
-	public static function isValidDate($date, Response &$response = null) {
+	public static function isValidDate($date, Response $response = null) {
 		Response::getInstance($response, "Task::isValidDueDate");
 
 		// Null dates mean not set
@@ -618,7 +618,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True if valid; false otherwise.
 	 */
-	public static function isValidTags(array $tags, Response &$response = null) {
+	public static function isValidTags(array $tags, Response $response = null) {
 		Response::getInstance($response, "Task::isValidTags");
 
 		// check array
@@ -643,7 +643,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool
 	 */
-	public static function isValidChildren(array $children, Response &$response = null) {
+	public static function isValidChildren(array $children, Response $response = null) {
 		Response::getInstance($response, "Task::isValidChildren");
 
 		// check array
@@ -662,6 +662,7 @@ abstract class Task implements Hashable {
 		return $response->hasFailed();
 	}
 
+
 	// These are called when their corresponding #set* methods are called and before any local
 	// properties are set. The return boolean is used to determine whether or not the update
 	// should be completed locally (eg. A database write failed, returning false, so we shouldn't
@@ -672,7 +673,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateTitle($title, Response &$response = null);
+	protected abstract function updateTitle($title, Response $response = null);
 
 	/**
 	 * Called when {@link setDescription} is called.
@@ -680,7 +681,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateDescription($description, Response &$response = null);
+	protected abstract function updateDescription($description, Response $response = null);
 
 	/**
 	 * Called when {@link setDueDate} is called. Dates are handled using UTC+0 in unix time without
@@ -689,7 +690,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateDueDate($dueDate, Response &$response = null);
+	protected abstract function updateDueDate($dueDate, Response $response = null);
 
 	/**
 	 * Called when {@link setCompletedDate} is called. Dates are handled using UTC+0 in unit time
@@ -698,7 +699,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateCompletedDate($completedDate, Response &$response = null);
+	protected abstract function updateCompletedDate($completedDate, Response $response = null);
 
 	/**
 	 * Called when {@link setPrimaryTag} is called. Passed null when removing.
@@ -707,7 +708,7 @@ abstract class Task implements Hashable {
 	 * @return bool True on success; false otherwise.
 	 */
 	protected abstract function updatePrimaryTag(Tag $primaryTag = null,
-												 Response &$response = null);
+												 Response $response = null);
 
 	/**
 	 * Called when {@link setTags} is called. Passed an empty array when removing all tags.
@@ -715,7 +716,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateTags(array $tags, Response &$response = null);
+	protected abstract function updateTags(array $tags, Response $response = null);
 
 	/**
 	 * Called when {@link addTag} is called.
@@ -723,7 +724,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateAddTag(Tag $tag, Response &$response = null);
+	protected abstract function updateAddTag(Tag $tag, Response $response = null);
 
 	/**
 	 * Called when {@link removeTag} is called.
@@ -731,7 +732,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateRemoveTag(Tag $tag, Response &$response = null);
+	protected abstract function updateRemoveTag(Tag $tag, Response $response = null);
 
 	/**
 	 * Called when {@link setParent} is called. Passed null when removing.
@@ -739,7 +740,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateParent(Task $task = null, Response &$response = null);
+	protected abstract function updateParent(Task $task = null, Response $response = null);
 
 	/**
 	 * Called when {@link setChildren} is called.
@@ -747,7 +748,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateChildren(array $children, Response &$response = null);
+	protected abstract function updateChildren(array $children, Response $response = null);
 
 	/**
 	 * Called when {@link addChild} is called.
@@ -755,7 +756,7 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateAddChild(Task $child, Response &$response = null);
+	protected abstract function updateAddChild(Task $child, Response $response = null);
 
 	/**
 	 * Called when {@link removeChild} is called.
@@ -763,5 +764,5 @@ abstract class Task implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateRemoveChild(Task $child, Response &$response = null);
+	protected abstract function updateRemoveChild(Task $child, Response $response = null);
 }

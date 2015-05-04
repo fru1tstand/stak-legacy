@@ -42,7 +42,7 @@ abstract class Tag implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setName($name, Response &$response = null) {
+	public function setName($name, Response $response = null) {
 		Response::getInstance($response, "Tag::setName");
 
 		if (!self::isValidName($name, $response))
@@ -61,7 +61,7 @@ abstract class Tag implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	public function setColor($color, Response &$response = null) {
+	public function setColor($color, Response $response = null) {
 		Response::getInstance($response, "Tag::setColor");
 
 		if (!self::isValidColor($color, $response))
@@ -103,7 +103,7 @@ abstract class Tag implements Hashable {
 	 * @param Response $response
 	 * @return bool True if valid; false otherwise.
 	 */
-	public static function isValidName($name, Response &$response = null) {
+	public static function isValidName($name, Response $response = null) {
 		Response::getInstance($response, "Tag::isValidTitle");
 
 		if (strlen($name) < 1)
@@ -122,7 +122,7 @@ abstract class Tag implements Hashable {
 	 * @param Response $response
 	 * @return bool True if valid; false otherwise.
 	 */
-	public static function isValidColor($color = null, Response &$response = null) {
+	public static function isValidColor($color = null, Response $response = null) {
 		Response::getInstance($response, "Tag::isValidColorInt");
 
 		if (is_null($color))
@@ -142,7 +142,7 @@ abstract class Tag implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateName($name, Response &$response = null);
+	protected abstract function updateName($name, Response $response = null);
 
 	/**
 	 * Called when {@link setColor} is called.
@@ -150,5 +150,5 @@ abstract class Tag implements Hashable {
 	 * @param Response $response
 	 * @return bool True on success; false otherwise.
 	 */
-	protected abstract function updateColor($color, Response &$response = null);
+	protected abstract function updateColor($color, Response $response = null);
 }
