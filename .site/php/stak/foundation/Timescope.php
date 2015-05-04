@@ -325,12 +325,12 @@ abstract class Timescope implements Hashable {
 		$thisAdjustedLowerBound = $this->lowerBound;
 		$otherAdjustedLowerBound = $other->lowerBound;
 
-		// Bound now, just add 1/2 a day. We know that the real value will be between 0 and 1 so a
-		// mock in-between value is fine.
+		// Bound now, just set to 1/2 a day. We know that the real value will be between 0 and 1
+		// so a mock in-between value is fine.
 		if ($thisAdjustedLowerBound == 0 && $this->isBoundNow)
-			$thisAdjustedLowerBound += 0.5;
+			$thisAdjustedLowerBound = 0.5;
 		if ($otherAdjustedLowerBound == 0 && $other->isBoundNow)
-			$otherAdjustedLowerBound += 0.5;
+			$otherAdjustedLowerBound = 0.5;
 
 		// If they're both infinite, just set lower bound to zero
 		if ($this->lowerBoundIsInfinite) {
@@ -356,9 +356,9 @@ abstract class Timescope implements Hashable {
 
 		// Now binding
 		if ($thisAdjustedUpperBound == 0 && $this->isBoundNow)
-			$thisAdjustedUpperBound += 0.5;
+			$thisAdjustedUpperBound = 0.5;
 		if ($otherAdjustedUpperBound == 0 && $other->isBoundNow)
-			$otherAdjustedUpperBound += 0.5;
+			$otherAdjustedUpperBound = 0.5;
 
 		// Both infinite?
 		if ($this->upperBoundIsInfinite) {
