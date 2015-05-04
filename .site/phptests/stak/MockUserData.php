@@ -73,6 +73,7 @@ class MockUserData implements UserData {
 		$importantTag = $tags[1];
 		$projectsTag = $tags[2];
 		$qaTag = $tags[3];
+		$emptyTag = $tags[4];
 
 		// Create tasks
 		if (is_null(self::$cachedTasks)) {
@@ -149,7 +150,11 @@ class MockUserData implements UserData {
 					array($schoolTag),
 					Task::TYPE_NORMAL);
 			$randomOtherThing = new MockTask("Random other thing",
-					"It's pretty random, and it's not really part of any group");
+					"It's pretty random, and it's not really part of any group",
+					null,
+					null,
+					$emptyTag,
+					array($emptyTag));
 
 			// Build associations
 			$musicProjectTask->addChild($musicTask);
@@ -182,7 +187,7 @@ class MockUserData implements UserData {
 			$overdue = new MockTimescope("Overdue", 0, true, 0, false, true, true, true);
 			$everythingElse = new MockTimescope("Everything Else", 7, false, 0, true, true, true,
 					false);
-			$emptyTs = new EmptyTimescope("Timeless", true);
+			$emptyTs = new EmptyTimescope("(Just Things To Do)", true);
 			self::$cachedTimescopes = array($today, $thisWeek, $overdue, $everythingElse, $emptyTs);
 		}
 		return self::$cachedTimescopes;
