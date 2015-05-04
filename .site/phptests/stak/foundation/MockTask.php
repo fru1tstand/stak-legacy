@@ -20,8 +20,13 @@ class MockTask extends Task {
 	 * @param $tags
 	 * @param $type
 	 */
-	public function __construct($title, $description, $dueDate, $completedDate, $primaryTag,
-								$tags, $type) {
+	public function __construct($title,
+			$description = null,
+			$dueDate = null,
+			$completedDate = null,
+			$primaryTag = null,
+			$tags = null,
+			$type = null) {
 		$this->title = $title;
 		$this->description = $description;
 		$this->dueDate = $dueDate;
