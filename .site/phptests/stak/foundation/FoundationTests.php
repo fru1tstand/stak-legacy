@@ -7,6 +7,7 @@ use common\ppunit\TestRunner;
 class FoundationTests extends GroupTests {
 	public function includeTests() {
 		new TimescopeTest();
+		new TagTest();
 	}
 
 	public function getRunLevel() {
