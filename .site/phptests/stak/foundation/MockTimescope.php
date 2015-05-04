@@ -9,8 +9,14 @@ use common\base\Response;
  */
 class MockTimescope extends Timescope {
 
-	public function __construct($name, $lowerBound, $lowerBoundIsInfinite, $upperBound,
-								$upperBoundIsInfinite, $hideIfEmpty, $hideCompleted, $isBoundNow) {
+	public function __construct($name,
+			$lowerBound = 0,
+			$lowerBoundIsInfinite = false,
+			$upperBound = 0,
+			$upperBoundIsInfinite = false,
+			$hideIfEmpty = false,
+			$hideCompleted = false,
+			$isBoundNow = false) {
 		$this->name = $name;
 		$this->lowerBound = $lowerBound;
 		$this->lowerBoundIsInfinite = $lowerBoundIsInfinite;
