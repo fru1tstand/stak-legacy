@@ -173,12 +173,12 @@ class MockUserData implements UserData {
 	 */
 	public static function getTimescopes() {
 		if (is_null(self::$cachedTimescopes)) {
-			$todayBoundNow = new MockTimescope("Today", 0, false, 1, false, false, false, true);
-			$thisWeek = new MockTimescope("This Week", 0, false, 7, false, false, true, false);
-			$overdue = new MockTimescope("Overdue", null, true, 0, false, true, true, true);
-			$everythingElse = new MockTimescope("Everything Else", 8, false, null, true, true, true,
+			$today = new MockTimescope("Today", 0, false, 1, false, false, false, true);
+			$thisWeek = new MockTimescope("This Week", 0, false, 7, false, false, true, true);
+			$overdue = new MockTimescope("Overdue", 0, true, 0, false, true, true, true);
+			$everythingElse = new MockTimescope("Everything Else", 7, false, 0, true, true, true,
 					false);
-			self::$cachedTimescopes = array($todayBoundNow, $thisWeek, $overdue, $everythingElse);
+			self::$cachedTimescopes = array($today, $thisWeek, $overdue, $everythingElse);
 		}
 		return self::$cachedTimescopes;
 	}

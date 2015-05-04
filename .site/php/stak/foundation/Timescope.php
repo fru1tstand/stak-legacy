@@ -111,7 +111,7 @@ abstract class Timescope implements Hashable {
 	}
 
 	/**
-	 * Sets the upper bound of the timescope in days (inclusive). To disable, set
+	 * Sets the upper bound of the timescope in days (exclusive). To disable, set
 	 * upperBoundIsInfinite to true. To bound it to "now", set isBoundNow to true.
 	 * @param          $days
 	 * @param Response $response
@@ -245,7 +245,7 @@ abstract class Timescope implements Hashable {
 
 	// Other
 	/**
-	 * Checks if the given time is within the range of this timescope
+	 * Checks if the given time is within the range of this timescope [lower bound, upper bound)
 	 * @param $time
 	 * @return bool
 	 */
@@ -253,33 +253,31 @@ abstract class Timescope implements Hashable {
 		if (is_null($time))
 			return false;
 
-		$daysFromToday = (StandardTime::floorToDate($time)
-						 - StandardTime::floorToDate(StandardTime::getTime()))
-						 / StandardTime::SECONDS_IN_DAY;
+		$lowerBoundTime = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY * $this->lowerBound;
+		$upperBoundTime = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY * $this->upperBound;
 
-		// Check lower bound
+		// Lower bound check
 		if (!$this->lowerBoundIsInfinite) {
-			// Is it bound now?
-			if ($this->isBoundNow && $this->lowerBound == 0) {
+			// Bound now
+			if ($this->lowerBound == 0 && $this->isBoundNow) {
 				if ($time < StandardTime::getTime())
 					return false;
-			}
-			// Otherwise, treat it normally
-			else {
-				if ($daysFromToday < $this->lowerBound)
+			} else {
+				if ($time < $lowerBoundTime)
 					return false;
 			}
 		}
 
-		// Upper bound
+		// Upper bound check
 		if (!$this->upperBoundIsInfinite) {
-			if ($this->isBoundNow && $this->upperBound == 0) {
-				if ($time > StandardTime::getTime())
+			// Bound now
+			if ($this->upperBound == 0 && $this->isBoundNow) {
+				if ($time >= StandardTime::getTime())
 					return false;
-			}
-
-			else {
-				if ($daysFromToday > $this->upperBound)
+			} else {
+				if ($time >= $upperBoundTime)
 					return false;
 			}
 		}
@@ -310,42 +308,72 @@ abstract class Timescope implements Hashable {
 	 * Compares this Timescope to the passed Timescope in chronological order. Returns a negative
 	 * number if this Timescope should come because the passed timescope. If both timescopes have
 	 * the same lower bound, the ranges are then compared with the smallest range coming first
-	 * (eg if this range was smaller than the passed range, a negative number is returned).
+	 * (eg if this range was smaller than the passed range, a negative number is returned). If both
+	 * ranges are the same size, then finally, the Timescopes are compared to alphabetically.
 	 * @param Timescope $other
 	 * @return float|int
 	 */
 	public function compareChronological(Timescope $other) {
-		// Initial comparison
-		$compare = $this->lowerBound - $other->lowerBound;
+		// Exclusive or on infinite lower bound will result in return, otherwise both or neither
+		// are infinite (we'll separate this out later)
+		if ($this->lowerBoundIsInfinite && !$other->lowerBoundIsInfinite)
+			return -1;
+		if (!$this->lowerBoundIsInfinite && $other->lowerBoundIsInfinite)
+			return 1;
 
-		// Correct for "now" now binding (on the lower bound, 'now' makes it greater than a
-		// non-now bound of the same day. This is because a binding of the day is bound to the
-		// start of the day, whereas 'now' is the current time of that day.) To do a comparison,
-		// we simply add 1/2 a day to emulate time.
-		if ($this->isBoundNow && $this->lowerBound == 0)
-			$compare += 0.5;
-		if ($other->isBoundNow && $other->lowerBound == 0)
-			$compare -= 0.5;
+		// set up adjusted lower bounds
+		$thisAdjustedLowerBound = $this->lowerBound;
+		$otherAdjustedLowerBound = $other->lowerBound;
 
-		if ($compare != 0)
-			return round($compare);
+		// Bound now, just add 1/2 a day. We know that the real value will be between 0 and 1 so a
+		// mock in-between value is fine.
+		if ($thisAdjustedLowerBound == 0 && $this->isBoundNow)
+			$thisAdjustedLowerBound += 0.5;
+		if ($otherAdjustedLowerBound == 0 && $other->isBoundNow)
+			$otherAdjustedLowerBound += 0.5;
 
-		// Compare range size if the lower bounds match. Range difference is calculated by the
-		// following: (upper_a - lower_a) - (upper_b - lower_b)
-		$rangeA = $this->upperBound - $this->lowerBound;
-		$rangeB = $other->upperBound - $other->lowerBound;
+		// If they're both infinite, just set lower bound to zero
+		if ($this->lowerBoundIsInfinite) {
+			$thisAdjustedLowerBound = 0;
+			$otherAdjustedLowerBound = 0;
+		}
 
-		// Correct for "now" bounds
-		if ($this->isBoundNow && $this->lowerBound == 0)
-			$rangeA -= 0.5;
-		if ($this->isBoundNow && $this->upperBound == 0)
-			$rangeA += 0.5;
-		if ($other->isBoundNow && $other->lowerBound == 0)
-			$rangeB -= -.5;
-		if ($other->isBoundNow && $other->upperBound == 0)
-			$rangeB += 0.5;
+		// Return if they're not the same
+		if ($thisAdjustedLowerBound != $otherAdjustedLowerBound)
+			return round($thisAdjustedLowerBound - $otherAdjustedLowerBound);
 
-		return round($rangeA - $rangeB);
+
+		// Move onto checking range sizes
+		// We basically do the same steps as above
+		if ($this->upperBoundIsInfinite && !$other->upperBoundIsInfinite)
+			return 1; // Shorter range first
+		if (!$this->upperBoundIsInfinite && $other->upperBoundIsInfinite)
+			return -1;
+
+		// Adjusted upper bounds
+		$thisAdjustedUpperBound = $this->upperBound;
+		$otherAdjustedUpperBound = $other->upperBound;
+
+		// Now binding
+		if ($thisAdjustedUpperBound == 0 && $this->isBoundNow)
+			$thisAdjustedUpperBound += 0.5;
+		if ($otherAdjustedUpperBound == 0 && $other->isBoundNow)
+			$otherAdjustedUpperBound += 0.5;
+
+		// Both infinite?
+		if ($this->upperBoundIsInfinite) {
+			$thisAdjustedUpperBound = 0;
+			$otherAdjustedUpperBound = 0;
+		}
+
+		// Because we know lower bound is the same, don't even need to math. Just a little logic.
+		// Shorter range comes first
+		if ($thisAdjustedUpperBound != $otherAdjustedUpperBound)
+			return round($thisAdjustedUpperBound - $otherAdjustedUpperBound);
+
+
+		// Move onto checking alphabetical
+		return $this->compareAlphabetical($other);
 	}
 
 
