@@ -11,6 +11,7 @@ $tl-timescope-height: 24px;
 	width: 33%;
 	float: left;
 	height: 100%;
+	overflow: auto;
 
 	// Radio controller is strictly for tag. Checked = visible
 	.controller[type=radio]:not(:checked) + div {

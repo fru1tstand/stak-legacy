@@ -148,7 +148,8 @@ label {
   .tasklist {
     width: 33%;
     float: left;
-    height: 100%; }
+    height: 100%;
+    overflow: auto; }
     .tasklist .controller[type=radio]:not(:checked) + div {
       display: none; }
     .tasklist .controller[type=radio]:checked + div {
