@@ -13,7 +13,13 @@ $tagGroup = ListProcessor::getTagGroup();
     foreach ($tagGroup->getTagContainers() as $tagContain) {
         $tagHash = $tagContain->getTag()->getHash();
         $tagName = htmlspecialchars($tagContain->getTag()->getName());
-        $tagColor = "#" . $tagContain->getTag()->getColor();
+
+		// Hex color or transparent
+        $tagColor = $tagContain->getTag()->getColor();
+		if (is_null($tagColor))
+			$tagColor = "transparent";
+		else
+			$tagColor = "#" . $tagColor;
 
         echo <<<HTML
 
@@ -32,7 +38,12 @@ HTML;
 foreach ($tagGroup->getTagContainers() as $tagContain) {
     $tagHash = $tagContain->getTag()->getHash();
     $tagName = htmlspecialchars($tagContain->getTag()->getName());
-    $tagColor = "#" . $tagContain->getTag()->getColor();
+	// Hex color or transparent
+	$tagColor = $tagContain->getTag()->getColor();
+	if (is_null($tagColor))
+		$tagColor = "transparent";
+	else
+		$tagColor = "#" . $tagColor;
 
     echo <<<HTML
 
@@ -81,7 +92,13 @@ HTML;
             if ($tsContainer->getTimescope()->hideCompleted() && $task->isComplete())
                 continue;
 
-            $taskColor = "#" . $task->getPrimaryTag()->getColor();
+			// Transparent or Hex color
+            $taskColor = $task->getPrimaryTag()->getColor();
+			if (is_null($taskColor))
+				$taskColor = "transparent";
+			else
+				$taskColor = "#" . $taskColor;
+
             $taskTitle = htmlspecialchars($task->getTitle());
             $taskHash = $task->getHash();
 
