@@ -3,6 +3,8 @@ namespace stak;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
 use stak\filters\TagFilter;
 use stak\filters\TaskFilter;
+use stak\foundation\EmptyTag;
+use stak\foundation\EmptyTimescope;
 use stak\foundation\Tag;
 use stak\foundation\Task;
 use stak\foundation\Timescope;
@@ -52,7 +54,8 @@ class MockUserData implements UserData {
 			/** @noinspection HtmlUnknownTag */
 			$qaTag = new MockTag("Th!s <will> <break> !@$&^*^)*()[]\{\}<><> \"everything'!!",
 					"000");
-			self::$cachedTags = array($schoolTag, $importantTag, $projectsTag, $qaTag);
+			$emptyTag = new EmptyTag("(No Tag)", null, true);
+			self::$cachedTags = array($schoolTag, $importantTag, $projectsTag, $qaTag, $emptyTag);
 		}
 
 		return self::$cachedTags;
@@ -110,13 +113,6 @@ class MockUserData implements UserData {
 					$schoolTag,
 					array($schoolTag, $importantTag, $projectsTag),
 					Task::TYPE_REMINDER);
-			$webassignContainer = new MockTask("Webassign",
-					"",
-					null,
-					null,
-					$schoolTag,
-					array($schoolTag),
-					Task::TYPE_CONTAINER);
 			$webassign1 = new MockTask("Physics Webassign 4, 5, 6, 20-30",
 					"",
 					time(),
@@ -145,15 +141,23 @@ class MockUserData implements UserData {
 					$qaTag,
 					array($qaTag),
 					Task::TYPE_NORMAL);
+			$annoyingSchoolThing = new MockTask("Annoying School Thing",
+					"This is really annoying, so I'll put it off until forever",
+					null,
+					null,
+					$schoolTag,
+					array($schoolTag),
+					Task::TYPE_NORMAL);
+			$randomOtherThing = new MockTask("Random other thing",
+					"It's pretty random, and it's not really part of any group");
 
 			// Build associations
 			$musicProjectTask->addChild($musicTask);
-			$musicTask->addChildren(array(&$musicProjectReminder, &$musicProjectReminder2));
-			$webassignContainer->addChildren(array(&$webassign1, &$webassign2, &$webassign3));
+			$musicTask->addChildren(array($musicProjectReminder, $musicProjectReminder2));
 
 			self::$cachedTasks = array($musicTask, $musicProjectTask, $musicProjectReminder,
-					$musicProjectReminder2, $webassignContainer, $webassign1, $webassign2,
-					$webassign3, $shedProject);
+					$musicProjectReminder2, $webassign1, $webassign2,
+					$webassign3, $shedProject, $annoyingSchoolThing, $randomOtherThing);
 		}
 
 		return self::$cachedTasks;
@@ -178,7 +182,8 @@ class MockUserData implements UserData {
 			$overdue = new MockTimescope("Overdue", 0, true, 0, false, true, true, true);
 			$everythingElse = new MockTimescope("Everything Else", 7, false, 0, true, true, true,
 					false);
-			self::$cachedTimescopes = array($today, $thisWeek, $overdue, $everythingElse);
+			$emptyTs = new EmptyTimescope("Timeless", true);
+			self::$cachedTimescopes = array($today, $thisWeek, $overdue, $everythingElse, $emptyTs);
 		}
 		return self::$cachedTimescopes;
 	}

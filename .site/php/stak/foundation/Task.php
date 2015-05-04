@@ -15,7 +15,6 @@ abstract class Task implements Hashable {
 	const TYPE_NORMAL = 0;
 	const TYPE_REMINDER = 1;
 	const TYPE_TEMPLATE = 2;
-	const TYPE_CONTAINER = 3;
 
 	// Task fields
 	/** @var  string */	protected $title;
