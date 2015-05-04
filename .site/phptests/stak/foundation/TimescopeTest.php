@@ -31,8 +31,10 @@ class TimescopeTest extends UnitTest {
 
 		// Random other tests
 			// Pass
-		$nowPlusADay = StandardTime::getTime() + StandardTime::SECONDS_IN_DAY;
-		$nowPlus10000Seconds = StandardTime::getTime() + 100000;
+		$tomorrow = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY;
+		$noonTomorrow = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY * 1.5;
 			// Fail
 		$unixTime1 = 1;
 		$threeDaysFromNow = StandardTime::getTime() + StandardTime::SECONDS_IN_DAY * 3;
@@ -43,8 +45,8 @@ class TimescopeTest extends UnitTest {
 		self::assertFalse($timescope->isWithinRange($aSecondAgo), "A second ago (lower bound edge)");
 		self::assertFalse($timescope->isWithinRange($midnightTomorrow), "Midnight tomorrow (upper bound edge)");
 
-		self::assertTrue($timescope->isWithinRange($nowPlusADay), "This time tomorrow");
-		self::assertTrue($timescope->isWithinRange($nowPlus10000Seconds), "10,000 Seconds from now");
+		self::assertTrue($timescope->isWithinRange($tomorrow), "Tomorrow");
+		self::assertTrue($timescope->isWithinRange($noonTomorrow), "Noon Tomorrow");
 		self::assertFalse($timescope->isWithinRange($unixTime1), "Unix time 1");
 		self::assertFalse($timescope->isWithinRange($threeDaysFromNow), "3 Days from now");
 		self::assertFalse($timescope->isWithinRange($fourDaysFromNow), "4 Days from now");
