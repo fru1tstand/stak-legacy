@@ -12,8 +12,8 @@ class MockTag extends Tag {
 
 	/**
 	 * Simple constructor
-	 * @param $name
-	 * @param $color
+	 * @param $name The name of the tag
+	 * @param $color The color of the tag in the format of RRGGBB
 	 */
 	public function __construct($name, $color) {
 		$this->name = $name;
