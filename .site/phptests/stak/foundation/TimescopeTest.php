@@ -15,7 +15,7 @@ class TimescopeTest extends UnitTest {
 	 * @Test
 	 */
 	public static function testIsWithinScopeWithNow() {
-		self::addMessage("Testing with timescope range: [now, +2]");
+		self::addMessage("Testing with timescope range: [now, 2)");
 		$timescope = new MockTimescope("TestTimescope", 0, false, 2, false, false, false, true);
 
 		// Pass
@@ -46,7 +46,7 @@ class TimescopeTest extends UnitTest {
 	 * @Test
 	 */
 	public static function testIsWithinScopeBasic() {
-		self::addMessage("Testing with timescope range: [0, 2]");
+		self::addMessage("Testing with timescope range: [0, 2)");
 		$timescope = new MockTimescope("TestTimescope", 0, false, 2, false, false, false, false);
 
 		// Pass
@@ -75,6 +75,38 @@ class TimescopeTest extends UnitTest {
 		self::assertFalse($timescope->isWithinRange($twentyFourHoursAgo), "24 hours ago");
 		self::assertFalse($timescope->isWithinRange($startOf3DaysFromNow),
 				"Start of 3 days from now");
+	}
+
+	/**
+	 * Tests a timescope with range [Now, 1)
+	 * @Test
+	 */
+	public static function testTodayTimescope() {
+		self::addMessage("Testing range [now, 1)");
+		$todayTs = new MockTimescope("Today", 0, false, 1, false, false, false, true);
+
+		// Pass
+		$now = StandardTime::getTime(); // Edge of lower bound
+		$aSecondBeforeMidnight = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY - 1; // Edge of upper bound
+
+		// Fail
+		$aSecondAgo = StandardTime::getTime() - 1; // Edge of lower bound
+		$midnight = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY; // edge of upper bound
+		$someTimeTomorrow = StandardTime::floorToDate(StandardTime::getTime())
+				+ StandardTime::SECONDS_IN_DAY
+				+ 40000;
+		$zero = 0;
+		$weekFromNow = StandardTime::getTime() + StandardTime::SECONDS_IN_DAY * 7;
+
+		self::assertTrue($todayTs->isWithinRange($now), "Now");
+		self::assertTrue($todayTs->isWithinRange($aSecondBeforeMidnight), "A second before midnight today");
+		self::assertFalse($todayTs->isWithinRange($midnight), "Midnight (start of tomorrow)");
+		self::assertFalse($todayTs->isWithinRange($someTimeTomorrow), "Some time tomorrow");
+		self::assertFalse($todayTs->isWithinRange($aSecondAgo), "A second ago");
+		self::assertFalse($todayTs->isWithinRange($zero), "0 Unix time");
+		self::assertFalse($todayTs->isWithinRange($weekFromNow), "A week from now");
 	}
 
 	/**
@@ -110,6 +142,7 @@ class TimescopeTest extends UnitTest {
 		$tsNowToTomorrow = new MockTimescope("", 0, false, 1, false, false, false, true);
 		$tsTodayToTomorrow = new MockTimescope("", 0, false, 1, false);
 		$tsNowToFuture = new MockTimescope("", 0, false, 0, true, false, false, true);
+		$tsNowToThisWeek = new MockTimescope("", 0, false, 7, false, false, false, true);
 
 		self::assertTrue($ts500to1000a->compareChronological($ts500to1000b) == -1, "Same range, sorts alphabetical, A comes before B");
 		self::assertTrue($ts500to1000b->compareChronological($ts500to1000a) == 1, "Same range, sorta alphabetical, B comes after A");
@@ -118,6 +151,7 @@ class TimescopeTest extends UnitTest {
 		self::assertTrue($tsNowToTomorrow->compareChronological($tsTodayToTomorrow) == 1, "Today starts before now");
 		self::assertTrue($tsNowToTomorrow->compareChronological($tsNowToFuture) == -1, "Same lower bound (now), finite length is less than infinite");
 		self::assertTrue($tsNowToFuture->compareChronological($tsTodayToTomorrow) == 1, "Lower bound takes precedence over length");
+		self::assertTrue($tsNowToTomorrow->compareChronological($tsNowToThisWeek) == -1, "Today (now) comes before this week (now)");
 	}
 }
 TestRunner::run(new TimescopeTest());
