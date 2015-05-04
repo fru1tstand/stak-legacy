@@ -7,30 +7,6 @@ use Exception;
  * @package common\ppunit
  */
 abstract class UnitTest {
-	const NO_GROUP = 0;
-
-	protected static $groupHierarchyLevel = self::NO_GROUP;
-	protected static $testClasses = array();
-
-	/**
-	 * Initializes the a test page with the given test class
-	 * @param string $className
-	 */
-	public static function init($className) {
-		if (self::$groupHierarchyLevel != self::NO_GROUP)
-			return;
-
-		self::$testClasses[] = $className;
-		self::showResultPage();
-	}
-
-	protected static function showResultPage() {
-		/** @noinspection PhpUnusedLocalVariableInspection */
-		$testClasses = self::$testClasses;
-		/** @noinspection PhpIncludeInspection */
-		require str_replace("\\", "/", realpath(dirname(__FILE__))) . "/html/TestPageContent.php";
-	}
-
 	protected static function assertTrue($logic, $comment = null) {
 		if (!$logic)
 			throw new Exception("True assertion failed: $comment");

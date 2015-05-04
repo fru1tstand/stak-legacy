@@ -2,13 +2,13 @@
 namespace common\ppunit\html;
 
 use common\ppunit\UnitTest;
-use ReflectionClass;
+use ReflectionObject;
 use ReflectionMethod;
 use Exception;
 
 // Make sure we've been included and have the information necessary to make the page
-/** @var UnitTest[] $testClasses */
-if (!isset($testClasses))
+/** @var UnitTest[] $tests */
+if (!isset($testObjects))
 	exit;
 
 // Get all tests
@@ -17,19 +17,19 @@ $tests = array();
 $passedTests = 0;
 $totalTests = 0;
 
-foreach ($testClasses as $class) {
-	$rc = new ReflectionClass($class);
-	foreach ($rc->getMethods() as $method) {
+foreach ($testObjects as $obj) {
+	$reflectObject = new ReflectionObject($obj);
+	foreach ($reflectObject->getMethods() as $method) {
 		// Check if its static
 		if (!$method->isStatic())
 			continue;
 
-		if (!isset($tests[$rc->getName()]))
-			$tests[$rc->getName()] = array();
+		if (!isset($tests[$reflectObject->getName()]))
+			$tests[$reflectObject->getName()] = array();
 
 		// Check if its a test
 		if (strpos($method->getDocComment(), "@Test")) {
-			$tests[$rc->getName()][] = $method;
+			$tests[$reflectObject->getName()][] = $method;
 			$totalTests++;
 		}
 	}
@@ -184,9 +184,9 @@ foreach ($testClasses as $class) {
 				<div class="subtitle">Class(es)</div>
 				<div class="content">
 					<?php
-					foreach ($testClasses as $class) {
-						echo "<div><span>$class</span></div>";
-					}
+                    foreach ($tests as $className => $classTests) {
+                        echo "<div>$className</div>";
+                    }
 					?>
 				</div>
 			</div>
@@ -194,9 +194,9 @@ foreach ($testClasses as $class) {
 				<div class="subtitle">Test(s)</div>
 				<div class="content">
 					<?php
-					foreach ($tests as $testClass) {
+					foreach ($tests as $classTests) {
 						/** @var ReflectionMethod $test */
-						foreach ($testClass as $test) {
+						foreach ($classTests as $test) {
 							echo "<div>{$test->getName()}</div>";
 						}
 					}
@@ -209,11 +209,11 @@ foreach ($testClasses as $class) {
 		<div class="subtitle">Run</div>
 		<div class="run">
 		<?php
-		foreach ($tests as $className => $testClass) {
+		foreach ($tests as $className => $classTests) {
 			echo "<div class='test-class-name'>$className</div>";
 
 			/** @var ReflectionMethod $test */
-			foreach ($testClass as $test) {
+			foreach ($classTests as $test) {
 
 				echo '<div class="singletest">';
 					echo '<div>Running <span class="method">', $test->getName(), '</span><span class="lnno">', $test->getStartLine(), "-",

@@ -1,6 +1,7 @@
 <?php
 namespace stak\foundation;
 require_once $_SERVER["DOCUMENT_ROOT"] . "/.site/php/stak/Autoload.php";
+use common\ppunit\TestRunner;
 use common\ppunit\UnitTest;
 use common\time\StandardTime;
 
@@ -76,4 +77,4 @@ class TimescopeTest extends UnitTest {
 				"Start of 3 days from now");
 	}
 }
-UnitTest::init(TimescopeTest::class);
+TestRunner::run(new TimescopeTest());
