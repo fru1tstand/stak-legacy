@@ -32,6 +32,6 @@ abstract class UnitTest {
 	}
 
 	protected static function addMessage($message) {
-		echo "<div>$message</div>";
+		echo "<div style='color: #99F;'>$message</div>";
 	}
 }
