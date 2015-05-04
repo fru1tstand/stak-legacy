@@ -314,6 +314,12 @@ abstract class Timescope implements Hashable {
 	 * @return float|int
 	 */
 	public function compareChronological(Timescope $other) {
+		// Special case
+		if ($this instanceof EmptyTimescope)
+			return -1;
+		if ($other instanceof EmptyTimescope)
+			return 1;
+
 		// Exclusive or on infinite lower bound will result in return, otherwise both or neither
 		// are infinite (we'll separate this out later)
 		if ($this->lowerBoundIsInfinite && !$other->lowerBoundIsInfinite)
