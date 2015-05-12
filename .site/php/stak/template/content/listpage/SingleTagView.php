@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 use stak\template\processors\ListProcessor;
 use stak\foundation\Tag;
 
-$tagGroup = ListProcessor::getTagGroup();
+$tagGroup = ListProcessor::getSingleTagViewTagGroup();
 ?>
 <!-- Single tag mode -->
 <input type="radio" class="controller" name="tasklist-tags-controller" id="tags-master" checked="checked" />

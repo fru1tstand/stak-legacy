@@ -104,9 +104,10 @@ class ListProcessor {
 
 	// View-specific methods
 	/**
-	 * Builds and returns the TagGroup organizer for the single tag view
+	 * Builds and returns the TagGroup organizer for the single tag view. Null-safe function
+	 * (returns an empty timescope on error).
 	 */
-	public static function getTagGroup() {
+	public static function getSingleTagViewTagGroup() {
 		/** @var UserData $ud */
 		$ud = Autoload::getInjector()->getInstance(UserData::class);
 
@@ -150,5 +151,16 @@ class ListProcessor {
 
 		// That's it!
 		return $tagGroup;
+	}
+
+	public static function getSingleListViewTimescopeGroup() {
+		/** @var UserData $ud */
+		$ud = Autoload::getInjector()->getInstance(UserData::class);
+
+		$timescopeGroup = new TimescopeGroup();
+
+		// Return empty timescope group if we're not logged in
+		if (!$ud->isLoggedIn())
+			return $timescopeGroup;
 	}
 }
