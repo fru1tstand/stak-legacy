@@ -240,14 +240,13 @@ label {
     height: 24px;
     line-height: 24px;
     font-size: 12px; }
+    .tl-timescope:hover .left::before {
+      content: 'Tasks left to do: '; }
     .tl-timescope .left {
-      width: 60px;
-      text-align: center;
-      font-weight: bold; }
-      .tl-timescope .left::before {
-        content: '('; }
-      .tl-timescope .left::after {
-        content: ')'; }
+      white-space: nowrap;
+      font-weight: bold;
+      padding-left: 25px;
+      width: 0; }
     .tl-timescope .name {
       text-align: center; } }
 

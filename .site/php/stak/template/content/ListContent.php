@@ -10,6 +10,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
         <?php ListProcessor::showRequestedTasklistView(); ?>
     </div>
     <div class="listpage-content">
-        asdf
+        <input type="radio" class="controller" checked="checked" name="task" />
+		<div class="active">
+			<div class="title">mmmm</div>
+			<div class="content">
+
+				asdfasdf
+				asdfa
+			</div>
+		</div>
     </div>
 </div>

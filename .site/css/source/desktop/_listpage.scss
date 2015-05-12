@@ -26,7 +26,19 @@ $tl-timescope-height: 24px;
 		display: none;
 	}
 }
+
 .listpage-content {
+	height: 100%;
+	margin-left: 33%;
+
+	> div {
+		height: 100%;
+	}
+	.title {
+		font-size: 19px;
+	}
+	.content {
+	}
 }
 
 // *** Single-item definitions
@@ -124,13 +136,15 @@ $tl-timescope-height: 24px;
 	line-height: $tl-timescope-height;
 	font-size: 12px;
 
-	.left {
-		width: $tl-task-left-width;
-		text-align: center;
-		font-weight: bold;
+	&:hover .left::before {
+		content: 'Tasks left to do: ';
+	}
 
-		&::before { content: '('; }
-		&::after { content: ')'; }
+	.left {
+		white-space: nowrap;
+		font-weight: bold;
+		padding-left: ($tl-task-left-width - $tl-task-tag-width) / 2;
+		width: 0;
 	}
 	.name {
 		@extend .ellipsis;
