@@ -60,16 +60,8 @@ HTML;
     // Each timescope has a div
     foreach ($tagContain->getTimescopeGroup()->getTimescopeContainers() as $tsContainer) {
         // Hide if empty?
-        if ($tsContainer->getTimescope()->hideIfEmpty()) {
-            // No tasks at all
-            if (count($tsContainer->getTasks()) == 0)
-                continue;
-
-            // Hidden complete tasks and all tasks are complete
-            if ($tsContainer->getTimescope()->hideCompleted()
-                && $tsContainer->countIncompleteTasks() == 0)
-                continue;
-        }
+        if ($tsContainer->shouldHide())
+			continue;
 
         $tsHash = ListProcessor::getTimescopeTagHash($tsContainer->getTimescope(),
                         $tagContain->getTag());

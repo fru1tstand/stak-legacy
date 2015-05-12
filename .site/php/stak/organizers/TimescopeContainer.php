@@ -73,6 +73,22 @@ class TimescopeContainer {
         return $result;
     }
 
+	/**
+	 * Returns whether or not this Timescope and its corresponding tasks should be hidden
+	 */
+	public function shouldHide() {
+		if (!$this->timescope->hideIfEmpty())
+			return false;
+
+		if (count($this->tasks) == 0)
+			return true;
+
+		if ($this->timescope->hideCompleted() && $this->countIncompleteTasks() == 0)
+			return true;
+
+		return false;
+	}
+
 
 	// Sorters
 	/**
