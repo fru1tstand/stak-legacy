@@ -72,30 +72,12 @@ HTML;
             // Hide completed tasks?
             if ($tsContainer->getTimescope()->hideCompleted() && $task->isComplete())
                 continue;
-
-            $taskColor = $task->getPrimaryTag()->getValidCssColor();
-            $taskTitle = htmlspecialchars($task->getTitle());
-            $taskHash = $task->getHash();
-
-            // Times (x) to "uncomplete". Check to "complete".
-            $quickEditSymbol = (($task->isComplete()) ? "times" : "check");
-            $taskCompleteClass = (($task->isComplete()) ? "complete" : "");
-
-            echo <<<HTML
-            <div class="tl-task $taskCompleteClass">
-                <div class="left">
-                    <div class="tl-quick-edit" style="border-color: $taskColor;">
-                        <a href="#"><i class="fa fa-$quickEditSymbol"></i></a>
-                        <a href="#"><i class="fa fa-pencil"></i></a>
-                        <a href="#"><i class="fa fa-trash"></i></a>
-                    </div>
-                </div>
-                <label class="title" for="task-$taskHash">$taskTitle</label>
-            </div>
-HTML;
+            echo ListProcessor::getTaskHtml($task);
         } // End tasks for (all tasks are output by here)
+
         echo "</div> <!-- .timescope -->";
     } // End timescope for (all timescopes are output by here)
+
     echo "</div> <!-- .tag-container -->";
 } // End tagGroup for (all tags are output by here)
 ?>

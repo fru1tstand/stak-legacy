@@ -27,13 +27,13 @@ class ListProcessor {
 		$view = (isset($_GET['view'])) ? $_GET['view'] : '';
 		switch ($view) {
 			case "multitag":
-				self::showMultiTagView();
+				TemplateUtils::includeFromContentLocation("/listpage/MultiTagView.php");
 				break;
 			case "singlelist":
-				self::showSingleListView();
+				TemplateUtils::includeFromContentLocation("/listpage/SingleListView.php");
 				break;
 			default:
-				self::showSingleTagView();
+				TemplateUtils::includeFromContentLocation("/listpage/SingleTagView.php");
 				break;
 		}
 	}
@@ -65,7 +65,7 @@ class ListProcessor {
 	}
 
 
-	// Hashing
+	// Group hashing
 	/**
 	 * Gets the has of a timescope that's contained within a tag.
 	 * @param Timescope $ts
@@ -77,35 +77,35 @@ class ListProcessor {
 	}
 
 
-	// Views
-	/**
-	 * Multi-tag mode. Each tag has its own tasklist and timescopes. All tags are displayed within
-	 * the viewstyle container.
-	 */
-	private static function showMultiTagView() {
-		TemplateUtils::includeFromContentLocation("/listpage/MultiTagView.php");
-	}
+	// Generic view methods
+	public static function getTaskHtml(Task $task) {
+		$taskColor = $task->getPrimaryTag()->getValidCssColor();
+		$taskTitle = htmlspecialchars($task->getTitle());
+		$taskHash = $task->getHash();
 
-	/**
-	 * Single list mode. All tasks are shown in a single list
-	 */
-	private static function showSingleListView() {
-		TemplateUtils::includeFromContentLocation("/listpage/SingleListView.php");
-	}
+		// Times (x) to "uncomplete". Check to "complete".
+		$quickEditSymbol = (($task->isComplete()) ? "times" : "check");
+		$taskCompleteClass = (($task->isComplete()) ? "complete" : "");
 
-	/**
-	 * Single tag mode. Displays a list of tags in which the user can click a single tag and
-	 * display only that tag's tasks.
-	 */
-	private static function showSingleTagView() {
-		TemplateUtils::includeFromContentLocation("/listpage/SingleTagView.php");
+		return <<<HTML
+            <div class="tl-task $taskCompleteClass">
+                <div class="left">
+                    <div class="tl-quick-edit" style="border-color: $taskColor;">
+                        <a href="#"><i class="fa fa-$quickEditSymbol"></i></a>
+                        <a href="#"><i class="fa fa-pencil"></i></a>
+                        <a href="#"><i class="fa fa-trash"></i></a>
+                    </div>
+                </div>
+                <label class="title" for="task-$taskHash">$taskTitle</label>
+            </div>
+HTML;
 	}
-
 
 	// View-specific methods
 	/**
 	 * Builds and returns the TagGroup organizer for the single tag view. Null-safe function
 	 * (returns an empty timescope on error).
+	 * @return TagGroup
 	 */
 	public static function getSingleTagViewTagGroup() {
 		/** @var UserData $ud */
@@ -133,15 +133,13 @@ class ListProcessor {
 			return $a->compareChronological($b);
 		});
 
-		// Create a container for each tag, each with their own TimescopeGroup consisting of the
-		// same array of timescopes
+		// Each Tag (and corresponding TagContainer) has its own set of Timescopes. Then add
+		// the TagContainer to the TagGroup. Finally, add all tasks to the group.
 		foreach ($tags as $tag) {
-			$timescopeContainers = array();
-			foreach ($timescopes as $timescope) {
-				$timescopeContainers[] = new TimescopeContainer($timescope);
-			}
+			$timescopeGroup = new TimescopeGroup();
+			foreach ($timescopes as $timescope)
+				$timescopeGroup->addTimescopeContainer(new TimescopeContainer($timescope));
 
-			$timescopeGroup = new TimescopeGroup($timescopeContainers);
 			$tagGroup->addTagContainer(new TagContainer($tag, $timescopeGroup));
 		}
 
@@ -149,10 +147,14 @@ class ListProcessor {
 		foreach ($tasks as $task)
 			$tagGroup->addTask($task);
 
-		// That's it!
 		return $tagGroup;
 	}
 
+	/**
+	 * Builds and returns the logged in user's tasks in the form of a single list timescope group.
+	 * Returns an empty TimescopeGroup on error
+	 * @return TimescopeGroup
+	 */
 	public static function getSingleListViewTimescopeGroup() {
 		/** @var UserData $ud */
 		$ud = Autoload::getInjector()->getInstance(UserData::class);
@@ -162,5 +164,26 @@ class ListProcessor {
 		// Return empty timescope group if we're not logged in
 		if (!$ud->isLoggedIn())
 			return $timescopeGroup;
+
+		// Grab user data
+		$timescopes = $ud->getTimescopes();
+		$tasks = self::getRequestedTasks();
+
+		// Sort all chrono
+		usort($timescopes, function(Timescope $a, Timescope $b) {
+			return $a->compareChronological($b);
+		});
+		usort($tasks, function(Task $a, Task $b) {
+			return $a->compareChronological($b);
+		});
+
+		// Simply add each timescope as a timescope container to the timescope group, then add
+		// the tasks
+		foreach ($timescopes as $timescope)
+			$timescopeGroup->addTimescopeContainer(new TimescopeContainer($timescope));
+		foreach ($tasks as $task)
+			$timescopeGroup->addTask($task);
+
+		return $timescopeGroup;
 	}
 }
