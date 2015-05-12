@@ -158,10 +158,10 @@ label {
       display: none; }
 
   .listpage-content {
-    height: 100%; }
+    height: 100%;
+    margin-left: 33%; }
     .listpage-content > div {
-      height: 100%;
-      margin-left: 33%; }
+      height: 100%; }
     .listpage-content .title {
       font-size: 19px; }
 

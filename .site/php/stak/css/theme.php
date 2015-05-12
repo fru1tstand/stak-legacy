@@ -136,27 +136,26 @@ HTML;
 // Tasklist/Listpage
 echo <<<HTML
 .tl-tag,
-.tasklist {
+.tasklist,
+.tl-task {
+    background-color: $blendBgAlt;
+    color: $blendTxt;
+}
+.tl-timescope {
     background-color: $blendBg;
     color: $blendTxt;
 }
-.tl-tag:hover {
-    background-color: $blendBgActive;
-    color: $blendTxtActive;
-}
-
-.tl-task {
-    background-color: $bg;
-    color: $txt;
-}
 .tl-task.complete {
-    background-color: $blendBgDisabled;
+    background-color: $blendBgAlt;
     color: $blendTxtDisabled;
 }
 
+.tl-tag:hover,
 .tl-task:hover,
 .tl-quick-edit a:link,
-.tl-quick-edit a:visited {
+.tl-quick-edit a:visited,
+.tl-timescope:hover,
+.tasklist .controller[type=checkbox]:checked + .tl-timescope:hover {
     background-color: $blendBgActive;
     color: $blendTxtActive;
 }
@@ -164,19 +163,10 @@ echo <<<HTML
 .tl-quick-edit a:hover,
 .tl-quick-edit a:active,
 .tl-task .title:hover {
-    background-color: $blendBgAlt;
+    background-color: $blendBgActive;
     color: $blendTxt;
 }
 
-.tl-timescope {
-    background-color: $blendBg;
-    color: $blendTxt;
-}
-.tl-timescope:hover,
-.tasklist .controller[type=checkbox]:checked + .tl-timescope:hover{
-    background-color: $blendBgActive;
-    color: $blendTxtActive;
-}
 .tasklist .controller[type=checkbox]:checked + .tl-timescope {
     background-color: $blendBgDisabled;
     color: $blendTxtDisabled;
