@@ -157,6 +157,14 @@ label {
     .tasklist .controller[type=checkbox]:checked + .tl-timescope + div {
       display: none; }
 
+  .listpage-content {
+    height: 100%; }
+    .listpage-content > div {
+      height: 100%;
+      margin-left: 33%; }
+    .listpage-content .title {
+      font-size: 19px; }
+
   .tl-task {
     height: 60px; }
     .tl-task .left {

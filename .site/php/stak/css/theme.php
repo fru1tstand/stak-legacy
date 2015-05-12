@@ -5,6 +5,7 @@ header("content-type: text/css");
 
 $txt = "#2C3E50";
 $bg = "#FFF";
+$bgAlt = "#F9F9F9";
 
 $hiBgActive = "#2C3E50";
 $hiTxtActive = "#18BC9C";
@@ -19,6 +20,7 @@ $invBgLite = "#69D3BE";
 $invTxtLite = "2C3E50";
 
 $blendBg = $bg;
+$blendBgAlt = $bgAlt;
 $blendTxt = $txt;
 $blendBgActive = "#ECF0F1";
 $blendTxtActive = "#18BC9C";
@@ -80,7 +82,7 @@ echo <<<HTML
 .nav,
 .nav a:link,
 .nav a:visited {
-    background-color: $bg;
+    background-color: $bgAlt;
     color: $txt;
 }
 .nav a.active {
@@ -133,7 +135,8 @@ HTML;
 
 // Tasklist/Listpage
 echo <<<HTML
-.tl-tag {
+.tl-tag,
+.tasklist {
     background-color: $blendBg;
     color: $blendTxt;
 }
@@ -161,7 +164,7 @@ echo <<<HTML
 .tl-quick-edit a:hover,
 .tl-quick-edit a:active,
 .tl-task .title:hover {
-    background-color: $blendBg;
+    background-color: $blendBgAlt;
     color: $blendTxt;
 }
 
