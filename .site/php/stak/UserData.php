@@ -27,24 +27,26 @@ interface UserData {
 	public static function getLoggedInUser();
 
 
-	// Tag methods
+	// User-auth required methods
 	/**
-	 * Gets all tags the current logged in user owns. Returns an empty array if no user is logged
-	 * in.
+	 * Gets all tags the current logged in user owns or an empty array on error.
 	 * @param TagFilter $filter Used to filter result tag set.
 	 * @return Tag[]
 	 */
 	public static function getTags(TagFilter $filter = null);
 
-
-	// Task methods
 	/**
-	 * Gets all tasks the current logged in user owns. Returns an empty array if no user is
-	 * logged in.
+	 * Gets all tasks the current logged in user owns or an empty array on error.
 	 * @param TaskFilter $filter Used to filter result task set.
 	 * @return Task[]
 	 */
 	public static function getTasks(TaskFilter $filter = null);
+
+	/**
+	 * Gets the user's timescopes or an empty array on error
+	 * @return Timescope[]
+	 */
+	public static function getTimescopes();
 
 
 	// Other
@@ -54,9 +56,5 @@ interface UserData {
 	 */
 	public static function getTimezone();
 
-	/**
-	 * Gets the user's timescopes
-	 * @return Timescope[]
-	 */
-	public static function getTimescopes();
+
 }
