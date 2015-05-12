@@ -13,13 +13,7 @@ $tagGroup = ListProcessor::getSingleTagViewTagGroup();
     foreach ($tagGroup->getTagContainers() as $tagContain) {
         $tagHash = $tagContain->getTag()->getHash();
         $tagName = htmlspecialchars($tagContain->getTag()->getName());
-
-		// Hex color or transparent
-        $tagColor = $tagContain->getTag()->getColor();
-		if (is_null($tagColor))
-			$tagColor = "transparent";
-		else
-			$tagColor = "#" . $tagColor;
+        $tagColor = $tagContain->getTag()->getValidCssColor();
 
         echo <<<HTML
 
@@ -38,12 +32,7 @@ HTML;
 foreach ($tagGroup->getTagContainers() as $tagContain) {
     $tagHash = $tagContain->getTag()->getHash();
     $tagName = htmlspecialchars($tagContain->getTag()->getName());
-	// Hex color or transparent
-	$tagColor = $tagContain->getTag()->getColor();
-	if (is_null($tagColor))
-		$tagColor = "transparent";
-	else
-		$tagColor = "#" . $tagColor;
+	$tagColor = $tagContain->getTag()->getValidCssColor();
 
     echo <<<HTML
 
@@ -84,19 +73,12 @@ HTML;
             if ($tsContainer->getTimescope()->hideCompleted() && $task->isComplete())
                 continue;
 
-			// Transparent or Hex color
-            $taskColor = $task->getPrimaryTag()->getColor();
-			if (is_null($taskColor))
-				$taskColor = "transparent";
-			else
-				$taskColor = "#" . $taskColor;
-
+            $taskColor = $task->getPrimaryTag()->getValidCssColor();
             $taskTitle = htmlspecialchars($task->getTitle());
             $taskHash = $task->getHash();
 
             // Times (x) to "uncomplete". Check to "complete".
             $quickEditSymbol = (($task->isComplete()) ? "times" : "check");
-
             $taskCompleteClass = (($task->isComplete()) ? "complete" : "");
 
             echo <<<HTML

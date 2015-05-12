@@ -13,8 +13,12 @@ abstract class Tag implements Hashable {
 	const NAME_MAX_LENGTH = 128;
 
 	// Tag fields
-	/* @var string */	protected $name;
-	/* @var string */	protected $color;
+	/** @var string */
+	protected $name;
+	/** @var string */
+	protected $color;
+	/** @var string */
+	private $validCssColorCache = null;
 
 
 	// Getters
@@ -30,8 +34,23 @@ abstract class Tag implements Hashable {
 	 * Gets the tag color in the format of "RRGGBB" or null if no color is set.
 	 * @return string
 	 */
-	public function getColor() {
+	public function getRawColor() {
 		return $this->color;
+	}
+
+	/**
+	 * Returns a valid CSS color value
+	 */
+	public function getValidCssColor() {
+		if (is_null($this->validCssColorCache)) {
+			// Default transparent
+			$this->validCssColorCache = "transparent";
+
+			// If valid css, set to the color
+			if (!is_null($this->color) && preg_match("/[0-9A-F]{3,6}/", $this->color))
+				$this->validCssColorCache = "#" . $this->color;
+		}
+		return $this->validCssColorCache;
 	}
 
 
