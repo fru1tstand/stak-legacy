@@ -26,9 +26,6 @@ class ListProcessor {
 		//TODO: Correctly get view from settings
 		$view = (isset($_GET['view'])) ? $_GET['view'] : '';
 		switch ($view) {
-			case "multitag":
-				TemplateUtils::includeFromContentLocation("/listpage/MultiTagView.php");
-				break;
 			case "singlelist":
 				TemplateUtils::includeFromContentLocation("/listpage/SingleListView.php");
 				break;
