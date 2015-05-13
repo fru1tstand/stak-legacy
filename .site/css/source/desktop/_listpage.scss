@@ -6,7 +6,7 @@ $tl-task-tag-width: 10px;
 $tl-tag-height: 48px;
 $tl-timescope-height: 24px;
 
-// *** Main page styles
+// Tasklist (prefix: tl)
 .tasklist {
 	width: 33%;
 	float: left;
@@ -26,23 +26,6 @@ $tl-timescope-height: 24px;
 		display: none;
 	}
 }
-
-.listpage-content {
-	height: 100%;
-	margin-left: 33%;
-
-	> div {
-		height: 100%;
-	}
-	.title {
-		font-size: 19px;
-	}
-	.content {
-	}
-}
-
-// *** Single-item definitions
-// Task & Quick-edit
 .tl-task {
 	height: $tl-task-height;
 
@@ -106,8 +89,6 @@ $tl-timescope-height: 24px;
 		}
 	}
 }
-
-// *** Tag
 .tl-tag {
 	height: $tl-tag-height;
 
@@ -129,8 +110,6 @@ $tl-timescope-height: 24px;
 		padding-right: $tl-tag-height / 3;
 	}
 }
-
-// *** Timescope
 .tl-timescope {
 	height: $tl-timescope-height;
 	line-height: $tl-timescope-height;
@@ -150,4 +129,72 @@ $tl-timescope-height: 24px;
 		@extend .ellipsis;
 		text-align: center;
 	}
+}
+
+// Listpage-content (prefix: lc)
+.listpage-content {
+	height: 100%;
+	overflow: auto;
+	margin-left: 33%;
+}
+.lc-overview {
+	ul {
+		list-style: none;
+		white-space: nowrap;
+		overflow: hidden;
+		padding-bottom: 15px;
+
+		.end-spacer {
+			width: 10px;
+		}
+		&.no-js {
+			overflow-x: auto;
+		}
+	}
+	li {
+		display: inline-block;
+		vertical-align: top;
+	}
+	fieldset {
+		border: 1px solid #00F;
+		white-space: normal;
+		width: 200px;
+		font-size: 0;
+		padding: 5px;
+	}
+	legend {
+		@extend .ellipsis;
+
+		font-size: 12px;
+		font-weight: bold;
+		max-width:  200px;
+	}
+
+	.tag {
+		display: inline-block;
+		border: 1px solid;
+		font-size: 12px;
+		padding: 0 6px;
+		margin: 3px 5px;
+		height: 20px;
+		line-height: 20px;
+		border-left-width: 20px;
+	}
+
+	.total {
+		font-size: 26px;
+		color: #F0F0F0;
+		font-weight: bold;
+		word-break: break-all;
+		padding: 0 10px;
+	}
+
+	.date {
+		padding: 15px 20px;
+		font-size: 26px;
+	}
+}
+.lc-statistics {
+	padding: 15px 10px;
+	border-bottom: 1px solid #000;
 }
