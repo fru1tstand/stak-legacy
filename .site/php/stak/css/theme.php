@@ -172,4 +172,14 @@ echo <<<HTML
     color: $blendTxtDisabled;
 }
 
+
+.lc-overview fieldset {
+	border-color: $bgAlt;
+}
+.lco-statistics span {
+	color: $blendTxtActive;
+}
+.lco-statistics .graph span {
+	background-color: $bgAlt;
+}
 HTML;

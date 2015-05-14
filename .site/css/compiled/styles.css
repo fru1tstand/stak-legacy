@@ -9,9 +9,13 @@ html, body {
 html, body,
 ul, ol,
 h1, h2, h3, h4, h5, h6,
-hr {
+hr,
+fieldset {
   margin: 0;
   padding: 0; }
+
+fieldset {
+  border: 1px solid; }
 
 a {
   text-decoration: none; }
@@ -50,7 +54,7 @@ label {
   .float-clear {
     clear: both; }
 
-  .ellipsis, .tl-task .title, .tl-tag .name, .tl-timescope .name, .lc-overview legend {
+  .ellipsis, .tl-task .title, .tl-tag .name, .tl-timescope .name, .lc-timescopes legend {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -247,49 +251,86 @@ label {
     overflow: auto;
     margin-left: 33%; }
 
-  .lc-overview ul {
+  .lc-overview .date {
+    padding: 15px 20px;
+    font-size: 32px;
+    font-weight: bold; }
+
+  .lc-timescopes {
     list-style: none;
     white-space: nowrap;
     overflow: hidden;
-    padding-bottom: 15px; }
-    .lc-overview ul .end-spacer {
-      width: 10px; }
-    .lc-overview ul.no-js {
+    padding-bottom: 15px;
+    text-align: center; }
+    .lc-timescopes.no-js {
       overflow-x: auto; }
-  .lc-overview li {
-    display: inline-block;
-    vertical-align: top; }
-  .lc-overview fieldset {
-    border: 1px solid #00F;
-    white-space: normal;
-    width: 200px;
-    font-size: 0;
-    padding: 5px; }
-  .lc-overview legend {
-    font-size: 12px;
-    font-weight: bold;
-    max-width: 200px; }
-  .lc-overview .tag {
-    display: inline-block;
-    border: 1px solid;
-    font-size: 12px;
-    padding: 0 6px;
-    margin: 3px 5px;
-    height: 20px;
-    line-height: 20px;
-    border-left-width: 20px; }
-  .lc-overview .total {
-    font-size: 26px;
-    color: #F0F0F0;
-    font-weight: bold;
-    word-break: break-all;
-    padding: 0 10px; }
-  .lc-overview .date {
-    padding: 15px 20px;
-    font-size: 26px; }
+    .lc-timescopes .end-spacer {
+      width: 10px; }
+    .lc-timescopes .tag {
+      display: inline-block;
+      border: 1px solid;
+      font-size: 12px;
+      padding: 0 6px;
+      margin: 3px 5px;
+      height: 20px;
+      line-height: 20px;
+      border-left-width: 20px; }
+    .lc-timescopes .total {
+      font-size: 26px;
+      font-weight: bold;
+      word-break: break-all;
+      padding: 0 10px; }
+    .lc-timescopes li {
+      display: inline-block;
+      vertical-align: top;
+      text-align: left; }
+    .lc-timescopes fieldset {
+      white-space: normal;
+      width: 200px;
+      font-size: 0;
+      padding: 5px; }
+    .lc-timescopes legend {
+      font-size: 12px;
+      font-weight: bold;
+      max-width: 180px; }
 
-  .lc-statistics {
-    padding: 15px 10px;
-    border-bottom: 1px solid #000; } }
+  fieldset.lco {
+    margin: 15px 20px; }
+    fieldset.lco legend {
+      font-size: 19px;
+      font-weight: bold;
+      margin: 0 10px; }
+
+  .lco-statistics .graph {
+    height: 115px;
+    text-align: left;
+    font-size: 0;
+    clear: both;
+    padding-top: 15px;
+    overflow: hidden; }
+    .lco-statistics .graph .aligner,
+    .lco-statistics .graph span {
+      display: inline-block;
+      vertical-align: bottom; }
+    .lco-statistics .graph span {
+      width: 15px; }
+    .lco-statistics .graph .aligner {
+      height: 100%;
+      width: 0; }
+
+  .lcs-container {
+    width: 50%; }
+    .lcs-container > div {
+      max-width: 500px;
+      padding: 0 10px;
+      font-size: 16px;
+      margin: 0px auto; }
+      .lcs-container > div > div {
+        clear: both; }
+    .lcs-container div {
+      text-align: left; }
+    .lcs-container span {
+      float: right;
+      font-weight: bold; } }
 
 /*# sourceMappingURL=styles.css.map */

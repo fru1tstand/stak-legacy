@@ -14,9 +14,14 @@ html, body {
 html, body,
 ul, ol,
 h1, h2, h3, h4, h5, h6,
-hr {
+hr,
+fieldset {
 	margin: 0;
 	padding: 0;
+}
+
+fieldset {
+	border: 1px solid;
 }
 
 a {

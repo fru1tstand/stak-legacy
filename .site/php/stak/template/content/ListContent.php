@@ -13,7 +13,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 		<div class="lc-overview">
 			<div class="date">Wednesday, May 13th, 2015</div>
 
-			<ul class="lc-timescope"><!-- TODO add .no-js to classlist -->
+			<ul class="lc-timescopes"><!-- TODO add .no-js to classlist -->
 				<li><div class="end-spacer"></div></li>
 
 				<li>
@@ -47,21 +47,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 				</li>
 				<li>
 					<fieldset>
-						<legend>Overdue</legend>
-						<div class="total">99999989999889</div>
-						<div class="tag" style="border-color: #99F">9999</div>
-						<div class="tag" style="border-color: #F99">9999</div>
-						<div class="tag" style="border-color: #FF9">342</div>
-						<div class="tag" style="border-color: #F99">9999</div>
-						<div class="tag" style="border-color: #FF9">342</div>
-
-					</fieldset>
-				</li>
-				<li>
-					<fieldset>
 						<legend>Everything else</legend>
-						<div class="total">7</div>
+						<div class="total">9999999889</div>
 						<div class="tag" style="border-color: #99F">9999</div>
+						<div class="tag" style="border-color: #F99">9999</div>
+						<div class="tag" style="border-color: #FF9">342</div>
 						<div class="tag" style="border-color: #F99">9999</div>
 						<div class="tag" style="border-color: #FF9">342</div>
 					</fieldset>
@@ -70,19 +60,145 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/.site/php/stak/Autoload.php';
 				<li><div class="end-spacer"></div></li>
 			</ul>
 
-			<div class="lc-statistics">
-				<div class="left">
-					<span class="title bar">Tasks per Day</span>
-					<span class="value">4.6</span>
+			<fieldset class="lco-statistics lco">
+				<legend>Stats</legend>
+
+				<div class="left lcs-container">
+					<div>
+						<div>
+							Completions Today
+							<span>0</span>
+						</div>
+						<div>
+							Daily Completion Average
+							<span>4.4</span>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="activity">
 
-				<div class="graph"></div>
-				<ul>
+				<div class="right lcs-container">
+					<div>
+						<div>
+							30 Day Average
+							<span>4.4</span>
+						</div>
+						<div>
+							Total
+							<span>4,121,512</span>
+						</div>
+					</div>
+				</div>
 
-				</ul>
-			</div>
+				<div class="graph">
+					<div class="aligner"></div>
+					<span style="height:40%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:4%;"></span>
+					<span style="height:0%;"></span>
+					<span style="height:80%;"></span>
+					<span style="height:83%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:32%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+					<span style="height:100%;"></span>
+				</div>
+			</fieldset> <!-- .lc-statistics -->
+
+			<fieldset class="lco-activity lco">
+				<legend>Activity</legend>
+			</fieldset>
+
 		</div> <!-- .lc-overview -->
 
 	</div> <!-- .listpage-content -->
